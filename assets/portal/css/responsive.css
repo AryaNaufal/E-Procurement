@@ -1,0 +1,20 @@
+/* // Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) { 
+  #content{
+    margin-top: 0 !important;
+  }
+  .container{
+    height: auto !important;
+  }
+  .card-portal{
+    box-shadow: 0 10px 20px #00000033;
+  }
+  .card-portal:hover{
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    box-shadow: 0 10px 50px #00000047;
+}
+ }

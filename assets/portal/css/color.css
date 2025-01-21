@@ -1,0 +1,34 @@
+/* Color */
+.bg-primary {
+  background-color: #AA0A2F !important;
+}
+
+.btn-primary {
+  border: 1px solid #AA0A2F !important;
+  background-color: #AA0A2F !important;
+}
+
+.btn-primary:hover {
+  border: 1px solid #AA0A2F !important;
+  background-color: #AA0A2F !important;
+}
+
+.btn-primary:active {
+  border: 1px solid #AA0A2F !important;
+  background-color: #AA0A2F !important;
+}
+
+.btn-primary:focus {
+  border: 1px solid #AA0A2F !important;
+  background-color: #AA0A2F !important;
+}
+
+.btn-outline-primary {
+  border: 1px solid #AA0A2F !important;
+}
+
+.btn-outline-primary:hover {
+  border: 1px solid #AA0A2F !important;
+  color: #fff;
+  background-color: #AA0A2F !important;
+}
