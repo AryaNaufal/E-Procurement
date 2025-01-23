@@ -422,19 +422,19 @@
 
     function daftar() {
       $.ajax({
-        url: 'register.php',
+        url: 'handler/register-handler',
         type: 'POST',
-        data: $("#form_daftar").serialize(), // Form ID
+        data: $("#form_daftar").serialize(),
         beforeSend: function() {
           $("#loader").show();
         },
         success: function(data) {
           var data_trim = $.trim(data);
-          if (data_trim == "OK") {
+          if (data_trim === "OK") {
             swal({
               title: 'Success',
               type: 'success',
-              html: 'Pendaftaran Berhasil, periksa email anda <br/> untuk aktivasi akun',
+              html: 'Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.',
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
@@ -453,6 +453,14 @@
         },
         complete: function() {
           $("#loader").hide();
+        },
+        error: function(xhr, status, error) {
+          swal({
+            title: 'Error',
+            html: 'Terjadi kesalahan pada server.',
+            type: 'error',
+            showCancelButton: false,
+          });
         }
       });
     }

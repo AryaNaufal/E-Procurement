@@ -3,9 +3,11 @@ include_once "#include/config.php";
 include_once "#include/#class/autoload.php";
 
 use App\TenderService;
+use App\UserService;
 
 // Tender Service
 $tenderService = new TenderService();
+$userService = new UserService();
 
 // Get all tender
 $tenders = $tenderService->getAllTenders();
@@ -32,6 +34,12 @@ $tenderSelesai = isset($tenders['data']) ? count(array_filter($tenders['data'], 
   $interval = $now->diff($closingDate);
   return $interval->days > 0;
 })) : 0;
+
+$users = $userService->getUsers();
+$usersJson = json_encode($users);
+
+$user = $userService->getUserById('1');
+$userJson = json_encode($user);
 
 $current_menu = "home";
 $current_sub_menu = NULL;

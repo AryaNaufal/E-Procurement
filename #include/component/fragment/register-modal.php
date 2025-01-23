@@ -49,6 +49,8 @@
               </div>
               <div class="form-box">
                 <input type="email" name="email" placeholder="Email" class="mb-14" required>
+              </div>
+              <div class="form-box">
                 <input type="text" name="nama_lengkap" placeholder="Nama PIC" class="mb-14" required>
               </div>
               <div class="form-box">
@@ -60,7 +62,7 @@
               <div class="form-box" id="div_nik" style="display:none">
                 <input type="text" name="pic_ktp" id="pic_ktp" maxlength="16" placeholder="NIK" class="mb-14">
               </div>
-              <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div>
+              <!-- <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div> -->
               <div class="text-center">
                 <button type="submit" class="text-uppercase">Daftar</button>
               </div>

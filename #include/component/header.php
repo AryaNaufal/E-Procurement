@@ -96,6 +96,7 @@
 </head>
 
 <body>
+  <div id="loader"></div>
   <?php
   include "fragment/login-modal.php";
   include "fragment/register-modal.php";
