@@ -2,7 +2,7 @@
 
 namespace App;
 
-include __DIR__ . '/../../vendor/autoload.php';
+include ROOT_PATH . 'vendor/autoload.php';
 
 use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -48,17 +48,66 @@ class UserService
     }
   }
 
-  private function getUserByEmail(string $email)
+  public function getUserByEmail(string $email)
   {
     $query = "SELECT * FROM user WHERE email = :email LIMIT 1";
     try {
       $stmt = $this->db->prepare($query);
       $stmt->execute(['email' => $email]);
-      return $stmt->fetch();
+      $userEmail = $stmt->fetch();
+
+      if (!$userEmail) {
+        return $this->createErrorResponse('User not found');
+      }
+
+      return $this->createSuccessResponse('', $userEmail);
     } catch (Exception $e) {
       return $this->createErrorResponse('Server error occurred');
     }
   }
+
+  public function getUserByUsername(string $username)
+  {
+    $query = "SELECT * FROM user WHERE username = :username LIMIT 1";
+    try {
+      $stmt = $this->db->prepare($query);
+      $stmt->execute(['username' => $username]);
+      $userName = $stmt->fetch();
+
+      if (!$userName) {
+        return $this->createErrorResponse('User not found');
+      }
+
+      return $this->createSuccessResponse('', $userName);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Server error occurred');
+    }
+  }
+
+  public function loginUser(array $data)
+  {
+    $query = "SELECT * FROM user WHERE email = :email OR username = :username LIMIT 1";
+    try {
+      $stmt = $this->db->prepare($query);
+      $stmt->execute(['email' => $data['email'], 'username' => $data['username']]);
+      $user = $stmt->fetch();
+
+      if (!$user) {
+        return $this->createErrorResponse('User not found');
+      }
+
+      // Verifikasi password
+      if (!password_verify($data['password'], $user['password'])) {
+        return $this->createErrorResponse('Invalid password');
+      }
+
+      // Jika password valid
+      return $this->createSuccessResponse('Login successful', []);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Server error occurred');
+    }
+  }
+
 
   public function createUser(array $data)
   {
@@ -68,7 +117,8 @@ class UserService
 
     // Periksa jika email sudah terdaftar
     $existUser = $this->getUserByEmail($data['email']);
-    if ($existUser) {
+
+    if ($existUser['status'] === 'success') {
       return $this->createErrorResponse('Email already exists');
     }
 
@@ -88,7 +138,7 @@ class UserService
     return $this->createSuccessResponse('User created. Please verify your email.', []);
   }
 
-  private function sendMailVerification($email, $verification_code)
+  private function sendMailVerification(string $email, string $verification_code)
   {
     $mail = new PHPMailer(true);
 

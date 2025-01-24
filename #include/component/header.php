@@ -71,6 +71,12 @@
     href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     /* Loader Start  */
     #loader {
       display: none;

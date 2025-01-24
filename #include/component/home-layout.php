@@ -387,7 +387,7 @@
 
     function login() {
       $.ajax({
-        url: '<?php SERVER_NAME ?>vendor_area/login',
+        url: 'handler/login-handler',
         type: 'POST',
         data: $("#form_login").serialize(), // Form ID
         beforeSend: function() {
@@ -399,6 +399,7 @@
             swal({
               title: 'Success',
               type: 'success',
+              html: 'Login Berhasil',
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
@@ -438,7 +439,7 @@
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
-              $("#RegisterModal").modal('hide');
+              $("#RegisterModal").modal('remove');
               $("#form_daftar")[0].reset();
             });
           } else {
@@ -483,8 +484,8 @@
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
-              $("#LoginModal").modal('hide');
-              $("#ResetPwdModal").modal('hide');
+              $("#LoginModal").modal('remove');
+              $("#ResetPwdModal").modal('remove');
               $("#form_login")[0].reset();
               $("#form_reset")[0].reset();
             });

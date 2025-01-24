@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 include_once '../#include/config.php';
 include_once '../#include/#class/autoload.php';
 include_once '../#include/#class/UserService.php';
@@ -16,15 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Ambil data dari form
 $username = trim($_POST['username'] ?? null);
-$email = trim($_POST['email'] ?? null);
 $password = trim($_POST['password'] ?? null);
-$pic = trim($_POST['nama_lengkap'] ?? null);
-$perusahaan = trim($_POST['company_name'] ?? null);
-$npwp = trim($_POST['company_npwp'] ?? null);
+
 $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
 
 // Validasi data yang dikirim
-if (empty($username) || empty($email) || empty($password)) {
+if (empty($username) || empty($password)) {
   echo 'Semua data wajib diisi.';
   exit;
 }
@@ -37,13 +32,6 @@ $recaptchaResult = json_decode($recaptchaVerifyResponse);
 
 if (!$recaptchaResult->success) {
   echo 'Recaptcha tidak valid.';
-  unset($_POST['g-recaptcha-response']);
-  exit;
-}
-
-// Validasi email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  echo 'Format email tidak valid.';
   exit;
 }
 
@@ -53,15 +41,12 @@ if (strlen($password) < 8) {
   exit;
 }
 
-// Panggil UserService untuk menambahkan user
+// Panggil UserService untuk melakukan login
 $userService = new UserService();
-$result = $userService->createUser([
+$result = $userService->loginUser([
+  'email' => $username,
   'username' => $username,
-  'email' => $email,
-  'password' => $password,
-  'pic' => $pic,
-  'perusahaan' => $perusahaan,
-  'npwp' => $npwp
+  'password' => $password
 ]);
 
 if ($result['status'] === 'success') {

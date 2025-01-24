@@ -20,7 +20,7 @@
         </nav>
         <div class="login-btn">
           <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#RegisterModal">Daftar</a>
-          <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal" onclick="createCaptcha()">Login</a>
+          <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
         </div>
       </div>
     </div>

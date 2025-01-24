@@ -10,12 +10,12 @@
         <div class="modal-body">
           <div class="form-pop-up-content ptb-30 pl-60 pr-60">
             <div class="area-title text-center mb-43" style="margin-bottom: 15px !important">
-              <img src="<?php SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
+              <img src="<?php echo SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
             </div>
             <p align="center" style="color:black;font-size: 12px;line-height: 11px;">Sistem Pengadaan secara Elektronik (e-Procurement) merupakan layanan mandiri berbasis internet untuk lebih mengefisiensikan transaksi</p>
             <hr class="my-3">
             <form method="post" id="form_daftar" autocomplete="off" class="mt-3">
-              <div class="d-flex flex-column">
+              <div class="form-group">
                 <label style="color: #393939; font-size: 14px !important;">Pilih Jenis Akun</label>
                 <div class="btn-group btn-group-toggle w-100 mb-3" data-toggle="buttons">
                   <label onclick="get_akun('1')" class="btn btn-outline-danger w-50 m-auto" style="font-size: 12px !important; border-radius: 3px !important; margin-right: 16px !important;">
@@ -26,13 +26,17 @@
                   </label>
                 </div>
               </div>
-              <div class="form-box">
-                <input type="text" name="username" placeholder="Username" class="mb-14" required>
+              <div class="form-group">
+                <label for="username" style="color: #393939; font-size: 14px !important;">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" class="form-control" required>
               </div>
-              <div class="form-box">
-                <input title="Password minimal 8 karakter, harus berisi huruf kapital, huruf kecil, angka dan Karakter khusus" type="password" id="psw" name="password" placeholder="Password" class="mb-14" onkeyup="password_validation()" required>
+              <div class="form-group">
+                <label for="psw" style="color: #393939; font-size: 14px !important;">Password</label>
+                <input type="password" id="psw" name="password" placeholder="Password" class="form-control" onkeyup="password_validation()" required>
                 <input type="hidden" name="validation_pwd" id="validation_pwd_val" value="0">
-                <span style="font-size:11px;color:black;">Password harus berisi : </span>
+                <div style="font-size:11px;color:black;">
+                  Password harus berisi :
+                </div>
                 <table style="color: #393939; font-size: 12px !important;">
                   <tr>
                     <td style="width:40%"><span id="pwd_capital">* Huruf kapital</span></td>
@@ -47,22 +51,27 @@
                   </tr>
                 </table>
               </div>
-              <div class="form-box">
-                <input type="email" name="email" placeholder="Email" class="mb-14" required>
+              <div class="form-group">
+                <label for="email" style="color: #393939; font-size: 14px !important;">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" class="form-control" required>
               </div>
-              <div class="form-box">
-                <input type="text" name="nama_lengkap" placeholder="Nama PIC" class="mb-14" required>
+              <div class="form-group">
+                <label for="nama_lengkap" style="color: #393939; font-size: 14px !important;">Nama PIC</label>
+                <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama PIC" class="form-control" required>
               </div>
-              <div class="form-box">
-                <input type="text" name="company_name" placeholder="Nama Perusahaan" class="mb-14" required>
+              <div class="form-group">
+                <label for="company_name" style="color: #393939; font-size: 14px !important;">Nama Perusahaan</label>
+                <input type="text" name="company_name" id="company_name" placeholder="Nama Perusahaan" class="form-control" required>
               </div>
-              <div class="form-box" id="div_npwp" style="display:none">
-                <input type="text" name="company_npwp" id="company_npwp" maxlength="15" placeholder="NPWP Perusahaan" class="mb-14">
+              <div class="form-group" id="div_npwp" style="display:none;">
+                <label for="company_npwp" style="color: #393939; font-size: 14px !important;">NPWP Perusahaan</label>
+                <input type="text" name="company_npwp" id="company_npwp" maxlength="15" placeholder="NPWP Perusahaan" class="form-control">
               </div>
-              <div class="form-box" id="div_nik" style="display:none">
-                <input type="text" name="pic_ktp" id="pic_ktp" maxlength="16" placeholder="NIK" class="mb-14">
+              <div class="form-group" id="div_nik" style="display:none;">
+                <label for="pic_ktp" style="color: #393939; font-size: 14px !important;">NIK</label>
+                <input type="text" name="pic_ktp" id="pic_ktp" maxlength="16" placeholder="NIK" class="form-control">
               </div>
-              <!-- <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div> -->
+              <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div>
               <div class="text-center">
                 <button type="submit" class="text-uppercase">Daftar</button>
               </div>
