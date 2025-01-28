@@ -8,14 +8,14 @@ use App\TenderService;
 $tenderService = new TenderService();
 
 // Get all tender
-$tenders = $tenderService->getAllTenders();
+$tenders = $tenderService->getTenders();
 
 // Get tender by category
-$tenderBarangJasa = $tenderService->getTendersByCategories(['Pengadaan Barang & Jasa']);
-$tenderKonsultasi = $tenderService->getTendersByCategories(['Jasa Konsultasi Bidang Usaha']);
+$tenderBarangJasa = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa']);
+$tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidang Usaha']);
 
 // Get tender not in above category (other)
-$tenderLain = $tenderService->getTendersByCategories(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
+$tenderLain = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
 
 $current_menu = "tender";
 $current_sub_menu = NULL;

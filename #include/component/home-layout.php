@@ -394,12 +394,12 @@
           $("#loader").show();
         },
         success: function(data) {
-          var data_trim = $.trim(data);
-          if (data_trim == "OK") {
+          var data_trim = JSON.parse($.trim(data));
+          if (data_trim.status == "success") {
             swal({
-              title: 'Success',
-              type: 'success',
-              html: 'Login Berhasil',
+              title: data_trim.status,
+              type: data_trim.status,
+              html: data_trim.message,
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
@@ -407,9 +407,9 @@
             });
           } else {
             swal({
-              title: 'Error',
-              html: data_trim,
-              type: 'error',
+              title: data_trim.status,
+              type: data_trim.status,
+              html: data_trim.message,
               showCancelButton: false,
               showLoaderOnConfirm: false,
             });
@@ -430,12 +430,12 @@
           $("#loader").show();
         },
         success: function(data) {
-          var data_trim = $.trim(data);
-          if (data_trim === "OK") {
+          var data_trim = JSON.parse($.trim(data));
+          if (data_trim.status === "success") {
             swal({
-              title: 'Success',
-              type: 'success',
-              html: 'Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.',
+              title: data_trim.status,
+              type: data_trim.status,
+              html: data_trim.message,
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
@@ -444,9 +444,9 @@
             });
           } else {
             swal({
-              title: 'Error',
-              html: data_trim,
-              type: 'error',
+              title: data_trim.status,
+              type: data_trim.status,
+              html: data_trim.message,
               showCancelButton: false,
               showLoaderOnConfirm: false,
             });

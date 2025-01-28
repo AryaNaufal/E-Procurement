@@ -21,6 +21,7 @@ $password = trim($_POST['password'] ?? null);
 $pic = trim($_POST['nama_lengkap'] ?? null);
 $perusahaan = trim($_POST['company_name'] ?? null);
 $npwp = trim($_POST['company_npwp'] ?? null);
+$nik = trim($_POST['pic_ktp'] ?? null);
 $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
 
 // Validasi data yang dikirim
@@ -55,17 +56,28 @@ if (strlen($password) < 8) {
 
 // Panggil UserService untuk menambahkan user
 $userService = new UserService();
-$result = $userService->createUser([
+$result = $userService->registerUser([
   'username' => $username,
   'email' => $email,
   'password' => $password,
   'pic' => $pic,
   'perusahaan' => $perusahaan,
-  'npwp' => $npwp
+  'npwp' => $npwp,
+  'nik' => $nik
 ]);
 
 if ($result['status'] === 'success') {
-  echo 'OK';
+  $response = [
+    "status" => $result['status'],
+    "message" => $result['message']
+  ];
+
+  echo json_encode($response);
 } else {
-  echo $result['message'];
+  $response = [
+    "status" => $result['status'],
+    "message" => $result['message']
+  ];
+
+  echo json_encode($response);
 }

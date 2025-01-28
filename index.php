@@ -10,14 +10,14 @@ $tenderService = new TenderService();
 $userService = new UserService();
 
 // Get all tender
-$tenders = $tenderService->getAllTenders();
+$tenders = $tenderService->getTenders();
 
 // Get tender by category
-$tenderBarangJasa = $tenderService->getTendersByCategories(['Pengadaan Barang & Jasa']);
-$tenderKonsultasi = $tenderService->getTendersByCategories(['Jasa Konsultasi Bidang Usaha']);
+$tenderBarangJasa = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa']);
+$tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidang Usaha']);
 
 // Get tender not in above category (other)
-$tenderLain = $tenderService->getTendersByCategories(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
+$tenderLain = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
 
 // Show newest tender (Max 3 day ago)
 $tenderBaru = isset($tenders['data']) ? count(array_filter($tenders['data'], function ($tender) {
@@ -34,12 +34,6 @@ $tenderSelesai = isset($tenders['data']) ? count(array_filter($tenders['data'], 
   $interval = $now->diff($closingDate);
   return $interval->days > 0;
 })) : 0;
-
-$users = $userService->getUsers();
-$usersJson = json_encode($users);
-
-$user = $userService->getUserById('1');
-$userJson = json_encode($user);
 
 $current_menu = "home";
 $current_sub_menu = NULL;

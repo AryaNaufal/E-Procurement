@@ -50,10 +50,10 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
 
   <!-- Modernizr JS -->
-  <script type="text/javascript" async=""
+  <!-- <script type="text/javascript" async=""
     src="https://www.gstatic.com/recaptcha/releases/iRvKkcsnpNcOYYwhqaQxPITz/recaptcha__id.js" crossorigin="anonymous"
     integrity="sha384-bu8oxO1mNFo1qyH3vU7LRuw4Kre09Mgu0V49KJs4xNN3yxmEGW/VTVltEbxnxUbv"></script>
-  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
 
   <!-- jquery latest version -->
   <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>

@@ -50,7 +50,17 @@ $result = $userService->loginUser([
 ]);
 
 if ($result['status'] === 'success') {
-  echo 'OK';
+  $response = [
+    "status" => $result['status'],
+    "message" => $result['message']
+  ];
+
+  echo json_encode($response);
 } else {
-  echo $result['message'];
+  $response = [
+    "status" => $result['status'],
+    "message" => $result['message']
+  ];
+
+  echo json_encode($response);
 }

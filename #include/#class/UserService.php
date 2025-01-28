@@ -5,8 +5,6 @@ namespace App;
 include ROOT_PATH . 'vendor/autoload.php';
 
 use Exception;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
 class UserService
 {
@@ -20,65 +18,36 @@ class UserService
   public function getUsers()
   {
     $query = "SELECT * FROM user";
+
     try {
-      $stmt = $this->db->queryAll($query);
-      if (empty($stmt)) {
+      $users = $this->db->squery($query, []);
+
+      if (empty($users)) {
         return $this->createErrorResponse('No users available');
       }
 
-      return $this->createSuccessResponse('Users retrieved successfully', $stmt);
+      return $this->createSuccessResponse('Users retrieved successfully', $users);
     } catch (Exception $e) {
       return $this->createErrorResponse('Server error occurred');
     }
   }
 
-  public function getUserById(string $id)
+  public function getUser(string $params)
   {
-    $query = "SELECT * FROM user WHERE id = :id";
+    $query = "SELECT * FROM user WHERE id = :id OR username = :username OR email = :email LIMIT 1";
     try {
-      $stmt = $this->db->prepare($query);
-      $stmt->execute(['id' => $id]);
-      $user = $stmt->fetch();
-      if (!$user) {
+      $user = $this->db->squery_single($query, [
+        'id' => $params,
+        'username' => $params,
+        'email' => $params
+      ]);
+
+      // Memeriksa user
+      if (empty($user)) {
         return $this->createErrorResponse('User not found');
       }
+
       return $this->createSuccessResponse('', $user);
-    } catch (Exception $e) {
-      return $this->createErrorResponse('Server error occurred');
-    }
-  }
-
-  public function getUserByEmail(string $email)
-  {
-    $query = "SELECT * FROM user WHERE email = :email LIMIT 1";
-    try {
-      $stmt = $this->db->prepare($query);
-      $stmt->execute(['email' => $email]);
-      $userEmail = $stmt->fetch();
-
-      if (!$userEmail) {
-        return $this->createErrorResponse('User not found');
-      }
-
-      return $this->createSuccessResponse('', $userEmail);
-    } catch (Exception $e) {
-      return $this->createErrorResponse('Server error occurred');
-    }
-  }
-
-  public function getUserByUsername(string $username)
-  {
-    $query = "SELECT * FROM user WHERE username = :username LIMIT 1";
-    try {
-      $stmt = $this->db->prepare($query);
-      $stmt->execute(['username' => $username]);
-      $userName = $stmt->fetch();
-
-      if (!$userName) {
-        return $this->createErrorResponse('User not found');
-      }
-
-      return $this->createSuccessResponse('', $userName);
     } catch (Exception $e) {
       return $this->createErrorResponse('Server error occurred');
     }
@@ -88,10 +57,12 @@ class UserService
   {
     $query = "SELECT * FROM user WHERE email = :email OR username = :username LIMIT 1";
     try {
-      $stmt = $this->db->prepare($query);
-      $stmt->execute(['email' => $data['email'], 'username' => $data['username']]);
-      $user = $stmt->fetch();
+      $user = $this->db->squery_single($query, [
+        'email' => $data['email'],
+        'username' => $data['username']
+      ]);
 
+      // Memeriksa user
       if (!$user) {
         return $this->createErrorResponse('User not found');
       }
@@ -101,25 +72,31 @@ class UserService
         return $this->createErrorResponse('Invalid password');
       }
 
-      // Jika password valid
       return $this->createSuccessResponse('Login successful', []);
     } catch (Exception $e) {
       return $this->createErrorResponse('Server error occurred');
     }
   }
 
-
-  public function createUser(array $data)
+  public function registerUser(array $data)
   {
     if (empty($data['email']) || empty($data['password'])) {
       return $this->createErrorResponse('Email and password are required');
     }
 
     // Periksa jika email sudah terdaftar
-    $existUser = $this->getUserByEmail($data['email']);
+    $checkEmail = $this->getUser($data['email']);
+    $checkUsername = $this->getUser($data['username']);
 
-    if ($existUser['status'] === 'success') {
-      return $this->createErrorResponse('Email already exists');
+    if ($checkEmail['status'] === 'success' || $checkUsername['status'] === 'success') {
+      $errors = [];
+      if ($checkEmail['status'] === 'success') {
+        $errors[] = 'Email';
+      }
+      if ($checkUsername['status'] === 'success') {
+        $errors[] = 'Username';
+      }
+      return $this->createErrorResponse(implode(' and ', $errors) . ' already exist');
     }
 
     // Proses registrasi: data belum disimpan, hanya di-simpan sementara
@@ -131,74 +108,14 @@ class UserService
     $_SESSION['pic'] = $data['pic'];
     $_SESSION['perusahaan'] = $data['perusahaan'];
     $_SESSION['npwp'] = $data['npwp'];
+    $_SESSION['nik'] = $data['nik'];
 
     // Kirim email verifikasi
-    $this->sendMailVerification($data['email'], $verification_code);
+    $emailService = new MailService();
+    $emailService->sendMailVerification($data['email'], $verification_code);
 
-    return $this->createSuccessResponse('User created. Please verify your email.', []);
+    return $this->createSuccessResponse('Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.', []);
   }
-
-  private function sendMailVerification(string $email, string $verification_code)
-  {
-    $mail = new PHPMailer(true);
-
-    try {
-      $mail->isSMTP();
-      $mail->Host = 'smtp.gmail.com';
-      $mail->SMTPAuth = true;
-      $mail->Username = 'YOUR_EMAIL';
-      $mail->Password = 'YOUR_APP_EMAIL_PASSWORD';
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-      $mail->Port = 587;
-
-      $mail->setFrom('YOUR_EMAIL', 'No Reply');
-      $mail->addAddress($email);
-      $mail->Subject = 'Verifikasi Email';
-      $verification_link = SERVER_NAME . "handler/verify.php?code=$verification_code";
-      $mail->Body = "Klik link berikut untuk verifikasi: $verification_link";
-
-      $mail->send();
-    } catch (PHPMailerException $e) {
-      echo "Email gagal dikirim. Error: {$mail->ErrorInfo}";
-    }
-  }
-
-  public function verifyUser()
-  {
-    // Validasi apakah verification_code tersedia di session dan URL
-    if (isset($_GET['code'], $_SESSION['verification_code']) && $_GET['code'] === $_SESSION['verification_code']) {
-      // Ambil data dari session
-      $email = $_SESSION['email'];
-      $username = $_SESSION['username'];
-      $password = $_SESSION['password'];
-      $pic = $_SESSION['pic'];
-      $perusahaan = $_SESSION['perusahaan'];
-      $npwp = $_SESSION['npwp'];
-
-      // Enkripsi password
-      $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-      // Simpan ke database
-      $query = "INSERT INTO user (username, email, password, pic, perusahaan, npwp) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp)";
-      $stmt = $this->db->prepare($query);
-      $stmt->bindParam(':username', $username);
-      $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':password', $password_hash);
-      $stmt->bindParam(':pic', $pic);
-      $stmt->bindParam(':perusahaan', $perusahaan);
-      $stmt->bindParam(':npwp', $npwp);
-      $stmt->execute();
-
-      // Hapus session setelah sukses
-      session_unset();
-      session_destroy();
-
-      return $this->createSuccessResponse('Akun Anda telah berhasil diverifikasi dan diaktifkan.', []);
-    } else {
-      return $this->createErrorResponse('Kode verifikasi tidak valid atau telah kedaluwarsa.');
-    }
-  }
-
 
   private function createSuccessResponse(string $message, array $data = []): array
   {
