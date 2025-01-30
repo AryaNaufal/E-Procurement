@@ -26,12 +26,12 @@ $currentCategory = $categories[$category] ?? $categories['semua_kategori'];
 $title = "Tender";
 
 // Ambil data tender berdasarkan kategori dan keyword
-if ($keyword) {
+if ($keyword && $categories[$category]['filter'] !== null) {
   $tenders = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
 } elseif (isset($currentCategory['filter'])) {
   $tenders = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
 } else {
-  $tenders = $tenderService->getTenders();
+  isset($keyword) && $tenders = $tenderService->getTender($keyword);
 }
 
 // Ambil data untuk setiap kategori tab-pane
