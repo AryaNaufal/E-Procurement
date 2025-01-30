@@ -180,7 +180,7 @@
         if (time == 0) {
           clearInterval(countDown);
           $.ajax({
-            url: "<?php SERVER_NAME ?>logout",
+            url: "<?= SERVER_NAME ?>logout",
             type: 'get',
             success: function() {
               $("#message").remove();
@@ -246,7 +246,7 @@
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
-              window.location = '<?php SERVER_NAME ?>vendor_area/member';
+              window.location = '<?= SERVER_NAME ?>vendor_area/member';
             });
           } else {
             swal({
@@ -311,7 +311,7 @@
 
     function reset_account() {
       $.ajax({
-        url: '<?php SERVER_NAME ?>vendor_area/req_pwd',
+        url: '<?= SERVER_NAME ?>vendor_area/req_pwd',
         type: 'POST',
         data: $("#form_reset").serialize(), // Form ID
         beforeSend: function() {
@@ -381,7 +381,7 @@
                   if (after_controller == 'no_refresh') {
                     window[fct_after]();
                   } else if (after_controller != '') {
-                    window.location = '<?php SERVER_NAME ?>' + after_controller;
+                    window.location = '<?= SERVER_NAME ?>' + after_controller;
                   } else {
                     location.reload();
                   }
@@ -400,7 +400,7 @@
                     if (after_controller == 'no_refresh') {
                       window[fct_after]();
                     } else if (after_controller != '') {
-                      window.location = '<?php SERVER_NAME ?>' + after_controller;
+                      window.location = '<?= SERVER_NAME ?>' + after_controller;
                     } else {
                       location.reload();
                     }
@@ -432,7 +432,7 @@
       var prov = $("#" + from_id).val();
       if (prov) {
         $.ajax({
-          url: '<?php SERVER_NAME ?>region/kabkot',
+          url: '<?= SERVER_NAME ?>region/kabkot',
           type: 'POST',
           dataType: "html",
           data: {
@@ -452,7 +452,7 @@
       var kabkot = $("#" + from_id).val();
       if (kabkot) {
         $.ajax({
-          url: '<?php SERVER_NAME ?>region/kecamatan',
+          url: '<?= SERVER_NAME ?>region/kecamatan',
           type: 'POST',
           dataType: "html",
           data: {
@@ -472,7 +472,7 @@
       var kecamatan = $("#" + from_id).val();
       if (kecamatan) {
         $.ajax({
-          url: '<?php SERVER_NAME ?>region/kelurahan',
+          url: '<?= SERVER_NAME ?>region/kelurahan',
           type: 'POST',
           dataType: "html",
           data: {
@@ -490,7 +490,7 @@
 
     function get_provinsi_edit(from_html, to_html, id = '') {
       $.ajax({
-        url: '<?php SERVER_NAME ?>region/provinsi',
+        url: '<?= SERVER_NAME ?>region/provinsi',
         type: 'POST',
         dataType: "html",
         data: {
@@ -511,7 +511,7 @@
     function get_kabkot_edit(from_html, to_html, parent_id, id) {
       if (id) {
         $.ajax({
-          url: '<?php SERVER_NAME ?>region/kabkot',
+          url: '<?= SERVER_NAME ?>region/kabkot',
           type: 'POST',
           dataType: "html",
           data: {
@@ -534,7 +534,7 @@
     function get_kecamatan_edit(from_html, to_html, parent_id, id) {
       if (id) {
         $.ajax({
-          url: '<?php SERVER_NAME ?>region/kecamatan',
+          url: '<?= SERVER_NAME ?>region/kecamatan',
           type: 'POST',
           dataType: "html",
           data: {
@@ -557,7 +557,7 @@
     function get_kelurahan_edit(from_html, to_html, parent_id, id) {
       if (id) {
         $.ajax({
-          url: '<?php SERVER_NAME ?>region/kelurahan',
+          url: '<?= SERVER_NAME ?>region/kelurahan',
           type: 'POST',
           dataType: "html",
           data: {
@@ -578,7 +578,7 @@
     }
 
     function logout() {
-      window.open('<?php SERVER_NAME ?>vendor_area/logout', '_self')
+      window.open('<?= SERVER_NAME ?>vendor_area/logout', '_self')
     }
 
     //CAPTCHA START

@@ -16,18 +16,19 @@ class MailService
 
   public function sendMailVerification(string $email, string $verification_code)
   {
+    $env = new LoadEnv(ROOT_PATH . '.env');
     $mail = new PHPMailer(true);
 
     try {
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
-      $mail->Username = 'YOUR_EMAIL';
-      $mail->Password = 'YOUR_APP_EMAIL_PASSWORD';
+      $mail->Username = $env->get('EMAIL');
+      $mail->Password = $env->get('APP_PASSWORD');
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
       $mail->Port = 587;
 
-      $mail->setFrom('YOUR_EMAIL', 'No Reply');
+      $mail->setFrom($env->get('EMAIL'), 'No Reply');
       $mail->addAddress($email);
       $mail->Subject = 'Verifikasi Email';
       $verification_link = SERVER_NAME . "handler/verify.php?code=$verification_code";

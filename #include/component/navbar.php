@@ -4,8 +4,8 @@
       <!-- <div class="logo">
                  assets/images/logo/LogoSIPOL.png" alt="JobHere" height="100" width="100"></a>
                     </div> -->
-      <div class="logo"><a href="<?php SERVER_NAME ?>index"><br><img
-            src="assets/images/logo/antara-logo-colour.png" alt="JobHere"></a></div>
+      <div class="logo"><a href="<?= SERVER_NAME ?>index"><br><img
+            src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere"></a></div>
     </div>
     <div class="col-sm-6 col-lg-6">
       <div class="pull-right header-menu">

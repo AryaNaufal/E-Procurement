@@ -10,7 +10,7 @@
         <div class="modal-body">
           <div class="form-pop-up-content ptb-30 pl-60 pr-60">
             <div class="area-title text-center mb-43" style="margin-bottom: 15px !important">
-              <img src="<?php SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
+              <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
             </div>
             <p class="text-center" style="color: black; font-size: 12px; line-height: 11px;">Sistem Pengadaan secara Elektronik (e-Procurement) merupakan layanan mandiri berbasis internet untuk lebih mengefisiensikan transaksi</p>
             <form method="POST" id="form_login" autocomplete="off">
@@ -19,7 +19,7 @@
                 <input type="password" name="password" placeholder="Password" required>
               </div>
               <div class="text-center my-3">
-                <div class="g-recaptcha my-3" data-sitekey="YOUR-SITE-KEY"></div>
+                <div class="g-recaptcha my-3" data-sitekey="<?= $env->get("RECAPTCHA_SITE_KEY") ?>"></div>
                 <a href="#" data-toggle="modal" data-target="#ResetPwdModal" style="cursor:pointer; color:#0091ff; font-size: 12px;">Forgot Password ?</a>
               </div>
               <div class="text-center mt-3">

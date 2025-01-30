@@ -10,7 +10,7 @@
         <div class="modal-body">
           <div class="form-pop-up-content ptb-30 pl-60 pr-60">
             <div class="area-title text-center mb-43">
-              <img src="<?php SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
+              <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
             </div>
             <h3 class="text-center">Lupa Password</h3>
             <p class="text-center" style="color:black; font-size: 12px; line-height: 11px;">Silahkan Masukan email anda untuk melakukan reset password</p>

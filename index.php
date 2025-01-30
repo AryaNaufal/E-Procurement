@@ -2,9 +2,11 @@
 require_once __DIR__ . '/#include/config.php';
 require_once __DIR__ . '/#include/#class/autoload.php';
 
+use App\LoadEnv;
 use App\TenderService;
 use App\UserService;
 
+$env = new LoadEnv(ROOT_PATH . '.env');
 $tenderService = new TenderService();
 $userService = new UserService();
 

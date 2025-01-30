@@ -10,7 +10,7 @@
         <div class="modal-body">
           <div class="form-pop-up-content ptb-30 pl-60 pr-60">
             <div class="area-title text-center mb-43" style="margin-bottom: 15px !important">
-              <img src="<?php echo SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
+              <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="jobhere" style="height:100px;">
             </div>
             <p align="center" style="color:black;font-size: 12px;line-height: 11px;">Sistem Pengadaan secara Elektronik (e-Procurement) merupakan layanan mandiri berbasis internet untuk lebih mengefisiensikan transaksi</p>
             <hr class="my-3">
@@ -71,7 +71,7 @@
                 <label for="pic_ktp" style="color: #393939; font-size: 14px !important;">NIK</label>
                 <input type="text" name="pic_ktp" id="pic_ktp" maxlength="16" placeholder="NIK" class="form-control">
               </div>
-              <div class="g-recaptcha my-3" data-sitekey="YOUR-SITE-KEY"></div>
+              <div class="g-recaptcha my-3" data-sitekey="<?= $env->get("RECAPTCHA_SITE_KEY") ?>"></div>
               <div class="text-center">
                 <button type="submit" class="text-uppercase">Daftar</button>
               </div>

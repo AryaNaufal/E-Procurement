@@ -25,29 +25,29 @@
     ============================================ -->
   <!-- Bootstrap CSS
     ============================================ -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/bootstrap.min.css">
 
   <!-- This core.css file contents all plugins css file
     ============================================ -->
-  <link rel="stylesheet" href="assets/css/core.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/core.css">
 
   <!-- Theme shortcodes/elements style
     ============================================ -->
-  <link rel="stylesheet" href="assets/css/shortcode/shortcodes.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/shortcode/shortcodes.css">
 
   <!--  Theme main style
     ============================================ -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/style.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/font-awesome.min.css">
 
 
   <!-- Color CSS
           ============================================ -->
-  <link rel="stylesheet" href="assets/css/plugins/color.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/plugins/color.css">
 
   <!-- Responsive CSS
     ============================================ -->
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/responsive.css">
 
   <!-- Modernizr JS -->
   <!-- <script type="text/javascript" async=""
@@ -56,19 +56,19 @@
   <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
 
   <!-- jquery latest version -->
-  <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="<?= SERVER_NAME ?>assets/js/vendor/jquery-1.12.4.min.js"></script>
 
   <!-- Bootstrap framework js
     ========================================================= -->
-  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="<?= SERVER_NAME ?>assets/js/bootstrap.min.js"></script>
 
-  <script src="assets/js/rupiah.js"></script>
+  <script src="<?= SERVER_NAME ?>assets/js/rupiah.js"></script>
 
   <!-- Bootstrap DatePicker -->
   <script
-    src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    src="<?= SERVER_NAME ?>assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <link rel="stylesheet"
-    href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    href="<?= SERVER_NAME ?>assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
   <style>
     * {

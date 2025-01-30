@@ -55,7 +55,7 @@
             <div class="card-footer bg-primary text-white text-center border-0 py-4 mt-auto">
               <span class="font-semibold text-xl">Management</span>
             </div>
-            <a href="<?php SERVER_NAME ?>management" class="stretched-link"></a>
+            <a href="<?= SERVER_NAME ?>management" class="stretched-link"></a>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
             <div class="card-footer bg-primary text-white text-center border-0 py-4 mt-auto">
               <span class="font-semibold text-xl">E-Auction</span>
             </div>
-            <a href="<?php SERVER_NAME ?>e-auction" class="stretched-link"></a>
+            <a href="<?= SERVER_NAME ?>e-auction" class="stretched-link"></a>
           </div>
         </div>
       </div>

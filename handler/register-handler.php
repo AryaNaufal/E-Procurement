@@ -5,7 +5,10 @@ include_once '../#include/config.php';
 include_once '../#include/#class/autoload.php';
 include_once '../#include/#class/UserService.php';
 
+use App\LoadEnv;
 use App\UserService;
+
+$env = new LoadEnv(ROOT_PATH . '.env');
 
 // Validasi method request
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -31,9 +34,9 @@ if (empty($username) || empty($email) || empty($password)) {
 }
 
 // Validasi recaptcha
-$recaptchaSecret = 'YOUR_RECAPTCHA_SECRET_KEY';
+$recaptchaSecret = $env->get('RECAPTCHA_SECRET_KEY');
 $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-$recaptchaVerifyResponse = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+$recaptchaVerifyResponse = file_get_contents($recaptchaUrl . "?secret=$recaptchaSecret&response=" . $recaptchaResponse);
 $recaptchaResult = json_decode($recaptchaVerifyResponse);
 
 if (!$recaptchaResult->success) {
