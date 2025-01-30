@@ -19,7 +19,7 @@
                 <input type="password" name="password" placeholder="Password" required>
               </div>
               <div class="text-center my-3">
-                <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div>
+                <div class="g-recaptcha my-3" data-sitekey="YOUR-SITE-KEY"></div>
                 <a href="#" data-toggle="modal" data-target="#ResetPwdModal" style="cursor:pointer; color:#0091ff; font-size: 12px;">Forgot Password ?</a>
               </div>
               <div class="text-center mt-3">

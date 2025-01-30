@@ -1,45 +1,64 @@
 <?php
-include_once "#include/config.php";
-include_once "#include/#class/autoload.php";
+require_once __DIR__ . '/#include/config.php';
+require_once __DIR__ . '/#include/#class/autoload.php';
 
 use App\TenderService;
 use App\UserService;
 
-// Tender Service
 $tenderService = new TenderService();
 $userService = new UserService();
 
-// Get all tender
-$tenders = $tenderService->getTenders();
+$category = $_GET['category'] ?? '';
+$keyword = $_GET['keyword'] ?? '';
 
-// Get tender by category
+// Daftar kategori
+$categories = [
+  'semua_kategori' => ['filter' => null],
+  'jasa_konsultasi' => ['filter' => ['Jasa Konsultasi Bidang Usaha']],
+  'pegadaan_barang' => ['filter' => ['Pengadaan Barang & Jasa']],
+  'jasa_lain' => ['filter' => ['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'operator' => 'NOT IN'],
+];
+
+// Tentukan kategori yang dipilih
+$currentCategory = $categories[$category] ?? $categories['semua_kategori'];
+$title = "Home";
+
+// Ambil data tender berdasarkan kategori dan keyword
+if ($keyword) {
+  if ($category === 'semua_kategori') {
+    $tenders = $tenderService->getTender($keyword);
+  } else {
+    $tenders = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
+  }
+} elseif (isset($currentCategory['filter'])) {
+  $tenders = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
+} else {
+  $tenders = $tenderService->getTenders();
+}
+
+// Ambil data untuk setiap kategori tab-pane
+$tenderLain = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
 $tenderBarangJasa = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa']);
 $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidang Usaha']);
 
-// Get tender not in above category (other)
-$tenderLain = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
-
-// Show newest tender (Max 3 day ago)
-$tenderBaru = isset($tenders['data']) ? count(array_filter($tenders['data'], function ($tender) {
+// Hitung tender baru (max 3 hari terakhir) dan tender selesai
+$tenderBaru = $tenderSelesai = 0;
+if (isset($tenders['data'])) {
   $now = new DateTimeImmutable();
-  $registrationDate = new DateTimeImmutable($tender['registration_date'] ?? 'now');
-  $interval = $now->diff($registrationDate);
-  return $interval->days <= 3;
-})) : 0;
+  foreach ($tenders['data'] as $tender) {
+    $registrationDate = new DateTimeImmutable($tender['registration_date'] ?? 'now');
+    $closingDate = new DateTimeImmutable($tender['closing_date'] ?? 'now');
 
-// Show completed tender or closing
-$tenderSelesai = isset($tenders['data']) ? count(array_filter($tenders['data'], function ($tender) {
-  $now = new DateTimeImmutable();
-  $closingDate = new DateTimeImmutable($tender['closing_date'] ?? 'now');
-  $interval = $now->diff($closingDate);
-  return $interval->days > 0;
-})) : 0;
+    if ($now->diff($registrationDate)->days <= 3) {
+      $tenderBaru++;
+    }
+    if ($now->diff($closingDate)->days > 0) {
+      $tenderSelesai++;
+    }
+  }
+}
 
-$current_menu = "home";
-$current_sub_menu = NULL;
-$title = "Home";
-
-include_once "#include/component/header.php";
-include_once "#include/component/navbar.php";
-include_once "#include/component/home-layout.php";
-include_once "#include/component/footer.php";
+require_once __DIR__ . '/#include/component/header.php';
+require_once __DIR__ . '/#include/component/navbar.php';
+require_once __DIR__ . '/#include/component/home-layout.php';
+require_once __DIR__ . '/#include/component/footer.php';

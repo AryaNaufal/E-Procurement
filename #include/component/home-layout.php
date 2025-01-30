@@ -2,13 +2,12 @@
   <div class="search-job-area bg-5">
     <div class="container">
       <div class="row">
-        <div class="col-xl-10 col-lg-12 ml-auto mr-auto">
-          <br><br><br>
+        <div class="col-xl-10 col-lg-12 ml-auto mr-auto py-5">
           <div class="job-search-content text-center">
             <h4 class="text-white mb-5">Selamat Datang di E-Procurement</h4>
-            <form action="<?php SERVER_NAME ?>search.php" method="get" autocomplete="off">
+            <form action="" method="GET" autocomplete="off">
               <div class="form-container">
-                <?php include 'fragment/search-category.php'; ?>
+                <?php include __DIR__ . '/fragment/search-category.php'; ?>
               </div>
             </form>
           </div>
@@ -16,34 +15,32 @@
       </div>
       <!--Start of Fun Factor Area-->
       <div class="fun-factor-area bg-1 text-center ptb-20 pt-sm-20 pb-sm-20">
-
         <div class="row">
           <div class="col-md-3 col-6">
             <div class="single-fun-factor">
-              <h1><span><?= count($tenders['data']) ?></span></h1>
+              <h1><span><?= isset($tenders['data']) ? count($tenders['data']) : 0 ?></span></h1>
               <h3>Semua Tender</h3>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="single-fun-factor">
-              <h1><span><?= $tenderBaru ?></span></h1>
+              <h1><span><?= isset($tenders['data']) ? $tenderBaru : 0 ?></span></h1>
               <h3>Tender Baru</h3>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="single-fun-factor">
-              <h1><span><?= $tenderSelesai ?></span></h1>
+              <h1><span><?= isset($tenders['data']) ? $tenderSelesai : 0 ?></span></h1>
               <h3>Tender Selesai</h3>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="single-fun-factor">
-              <h1><span>-</span></h1>
+              <h1><span>0</span></h1>
               <h3>Vendor</h3>
             </div>
           </div>
         </div>
-
       </div>
       <!--End of Fun Factor Area-->
     </div>
@@ -72,165 +69,11 @@
           <a class="nav-link" data-toggle="tab" href="#konsultasi">Jasa Konsultasi Bidang Usaha</a>
         </div>
         <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane active" id="all">
-            <div class="row">
-              <?php if (isset($tenders['status']) && $tenders['status'] === 'success' && !empty($tenders['data'])): ?>
-                <?php foreach ($tenders['data'] as $tender): ?>
-                  <div class="col-md-6 align-items-stretch mb-4">
-                    <div class="single-job-post h-100">
-                      <div class="address">
-                        <h6><?= htmlspecialchars($tender['description'], ENT_QUOTES, 'UTF-8') ?></h6>
-                        <p>Kategori: <?= htmlspecialchars($tender['category'], ENT_QUOTES, 'UTF-8') ?></p>
-                        <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
-                      </div>
-                      <div class="button-box">
-                        <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
-                      </div>
-                    </div>
-                  </div>
-                <?php endforeach; ?>
-              <?php else: ?>
-                <div class="col-md-12">
-                  <center>
-                    <h6><?= htmlspecialchars(isset($tenders['message']) ? $tenders['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-                  </center>
-                </div>
-              <?php endif; ?>
-            </div>
-          </div>
-
-          <div class="tab-pane" id="jasa_lain">
-            <div class="row">
-              <?php if (isset($tenderLain['status']) && $tenderLain['status'] === 'success' && !empty($tenderLain['data'])): ?>
-                <?php foreach ($tenderLain['data'] as $tender): ?>
-                  <div class="col-md-6 d-flex align-items-stretch mb-4">
-                    <div class="single-job-post h-100">
-                      <div class="address">
-                        <h6><?= htmlspecialchars($tender['description'], ENT_QUOTES, 'UTF-8') ?></h6>
-                        <p><strong>Kategori:</strong> <?= htmlspecialchars($tender['category'], ENT_QUOTES, 'UTF-8') ?></p>
-                        <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
-                      </div>
-                      <div class="button-box">
-                        <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
-                      </div>
-                    </div>
-                  </div>
-                <?php endforeach; ?>
-              <?php else: ?>
-                <div class="col-md-12">
-                  <center>
-                    <h6><?= htmlspecialchars(isset($tenderLain['message']) ? $tenderLain['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-                  </center>
-                </div>
-              <?php endif; ?>
-            </div>
-          </div>
-
-          <div class="tab-pane" id="barang_jasa">
-            <div class="row">
-              <?php if (isset($tenderBarangJasa['status']) && $tenderBarangJasa['status'] === 'success' && !empty($tenderBarangJasa['data'])): ?>
-                <?php foreach ($tenderBarangJasa['data'] as $tender): ?>
-                  <div class="col-md-6 align-items-stretch mb-4">
-                    <div class="single-job-post h-100">
-                      <div class="address">
-                        <h6><?= htmlspecialchars($tender['description'], ENT_QUOTES, 'UTF-8') ?></h6>
-                        <p><strong>Kategori:</strong> <?= htmlspecialchars($tender['category'], ENT_QUOTES, 'UTF-8') ?></p>
-                        <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
-                      </div>
-                      <div class="button-box">
-                        <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
-                      </div>
-                    </div>
-                  </div>
-                <?php endforeach; ?>
-              <?php else: ?>
-                <div class="col-md-12">
-                  <center>
-                    <h6><?= htmlspecialchars(isset($tenderBarangJasa['message']) ? $tenderBarangJasa['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-                  </center>
-                </div>
-              <?php endif; ?>
-            </div>
-          </div>
-
-          <div class="tab-pane" id="konsultasi">
-            <div class="row">
-              <?php if (isset($tenderKonsultasi['status']) && $tenderKonsultasi['status'] === 'success' && !empty($tenderKonsultasi['data'])): ?>
-                <?php foreach ($tenderKonsultasi['data'] as $tender): ?>
-                  <div class="col-md-6 align-items-stretch mb-4">
-                    <div class="single-job-post h-100">
-                      <div class="address">
-                        <h6><?= htmlspecialchars($tender['description'], ENT_QUOTES, 'UTF-8') ?></h6>
-                        <p><strong>Kategori:</strong> <?= htmlspecialchars($tender['category'], ENT_QUOTES, 'UTF-8') ?></p>
-                        <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
-                      </div>
-                      <div class="button-box">
-                        <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
-                      </div>
-                    </div>
-                  </div>
-                <?php endforeach; ?>
-              <?php else: ?>
-                <div class="col-md-12">
-                  <center>
-                    <h6><?= htmlspecialchars(isset($tenderKonsultasi['message']) ? $tenderKonsultasi['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-                  </center>
-                </div>
-              <?php endif; ?>
-            </div>
-          </div>
-        </div>
+        <?php include __DIR__ . '/fragment/tab-content.php'; ?>
       </div>
     </div>
   </div>
   <!-- End of Job Post Area -->
-
-  <!-- Working Aera Start -->
-  <div class="woring-area pt-130 pb-100 pt-sm-60 pb-sm-30">
-    <div class="container">
-      <!-- Section Title Start -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-title text-center ">
-            <h2>Tata Cara Tender</h2>
-            <p>Berikut tata cara mengikuti tender</p>
-          </div>
-        </div>
-      </div>
-      <!-- Section Title End -->
-      <div class="row work-shap">
-        <div class="col-md-4">
-          <div class="work-item">
-            <div class="img-icon">
-              <img src="<?php SERVER_NAME ?>assets/images/icons/wrk1.png" alt="">
-            </div>
-            <h5>Daftar Akun</h5>
-            <p>Membuat akun baru untuk mengikuti tender.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-item">
-            <div class="img-icon">
-              <img src="<?php SERVER_NAME ?>assets/images/icons/wrk2.png" alt="">
-            </div>
-            <h5>Kelengkapan Berkas</h5>
-            <p>Setelah memiliki akun, harap melengkapi berkas/dokumen legalitas perusahaan, sebagai persyaratan mengikuti tender.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-item">
-            <div class="img-icon">
-              <img src="<?php SERVER_NAME ?>assets/images/icons/wrk3.png" alt="">
-            </div>
-            <h5>Submit Tender</h5>
-            <p>Setelah berkas/dokumen lengkap dan sudah terverifikasi.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Working Aera End -->
 
 
 
