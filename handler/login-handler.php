@@ -12,7 +12,12 @@ $env = new LoadEnv(ROOT_PATH . '.env');
 // Validasi method request
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
-  echo 'Metode request tidak diizinkan.';
+  $response = [
+    "status" => "error",
+    "message" => "Semua data wajib diisi."
+  ];
+
+  echo json_encode($response);
   exit;
 }
 
@@ -24,7 +29,12 @@ $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
 
 // Validasi data yang dikirim
 if (empty($username) || empty($password)) {
-  echo 'Semua data wajib diisi.';
+  $response = [
+    "status" => "error",
+    "message" => "Semua data wajib diisi."
+  ];
+
+  echo json_encode($response);
   exit;
 }
 
@@ -42,7 +52,12 @@ if (empty($username) || empty($password)) {
 
 // Validasi panjang password
 if (strlen($password) < 8) {
-  echo 'Password minimal 8 karakter.';
+  $response = [
+    "status" => "error",
+    "message" => "Password harus minimal 8 karakter."
+  ];
+
+  echo json_encode($response);
   exit;
 }
 
