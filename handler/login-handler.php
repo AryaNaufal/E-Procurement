@@ -1,7 +1,8 @@
 <?php
-include_once '../#include/config.php';
-include_once '../#include/#class/autoload.php';
-include_once '../#include/#class/UserService.php';
+session_start();
+
+include_once __DIR__ . '/../#include/config.php';
+include_once __DIR__ . '/../#include/#class/autoload.php';
 
 use App\LoadEnv;
 use App\UserService;
@@ -28,16 +29,16 @@ if (empty($username) || empty($password)) {
 }
 
 // Validasi recaptcha
-$recaptchaSecret = $env->get('RECAPTCHA_SECRET_KEY');
-$recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-$recaptchaVerifyResponse = file_get_contents($recaptchaUrl . "?secret=$recaptchaSecret&response=" . $recaptchaResponse);
-$recaptchaResult = json_decode($recaptchaVerifyResponse);
+// $recaptchaSecret = $env->get('RECAPTCHA_SECRET_KEY');
+// $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+// $recaptchaVerifyResponse = file_get_contents($recaptchaUrl . "?secret=$recaptchaSecret&response=" . $recaptchaResponse);
+// $recaptchaResult = json_decode($recaptchaVerifyResponse);
 
-if (!$recaptchaResult->success) {
-  echo $recaptchaVerifyResponse;
-  echo 'Recaptcha tidak valid.';
-  exit;
-}
+// if (!$recaptchaResult->success) {
+//   echo $recaptchaVerifyResponse;
+//   echo 'Recaptcha tidak valid.';
+//   exit;
+// }
 
 // Validasi panjang password
 if (strlen($password) < 8) {

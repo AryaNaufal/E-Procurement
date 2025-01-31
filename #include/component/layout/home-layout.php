@@ -7,7 +7,7 @@
             <h4 class="text-white mb-5">Selamat Datang di E-Procurement</h4>
             <form action="" method="GET" autocomplete="off">
               <div class="form-container">
-                <?php include __DIR__ . '/fragment/search-category.php'; ?>
+                <?php include __DIR__ . '/../fragment/search-category.php'; ?>
               </div>
             </form>
           </div>
@@ -69,7 +69,7 @@
           <a class="nav-link" data-toggle="tab" href="#konsultasi">Jasa Konsultasi Bidang Usaha</a>
         </div>
         <!-- Tab panes -->
-        <?php include __DIR__ . '/fragment/tab-content.php'; ?>
+        <?php include __DIR__ . '/../fragment/tab-content.php'; ?>
       </div>
     </div>
   </div>
@@ -246,7 +246,7 @@
               showCancelButton: false,
               showLoaderOnConfirm: false,
             }).then(function() {
-              window.location = '<?= SERVER_NAME ?>vendor_area/member';
+              window.location = '<?= SERVER_NAME ?>';
             });
           } else {
             swal({

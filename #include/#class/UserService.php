@@ -72,7 +72,11 @@ class UserService
         return $this->createErrorResponse('Invalid password');
       }
 
-      return $this->createSuccessResponse('Login successful', []);
+      return $this->createSuccessResponse('Login successful', [
+        // Set session data after successful login
+        $_SESSION['username'] = $user['username'],
+        $_SESSION['email'] = $user['email'],
+      ]);
     } catch (Exception $e) {
       return $this->createErrorResponse('Server error occurred');
     }

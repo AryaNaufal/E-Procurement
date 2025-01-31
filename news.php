@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once __DIR__ . "/#include/config.php";
 include_once __DIR__ . "/#include/#class/autoload.php";
 
@@ -12,5 +14,5 @@ $title = "News";
 
 include_once __DIR__ . "/#include/component/header.php";
 include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/news-layout.php";
+include_once __DIR__ . "/#include/component/layout/news-layout.php";
 include_once __DIR__ . "/#include/component/footer.php";

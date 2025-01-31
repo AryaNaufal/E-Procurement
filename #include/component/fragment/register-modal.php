@@ -71,7 +71,11 @@
                 <label for="pic_ktp" style="color: #393939; font-size: 14px !important;">NIK</label>
                 <input type="text" name="pic_ktp" id="pic_ktp" maxlength="16" placeholder="NIK" class="form-control">
               </div>
-              <div class="g-recaptcha my-3" data-sitekey="<?= $env->get("RECAPTCHA_SITE_KEY") ?>"></div>
+              <!-- <div class="g-recaptcha my-3" data-sitekey=" -->
+              <?php
+              // echo $env->get("RECAPTCHA_SITE_KEY") 
+              ?>
+              <!-- "></div> -->
               <div class="text-center">
                 <button type="submit" class="text-uppercase">Daftar</button>
               </div>

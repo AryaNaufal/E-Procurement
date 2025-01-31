@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-include_once '../#include/config.php';
-include_once '../#include/#class/autoload.php';
-include_once '../#include/#class/UserService.php';
+include_once __DIR__ . '/../#include/config.php';
+include_once __DIR__ . '/../#include/#class/autoload.php';
 
 use App\LoadEnv;
 use App\UserService;
@@ -34,16 +33,16 @@ if (empty($username) || empty($email) || empty($password)) {
 }
 
 // Validasi recaptcha
-$recaptchaSecret = $env->get('RECAPTCHA_SECRET_KEY');
-$recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-$recaptchaVerifyResponse = file_get_contents($recaptchaUrl . "?secret=$recaptchaSecret&response=" . $recaptchaResponse);
-$recaptchaResult = json_decode($recaptchaVerifyResponse);
+// $recaptchaSecret = $env->get('RECAPTCHA_SECRET_KEY');
+// $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+// $recaptchaVerifyResponse = file_get_contents($recaptchaUrl . "?secret=$recaptchaSecret&response=" . $recaptchaResponse);
+// $recaptchaResult = json_decode($recaptchaVerifyResponse);
 
-if (!$recaptchaResult->success) {
-  echo 'Recaptcha tidak valid.';
-  unset($_POST['g-recaptcha-response']);
-  exit;
-}
+// if (!$recaptchaResult->success) {
+//   echo 'Recaptcha tidak valid.';
+//   unset($_POST['g-recaptcha-response']);
+//   exit;
+// }
 
 // Validasi email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

@@ -9,7 +9,7 @@
         <div class="job-search-content text-center">
           <form action="" method="GET" autocomplete="off">
             <div class="form-container">
-              <?php include __DIR__ . '/fragment/search-category.php'; ?>
+              <?php include __DIR__ . '/../fragment/search-category.php'; ?>
             </div>
           </form>
         </div>
@@ -41,7 +41,7 @@
         <a class="nav-link" data-toggle="tab" href="#konsultasi">Jasa Konsultasi Bidang Usaha</a>
       </div>
       <!-- Tab panes -->
-      <?php include __DIR__ . '/fragment/tab-content.php'; ?>
+      <?php include __DIR__ . '/../fragment/tab-content.php'; ?>
     </div>
   </div>
 </div>

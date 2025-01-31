@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once __DIR__ . '/#include/config.php';
 require_once __DIR__ . '/#include/#class/autoload.php';
 
@@ -41,5 +43,5 @@ $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidan
 
 include_once __DIR__ . "/#include/component/header.php";
 include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/tender-layout.php";
+include_once __DIR__ . "/#include/component/layout/tender-layout.php";
 include_once __DIR__ . "/#include/component/footer.php";

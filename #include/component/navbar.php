@@ -1,3 +1,6 @@
+<?php
+echo $_SESSION['email'];
+?>
 <div class="container-fluid overflow-hidden w-100">
   <div class="row">
     <div class="col-sm-6 col-lg-6">
@@ -19,8 +22,16 @@
           </ul>
         </nav>
         <div class="login-btn">
-          <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#RegisterModal">Daftar</a>
-          <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
+          <?php if (isset($_SESSION['email'])) { ?>
+            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user/my-info">My Info</a>
+          <?php } else { ?>
+            <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#RegisterModal">Daftar</a>
+          <?php } ?>
+          <?php if (isset($_SESSION['email'])) { ?>
+            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/logout-handler">Logout</a>
+          <?php } else { ?>
+            <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
+          <?php } ?>
         </div>
       </div>
     </div>
