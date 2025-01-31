@@ -14,5 +14,5 @@ $title = "News";
 
 include_once __DIR__ . "/#include/component/header.php";
 include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/layout/news-layout.php";
+include_once __DIR__ . "/#include/component/layout/news.php";
 include_once __DIR__ . "/#include/component/footer.php";

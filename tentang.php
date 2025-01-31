@@ -14,5 +14,5 @@ $title = "Tentang";
 
 include_once __DIR__ . "/#include/component/header.php";
 include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/layout/about-layout.php";
+include_once __DIR__ . "/#include/component/layout/about.php";
 include_once __DIR__ . "/#include/component/footer.php";

@@ -64,5 +64,5 @@ if (isset($tenders['data'])) {
 
 require_once __DIR__ . '/#include/component/header.php';
 require_once __DIR__ . '/#include/component/navbar.php';
-require_once __DIR__ . '/#include/component/layout/home-layout.php';
+require_once __DIR__ . '/#include/component/layout/home.php';
 require_once __DIR__ . '/#include/component/footer.php';

@@ -43,5 +43,5 @@ $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidan
 
 include_once __DIR__ . "/#include/component/header.php";
 include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/layout/tender-layout.php";
+include_once __DIR__ . "/#include/component/layout/tender.php";
 include_once __DIR__ . "/#include/component/footer.php";

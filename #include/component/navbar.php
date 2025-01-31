@@ -1,5 +1,5 @@
 <?php
-echo $_SESSION['email'];
+// echo $_SESSION['email'];
 ?>
 <div class="container-fluid overflow-hidden w-100">
   <div class="row">

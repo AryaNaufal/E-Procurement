@@ -2950,11 +2950,11 @@ select {
     background: #eceff8;
     border: 2px solid #eceff8;
     height: 45px;
-    padding-left: 10px;
+    padding: 0px 10px 0px 10px;
     box-shadow: none;
     font-size: 14px;
     color: #626262;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
 }
 
 option {
