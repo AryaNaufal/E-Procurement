@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-include_once '../#include/config.php';
-include_once '../#include/#class/autoload.php';
-include_once '../#include/#class/UserService.php';
+include_once __DIR__ . '/../../#include/config.php';
+include_once __DIR__ . '/../../#include/#class/autoload.php';
+include_once __DIR__ . '/../../#include/#class/UserService.php';
 
 use App\MailService;
 

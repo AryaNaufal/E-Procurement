@@ -31,7 +31,7 @@ class MailService
       $mail->setFrom($env->get('EMAIL'), 'No Reply');
       $mail->addAddress($email);
       $mail->Subject = 'Verifikasi Email';
-      $verification_link = SERVER_NAME . "handler/verify.php?code=$verification_code";
+      $verification_link = SERVER_NAME . "handler/auth/verify.php?code=$verification_code";
       $mail->Body = "Klik link berikut untuk verifikasi: $verification_link";
 
       $mail->send();

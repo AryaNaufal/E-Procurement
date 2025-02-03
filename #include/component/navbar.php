@@ -3,12 +3,12 @@
 ?>
 <div class="container-fluid overflow-hidden w-100">
   <div class="row">
-    <div class="col-sm-6 col-lg-6">
-      <!-- <div class="logo">
-                 assets/images/logo/LogoSIPOL.png" alt="JobHere" height="100" width="100"></a>
-                    </div> -->
-      <div class="logo"><a href="<?= SERVER_NAME ?>index"><br><img
-            src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere"></a></div>
+    <div class="col-sm-6 col-lg-6 py-3">
+      <div class="logo">
+        <a href="<?= SERVER_NAME ?>index">
+          <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere">
+        </a>
+      </div>
     </div>
     <div class="col-sm-6 col-lg-6">
       <div class="pull-right header-menu">
@@ -23,12 +23,12 @@
         </nav>
         <div class="login-btn">
           <?php if (isset($_SESSION['email'])) { ?>
-            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user/my-info">My Info</a>
+            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user">My Info</a>
           <?php } else { ?>
             <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#RegisterModal">Daftar</a>
           <?php } ?>
           <?php if (isset($_SESSION['email'])) { ?>
-            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/logout-handler">Logout</a>
+            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout">Logout</a>
           <?php } else { ?>
             <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
           <?php } ?>
