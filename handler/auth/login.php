@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include_once __DIR__ . '/../#include/config.php';
-include_once __DIR__ . '/../#include/#class/autoload.php';
+include_once __DIR__ . '/../../#include/config.php';
+include_once __DIR__ . '/../../#include/#class/autoload.php';
 
 use App\LoadEnv;
 use App\UserService;
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
   $response = [
     "status" => "error",
-    "message" => "Metode request tidak diizinkan."
+    "message" => "Semua data wajib diisi."
   ];
 
   echo json_encode($response);
@@ -23,16 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Ambil data dari form
 $username = trim($_POST['username'] ?? null);
-$email = trim($_POST['email'] ?? null);
 $password = trim($_POST['password'] ?? null);
-$pic = trim($_POST['nama_lengkap'] ?? null);
-$perusahaan = trim($_POST['company_name'] ?? null);
-$npwp = trim($_POST['company_npwp'] ?? null);
-$nik = trim($_POST['pic_ktp'] ?? null);
+
 $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
 
 // Validasi data yang dikirim
-if (empty($username) || empty($email) || empty($password)) {
+if (empty($username) || empty($password)) {
   $response = [
     "status" => "error",
     "message" => "Semua data wajib diisi."
@@ -49,21 +45,10 @@ if (empty($username) || empty($email) || empty($password)) {
 // $recaptchaResult = json_decode($recaptchaVerifyResponse);
 
 // if (!$recaptchaResult->success) {
+//   echo $recaptchaVerifyResponse;
 //   echo 'Recaptcha tidak valid.';
-//   unset($_POST['g-recaptcha-response']);
 //   exit;
 // }
-
-// Validasi email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $response = [
-    "status" => "error",
-    "message" => "Format email tidak valid."
-  ];
-
-  echo json_encode($response);
-  exit;
-}
 
 // Validasi panjang password
 if (strlen($password) < 8) {
@@ -76,16 +61,12 @@ if (strlen($password) < 8) {
   exit;
 }
 
-// Panggil UserService untuk menambahkan user
+// Panggil UserService untuk melakukan login
 $userService = new UserService();
-$result = $userService->registerUser([
+$result = $userService->loginUser([
+  'email' => $username,
   'username' => $username,
-  'email' => $email,
-  'password' => $password,
-  'pic' => $pic,
-  'perusahaan' => $perusahaan,
-  'npwp' => $npwp,
-  'nik' => $nik
+  'password' => $password
 ]);
 
 if ($result['status'] === 'success') {
