@@ -1,19 +1,17 @@
-<nav style="--bs-breadcrumb-divider: 'none';" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <?php
-    $current_page = basename($_SERVER['PHP_SELF'], '.php');
-    $pages = [
-      'my-info' => 'Profile',
-      'data-perusahaan' => 'Data Perusahaan',
-      'dokumen' => 'Dokumen',
-      'e-katalog' => 'E-Katalog',
-      'pengadaan' => 'Pengadaan'
-    ];
-    foreach ($pages as $page => $title) {
-      echo $current_page == $page
-        ? '<li class="breadcrumb-item active" aria-current="page">' . $title . '</li>'
-        : '<li class="breadcrumb-item"><a href="' . SERVER_NAME . 'vendor_area/user/' . $page . '">' . $title . '</a></li>';
-    }
-    ?>
-  </ol>
-</nav>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="pill" href="#menuProfile">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#menu1" data-toggle="pill">Data Perusahaan</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#menu2" data-toggle="pill">Dokumen</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#menu3" data-toggle="pill">E-Katalog</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#menu4" data-toggle="pill">Pengadaan</a>
+  </li>
+</ul>

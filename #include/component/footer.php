@@ -23,8 +23,6 @@
 ========================================================= -->
  <script src="<?= SERVER_NAME ?>assets/js/owl.carousel.min.js"></script>
 
-
-
  <!-- nivo slider js
 ========================================================= -->
  <script src="<?= SERVER_NAME ?>assets/plugins/nivo-slider/js/jquery.nivo.slider.js"></script>
@@ -57,4 +55,12 @@
  <!-- Sweetalert2 -->
  <link href="<?= SERVER_NAME ?>assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet">
  <script src="<?= SERVER_NAME ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+ <!-- Recaptcha -->
  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+ <!-- Jquery -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <!-- Jquery Function -->
+ <script src="<?= SERVER_NAME ?>assets/js/Jquery/Handler/get-region.js"></script>

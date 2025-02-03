@@ -14,11 +14,11 @@
       <div class="pull-right header-menu">
         <nav id="primary-menu">
           <ul class="main-menu text-right">
-            <li><a href="index.php" style="cursor:pointer;">Home</a></li>
-            <li><a href="tentang.php" style="cursor:pointer;">Tentang</a></li>
-            <li><a href="tender.php" style="cursor:pointer;">Tender</a></li>
-            <li><a href="news.php" style="cursor:pointer;">News</a></li>
-            <li><a href="portal.php" style="cursor:pointer;">Portal</a></li>
+            <li><a href="<?= SERVER_NAME ?>index.php" style="cursor:pointer;">Home</a></li>
+            <li><a href="<?= SERVER_NAME ?>tentang.php" style="cursor:pointer;">Tentang</a></li>
+            <li><a href="<?= SERVER_NAME ?>tender.php" style="cursor:pointer;">Tender</a></li>
+            <li><a href="<?= SERVER_NAME ?>news.php" style="cursor:pointer;">News</a></li>
+            <li><a href="<?= SERVER_NAME ?>portal.php" style="cursor:pointer;">Portal</a></li>
           </ul>
         </nav>
         <div class="login-btn">

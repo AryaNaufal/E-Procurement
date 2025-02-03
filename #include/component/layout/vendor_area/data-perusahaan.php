@@ -1,182 +1,158 @@
-<?php include_once __DIR__ . '/../../fragment/breadcrumb-banner.php'; ?>
+<div class="tab-pane container" id="menu1">
+  <form method="POST" action="">
+    <div class="d-flex justify-content-center my-4">
+      <h5>Data Perusahaan</h5>
+    </div>
 
-<!-- About Area Start -->
-<div class="about-area ptb-130 ptb-sm-60" style="padding-top: 45px !important;">
-  <div class="container">
     <div class="row">
-      <?php include_once __DIR__ . '/../../fragment/breadcrumb-nav.php'; ?>
-      <div class="col-lg-12">
-        <div class="tab-content">
-          <form class="row g-3 needs-validation" novalidate>
-            <div class="w-100">
-              <h3 class="d-flex justify-content-center my-5">Data Perusahaan</h3>
-              <div>
-                <div class="row mb-4">
-                  <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Nama Perusahaan</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Nama Perusahaan" required>
-                    <div class="invalid-feedback">
-                      Masukan Nama Perusahaan
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">Type Perusahaan</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Pilih Tipe Perusahaan" required>
-                    <div class="invalid-feedback">
-                      PilihTipe Perusahaan
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="validationCustomUsername" class="form-label">Email Perusahaan</label>
-                    <div class="input-group has-validation">
-                      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Email Perusahaan" required>
-                      <div class="invalid-feedback">
-                        Masukan Email Perusahaan
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div class="col-md-4">
+        <label>Nama Perusahaan</label>
+        <input type="text" maxlength="150" name="nama_perusahaan" id="nama_perusahaan"
+          placeholder="Nama Perusahaan" class="form-control" value="" required="">
 
-                <div class="row mb-4">
-                  <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">No. Tlp Perusahaan</label>
-                    <input type="text" class="form-control" id="validationCustom03" placeholder="Email Perusahaan" required>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">No. Hp Perusahaan</label>
-                    <input type="text" class="form-control" id="validationCustom04" placeholder="Email Perusahaan" required>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                </div>
+      </div>
+      <div class="col-md-4">
+        <label>Tipe Perusahaan</label><br>
+        <select name="tipe_perusahaan" id="tipe_perusahaan" class="form-control">
+          <option value="">Pilih Tipe Perusahaan</option>
+          <option value="Firma (FA)">Firma (FA)</option>
+          <option value="Kantor Akuntan Publik (KAP)">Kantor Akuntan Publik (KAP)</option>
+          <option value="Koperasi">Koperasi</option>
+          <option value="multi nasional company">multi nasional company</option>
+          <option value="Perseroan Komanditer (CV)">Perseroan Komanditer (CV)</option>
+          <option value="Perseroan Terbatas (PT)">Perseroan Terbatas (PT)</option>
+          <option value="Perusahaan Negara Umum (PERUM)">Perusahaan Negara Umum (PERUM)</option>
+          <option value="Perusahaan Perseorangan">Perusahaan Perseorangan</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label>Email Perusahaan</label>
+        <input maxlength="130" type="text" name="email_perusahaan" id="email_perusahaan"
+          placeholder="Email Perusahaan" value="" class="form-control">
+      </div>
+    </div>
 
-                <div class="row mb-4">
-                  <div class="col-md-12">
-                    <label for="validationCustom03" class="form-label">Alamat</label>
-                    <textarea class="form-control" id="validationTextarea" placeholder="Masukan Alamat Perusahaan" required></textarea>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <label>No. Tlp Perusahaan</label>
+        <input type="text" name="no_tlp" id="no_tlp" placeholder="No. Tlp Perusahaan" maxlength="30"
+          class="form-control" value="">
+      </div>
+      <div class="col-md-6">
+        <label>No. Hp Perusahaan</label>
+        <input type="text" name="no_hp" id="no_hp" placeholder="No. Hp Perusahaan" maxlength="30"
+          class="form-control" value="">
+      </div>
+    </div>
 
-                <div class="row mb-4">
-                  <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">Provinsi</label>
-                    <select class="form-select" required aria-label="select example">
-                      <option value="" disabled selected>Pilih Provinsi</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">Kota/Kabupaten</label>
-                    <select class="form-select" required aria-label="select example">
-                      <option value="" disabled selected>Pilih Kota/Kabupaten</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <label>Alamat</label>
+        <textarea name="alamat_perusahaan" id="alamat" rows="3" class="form-control"></textarea>
+      </div>
+    </div>
 
-                <div class="row mb-4">
-                  <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">Kecamatan</label>
-                    <select class="form-select" required aria-label="select example">
-                      <option value="" disabled selected>Pilih Kecamatan</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="validationCustom03" class="form-label">Perusahaan</label>
-                    <select class="form-select" required aria-label="select example">
-                      <option value="" disabled selected>Pilih Perusahaan</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="w-100">
-              <h3 class="d-flex justify-content-center my-5">Kategori Perusahaan</h3>
-              <div class="col-12 d-flex gap-5 justify-content-between flex-wrap mb-4">
-                <div class="d-flex align-items-center">
-                  <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-                  <label class="form-check-label" for="validationFormCheck1">Internet</label>
-                </div>
-                <div class="d-flex align-items-center">
-                  <input type="checkbox" class="form-check-input" id="validationFormCheck2" required>
-                  <label class="form-check-label" for="validationFormCheck2">Arsitektur</label>
-                </div>
-                <div class="d-flex align-items-center">
-                  <input type="checkbox" class="form-check-input" id="validationFormCheck3" required>
-                  <label class="form-check-label" for="validationFormCheck3">Makanan & Minuman</label>
-                </div>
-                <div class="d-flex align-items-center">
-                  <input type="checkbox" class="form-check-input" id="validationFormCheck4" required>
-                  <label class="form-check-label" for="validationFormCheck4">Logistik</label>
-                </div>
-                <div class="d-flex align-items-center">
-                  <input type="checkbox" class="form-check-input" id="validationFormCheck5" required>
-                  <label class="form-check-label" for="validationFormCheck5">Software House</label>
-                </div>
-                <div class="d-flex align-items-center">
-                  <input type="checkbox" class="form-check-input" id="validationFormCheck6" required>
-                  <label class="form-check-label" for="validationFormCheck6">Perlengkapan Fotografi</label>
-                </div>
-                <div class="invalid-feedback">Example invalid feedback text</div>
-              </div>
-            </div>
-            <div class="col-12 d-flex justify-content-center mt-4">
-              <button class="btn btn-primary text-capitalize " type="submit">Simpan</button>
-            </div>
-          </form>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <label>Provinsi</label><br>
+        <select name="province" id="province">
+          <option value="">Pilih Provinsi</option>
+          <?php foreach ($provinces as $province) : ?>
+            <option value="<?= $province['id'] ?>" <?= $selectedProvince === $province['id'] ? 'selected' : '' ?>><?= $province['name'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label>Kota/Kabupaten</label><br>
+        <select name="regency" id="regency">
+          <option value="">Pilih Kabupaten/Kota</option>
+          <?php foreach ($regencies as $regency) : ?>
+            <option value="<?= $regency['id'] ?>" <?= $selectedRegency === $regency['id'] ? 'selected' : '' ?>><?= $regency['name'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <label>Kecamatan</label><br>
+        <select name="district" id="district">
+          <option value="">Pilih Kecamatan</option>
+          <?php foreach ($districts as $district) : ?>
+            <option value="<?= $district['id'] ?>" <?= $selectedDistrict === $district['id'] ? 'selected' : '' ?>><?= $district['name'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label>Kelurahan</label><br>
+        <select name="village" id="village">
+          <option value="">Pilih Kelurahan/Desa</option>
+          <?php foreach ($villages as $village) : ?>
+            <option value="<?= $village['id'] ?>" <?= $selectedVillage === $village['id'] ? 'selected' : '' ?>><?= $village['name'] ?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center my-5">
+      <h5>Kategori Perusahaan</h5>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="custom-control custom-checkbox">
+          <input name="category[]" value="Internet" style="margin-right: -18px;" type="checkbox"
+            class="custom-control-input" id="internet">
+          <label class="custom-control-label" for="internet">Internet</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="custom-control custom-checkbox">
+          <input name="category[]" value="Arsitektur" style="margin-right: -18px;" type="checkbox"
+            class="custom-control-input" id="arsitektur">
+          <label class="custom-control-label" for="arsitektur">Arsitektur</label>
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        <div class="custom-control custom-checkbox">
+          <input name="category[]" value="Makanan dan Minuman" style="margin-right: -18px;" type="checkbox"
+            class="custom-control-input" id="makanan_dan_minuman">
+          <label class="custom-control-label" for="makanan_dan_minuman">Makanan & Minuman</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="custom-control custom-checkbox">
+          <input name="category[]" value="Logistik" style="margin-right: -18px;" type="checkbox"
+            class="custom-control-input" id="logistik">
+          <label class="custom-control-label" for="logistik">Logistik</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="custom-control custom-checkbox">
+          <input name="category[]" value="Sofware house" style="margin-right: -18px;" type="checkbox"
+            class="custom-control-input" id="software_house">
+          <label class="custom-control-label" for="software_house">Sofware house</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="custom-control custom-checkbox">
+          <input name="category[]" value="Perlengkapan Fotografi" style="margin-right: -18px;" type="checkbox"
+            class="custom-control-input" id="perlengkapan_fotografi">
+          <label class="custom-control-label" for="perlengkapan_fotografi">Perlengkapan Fotografi</label>
         </div>
       </div>
     </div>
-  </div>
+    <div class="text-center">
+      <button id="simpan" type="submit" name="submit" class="text-uppercase"
+        style="color:white; background-color:red">Simpan</button>
+    </div>
+  </form>
 </div>
-
-<script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (() => {
-    'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
-</script>
