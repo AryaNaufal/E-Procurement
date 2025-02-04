@@ -12,7 +12,7 @@
                 <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
               </div>
               <div class="button-box">
-                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
+                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail?id=<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
                 <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
               </div>
               <div class="button-box">
-                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
+                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail?id=<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
                 <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
               </div>
               <div class="button-box">
-                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
+                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail?id=<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@
                 <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
               </div>
               <div class="button-box">
-                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail/<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
+                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail?id=<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
               </div>
             </div>
           </div>

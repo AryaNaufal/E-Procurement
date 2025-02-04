@@ -25,6 +25,12 @@ class TenderService
     return $this->fetchTenders($query, ['keyword' => "%{$keyword}%"]);
   }
 
+  public function getTenderById(string $id): array
+  {
+    $query = "SELECT * FROM tender WHERE id = :id";
+    return $this->fetchTenders($query, ['id' => $id]);
+  }
+
   public function getTendersByCategory(array $categories, string $operator = 'IN'): array
   {
     if (empty($categories)) {
