@@ -87,3 +87,21 @@
   </div>
 </div>
 <!--End of Login Form-->
+
+<script type="text/javascript">
+  function get_akun(tipe) {
+    if (tipe == "1") {
+      $("#div_nik").hide();
+      $("#pic_ktp").val("");
+      $("#div_npwp").show();
+      $("#company_npwp").prop('required', true);
+      $("#pic_ktp").prop('required', false);
+    } else {
+      $("#div_npwp").hide();
+      $("#company_npwp").val("");
+      $("#div_nik").show();
+      $("#pic_ktp").prop('required', true);
+      $("#company_npwp").prop('required', false);
+    }
+  }
+</script>
