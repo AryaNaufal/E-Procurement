@@ -74,8 +74,10 @@ class UserService
 
       return $this->createSuccessResponse('Login successful', [
         // Set session data after successful login
+        $_SESSION['id'] = $user['id'],
         $_SESSION['username'] = $user['username'],
         $_SESSION['email'] = $user['email'],
+        $_SESSION['is_verify'] = $user['is_verify']
       ]);
     } catch (Exception $e) {
       return $this->createErrorResponse('Server error occurred');

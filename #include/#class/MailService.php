@@ -57,7 +57,7 @@ class MailService
       $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
       // Simpan ke database
-      $query = "INSERT INTO user (username, email, password, pic, perusahaan, npwp, nik) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik)";
+      $query = "INSERT INTO user (username, email, password, pic, perusahaan, npwp, nik, is_verify) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik, 1)";
       $this->db->sinsert($query, [
         'username' => $username,
         'email' => $email,

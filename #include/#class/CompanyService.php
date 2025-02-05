@@ -31,9 +31,19 @@ class CompanyService
 
   public function postCompanyData(array $data): array
   {
-    $sql = "INSERT INTO vendor (name, type, mail, phone, mobile_phone, address, provinsi, kota, kecamatan, kelurahan, kategori) 
-    VALUES (:company_name, :company_type, :company_mail, :company_phone, :company_mobile_phone, :company_address, :company_province, :company_regency, :company_district, :company_village, :company_category)";
+    $checkUserId = "SELECT user_id FROM vendor WHERE user_id = :user_id";
     try {
+      $checkResult = $this->db->squery_single($checkUserId, [
+        'user_id' => $_SESSION['id']
+      ]);
+
+      if ($checkResult) {
+        return $this->createErrorResponse('Data perusahaan sudah ada');
+      }
+
+      $sql = "INSERT INTO vendor (name, type, mail, phone, mobile_phone, address, provinsi, kota, kecamatan, kelurahan, kategori, user_id) 
+      VALUES (:company_name, :company_type, :company_mail, :company_phone, :company_mobile_phone, :company_address, :company_province, :company_regency, :company_district, :company_village, :company_category, :user_id)";
+
       $companyData = $this->db->sinsert($sql, [
         'company_name' => $data['company_name'],
         'company_type' => $data['company_type'],
@@ -45,7 +55,8 @@ class CompanyService
         'company_regency' => $data['company_regency'],
         'company_district' => $data['company_district'],
         'company_village' => $data['company_village'],
-        'company_category' => $data['company_category']
+        'company_category' => $data['company_category'],
+        'user_id' => $_SESSION['id']
       ]);
 
       if (!$companyData) {

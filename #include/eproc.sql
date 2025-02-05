@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2025 at 09:42 AM
+-- Generation Time: Feb 05, 2025 at 09:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -91789,7 +91789,8 @@ CREATE TABLE `user` (
   `pic` varchar(50) NOT NULL,
   `perusahaan` varchar(50) NOT NULL,
   `npwp` varchar(50) DEFAULT NULL,
-  `nik` varchar(50) DEFAULT NULL
+  `nik` varchar(50) DEFAULT NULL,
+  `is_verify` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91810,7 +91811,8 @@ CREATE TABLE `vendor` (
   `kota` varchar(100) NOT NULL,
   `kecamatan` varchar(100) NOT NULL,
   `kelurahan` varchar(100) NOT NULL,
-  `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') NOT NULL
+  `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -91862,7 +91864,8 @@ ALTER TABLE `user`
 -- Indexes for table `vendor`
 --
 ALTER TABLE `vendor`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `fk_id` (`user_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -91907,6 +91910,12 @@ ALTER TABLE `reg_regencies`
 --
 ALTER TABLE `reg_villages`
   ADD CONSTRAINT `fk_district` FOREIGN KEY (`district_id`) REFERENCES `reg_districts` (`id`);
+
+--
+-- Constraints for table `vendor`
+--
+ALTER TABLE `vendor`
+  ADD CONSTRAINT `fk_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

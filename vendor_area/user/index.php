@@ -11,11 +11,7 @@ $region = new RegionService();
 $company = new CompanyService();
 
 $provinces = $region->getProvinces();
-$companyDatas = $company->getCompanyData(2);
-
-// echo "<pre>";
-// print_r($companyDatas['data'][0]);
-// echo "</pre>";
+$companyDatas = $company->getCompanyData($_SESSION['id'] ?? '');
 
 $selectedProvince = $_GET['province'] ?? '';
 $selectedRegency = $_GET['regency'] ?? '';
@@ -39,25 +35,18 @@ if (isset($_POST['submit'])) {
     'company_regency' => $_POST['regency'],
     'company_district' => $_POST['district'],
     'company_village' => $_POST['village'],
-    'company_category' => isset($_POST['category']) ? implode(',', $_POST['category']) : ''
+    'company_category' => isset($_POST['category']) ? implode(',', $_POST['category']) : '',
+    'user_id' => $_SESSION['id']
   ];
 
   $result = $company->postCompanyData($data);
 
   if ($result['status'] === 'success') {
-    echo $result['message'];
-    // header('Location: ' . SERVER_NAME . 'vendor_area/profile');
-    exit;
+    echo "<script>alert('" . $result['message'] . "');</script>";
   } else {
-    echo "<script>alert('Gagal menyimpan data perusahaan. Silakan periksa kembali data Anda.');</script>";
+    echo "<script>alert('" . $result['message'] . "');</script>";
   }
 }
-
-// if (isset($_POST['submit'])) {
-//   echo "<script>alert('Gagal menyimpan data perusahaan. Silakan periksa kembali data Anda.');</script>";
-// }
-
-
 
 $current_menu = "profile";
 $current_sub_menu = NULL;

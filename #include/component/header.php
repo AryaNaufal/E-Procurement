@@ -15,7 +15,7 @@
 
   <!-- favicon
     ============================================ -->
-  <link rel="icon" href="assets/icon/favicon.ico">
+  <link rel="icon" href="<?= SERVER_NAME ?>assets/icon/favicon.ico">
 
   <!-- Google Fonts
     ============================================ -->

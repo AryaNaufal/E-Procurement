@@ -1,115 +1,137 @@
 <div class="tab-pane container active mt-4" id="menuProfile">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 mb-3">
       <label>Informasi Perusahaan</label>
-      <div class="card" style="box-shadow: 3px 3px 3px #777;">
+      <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
         <div class="card-body">
           <div class="row">
-            <?php if (isset($companyDatas['status']) && $companyDatas['status'] === 'success' && !empty($companyDatas['data'])): ?>
+            <?php if (!empty($companyDatas['data']) && $companyDatas['status'] === 'success'): ?>
               <?php foreach ($companyDatas['data'] as $data): ?>
                 <div class="col-lg-6">
+                  <?php
+                  $fields = [
+                    'Nama Perusahaan' => 'name',
+                    'Tipe Perusahaan' => 'type',
+                    'Email Perusahaan' => 'mail',
+                    'No.Tlp Perusahaan' => 'phone',
+                    'No.Hp Perusahaan' => 'mobile_phone'
+                  ];
+
+                  foreach ($fields as $label => $key): ?>
+                    <div class="form-group row">
+                      <div class="col-lg-4">
+                        <label class="text-muted"><?= $label ?>:</label>
+                      </div>
+                      <div class="col-lg-4">
+                        <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($data[$key]) : '-' ?></label>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Nama Perusahaan : </label>
+                      <label class="text-muted" style="font-weight: bold;">Status:</label>
                     </div>
                     <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['name']) && !empty($data['name'])) ? htmlspecialchars($data['name']) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">Tipe Perusahaan : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['type']) && !empty($data['type'])) ? htmlspecialchars($data['type']) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">Email Perusahaan : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['mail']) && !empty($data['mail'])) ? htmlspecialchars($data['mail']) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">No.Tlp Perusahaan : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['phone']) && !empty($data['phone'])) ? htmlspecialchars($data['phone']) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">No.Hp Perusahaan : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['mobile_phone']) && !empty($data['mobile_phone'])) ? htmlspecialchars($data['mobile_phone']) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted" style="font-weight: bold;">Status : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-danger" style="font-weight:bolder;">Upload Document</label>
+                      <label class="text-danger font-weight-bold">Upload Document</label>
                     </div>
                   </div>
                 </div>
+
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Alamat : </label>
+                      <label class="text-muted">Alamat:</label>
                     </div>
                     <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
+                      <label class="text-muted"><?= !empty($data['address']) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">Provinsi : </label>
+
+                  <?php
+                  $regions = [
+                    'Provinsi' => 'provinsi',
+                    'Kecamatan' => 'kecamatan',
+                    'Kota/Kabupaten' => 'kota',
+                    'Kelurahan' => 'kelurahan'
+                  ];
+
+                  foreach ($regions as $label => $key): ?>
+                    <div class="form-group row">
+                      <div class="col-lg-4">
+                        <label class="text-muted"><?= $label ?>:</label>
+                      </div>
+                      <div class="col-lg-4">
+                        <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($region->getRegionName($data[$key])) : '-' ?></label>
+                      </div>
                     </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted" id="lblprov"><?= (isset($data['provinsi']) && !empty($data['provinsi'])) ? htmlspecialchars($region->getRegionName($data['provinsi'])) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">Kecamatan : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted" id="lblkec"><?= (isset($data['kecamatan']) && !empty($data['kecamatan'])) ? htmlspecialchars($region->getRegionName($data['kecamatan'])) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">Kota/Kabupaten : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted" id="lblkot"><?= (isset($data['kota']) && !empty($data['kota'])) ? htmlspecialchars($region->getRegionName($data['kota'])) : '-' ?></label>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-lg-4">
-                      <label class="text-muted">Kelurahan : </label>
-                    </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted" id="lblkel"><?= (isset($data['kelurahan']) && !empty($data['kelurahan'])) ? htmlspecialchars($region->getRegionName($data['kelurahan'])) : '-' ?></label>
-                    </div>
-                  </div>
+                  <?php endforeach; ?>
                 </div>
               <?php endforeach; ?>
+            <?php else: ?>
+              <!-- Empty Data Display -->
+              <div class="col-lg-6">
+                <?php
+                $emptyFields = [
+                  'Nama Perusahaan' => '-',
+                  'Tipe Perusahaan' => '-',
+                  'Email Perusahaan' => '-',
+                  'No.Tlp Perusahaan' => '-',
+                  'No.Hp Perusahaan' => '-'
+                ];
+
+                foreach ($emptyFields as $label => $value): ?>
+                  <div class="form-group row">
+                    <div class="col-lg-4">
+                      <label class="text-muted"><?= $label ?>:</label>
+                    </div>
+                    <div class="col-lg-4">
+                      <label class="text-muted"><?= $value ?></label>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+
+                <div class="form-group row">
+                  <div class="col-lg-4">
+                    <label class="text-muted" style="font-weight: bold;">Status:</label>
+                  </div>
+                  <div class="col-lg-4">
+                    <label class="text-danger font-weight-bold">Upload Document</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <?php
+                $emptyRegions = [
+                  'Alamat' => '-',
+                  'Provinsi' => '-',
+                  'Kecamatan' => '-',
+                  'Kota/Kabupaten' => '-',
+                  'Kelurahan' => '-'
+                ];
+
+                foreach ($emptyRegions as $label => $value): ?>
+                  <div class="form-group row">
+                    <div class="col-lg-4">
+                      <label class="text-muted"><?= $label ?>:</label>
+                    </div>
+                    <div class="col-lg-4">
+                      <label class="text-muted"><?= $value ?></label>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+              </div>
             <?php endif; ?>
           </div>
         </div>
       </div>
     </div>
-  </div><br><br>
-  Informasi Dokumen Perusahaan
+  </div>
+  <label>Informasi Dokumen Perusahaan</label>
   <div class="row">
-    <div class="col-lg-12"><br>
-      <div class="card" style="box-shadow: 3px 3px 3px #777;">
+    <div class="col-lg-12">
+      <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
         <div class="card-body">
           <div class="row">
             <div class="col-lg-4 mb-3">
