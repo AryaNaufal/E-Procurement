@@ -18,15 +18,17 @@
           <center>Aksi</center>
         </th>
       </tr>
-      <tr>
-        <td>Katalog 1</td>
-        <td>Kategori</td>
-        <td>100k</td>
-        <td>
-          <a href="/edit_pengadaan.php?id=$row['id']" class='btn btn-primary btn-sm'>Edit</a>
-          <a href="/delete_pengadaan.php?=$row['id']" class='btn btn-danger btn-sm'>Delete</a>
-        </td>
-      </tr>
+      <?php foreach ($katalogs['data'] as $katalog): ?>
+        <tr>
+          <td><?= $katalog['produk_solusi'] ?></td>
+          <td><?= $katalog['kategori'] ?></td>
+          <td><?= 'Rp ' . number_format($katalog['harga'], 0, ',', '.') ?></td>
+          <td>
+            <a href="<?= SERVER_NAME ?>vendor_area/katalog/edit.php?id=<?= $katalog['id'] ?>" class='btn btn-primary btn-sm'>Edit</a>
+            <a href="<?= SERVER_NAME ?>vendor_area/katalog/delete.php?id=<?= $katalog['id'] ?>" class='btn btn-danger btn-sm'>Delete</a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
     </tbody>
   </table>
   <?php include_once __DIR__ . '/../../fragment/katalog-modal.php'; ?>

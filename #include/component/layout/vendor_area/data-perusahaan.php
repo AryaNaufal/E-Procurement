@@ -151,7 +151,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button id="simpan" type="submit" name="submit" class="text-uppercase"
+      <button id="simpan" type="submit" name="submit_company" class="text-uppercase"
         style="color:white; background-color:red">Simpan</button>
     </div>
   </form>

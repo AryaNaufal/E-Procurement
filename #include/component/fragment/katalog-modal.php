@@ -7,143 +7,97 @@
       </div>
       <div class="modal-body">
         <div class="form-pop-up-content ptb-60 pl-60 pr-60">
-          <center>
-            <p id="modalCatalogtitle" style="font-size:15px;color:black"></p>
-          </center><br>
-          <form method="post" id="form_produk" autocomplete="off" enctype="multipart/form-data">
-            <input type="hidden" id="act_catalog">
-            <input type="hidden" id="id_catalog" name="id_catalog">
+          <p class="d-flex justify-content-center mb-5" id="modalCatalogtitle" style="font-size:15px;color:black">Tambah E-Katalog</p>
+          <form method="POST" action="" enctype="multipart/form-data">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <label style="color:black">Kode Produk</label>
                 <input type="text" maxlength="150" name="kode_produk" id="kode_produk"
                   placeholder="Kode Produk" class="form-control" required="">
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <label style="color:black">Produk / Solusi</label>
-                <input type="text" maxlength="150" name="produk_solusi" id="produk_solusi"
+                <input type="text" maxlength="150" name="nama_produk" id="produk_solusi"
                   placeholder="Produk / Solusi" class="form-control" required="">
               </div>
             </div>
 
-            <br>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <label style="color:black">TKDN Produk</label>
-                <input type="text" maxlength="150" name="tkdn" id="tkdn" placeholder="TKDN Produk"
+                <input type="text" maxlength="150" name="tkdn_produk" id="tkdn" placeholder="TKDN Produk"
                   class="form-control" required="">
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <label style="color:black">Jenis</label>
                 <select name="jenis_produk" id="jenis_produk" class="form-control" required="">
                   <option value="">Pilih Jenis</option>
-                  <option value="1">Lokal</option>
-                  <option value="2">Import</option>
-
+                  <option value="lokal">Lokal</option>
+                  <option value="import">Import</option>
                 </select>
               </div>
             </div>
 
-            <br>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <label style="color:black">Harga</label>
-                <input type="text" name="harga" id="harga" placeholder="Harga" class="form-control"
-                  onkeydown="return numbersonly(this, event);"
-                  onkeyup="javascript:tandaPemisahTitik(this);" required="">
+                <input type="text" name="harga_produk" id="harga" placeholder="Harga" class="form-control"
+                  onkeydown="return numbersonly(this, event);">
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mb-3">
                 <label style="color:black">Expired Harga</label>
-                <input type="text" name="expired" id="expired" placeholder="Expired Harga"
-                  class="form-control datepicker" style="background-color:white" readonly=""
-                  required="">
+                <input type="text" name="expired_harga" id="expired" placeholder="Expired Harga"
+                  class="form-control datepicker" style="background-color:white" onkeydown="return numbersonly(this, event);" step="1">
               </div>
             </div>
 
-
-            <br>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 mb-3">
                 <label style="color:black">Kategori</label>
-                <select name="kategori_katalog" id="kategori_katalog" class="form-control" required="">
+                <select name="kategori_produk" id="kategori_katalog" class="form-control" required="">
                   <option value="">Pilih Kategori</option>
-                  <option value="tp_210309035914_27278">Alat Tulis Kantor</option>
-                  <option value="tp_210926050357_54999">Electric</option>
-                  <option value="ctg_19091244057_90897">Hardware</option>
-                  <option value="tp_210309040057_65145">Jasa Konsultasi Perorangan</option>
-                  <option value="tp_210309040039_68435">Jasa Konsultasi Perusahaan</option>
-                  <option value="tp_210308113016_58001">Kendaraan Operasional</option>
-                  <option value="tp_210309035940_26859">Peralatan Fotografi / Videografi</option>
-                  <option value="tp_210308113208_91356">Property (Tanah atau Bangunan)</option>
-                  <option value="tp_210310121024_29118">Rumah Tangga Kantor (RTK)</option>
+                  <option value="Alat Tulis Kantor">Alat Tulis Kantor</option>
+                  <option value="Electric">Electric</option>
+                  <option value="Hardware">Hardware</option>
+                  <option value="Jasa Konsultasi Perorangan">Jasa Konsultasi Perorangan</option>
+                  <option value="Jasa Konsultasi Perusahaan">Jasa Konsultasi Perusahaan</option>
+                  <option value="Kendaraan Operasional">Kendaraan Operasional</option>
+                  <option value="Peralatan Fotografi / Videografi">Peralatan Fotografi / Videografi</option>
+                  <option value="Property">Property (Tanah atau Bangunan)</option>
+                  <option value="Rumah Tangga Kantor">Rumah Tangga Kantor (RTK)</option>
                 </select>
               </div>
             </div>
 
-
-
-            <br>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 mb-3">
                 <label style="color:black">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" placeholder="Deskripsi" class="form-control"
+                <textarea name="deskripsi_produk" id="deskripsi" placeholder="Deskripsi" class="form-control"
                   required=""></textarea>
               </div>
             </div>
 
-            <br>
             <div class="row">
               <div class="col-md-12">
+                <label style="color:black">Foto Produk</label>
                 <center>
-                  <label style="color:black">Gambar</label>
-                </center>
-              </div>
-            </div><br>
-
-            <!--<div class="row">
-                                                <div class="col-md-4">
-                                                    <input type="file"  name="gambar[]" id="gambar_1" required>
-                                                </div>
-                                            </div>-->
-
-            <div id="div_gambar_katalog"></div>
-
-            <div class="text-left"><br>
-              <button type="button" onclick="add_image()" style="background-color:#007bff;color:white"
-                class="text-uppercase">+ Gambar</button>
-            </div>
-
-            <br><br>
-            <div class="row">
-              <div class="col-md-12">
-                <center>
-                  <label style="color:black">Dokumen Katalog</label>
+                  <input type="file" name="photo">
                 </center>
               </div>
             </div>
 
-            <!--<div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="text"  maxlength="150" name="doc_name[]" id="doc_name_1" placeholder="Nama Dokumen" class="form-control" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input type="file"  name="doc_file[]" id="dokumen_1" required>
-                                                </div>
-                                            </div>-->
-
-            <div id="div_dokumen_katalog"></div>
-
-
-            <div class="text-left"><br>
-              <button onclick="add_doc_katalog()" type="button"
-                style="background-color:#007bff;color:white" class="text-uppercase">+ Dokumen</button>
+            <div class="row">
+              <div class="col-md-12">
+                <label style="color:black">Dokumen</label>
+                <center>
+                  <input type="file" name="document">
+                </center>
+              </div>
             </div>
 
-            <div class="text-center"><br>
-              <input type="hidden" name="_token" value="QRFR6JcK4uAHU7uFqIeOKr3fr1HGKlF3JpmDxGhH">
-              <button type="submit" class="text-uppercase">Simpan</button>
+            <div class="text-center">
+              <button type="submit" name="submit_katalog" class="text-uppercase">Simpan</button>
             </div>
-
           </form>
         </div>
       </div>

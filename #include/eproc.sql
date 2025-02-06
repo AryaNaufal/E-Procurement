@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2025 at 09:40 AM
+-- Generation Time: Feb 06, 2025 at 10:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `eproc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `katalog`
+--
+
+CREATE TABLE `katalog` (
+  `id` int(11) NOT NULL,
+  `kode_produk` varchar(50) NOT NULL,
+  `produk_solusi` varchar(100) NOT NULL,
+  `tkdn_produk` int(50) NOT NULL,
+  `jenis` enum('lokal','import') NOT NULL,
+  `harga` int(100) NOT NULL,
+  `expired_harga` int(100) NOT NULL,
+  `kategori` enum('Alat Tulis Kantor','Electric','Hardware','Jasa Konsultasi Perorangan','Jasa Konsultasi Perusahaan','Kendaraan Operasional','Perlengkapan Fotografi / Videografi','Property','Rumah Tangga Kantor') NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `dokumen` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -91820,6 +91840,12 @@ CREATE TABLE `vendor` (
 --
 
 --
+-- Indexes for table `katalog`
+--
+ALTER TABLE `katalog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reg_districts`
 --
 ALTER TABLE `reg_districts`
@@ -91870,6 +91896,12 @@ ALTER TABLE `vendor`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `katalog`
+--
+ALTER TABLE `katalog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tender`

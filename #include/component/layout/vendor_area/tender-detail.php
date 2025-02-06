@@ -13,7 +13,7 @@
 <!--End of Breadcrumb Banner Area-->
 
 <!-- About Area Start -->
-<div class="about-area ptb-130 ptb-sm-60" style="padding-top: 45px !important;">
+<div class="about-area ptb-130 ptb-sm-60" style="padding-top: 45px !important; min-height: calc(100vh - 230px);">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
