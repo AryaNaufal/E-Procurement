@@ -14,10 +14,10 @@ function daftar() {
     success: function (data) {
       var data_trim = JSON.parse($.trim(data));
       if (data_trim.status === "success") {
-        swal({
+        Swal.fire({
           title: data_trim.status,
-          type: data_trim.status,
           html: data_trim.message,
+          icon: data_trim.status,
           showCancelButton: false,
           showLoaderOnConfirm: false,
         }).then(function () {
@@ -25,10 +25,10 @@ function daftar() {
           $("#form_daftar")[0].reset();
         });
       } else {
-        swal({
+        Swal.fire({
           title: data_trim.status,
-          type: data_trim.status,
           html: data_trim.message,
+          icon: data_trim.status,
           showCancelButton: false,
           showLoaderOnConfirm: false,
         });
