@@ -1,10 +1,15 @@
+<style>
+  table td {
+    padding: 8px;
+  }
+</style>
 <!--Breadcrumb Banner Area Start-->
 <div class="breadcrumb-banner-area pt-30 pb-10 bg-3">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="breadcrumb-text">
-          <h2 class="text-center text-white"><?= $tenderData['data'][0]['description'] ?></h2>
+          <h2 class="text-center text-white"><?= $tenders['data'][0]['description'] ?></h2>
         </div>
       </div>
     </div>
@@ -21,7 +26,7 @@
           <h4 class="p-4">Detail Pengadaan</h4>
           <div class="card-body">
             <div class="row">
-              <?php foreach ($tenderData['data'] as $data): ?>
+              <?php foreach ($tenders['data'] as $data): ?>
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
@@ -102,6 +107,43 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="col-lg-12 mt-4">
+        <h4 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h4>
+        <p>deskripsi tender</p>
+      </div>
+      <div class="col-lg-12 mt-4">
+        <h4 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h4>
+        <table class="table" style="font-size: small;">
+          <thead class="py-3">
+            <tr>
+              <td>Awal Pendaftaran</td>
+              <td>Akhir Pendaftaran</td>
+              <td>Prakualifikasi</td>
+              <td>Aanwijizing</td>
+              <td>Submit Proposal</td>
+              <td>Shortlisted</td>
+              <td>POC</td>
+              <td>Awal Negosiasi</td>
+              <td>Akhir Negosiasi</td>
+              <td>PO</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+              <td>tes</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

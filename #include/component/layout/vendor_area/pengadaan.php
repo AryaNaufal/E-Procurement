@@ -1,7 +1,4 @@
-<div class="tab-pane container fade" id="menu4">
-  <div class="text-left my-4">
-    <button type="button" class="text-uppercase" style="color:white; background-color:#AA0A2F; border-radius: 5px;" data-toggle="modal" data-target="#pengadaan-modal">Tambah Pengadaan</button>
-  </div>
+<div class="tab-pane container fade mt-4" id="menu4">
   <div id="table_tender">
     <table class="table table-bordered">
       <tbody>
@@ -16,16 +13,17 @@
             <center>Aksi</center>
           </th>
         </tr>
-        <tr>
-          <td>Pengadaan 1</td>
-          <td>Kategori</td>
-          <td>
-            <a href="/edit_pengadaan.php?id=$row['id']" class='btn btn-primary btn-sm'>Edit</a>
-            <a href="/delete_pengadaan.php?=$row['id']" class='btn btn-danger btn-sm'>Delete</a>
-          </td>
-        </tr>
-
-
+        <?php foreach ($tenders['data'] as $data): ?>
+          <tr>
+            <td><?= $data['description'] ?></td>
+            <td><?= $data['category'] ?></td>
+            <td class="text-center">
+              <a href="/edit_pengadaan.php?id=<?= $data['id'] ?>" class="text-success">
+                <i class="fa fa-file" aria-hidden="true"></i>
+              </a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>

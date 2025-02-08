@@ -6,12 +6,12 @@ use App\TenderService;
 require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
-$tender = new TenderService();
+$tenderService = new TenderService();
 
-$tenderData = $tender->getTenderById($_GET['id']);
+$tenders = $tenderService->getTenderById($_GET['id']);
 
 
-if (empty($tenderData['data'])) {
+if (empty($tenders['data'])) {
   header("Location: " . SERVER_NAME . "");
   exit;
 }

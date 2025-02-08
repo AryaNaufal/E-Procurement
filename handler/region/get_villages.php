@@ -8,7 +8,6 @@ require_once __DIR__ . '/../../#include/#class/autoload.php';
 $region = new RegionService();
 
 $districtId = $_GET['district'] ?? '';
-$name = $_GET['name'] ?? '';
 
 $villages = $region->getVillages($districtId);
 

@@ -14,13 +14,13 @@ if (empty($_SESSION)) {
   exit;
 }
 
-$region = new RegionService();
-$company = new CompanyService();
+$regionService = new RegionService();
+$companyService = new CompanyService();
 $katalogService = new KatalogService();
 $tenderService = new TenderService();
 
-$provinces = $region->getProvinces();
-$companyDatas = $company->getCompanyData($_SESSION['id'] ?? '');
+$provinces = $regionService->getProvinces();
+$companies = $companyService->getCompanyData($_SESSION['id'] ?? '');
 $katalogs = $katalogService->getKatalog();
 $tenders = $tenderService->getTenders();
 
@@ -30,9 +30,9 @@ $selectedDistrict = $_GET['district'] ?? '';
 $selectedVillage = $_GET['village'] ?? '';
 $name = $_GET['name'] ?? '';
 
-$regencies = $selectedProvince ? $region->getRegencies($selectedProvince) : [];
-$districts = $selectedRegency ? $region->getDistricts($selectedRegency) : [];
-$villages = $selectedDistrict ? $region->getVillages($selectedDistrict) : [];
+$regencies = $selectedProvince ? $regionService->getRegencies($selectedProvince) : [];
+$districts = $selectedRegency ? $regionService->getDistricts($selectedRegency) : [];
+$villages = $selectedDistrict ? $regionService->getVillages($selectedDistrict) : [];
 
 $current_menu = "profile";
 $current_sub_menu = NULL;

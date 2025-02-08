@@ -5,8 +5,8 @@
       <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
         <div class="card-body">
           <div class="row">
-            <?php if (!empty($companyDatas['data']) && $companyDatas['status'] === 'success'): ?>
-              <?php foreach ($companyDatas['data'] as $data): ?>
+            <?php if (!empty($companies['data']) && $companies['status'] === 'success'): ?>
+              <?php foreach ($companies['data'] as $data): ?>
                 <div class="col-lg-6">
                   <?php
                   $fields = [
@@ -62,7 +62,7 @@
                         <label class="text-muted"><?= $label ?>:</label>
                       </div>
                       <div class="col-lg-4">
-                        <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($region->getRegionName($data[$key])) : '-' ?></label>
+                        <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($regionService->getRegionName($data[$key])) : '-' ?></label>
                       </div>
                     </div>
                   <?php endforeach; ?>
