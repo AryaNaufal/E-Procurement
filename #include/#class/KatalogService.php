@@ -104,9 +104,21 @@ class KatalogService
 
   public function deleteKatalog($id)
   {
-    $sql = "DELETE FROM katalog WHERE id = :id";
+    $target_dir = __DIR__ . '/';
+
     try {
+      $katalog = $this->db->squery("SELECT gambar, dokumen FROM katalog WHERE id = :id", ['id' => $id]);
+
+      if (file_exists($target_dir . $katalog[0]['gambar'])) {
+        unlink($target_dir . $katalog[0]['gambar']);
+      }
+      if (file_exists($target_dir . $katalog[0]['dokumen'])) {
+        unlink($target_dir . $katalog[0]['dokumen']);
+      }
+
+      $sql = "DELETE FROM katalog WHERE id = :id";
       $this->db->squery($sql, ['id' => $id]);
+
       return $this->createSuccessResponse('Katalog berhasil dihapus');
     } catch (Exception $e) {
       return $this->createErrorResponse('Terjadi kesalahan pada server: ' . $e->getMessage());

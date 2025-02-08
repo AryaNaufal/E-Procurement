@@ -6,10 +6,10 @@ use App\KatalogService;
 require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
-$katalogServicce = new KatalogService();
+$katalogService = new KatalogService();
 
-$id = $_GET['id'] ?? '';
+$katalogId = $_GET['id'];
 
-$katalogServicce->deleteKatalog($id);
+$result = $katalogService->deleteKatalog($katalogId);
 
-header('Location: ' . SERVER_NAME . 'vendor_area/user/index.php');
+echo "<script>window.location.href='" . SERVER_NAME . "vendor_area/user';</script>";
