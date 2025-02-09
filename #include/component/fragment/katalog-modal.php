@@ -8,7 +8,7 @@
       <div class="modal-body">
         <div class="form-pop-up-content ptb-60 pl-60 pr-60">
           <p class="d-flex justify-content-center mb-5" id="modalCatalogtitle" style="font-size:15px;color:black">Tambah E-Katalog</p>
-          <form method="POST" id="form_katalog" enctype="multipart/form-data">
+          <form method="POST" id="form_add_katalog" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label style="color:black">Kode Produk</label>
@@ -62,7 +62,7 @@
                   <option value="Jasa Konsultasi Perorangan">Jasa Konsultasi Perorangan</option>
                   <option value="Jasa Konsultasi Perusahaan">Jasa Konsultasi Perusahaan</option>
                   <option value="Kendaraan Operasional">Kendaraan Operasional</option>
-                  <option value="Peralatan Fotografi / Videografi">Peralatan Fotografi / Videografi</option>
+                  <option value="Perlengkapan Fotografi / Videografi">Perlengkapan Fotografi / Videografi</option>
                   <option value="Property">Property (Tanah atau Bangunan)</option>
                   <option value="Rumah Tangga Kantor">Rumah Tangga Kantor (RTK)</option>
                 </select>
@@ -104,57 +104,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(document).ready(function() {
-    $('#form_katalog').submit(function(e) {
-      e.preventDefault();
-      var formData = new FormData(this);
-      $.ajax({
-        url: "<?= SERVER_NAME ?>vendor_area/katalog/add",
-        type: 'POST',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-          try {
-            var data = JSON.parse(response);
-            if (data.status == 'success') {
-              Swal.fire({
-                title: "Berhasil!",
-                text: data.message,
-                icon: "success",
-                button: "Ok",
-              }).then(() => {
-                window.location.href = "<?= SERVER_NAME ?>/vendor_area/user/";
-              });
-            } else {
-              Swal.fire({
-                title: "Gagal!",
-                text: data.message,
-                icon: "error",
-                button: "Ok",
-              });
-            }
-          } catch (e) {
-            Swal.fire({
-              title: "Error!",
-              text: "Terjadi kesalahan pada server.",
-              icon: "error",
-              button: "Ok",
-            });
-          }
-        },
-        error: function(xhr, status, error) {
-          Swal.fire({
-            title: "Error!",
-            text: "Terjadi kesalahan pada server.",
-            icon: "error",
-            button: "Ok",
-          });
-        }
-      });
-    });
-  });
-</script>

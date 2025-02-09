@@ -64,7 +64,10 @@
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
  <!-- Jquery Function -->
- <script src="<?= SERVER_NAME ?>assets/js/Jquery/Handler/get-region.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/get-region.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/edit.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/add.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/delete.js"></script>
 
  <!-- Auth Function -->
  <script src="<?= SERVER_NAME ?>assets/js/Auth/login.js"></script>

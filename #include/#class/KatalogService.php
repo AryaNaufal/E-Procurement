@@ -109,11 +109,10 @@ class KatalogService
     try {
       $katalog = $this->db->squery("SELECT gambar, dokumen FROM katalog WHERE id = :id", ['id' => $id]);
 
-      if (file_exists($target_dir . $katalog[0]['gambar'])) {
-        unlink($target_dir . $katalog[0]['gambar']);
-      }
-      if (file_exists($target_dir . $katalog[0]['dokumen'])) {
-        unlink($target_dir . $katalog[0]['dokumen']);
+      foreach (['gambar', 'dokumen'] as $field) {
+        if (file_exists($target_dir . $katalog[0][$field])) {
+          unlink($target_dir . $katalog[0][$field]);
+        }
       }
 
       $sql = "DELETE FROM katalog WHERE id = :id";
