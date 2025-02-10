@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2025 at 10:43 AM
+-- Generation Time: Feb 10, 2025 at 10:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `eproc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `document`
+--
+
+CREATE TABLE `document` (
+  `id` int(11) NOT NULL,
+  `akta_perubahan` varchar(100) NOT NULL,
+  `sk_menkumham` varchar(100) NOT NULL,
+  `ktp_pengurus_perusahaan` varchar(100) NOT NULL,
+  `surat_keterangan_domisili_perusahaan` varchar(100) NOT NULL,
+  `siup` varchar(100) NOT NULL,
+  `tdp` varchar(100) NOT NULL,
+  `npwp` varchar(100) NOT NULL,
+  `pkp` varchar(100) NOT NULL,
+  `spt` varchar(100) NOT NULL,
+  `laporan_keuangan` varchar(100) NOT NULL,
+  `rekening_koran` varchar(100) NOT NULL,
+  `sertifikasi` varchar(100) NOT NULL,
+  `list_daftar_pengalaman_kerja` varchar(100) NOT NULL,
+  `list_tenaga_ahli` varchar(100) NOT NULL,
+  `akta_pendirian` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -91798,6 +91824,26 @@ INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `clo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `timeline_pengadaan`
+--
+
+CREATE TABLE `timeline_pengadaan` (
+  `id` int(11) NOT NULL,
+  `awal_pendaftaran` date NOT NULL,
+  `akhir_pendaftaran` date NOT NULL,
+  `perkualifikasi` datetime(6) NOT NULL,
+  `aanwijizing` datetime(6) NOT NULL,
+  `submit_proposal` datetime(6) NOT NULL,
+  `shortlisted` datetime(6) NOT NULL,
+  `poc` datetime(6) NOT NULL,
+  `awal_negosiasi` int(50) NOT NULL,
+  `akhir_negosiasi` int(50) NOT NULL,
+  `po` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -91840,6 +91886,13 @@ CREATE TABLE `vendor` (
 --
 
 --
+-- Indexes for table `document`
+--
+ALTER TABLE `document`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `katalog`
 --
 ALTER TABLE `katalog`
@@ -91879,6 +91932,12 @@ ALTER TABLE `tender`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `timeline_pengadaan`
+--
+ALTER TABLE `timeline_pengadaan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -91898,16 +91957,28 @@ ALTER TABLE `vendor`
 --
 
 --
+-- AUTO_INCREMENT for table `document`
+--
+ALTER TABLE `document`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `katalog`
 --
 ALTER TABLE `katalog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `tender`
 --
 ALTER TABLE `tender`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `timeline_pengadaan`
+--
+ALTER TABLE `timeline_pengadaan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -91924,6 +91995,13 @@ ALTER TABLE `vendor`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `document`
+--
+ALTER TABLE `document`
+  ADD CONSTRAINT `document_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `document_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `reg_districts`
