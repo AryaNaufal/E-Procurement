@@ -18,7 +18,7 @@
             <td><?= $data['description'] ?></td>
             <td><?= $data['category'] ?></td>
             <td class="text-center">
-              <a href="/edit_pengadaan.php?id=<?= $data['id'] ?>" class="text-success">
+              <a href="<?= SERVER_NAME ?>vendor_area/tender/workflow.php?id=<?= $data['id'] ?>" class="text-success">
                 <i class="fa fa-file" aria-hidden="true"></i>
               </a>
             </td>
