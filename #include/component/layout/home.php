@@ -74,3 +74,49 @@
     </div>
   </div>
   <!-- End of Job Post Area -->
+
+  <!-- Working Aera Start -->
+  <div class="woring-area pt-130 pb-100 pt-sm-60 pb-sm-30">
+    <div class="container">
+      <!-- Section Title Start -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title text-center ">
+            <h2>Tata Cara Tender</h2>
+            <p>Berikut tata cara mengikuti tender</p>
+          </div>
+        </div>
+      </div>
+      <!-- Section Title End -->
+      <div class="row work-shap">
+        <div class="col-md-4">
+          <div class="work-item">
+            <div class="img-icon">
+              <img src="<?= SERVER_NAME ?>assets/images/icons/wrk1.png" alt="">
+            </div>
+            <h5>Daftar Akun</h5>
+            <p>Membuat akun baru untuk mengikuti tender.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="work-item">
+            <div class="img-icon">
+              <img src="<?= SERVER_NAME ?>assets/images/icons/wrk2.png" alt="">
+            </div>
+            <h5>Kelengkapan Berkas</h5>
+            <p>Setelah memiliki akun, harap melengkapi berkas/dokumen legalitas perusahaan, sebagai persyaratan mengikuti tender.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="work-item">
+            <div class="img-icon">
+              <img src="<?= SERVER_NAME ?>assets/images/icons/wrk3.png" alt="">
+            </div>
+            <h5>Submit Tender</h5>
+            <p>Setelah berkas/dokumen lengkap dan sudah terverifikasi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Working Aera End -->
