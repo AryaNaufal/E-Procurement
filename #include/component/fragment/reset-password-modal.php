@@ -14,11 +14,11 @@
             </div>
             <h3 class="text-center">Lupa Password</h3>
             <p class="text-center" style="color:black; font-size: 12px; line-height: 11px;">Silahkan Masukan email anda untuk melakukan reset password</p>
-            <form method="post" id="form_reset" autocomplete="off">
+            <form method="POST" id="form_reset" autocomplete="off">
               <div class="form-box">
                 <input type="email" name="email" placeholder="Email" class="mb-14" required>
               </div>
-              <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div>
+              <!-- <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div> -->
               <div class="text-center">
                 <button type="submit" class="text-uppercase">Reset</button>
               </div>

@@ -70,9 +70,10 @@
  <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/edit.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/delete.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Handler/company/add.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Feature/see-password.js"></script>
 
  <!-- Auth Function -->
  <script src="<?= SERVER_NAME ?>assets/js/Auth/login.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Auth/register.js"></script>
- <script src="<?= SERVER_NAME ?>assets/js/Auth/reset_account.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Auth/reset_password.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Auth/password_validate.js"></script>

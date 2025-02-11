@@ -14,9 +14,12 @@
             </div>
             <p class="text-center" style="color: black; font-size: 12px; line-height: 11px;">Sistem Pengadaan secara Elektronik (e-Procurement) merupakan layanan mandiri berbasis internet untuk lebih mengefisiensikan transaksi</p>
             <form method="POST" id="form_login" autocomplete="off">
-              <div class="form-box">
-                <input type="text" name="username" placeholder="Email / Username" class="mb-14" required>
-                <input type="password" name="password" placeholder="Password" required>
+              <input type="text" name="username" placeholder="Email / Username" class="mb-14" required>
+              <div class="position-relative">
+                <input type="password" name="password" placeholder="Password" class="position-static" id="password" required>
+                <div class=" position-absolute" style="right: 10px; top: 50%; transform: translateY(-50%);">
+                  <i class="fa fa-eye toggle-password" data-toggle="password" style="cursor: pointer; color: rgb(118, 118, 118);"></i>
+                </div>
               </div>
               <div class="text-center my-3">
                 <!-- <div class="g-recaptcha my-3" data-sitekey=" -->

@@ -78,6 +78,32 @@ class MailService
     }
   }
 
+  public function sendResetPasswordVerification(string $email, string $verification_code)
+  {
+    $env = new LoadEnv(ROOT_PATH . '.env');
+    $mail = new PHPMailer(true);
+
+    try {
+      $mail->isSMTP();
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = $env->get('EMAIL');
+      $mail->Password = $env->get('APP_PASSWORD');
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = 587;
+
+      $mail->setFrom($env->get('EMAIL'), 'No Reply');
+      $mail->addAddress($email);
+      $mail->Subject = 'Reset Password';
+      $verification_link = SERVER_NAME . "reset_password.php?code=$verification_code";
+      $mail->Body = "Klik link berikut untuk reset password: $verification_link";
+
+      $mail->send();
+    } catch (PHPMailerException $e) {
+      echo "Email gagal dikirim. Error: {$mail->ErrorInfo}";
+    }
+  }
+
   private function createSuccessResponse(string $message, array $data = []): array
   {
     return [

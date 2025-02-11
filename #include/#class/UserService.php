@@ -123,6 +123,57 @@ class UserService
     return $this->createSuccessResponse('Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.', []);
   }
 
+  public function sendResetPassword(array $data)
+  {
+    if (empty($data['email'])) {
+      return $this->createErrorResponse('Email is required');
+    }
+
+    $checkEmail = $this->getUser($data['email']);
+
+    if ($checkEmail['status'] !== 'success') {
+      return $this->createErrorResponse('Email not found');
+    }
+
+    // Proses reset password: data belum disimpan, hanya di-simpan sementara
+    $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
+    $_SESSION['verification_code'] = $verification_code;
+    $_SESSION['email'] = $data['email'];
+
+    // Kirim email verifikasi
+    $emailService = new MailService();
+    $emailService->sendResetPasswordVerification($data['email'], $verification_code);
+
+    return $this->createSuccessResponse('Email verifikasi telah dikirim. Silakan cek email Anda', []);
+  }
+
+  public function resetPassword(array $data)
+  {
+    if (empty($data['password'])) {
+      return $this->createErrorResponse('Password is required');
+    }
+
+    if (strlen($data['password']) < 8) {
+      return $this->createErrorResponse('Password minimal 8 karakter');
+    }
+
+    $sql = "UPDATE user SET password = :password WHERE email = :email AND is_verify = 1";
+
+    try {
+      $this->db->supdate($sql, [
+        'email' => $data['email'],
+        'password' => password_hash($data['password'], PASSWORD_DEFAULT)
+      ]);
+
+      session_unset();
+      session_destroy();
+
+      return $this->createSuccessResponse('Password berhasil direset');
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Server error occurred');
+    }
+  }
+
   private function createSuccessResponse(string $message, array $data = []): array
   {
     return [
