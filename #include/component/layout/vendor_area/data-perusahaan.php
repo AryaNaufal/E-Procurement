@@ -1,5 +1,5 @@
 <div class="tab-pane container" id="menu1">
-  <form method="POST" action="">
+  <form method="POST" id="form_add_company" action="">
     <div class="d-flex justify-content-center my-4">
       <h5>Data Perusahaan</h5>
     </div>

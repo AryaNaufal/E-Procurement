@@ -15,7 +15,7 @@ class CompanyService
 
   public function getCompanyData(string $id): array
   {
-    $sql = "SELECT * FROM vendor WHERE id = :id";
+    $sql = "SELECT * FROM vendor WHERE user_id = :id";
     try {
       $companyData = $this->db->squery($sql, ['id' => $id]);
 

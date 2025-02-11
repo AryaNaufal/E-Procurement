@@ -1,4 +1,4 @@
-const Host = 'http://localhost/eproc';
+const Host = window.location.host + '/eproc';
 
 $(document).ready(function () {
   let userId = $('#user_id').val();

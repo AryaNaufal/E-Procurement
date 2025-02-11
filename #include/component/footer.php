@@ -65,10 +65,11 @@
 
  <!-- Jquery Function -->
  <script src="<?= SERVER_NAME ?>assets/js/Handler/get-region.js"></script>
- <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/edit.js"></script>
- <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/add.js"></script>
- <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/delete.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Handler/document-form.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/add.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/edit.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/delete.js"></script>
+ <script src="<?= SERVER_NAME ?>assets/js/Handler/company/add.js"></script>
 
  <!-- Auth Function -->
  <script src="<?= SERVER_NAME ?>assets/js/Auth/login.js"></script>
