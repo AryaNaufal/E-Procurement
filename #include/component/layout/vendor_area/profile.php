@@ -136,48 +136,63 @@
           <div class="row">
             <div class="col-lg-4 mb-3">
               Akta Perubahan
+              <?= $documents['status'] != 'error' && $documents['data'][0]['akta_perubahan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               SK Menkumham
+              <?= $documents['status'] != 'error' && $documents['data'][0]['sk_menkumham'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               KTP Pengurus Perusahaan
+              <?= $documents['status'] != 'error' && $documents['data'][0]['ktp_pengurus_perusahaan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Surat Keterangan Domisili Perusahaan
+              <?= $documents['status'] != 'error' && $documents['data'][0]['surat_keterangan_domisili_perusahaan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               SIUP
+              <?= $documents['status'] != 'error' && $documents['data'][0]['siup'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               TDP
+              <?= $documents['status'] != 'error' && $documents['data'][0]['tdp'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               NPWP
+              <?= $documents['status'] != 'error' && $documents['data'][0]['npwp'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               PKP
+              <?= $documents['status'] != 'error' && $documents['data'][0]['pkp'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               SPT PPH/PPN
+              <?= $documents['status'] != 'error' && $documents['data'][0]['spt'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Laporan Keuangan
+              <?= $documents['status'] != 'error' && $documents['data'][0]['laporan_keuangan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Sertifikasi
+              <?= $documents['status'] != 'error' && $documents['data'][0]['sertifikasi'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Akta Pendirian
+              <?= $documents['status'] != 'error' && $documents['data'][0]['akta_pendirian'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Rekening Koran Bank
+              <?= $documents['status'] != 'error' && $documents['data'][0]['rekening_koran'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Daftar Pengalaman Kerja
+              <?= $documents['status'] != 'error' && $documents['data'][0]['list_daftar_pengalaman_kerja'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
             <div class="col-lg-4 mb-3">
               Daftar Tenaga Ahli
+              <?= $documents['status'] != 'error' && $documents['data'][0]['list_tenaga_ahli'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
             </div>
           </div>
         </div>

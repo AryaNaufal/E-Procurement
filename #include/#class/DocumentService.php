@@ -13,12 +13,26 @@ class DocumentService
     $this->db = new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
   }
 
+  public function getDocuments()
+  {
+    $sql = "SELECT * FROM document";
+    try {
+      $document = $this->db->squery($sql, []);
+      return $this->createSuccessResponse('Data katalog berhasil diambil', $document);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
   public function getDocument($id)
   {
     $sql = "SELECT * FROM document WHERE id = :id";
     try {
-      $katalog = $this->db->squery($sql, ['id' => $id]);
-      return $this->createSuccessResponse('Data katalog berhasil diambil', $katalog);
+      $document = $this->db->squery($sql, ['id' => $id]);
+      if (empty($document)) {
+        return $this->createErrorResponse('Dokumen tidak ditemukan');
+      }
+      return $this->createSuccessResponse('Dokumen  berhasil diambil', $document);
     } catch (Exception $e) {
       return $this->createErrorResponse('Terjadi kesalahan pada server');
     }

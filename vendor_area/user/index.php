@@ -2,6 +2,7 @@
 session_start();
 
 use App\CompanyService;
+use App\DocumentService;
 use App\KatalogService;
 use App\RegionService;
 use App\TenderService;
@@ -18,11 +19,13 @@ $regionService = new RegionService();
 $companyService = new CompanyService();
 $katalogService = new KatalogService();
 $tenderService = new TenderService();
+$documentService = new DocumentService();
 
 $provinces = $regionService->getProvinces();
 $companies = $companyService->getCompanyData($_SESSION['id'] ?? '');
 $katalogs = $katalogService->getKatalog();
 $tenders = $tenderService->getTenders();
+$documents = $documentService->getDocument($_SESSION['id'] ?? '');
 
 $selectedProvince = $_GET['province'] ?? '';
 $selectedRegency = $_GET['regency'] ?? '';

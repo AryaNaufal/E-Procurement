@@ -53,9 +53,7 @@
  <script src="<?= SERVER_NAME ?>assets/js/main.js"></script>
 
  <!-- Sweetalert2 -->
- <!-- <link href="assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet"> -->
- <!-- <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script> -->
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.16.0/dist/sweetalert2.all.min.js" integrity="sha256-JxrPeaXEC22LUNm25PF02qeQ756a2XN/mxPJlfk9Lb8=" crossorigin="anonymous"></script>
 
  <!-- Recaptcha -->
  <script src="https://www.google.com/recaptcha/api.js" async defer></script>

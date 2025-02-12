@@ -19,17 +19,31 @@ $(document).ready(function () {
               icon: 'success',
               title: 'Berhasil',
               text: data_trim.message
-            });
+            })
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -53,15 +67,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -85,15 +113,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -117,15 +159,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -149,15 +205,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -181,15 +251,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -213,15 +297,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -245,15 +343,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -277,15 +389,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -309,15 +435,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -341,15 +481,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -373,15 +527,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -405,15 +573,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -437,15 +619,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 
@@ -469,15 +665,29 @@ $(document).ready(function () {
               text: data_trim.message
             });
           } else {
-            alert(data_trim.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: data_trim.message
+            });
           }
         },
         cache: false,
         contentType: false,
         processData: false
       });
+    } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Gagal',
+        text: 'Ukuran File maksimal 2 MB'
+      });
     } else {
-      alert('File size exceeds 2 MB limit.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Peringatan',
+        text: 'File belum dipilih'
+      });
     }
   });
 });
