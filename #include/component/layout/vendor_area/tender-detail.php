@@ -131,20 +131,30 @@
           </thead>
           <tbody>
             <tr>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
-              <td>tes</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
+              <td>-</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <?php if (isset($followedTender['status']) && $checkFollowedTender === false): ?>
+        <div class="w-100 d-flex justify-content-center">
+          <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;" data-id="<?= $tenders['data'][0]['id'] ?>">Submit</button>
+        </div>
+      <?php else: ?>
+        <div class="w-100 d-flex flex-column align-items-center justify-content-center mt-5">
+          <img src="<?= SERVER_NAME ?>assets/images/success.svg" alt="" style="width: 40%;">
+          <h3>Anda sudah terdaftar pada pengadaan ini.</h3>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

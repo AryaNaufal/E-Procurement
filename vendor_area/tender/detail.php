@@ -9,7 +9,18 @@ require_once __DIR__ . '/../../#include/#class/autoload.php';
 $tenderService = new TenderService();
 
 $tenders = $tenderService->getTenderById($_GET['id']);
+$followedTender = $tenderService->getTenderFollowedByUser($_SESSION['id'] ?? '');
 
+$checkFollowedTender = false;
+
+if (isset($followedTender['status']) && $followedTender['status'] === 'success' && !empty($followedTender['data'])) {
+  foreach ($followedTender['data'] as $item) {
+    if ($item['id'] === $tenders['data'][0]['id']) {
+      $checkFollowedTender = true;
+      break;
+    }
+  }
+}
 
 if (empty($tenders['data'])) {
   header("Location: " . SERVER_NAME . "");

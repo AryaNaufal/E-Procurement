@@ -71,6 +71,41 @@ class TenderService
     }
   }
 
+  public function submitTender(string $user_id, string $tender_id): array
+  {
+    $query = "INSERT INTO participant (user_id, tender_id, registration_date) VALUES (:user_id, :tender_id, :registration_date)";
+
+    try {
+      $checkSubmit = $this->db->squery("SELECT * FROM participant WHERE user_id = :user_id AND tender_id = :tender_id", ['user_id' => $user_id, 'tender_id' => $tender_id]);
+
+      if (!empty($checkSubmit)) {
+        return $this->createErrorResponse('Anda sudah terdaftar pada pengadaan ini');
+      }
+
+      $this->db->squery($query, ['user_id' => $user_id, 'tender_id' => $tender_id, 'registration_date' => date('Y-m-d H:i:s')]);
+      return $this->createSuccessResponse('Pendaftaran berhasil');
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
+  public function getTenderFollowedByUser(int $userId): array
+  {
+    $query = "SELECT t.id, t.description, t.category FROM tender t JOIN participant p ON t.id = p.tender_id WHERE p.user_id = :user_id";
+
+    try {
+      $result = $this->db->squery($query, ['user_id' => $userId]);
+
+      if (empty($result)) {
+        return $this->createErrorResponse('Tender tidak ditemukan untuk user tersebut');
+      }
+
+      return $this->createSuccessResponse('', $result);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
   private function createSuccessResponse(string $message, array $data = []): array
   {
     return [

@@ -26,6 +26,7 @@ $companies = $companyService->getCompanyData($_SESSION['id'] ?? '');
 $katalogs = $katalogService->getKatalog();
 $tenders = $tenderService->getTenders();
 $documents = $documentService->getDocument($_SESSION['id'] ?? '');
+$followedTender = $tenderService->getTenderFollowedByUser($_SESSION['id'] ?? '');
 
 $selectedProvince = $_GET['province'] ?? '';
 $selectedRegency = $_GET['regency'] ?? '';

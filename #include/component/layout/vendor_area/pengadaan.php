@@ -13,17 +13,19 @@
             <center>Aksi</center>
           </th>
         </tr>
-        <?php foreach ($tenders['data'] as $data): ?>
-          <tr>
-            <td><?= $data['description'] ?></td>
-            <td><?= $data['category'] ?></td>
-            <td class="text-center">
-              <a href="<?= SERVER_NAME ?>vendor_area/tender/workflow.php?id=<?= $data['id'] ?>" class="text-success">
-                <i class="fa fa-file" aria-hidden="true"></i>
-              </a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
+        <?php if (isset($followedTender['status']) && $followedTender['status'] === 'success' && !empty($followedTender['data'])): ?>
+          <?php foreach ($followedTender['data'] as $data): ?>
+            <tr>
+              <td><?= $data['description'] ?></td>
+              <td><?= $data['category'] ?></td>
+              <td class="text-center">
+                <a href="<?= SERVER_NAME ?>vendor_area/tender/workflow.php?id=<?= $data['id'] ?>" class="text-success">
+                  <i class="fa fa-file" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </tbody>
     </table>
   </div>
