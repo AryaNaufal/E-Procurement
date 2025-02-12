@@ -4,7 +4,7 @@ $(document).ready(function () {
     var formData = new FormData(this);
     $.ajax({
       type: 'POST',
-      url: `${Host}/handler/company/add`,
+      url: `http://localhost/eproc/handler/company/add`,
       data: formData,
       cache: false,
       contentType: false,

@@ -1,5 +1,3 @@
-const Host = window.location.host + '/eproc';
-
 $(document).ready(function () {
   let userId = $('#user_id').val();
 
@@ -11,7 +9,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=akta_perubahan`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=akta_perubahan`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -43,7 +41,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=sk_menkumham`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=sk_menkumham`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -75,7 +73,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=ktp_pengurus_perusahaan`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=ktp_pengurus_perusahaan`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -107,7 +105,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=surat_keterangan_domisili_perusahaan`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=surat_keterangan_domisili_perusahaan`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -139,7 +137,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=siup`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=siup`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -171,7 +169,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=tdp`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=tdp`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -203,7 +201,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=npwp`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=npwp`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -235,7 +233,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=pkp`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=pkp`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -267,7 +265,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=spt`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=spt`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -299,7 +297,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=laporan_keuangan`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=laporan_keuangan`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -331,7 +329,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=rekening_koran`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=rekening_koran`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -363,7 +361,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=sertifikasi`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=sertifikasi`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -395,7 +393,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=list_daftar_pengalaman_kerja`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=list_daftar_pengalaman_kerja`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -427,7 +425,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=list_tenaga_ahli`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=list_tenaga_ahli`,
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -459,7 +457,7 @@ $(document).ready(function () {
       formData.append('file', fileInput);
 
       $.ajax({
-        url: `${Host}/handler/upload_file?id=${userId}&type=akta_pendirian`,
+        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=akta_pendirian`,
         type: 'POST',
         data: formData,
         success: function (data) {
