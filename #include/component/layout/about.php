@@ -1,24 +1,3 @@
-<!-- Mobile Menu Area start -->
-<div class="mobile-menu-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="mobile-menu">
-          <nav id="dropdown" style="display: block;">
-            <ul>
-              <li><a href=".">Home</a></li>
-              <li><a href="#">Tentang</a></li>
-              <li><a href="#">Tender</a></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">portal</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!--Breadcrumb Banner Area Start-->
 <div class="breadcrumb-banner-area pt-30 pb-10 bg-3">
   <div class="container">

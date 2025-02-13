@@ -1476,6 +1476,16 @@ input[type="checkbox"]:focus {
   color: red;
 }
 
+.select-category {
+  border-radius: 10px 0px 0px 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .select-category {
+    border-radius: 0px;
+  }
+}
+
 @media screen and (max-width: 984px) {
   .single-job-post {
     margin-bottom: 0px;
@@ -1484,4 +1494,5 @@ input[type="checkbox"]:focus {
   .post-tab a {
     font-size: 12px;
   }
+
 }

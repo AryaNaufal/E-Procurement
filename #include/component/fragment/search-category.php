@@ -3,7 +3,7 @@ $category = $_GET['category'] ?? '';
 ?>
 <div class="box-select">
   <div>
-    <select name="category" style="border-radius: 10px 0px 0px 10px;">
+    <select name="category" class="select-category">
       <option <?= $category == 'semua_kategori' ? 'selected' : '' ?> value="semua_kategori">Semua Kategori</option>
       <option <?= $category == 'jasa_lain' ? 'selected' : '' ?> value="jasa_lain">Jasa Lainnya</option>
       <option <?= $category == 'pegadaan_barang' ? 'selected' : '' ?> value="pegadaan_barang">Pengadaan Barang &amp; Jasa</option>

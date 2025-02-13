@@ -1,39 +1,38 @@
-<?php
-// echo $_SESSION['email'];
-?>
-<div class="container-fluid overflow-hidden w-100">
-  <div class="row">
-    <div class="col-sm-6 col-lg-6 py-3">
-      <div class="logo">
-        <a href="<?= SERVER_NAME ?>index">
-          <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere">
-        </a>
-      </div>
-    </div>
-    <div class="col-sm-6 col-lg-6">
-      <div class="pull-right header-menu">
-        <nav id="primary-menu">
-          <ul class="main-menu text-right">
-            <li><a href="<?= SERVER_NAME ?>index.php" style="cursor:pointer;">Home</a></li>
-            <li><a href="<?= SERVER_NAME ?>tentang.php" style="cursor:pointer;">Tentang</a></li>
-            <li><a href="<?= SERVER_NAME ?>tender.php" style="cursor:pointer;">Tender</a></li>
-            <li><a href="<?= SERVER_NAME ?>news.php" style="cursor:pointer;">News</a></li>
-            <li><a href="<?= SERVER_NAME ?>portal.php" style="cursor:pointer;">Portal</a></li>
-          </ul>
-        </nav>
-        <div class="login-btn">
-          <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
-            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user">My Info</a>
-          <?php } else { ?>
-            <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#RegisterModal">Daftar</a>
-          <?php } ?>
-          <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
-            <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout">Logout</a>
-          <?php } else { ?>
-            <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
-          <?php } ?>
-        </div>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+
+  <div class="logo">
+    <a href="<?= SERVER_NAME ?>index">
+      <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere">
+    </a>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+    <ul class="main-menu">
+      <li><a href="<?= SERVER_NAME ?>index" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/' || strrchr($_SERVER['REQUEST_URI'], '/') == '/index' ? 'class="active"' : '' ?>>Home</a></li>
+      <li><a href="<?= SERVER_NAME ?>tentang" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/tentang' ? 'class="active"' : '' ?>>Tentang</a></li>
+      <li><a href="<?= SERVER_NAME ?>tender" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/tender' ? 'class="active"' : '' ?>>Tender</a></li>
+      <li><a href="<?= SERVER_NAME ?>news" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/news' ? 'class="active"' : '' ?>>News</a></li>
+      <li><a href="<?= SERVER_NAME ?>portal" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/portal' ? 'class="active"' : '' ?>>Portal</a></li>
+    </ul>
+
+
+    <div class="login-btn">
+      <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
+        <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user">My Info</a>
+      <?php } else { ?>
+        <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#RegisterModal">Daftar</a>
+      <?php } ?>
+      <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
+        <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout">Logout</a>
+      <?php } else { ?>
+        <a class="modal-view button" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
+      <?php } ?>
     </div>
   </div>
-</div>
+
+</nav>

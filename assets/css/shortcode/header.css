@@ -86,28 +86,19 @@ nav#primary-menu {
   font-family: "montserratregular";
   font-size: 14px;
   line-height: 24px;
-  padding: 38px 15px;
+  padding: 10px;
   position: relative;
   text-transform: capitalize;
+  cursor: pointer;
+}
+
+.main-menu>li>a.active {
+  color: #AA0A2F
 }
 
 .main-menu>li:hover>a {
   /*color:#EF8E2A;*/
   color: #AA0A2F;
-}
-
-.main-menu>li>a::after {
-  /*background: #EF8E2A none repeat scroll 0 0;*/
-  background: #AA0A2F none repeat scroll 0 0;
-  bottom: 0;
-  content: "";
-  height: 0px;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  z-index: 3;
 }
 
 .main-menu>li:hover>a::after {
@@ -127,7 +118,7 @@ nav#primary-menu {
 .login-btn {
   display: inline-block;
   padding-left: 17px;
-  padding-top: 31px;
+  /* padding-top: 31px; */
   transition: all 0.3s ease 0s;
 }
 
@@ -293,6 +284,12 @@ ul.dropdown>li:hover>ul.inside-menu {
   transition: all 0.3s ease 0s;
 }
 
+@media screen and (max-width: 767px) {
+  .logo img {
+    height: 35px;
+  }
+}
+
 .sticky .logo img {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
@@ -300,7 +297,7 @@ ul.dropdown>li:hover>ul.inside-menu {
 }
 
 .sticky .logo {
-  /*padding: 17px 0;*/
+  /* padding: 17px 0; */
 }
 
 .sticky .login-btn {
@@ -409,4 +406,22 @@ ul.dropdown>li:hover>ul.inside-menu {
 .mean-container .mean-nav ul li a:hover,
 .mean-container .mean-nav ul li:hover>a {
   color: #dc3545;
+}
+
+
+@media screen and (max-width: 768px) {
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-menu>li>a {
+    padding: 10px;
+  }
+
+  .login-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
