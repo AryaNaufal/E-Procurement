@@ -7,30 +7,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) { // Cek ukuran file
       var formData = new FormData($('#form_upload_file_1')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=akta_perubahan`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            })
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=akta_perubahan`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                })
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -53,30 +65,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_2')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=sk_menkumham`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=sk_menkumham`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -99,30 +123,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_3')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=ktp_pengurus_perusahaan`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=ktp_pengurus_perusahaan`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -145,30 +181,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_4')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=surat_keterangan_domisili_perusahaan`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=surat_keterangan_domisili_perusahaan`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -191,30 +239,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_5')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=siup`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=siup`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -237,30 +297,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_6')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=tdp`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=tdp`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -283,30 +355,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_7')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=npwp`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=npwp`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -329,30 +413,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_7')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=pkp`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=pkp`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -375,30 +471,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_9')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=spt`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=spt`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -421,30 +529,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_10')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=laporan_keuangan`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=laporan_keuangan`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -467,30 +587,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_11')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=rekening_koran`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=rekening_koran`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -513,30 +645,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_12')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=sertifikasi`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=sertifikasi`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -559,30 +703,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_13')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=list_daftar_pengalaman_kerja`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=list_daftar_pengalaman_kerja`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -605,30 +761,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_14')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=list_tenaga_ahli`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=list_tenaga_ahli`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
@@ -651,30 +819,42 @@ $(document).ready(function () {
     if (fileInput && fileInput.size <= 2 * 1024 * 1024) {
       var formData = new FormData($('#form_upload_file_15')[0]);
       formData.append('file', fileInput);
-
-      $.ajax({
-        url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=akta_pendirian`,
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-          var data_trim = JSON.parse($.trim(data));
-          if (data_trim.status == 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: data_trim.message
-            });
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: 'Gagal',
-              text: data_trim.message
-            });
-          }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+      Swal.fire({
+        title: 'Upload Document',
+        text: "Apakah file yang anda upload sudah benar?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#007bff',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ok',
+        cancelButtonText: 'Batal'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            url: `http://localhost/eproc/handler/upload_file?id=${userId}&type=akta_pendirian`,
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+              var data_trim = JSON.parse($.trim(data));
+              if (data_trim.status == 'success') {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil',
+                  text: data_trim.message
+                });
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Gagal',
+                  text: data_trim.message
+                });
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        }
       });
     } else if (fileInput && fileInput.size > 2 * 1024 * 1024) {
       Swal.fire({
