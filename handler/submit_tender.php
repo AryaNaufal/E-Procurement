@@ -9,7 +9,17 @@ use App\TenderService;
 
 $tenderService = new TenderService();
 
-$result = $tenderService->submitTender($_SESSION['id'], $_GET['id']);
+$result = $tenderService->submitTender(isset($_SESSION['id']), $_GET['id']);
+
+if (empty($_SESSION['id'])) {
+  $response = [
+    'status' => 'error',
+    'message' => 'Anda belum login'
+  ];
+
+  echo json_encode($response);
+  exit;
+}
 
 if ($result['status'] === 'success') {
   $response = [

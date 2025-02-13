@@ -89,7 +89,7 @@ class TenderService
     }
   }
 
-  public function getTenderFollowedByUser(int $userId): array
+  public function getTenderFollowedByUser(string $userId): array
   {
     $query = "SELECT t.id, t.description, t.category FROM tender t JOIN participant p ON t.id = p.tender_id WHERE p.user_id = :user_id";
 
