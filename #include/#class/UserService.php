@@ -28,7 +28,7 @@ class UserService
 
       return $this->createSuccessResponse('Users retrieved successfully', $users);
     } catch (Exception $e) {
-      return $this->createErrorResponse('Server error occurred');
+      return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
     }
   }
 
@@ -44,12 +44,12 @@ class UserService
 
       // Memeriksa user
       if (empty($user)) {
-        return $this->createErrorResponse('User not found');
+        return $this->createErrorResponse('User Tidak Ditemukan');
       }
 
       return $this->createSuccessResponse('', $user);
     } catch (Exception $e) {
-      return $this->createErrorResponse('Server error occurred');
+      return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
     }
   }
 
@@ -64,15 +64,15 @@ class UserService
 
       // Memeriksa user
       if (!$user) {
-        return $this->createErrorResponse('User not found');
+        return $this->createErrorResponse('User Tidak Ditemukan');
       }
 
       // Verifikasi password
       if (!password_verify($data['password'], $user['password'])) {
-        return $this->createErrorResponse('Invalid password');
+        return $this->createErrorResponse('Password Tidak Sesuai');
       }
 
-      return $this->createSuccessResponse('Login successful', [
+      return $this->createSuccessResponse('Anda Telah Berhasil Masuk', [
         // Set session data after successful login
         $_SESSION['id'] = $user['id'],
         $_SESSION['username'] = $user['username'],
@@ -80,14 +80,14 @@ class UserService
         $_SESSION['is_verify'] = $user['is_verify']
       ]);
     } catch (Exception $e) {
-      return $this->createErrorResponse('Server error occurred');
+      return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
     }
   }
 
   public function registerUser(array $data)
   {
     if (empty($data['email']) || empty($data['password'])) {
-      return $this->createErrorResponse('Email and password are required');
+      return $this->createErrorResponse('Email dan Password Wajib Diisi');
     }
 
     // Periksa jika email sudah terdaftar
@@ -126,13 +126,13 @@ class UserService
   public function sendResetPassword(array $data)
   {
     if (empty($data['email'])) {
-      return $this->createErrorResponse('Email is required');
+      return $this->createErrorResponse('Email Wajib Diisi');
     }
 
     $checkEmail = $this->getUser($data['email']);
 
     if ($checkEmail['status'] !== 'success') {
-      return $this->createErrorResponse('Email not found');
+      return $this->createErrorResponse('Email tidak terdaftar');
     }
 
     // Proses reset password: data belum disimpan, hanya di-simpan sementara
@@ -150,7 +150,7 @@ class UserService
   public function resetPassword(array $data)
   {
     if (empty($data['password'])) {
-      return $this->createErrorResponse('Password is required');
+      return $this->createErrorResponse('Password Wajib Diisi');
     }
 
     if (strlen($data['password']) < 8) {
@@ -170,7 +170,7 @@ class UserService
 
       return $this->createSuccessResponse('Password berhasil direset');
     } catch (Exception $e) {
-      return $this->createErrorResponse('Server error occurred');
+      return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
     }
   }
 

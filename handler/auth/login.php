@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   http_response_code(405);
   $response = [
     "status" => "error",
-    "message" => "Semua data wajib diisi."
+    "message" => "Metode request tidak diizinkan."
   ];
 
   echo json_encode($response);

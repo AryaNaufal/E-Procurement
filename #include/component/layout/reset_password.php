@@ -29,3 +29,52 @@
     </form>
   </div>
 </div>
+
+<script>
+  document.getElementById('form_reset_password').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah form submission tradisional
+
+    // Tampilkan loading
+    document.getElementById('loader').style.display = 'block';
+
+    // Ambil data dari form
+    const formData = new FormData(this);
+
+    // Kirim data ke server menggunakan fetch
+    fetch('<?= SERVER_NAME ?>handler/auth/reset_password', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include'
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('loader').style.display = 'none';
+        if (data.status === 'success') {
+          Swal.fire({
+            title: 'Berhasil',
+            text: data.message,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(() => {
+            window.location.href = '<?= SERVER_NAME ?>';
+          });
+        } else {
+          Swal.fire({
+            title: 'Gagal',
+            text: data.message,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+      })
+      .catch(error => {
+        document.getElementById('loader').style.display = 'none';
+        Swal.fire({
+          title: 'Gagal',
+          text: 'Terjadi kesalahan saat menghubungi server.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      });
+  });
+</script>
