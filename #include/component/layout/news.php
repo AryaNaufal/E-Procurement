@@ -1,4 +1,3 @@
-<title>coba news</title>
 <!--Breadcrumb Banner Area Start-->
 <div class="breadcrumb-banner-area pt-30 pb-10 bg-3">
   <div class="container">
@@ -12,6 +11,7 @@
   </div>
 </div>
 <!--End of Breadcrumb Banner Area-->
+
 <!--Start of Blog Area-->
 <div class="blog-area pt-130 pb-120 ptb-sm-60">
   <div class="container">
@@ -19,45 +19,51 @@
       <div class="col-lg-9">
         <div class="blog-posts">
           <div class="row">
-            <?php include('server/get_news.php'); ?>
             <!-- Single Item Start -->
-            <?php while ($row = $news->fetch_assoc()) { ?>
-
+            <?php foreach ($news as $n): ?>
               <div class="col-lg-6 col-md-6">
-                <div class="single-blog hover-effect">
+                <div class="single-blog shadow-lg rounded">
                   <div class="blog-image box-hover">
-                    <a href="news/pemilihan-katalog-lokal-elektronik-pekerjaan-utilitas-jalan" class="block">
-                      <img src="assets/management/images/news/nws_200826030011_272283.jpg" alt="">
+                    <a href="news/<?= strtolower(str_replace(' ', '-', $n['judul'])) ?>" class="block">
+                      <img src="assets/management/images/news/<?= $n['gambar'] ?>" alt="" class="rounded-top">
                     </a>
                   </div>
-                  <div class="blog-text">
-                    <h4><a href="#"><?php echo $row['title'] ?></a></h4>
+                  <div class="blog-text px-3 pb-2">
+                    <h4><a href="news/<?= strtolower(str_replace(' ', '-', $n['judul'])) ?>"><?= $n['judul'] ?></a></h4>
                     <div class="blog-post-info">
-                      <span><?php echo $row['updated_at'] ?></span>
+                      <span><i class="zmdi zmdi-calendar-check mr-10"></i><?= date('d-m-Y', strtotime($n['created_at'])) ?></span>
                     </div>
-                    <p><?php echo $row['isi'] ?></p>
+                    <p class="" style="
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;"><?= $n['isi'] ?></p>
                   </div>
                 </div>
               </div>
-
-            <?php } ?>
-
-
-
-
+            <?php endforeach; ?>
             <!-- Single Item End -->
           </div>
         </div>
-        <!-- <div class="pagination-content text-center block">
-                                    <ul class="pagination fix">
-                                        <li><a href="#"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li class="current"><a href="#"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
-                                    </ul>
-                                </div> -->
+
+        <!-- Pagination -->
+        <div class="pagination-content text-center block">
+          <ul class="pagination fix">
+            <?php if ($currentPage > 1): ?>
+              <li><a href="?page=<?= $currentPage - 1 ?>"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
+            <?php endif; ?>
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+              <li class="<?= $i === $currentPage ? 'current' : '' ?>"><a href="?page=<?= $i ?>"><?= $i ?></a></li>
+            <?php endfor; ?>
+            <?php if ($currentPage < $totalPages): ?>
+              <li><a href="?page=<?= $currentPage + 1 ?>"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+            <?php endif; ?>
+          </ul>
+        </div>
       </div>
+
+      <!-- Sidebar with recent posts (optional) -->
       <div class="col-lg-3 sidebar-right">
         <div class="single-sidebar-widget mb-48">
           <div class="sidebar-widget-title">
@@ -69,6 +75,7 @@
             </form>
           </div>
         </div>
+
         <div class="single-sidebar-widget mb-48">
           <div class="sidebar-widget-title">
             <h4><span>Info Terbaru</span></h4>

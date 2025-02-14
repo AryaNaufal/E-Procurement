@@ -301,7 +301,7 @@ a.button.large-button {
 }
 
 .blog-text>h4:hover a {
-  color: #EF8E2A;
+  color: #AA0A2F;
 }
 
 .box-hover a {
@@ -947,7 +947,7 @@ textarea.textarea.small {
 }
 
 .sidebar-widget-title h4 span {
-  border-bottom: 2px solid #EF8E2A;
+  border-bottom: 2px solid #AA0A2F;
   padding-bottom: 9px;
 }
 
@@ -966,7 +966,7 @@ textarea.textarea.small {
 }
 
 .search-container button {
-  background: #EF8E2A none repeat scroll 0 0;
+  background: #AA0A2F none repeat scroll 0 0;
   height: 40px;
   line-height: 40px;
   padding: 0 15px;
@@ -993,7 +993,7 @@ textarea.textarea.small {
 }
 
 .recent-post-item h5 a:hover {
-  color: #EF8E2A;
+  color: #AA0A2F;
 }
 
 .blog-post-info>span.l-text {
@@ -1026,7 +1026,7 @@ textarea.textarea.small {
 }
 
 .tags>li a:hover {
-  color: #EF8E2A;
+  color: #AA0A2F;
 }
 
 .tags {
@@ -1051,7 +1051,7 @@ textarea.textarea.small {
 
 .tags-and-links .social-links a:hover {
   background: transparent;
-  color: #EF8E2A;
+  color: #AA0A2F;
 }
 
 .comments {
@@ -1133,7 +1133,7 @@ span.comment-time {
 }
 
 .reply>a {
-  color: #EF8E2A;
+  color: #AA0A2F;
 }
 
 /*----------------------------------------*/
