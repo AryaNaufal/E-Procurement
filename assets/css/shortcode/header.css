@@ -84,12 +84,13 @@ nav#primary-menu {
   color: #383838;
   display: block;
   font-family: "montserratregular";
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 12px;
   padding: 10px;
   position: relative;
-  text-transform: capitalize;
+  text-transform: uppercase;
   cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .main-menu>li>a.active {
@@ -106,8 +107,8 @@ nav#primary-menu {
 }
 
 .login-btn a {
-  background: #ddd none repeat scroll 0 0;
-  color: #333;
+  background: #AA0A2F none repeat scroll 0 0;
+  color: #fff;
   font-size: 12px;
   height: 36px;
   letter-spacing: 1px;
@@ -117,8 +118,6 @@ nav#primary-menu {
 
 .login-btn {
   display: inline-block;
-  padding-left: 17px;
-  /* padding-top: 31px; */
   transition: all 0.3s ease 0s;
 }
 
@@ -286,7 +285,7 @@ ul.dropdown>li:hover>ul.inside-menu {
 
 @media screen and (max-width: 767px) {
   .logo img {
-    height: 35px;
+    height: 45px;
   }
 }
 

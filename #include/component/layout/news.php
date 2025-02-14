@@ -1,106 +1,87 @@
-<!--Breadcrumb Banner Area Start-->
-<div class="breadcrumb-banner-area pt-30 pb-10 bg-3">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="breadcrumb-text">
-          <h2 class="text-center">Info</h2>
-        </div>
-      </div>
+<!-- Start Blog -->
+<section class="blog-area" style="min-height: calc(100vh - 150px);">
+  <div class="container pt-3 pb-5">
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: transparent; font-weight: 600;">
+          <li class=""><a href="<?= SERVER_NAME ?>" style="color: #383838;">Home</a></li>
+          <span class="mx-2"> > </span>
+          <li aria-current="page" class="fw-bold" style="color: #AA0A2F;"><?= $current_menu ?></li>
+        </ol>
+      </nav>
     </div>
-  </div>
-</div>
-<!--End of Breadcrumb Banner Area-->
-
-<!--Start of Blog Area-->
-<div class="blog-area pt-130 pb-120 ptb-sm-60">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <div class="blog-posts">
+    <div class="blog-items content-less">
+      <div class="blog-content">
+        <div class="blog-item-box">
           <div class="row">
-            <!-- Single Item Start -->
-            <?php foreach ($news as $n): ?>
-              <div class="col-lg-6 col-md-6">
-                <div class="single-blog shadow-lg rounded">
-                  <div class="blog-image box-hover">
-                    <a href="news/<?= strtolower(str_replace(' ', '-', $n['judul'])) ?>" class="block">
-                      <img src="assets/management/images/news/<?= $n['gambar'] ?>" alt="" class="rounded-top">
-                    </a>
-                  </div>
-                  <div class="blog-text px-3 pb-2">
-                    <h4><a href="news/<?= strtolower(str_replace(' ', '-', $n['judul'])) ?>"><?= $n['judul'] ?></a></h4>
-                    <div class="blog-post-info">
-                      <span><i class="zmdi zmdi-calendar-check mr-10"></i><?= date('d-m-Y', strtotime($n['created_at'])) ?></span>
+            <?php if ($news !== null && !empty($news)): ?>
+              <?php
+              $counter = 0;
+              foreach ($news as $item):
+                if ($counter >= 6) {
+                  break;
+                }
+                $counter++;
+              ?>
+                <!-- Single Item -->
+                <div class="col-lg-4 col-md-6 single-item">
+                  <div class="item">
+                    <div class="thumb">
+                      <a href="<?= ARTICLE_PATH . $item['judul']; ?>">
+                        <?php if (isset($item['gambar'])): ?>
+                          <img src="<?= SERVER_NAME . 'assets/management/images/news/' . htmlspecialchars($item['gambar']); ?>" alt="Thumb"
+                            style="width: 100%; height: 200px; object-fit: cover;">
+                        <?php endif; ?>
+                      </a>
+                      <div class="date"><strong><?= date('d', strtotime($item['created_at'])) ?></strong> <span><?= date('M', strtotime($item['created_at'])) ?></span></div>
                     </div>
-                    <p class="" style="
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                    text-overflow: ellipsis;"><?= $n['isi'] ?></p>
+                    <div class="info">
+                      <h4
+                        style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                        <a href="<?= ARTICLE_PATH . $item['judul']; ?>" aria-label="<?= htmlspecialchars($item['judul']); ?>">
+                          <?= htmlspecialchars($item['judul']); ?>
+                        </a>
+                      </h4>
+                      <p
+                        style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                        <?= htmlspecialchars($item['isi'] ?? 'No description available.'); ?>
+                      </p>
+                      <a class="btn circle btn-theme-border btn-sm" href="<?= ARTICLE_PATH . $item['judul']; ?>">
+                        Lihat Selengkapnya
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <?php endforeach; ?>
-            <!-- Single Item End -->
-          </div>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination-content text-center block">
-          <ul class="pagination fix">
-            <?php if ($currentPage > 1): ?>
-              <li><a href="?page=<?= $currentPage - 1 ?>"><i class="zmdi zmdi-long-arrow-left"></i></a></li>
+                <!-- End Single Item -->
+              <?php endforeach; ?>
+            <?php else: ?>
+              <p>No articles available or there was an error fetching the news.</p>
             <?php endif; ?>
-            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-              <li class="<?= $i === $currentPage ? 'current' : '' ?>"><a href="?page=<?= $i ?>"><?= $i ?></a></li>
-            <?php endfor; ?>
-            <?php if ($currentPage < $totalPages): ?>
-              <li><a href="?page=<?= $currentPage + 1 ?>"><i class="zmdi zmdi-long-arrow-right"></i></a></li>
-            <?php endif; ?>
-          </ul>
-        </div>
-      </div>
+          </div>
 
-      <!-- Sidebar with recent posts (optional) -->
-      <div class="col-lg-3 sidebar-right">
-        <div class="single-sidebar-widget mb-48">
-          <div class="sidebar-widget-title">
-          </div>
-          <div class="search-container">
-            <form action="news/search_news" method="post">
-              <input type="text" placeholder="Cari Info" name="src_news" />
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </div>
+          <!-- Pagination -->
+          <div class="row">
+            <div class="col-md-12 pagi-area text-center">
+              <nav aria-label="navigation">
+                <ul class="pagination">
+                  <?php if ($page > 1): ?>
+                    <li class="page-item"><a class="page-link" href="<?= '?page=' . ($page - 1); ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i></i></a></li>
+                  <?php endif; ?>
 
-        <div class="single-sidebar-widget mb-48">
-          <div class="sidebar-widget-title">
-            <h4><span>Info Terbaru</span></h4>
-          </div>
-          <div class="recent-posts">
-            <div class="recent-post-item ptb-20">
-              <h5 class="mb-6"><a href="news/pemilihan-katalog-lokal-elektronik-pekerjaan-utilitas-jalan">Pemilihan Katalog Lokal Elektronik Pekerjaan Utilitas Jalan</a></h5>
-              <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i> 26/08/2020 14:08:38</span>
-            </div>
-            <div class="recent-post-item ptb-20">
-              <h5 class="mb-6"><a href="news/penjelasan-katalog-elektronik-lokal-komoditas-utilitas-tahap-i">Penjelasan Katalog Elektronik Lokal Komoditas Utilitas Tahap I</a></h5>
-              <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i> 26/08/2020 14:07:47</span>
-            </div>
-            <div class="recent-post-item ptb-20">
-              <h5 class="mb-6"><a href="news/bahp-dan-penetapan-ulang-pemilihan">BAHP dan Penetapan Ulang Pemilihan</a></h5>
-              <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i> 26/08/2020 14:08:57</span>
-            </div>
-            <div class="recent-post-item ptb-20">
-              <h5 class="mb-6"><a href="news/pemberitahuan-maintenance">Pemberitahuan Maintenance</a></h5>
-              <span class="block"><i class="zmdi zmdi-calendar-check mr-10"></i> 26/08/2020 14:08:10</span>
+                  <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item <?= ($i == $page) ? 'active' : ''; ?>"><a class="page-link" href="<?= '?page=' . $i; ?>" aria-label="<?= $i; ?>"><?= $i; ?></a></li>
+                  <?php endfor; ?>
+
+                  <?php if ($page < $totalPages): ?>
+                    <li class="page-item"><a class="page-link" href="<?= '?page=' . ($page + 1); ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                  <?php endif; ?>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!--End of Blog Area-->
+</section>
+<!-- End Blog -->

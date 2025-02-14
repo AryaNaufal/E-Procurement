@@ -9,18 +9,21 @@ use App\NewsService;
 
 $env = new LoadEnv(ROOT_PATH . '.env');
 $newsService = new NewsService();
+$news = $newsService->getNews()['data'];
 
 // Pagination
-$newsPerPage = 4;
-$totalNews = count($newsService->getNews()['data']);
-$totalPages = ceil($totalNews / $newsPerPage);
+define('ARTICLE_PATH', SERVER_NAME . 'news/');
+$newsPerPage = 3;
+$totalArticles = count($news);
+$totalPages = ceil($totalArticles / $newsPerPage);
 
-$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$currentPage = max(1, min($totalPages, $currentPage));
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = max(1, min($totalPages, $page));
 
-$offset = ($currentPage - 1) * $newsPerPage;
-$news = array_slice($newsService->getNews()['data'], $offset, $newsPerPage);
+$offset = ($page - 1) * $newsPerPage;
 
+// Fetch articles for the current page
+$news = array_slice($news, $offset, $newsPerPage);
 
 $current_menu = "news";
 $current_sub_menu = NULL;

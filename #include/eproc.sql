@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2025 at 10:19 AM
+-- Generation Time: Feb 14, 2025 at 06:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -65,6 +65,19 @@ CREATE TABLE `katalog` (
   `deskripsi` varchar(255) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `dokumen` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `participant`
+--
+
+CREATE TABLE `participant` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `tender_id` int(11) NOT NULL,
+  `registration_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91859,6 +91872,13 @@ CREATE TABLE `user` (
   `is_verify` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `pic`, `perusahaan`, `npwp`, `nik`, `is_verify`) VALUES
+(1, 'Arya', 'arya.naufal.andt@gmail.com', '$2y$10$CSDRhf4grk5i434pqWklJ.jX.s0t3/UVP6zxtaTKLoRn4NIuMRuu6', 'Arya', 'Antara', '123123', '', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -91897,6 +91917,14 @@ ALTER TABLE `document`
 --
 ALTER TABLE `katalog`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `participant`
+--
+ALTER TABLE `participant`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_participant_user` (`user_id`),
+  ADD KEY `fk_participant_tender` (`tender_id`);
 
 --
 -- Indexes for table `reg_districts`
@@ -91966,7 +91994,13 @@ ALTER TABLE `document`
 -- AUTO_INCREMENT for table `katalog`
 --
 ALTER TABLE `katalog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `participant`
+--
+ALTER TABLE `participant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tender`
@@ -91984,7 +92018,7 @@ ALTER TABLE `timeline_pengadaan`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `vendor`
@@ -92002,6 +92036,13 @@ ALTER TABLE `vendor`
 ALTER TABLE `document`
   ADD CONSTRAINT `document_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   ADD CONSTRAINT `document_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `participant`
+--
+ALTER TABLE `participant`
+  ADD CONSTRAINT `fk_participant_tender` FOREIGN KEY (`tender_id`) REFERENCES `tender` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_participant_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `reg_districts`

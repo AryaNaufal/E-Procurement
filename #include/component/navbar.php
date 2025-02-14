@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+<nav class="navbar navbar-expand-lg navbar-light py-3">
 
   <div class="logo">
     <a href="<?= SERVER_NAME ?>index">
@@ -10,7 +10,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent" style="gap: 20px;">
 
     <ul class="main-menu">
       <li><a href="<?= SERVER_NAME ?>index" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/' || strrchr($_SERVER['REQUEST_URI'], '/') == '/index' ? 'class="active"' : '' ?>>Home</a></li>
