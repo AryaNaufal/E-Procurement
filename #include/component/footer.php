@@ -69,7 +69,6 @@
  <script src="<?= SERVER_NAME ?>assets/js/Handler/katalog/delete.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Handler/company/add.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Feature/see-password.js"></script>
- <script src="<?= SERVER_NAME ?>assets/js/Handler/submit_tender.js"></script>
 
  <!-- Auth Function -->
  <script src="<?= SERVER_NAME ?>assets/js/Auth/password_validate.js"></script>

@@ -147,7 +147,7 @@
       </div>
       <?php if (isset($followedTender['status']) && $checkFollowedTender === false): ?>
         <div class="w-100 d-flex justify-content-center">
-          <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;" data-id="<?= $tenders['data'][0]['id'] ?>">Submit</button>
+          <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;">Submit</button>
         </div>
       <?php else: ?>
         <div class="w-100 d-flex flex-column align-items-center justify-content-center mt-5">
@@ -158,3 +158,60 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById('submit-tender-btn').addEventListener('click', function(event) {
+    event.preventDefault(); // Mencegah form submission tradisional
+    // const tenderId = this.getAttribute('data-id');
+    const tenderId = new URLSearchParams(window.location.search).get('id');
+    Swal.fire({
+      title: 'Submit Pengadaan',
+      text: "Apakah kamu ingin submit pengadaan ini?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#007bff',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Tampilkan loading
+        document.getElementById('loader').style.display = 'block';
+        fetch(`<?= SERVER_NAME ?>handler/submit_tender.php?id=${tenderId}`, {
+            method: 'POST',
+            credentials: 'include'
+          })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('loader').style.display = 'none';
+            if (data.status === 'success') {
+              Swal.fire({
+                title: 'Berhasil',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then(() => {
+                window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
+              });
+            } else {
+              Swal.fire({
+                title: 'Error',
+                text: data.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          })
+          .catch(error => {
+            document.getElementById('loader').style.display = 'none';
+            Swal.fire({
+              title: 'Gagal',
+              text: 'Terjadi kesalahan saat menghubungi server.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+          });
+      }
+    });
+  });
+</script>
