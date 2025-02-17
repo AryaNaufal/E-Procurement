@@ -9,3 +9,5 @@ RewriteRule ^([^\.]+)$ $1.php [L]
 
 RewriteRule ^menu-pricing/([^/]+) menu-pricing.php?id-detail=$1 [NC]
 RewriteRule ^menu-pricing menu-pricing.php [NC]
+
+ErrorDocument 404 /eproc/404.php
