@@ -1295,7 +1295,7 @@ input[type="checkbox"]:focus {
 }
 
 .modal {
-  background: rgba(0, 0, 0, 0) url("images/bg/login.jpg") no-repeat scroll center center / cover;
+  background: rgba(0, 0, 0, 0.35) no-repeat scroll center center / cover;
   z-index: 1050;
 }
 

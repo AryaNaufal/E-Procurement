@@ -33,3 +33,62 @@
   </table>
   <?php include_once __DIR__ . '/../../fragment/katalog-modal.php'; ?>
 </div>
+
+
+<script>
+  document.querySelectorAll('.delete-katalog-btn').forEach(button => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      const katalogId = this.getAttribute('data-id');
+      Swal.fire({
+          title: 'Hapus Katalog',
+          text: "Apakah kamu ingin menghapus katalog ini?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#007bff',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ok',
+          cancelButtonText: 'Batal'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Tampilkan loading
+            document.getElementById('loader').style.display = 'block';
+            fetch(`<?= SERVER_NAME ?>handler/katalog/delete?id=${katalogId}`, {
+                method: 'POST',
+                credentials: 'include'
+              })
+              .then(response => response.json())
+              .then(data => {
+                document.getElementById('loader').style.display = 'none';
+                if (data.status == 'success') {
+                  Swal.fire({
+                    title: 'Berhasil',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  }).then(() => {
+                    window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
+                  });
+                } else {
+                  Swal.fire({
+                    title: 'Gagal',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                  });
+                }
+              });
+          }
+        })
+        .catch(error => {
+          document.getElementById('loader').style.display = 'none';
+          Swal.fire({
+            title: 'Gagal',
+            text: 'Terjadi kesalahan saat menghubungi server.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
+        });
+    });
+  });
+</script>

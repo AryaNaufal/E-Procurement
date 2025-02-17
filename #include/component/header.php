@@ -86,7 +86,7 @@
       width: 100%;
       height: 100%;
       z-index: 9999;
-      background: url("assets/images/spinners/loading.gif") 50% 50% no-repeat #2d3436;
+      background: 50% 50% no-repeat #2d3436;
       background-size: 120px 120px;
       opacity: 0.8;
     }

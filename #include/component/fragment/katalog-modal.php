@@ -104,3 +104,59 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById('form_add_katalog').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah form submission 
+    Swal.fire({
+      title: 'Tambah E-Katalog',
+      text: "Apakah kamu ingin menambahkan katalog ini?",
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#007bff',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Tampilkan loading
+        document.getElementById('loader').style.display = 'block';
+        fetch(`<?= SERVER_NAME ?>handler/katalog/add`, {
+            method: 'POST',
+            credentials: 'include',
+            body: new FormData(this)
+          })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('loader').style.display = 'none';
+            if (data.status === 'success') {
+              Swal.fire({
+                title: 'Berhasil',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then(() => {
+                window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
+              });
+            } else {
+              Swal.fire({
+                title: "Gagal!",
+                text: data.message,
+                icon: "error",
+                button: "Ok",
+              });
+            }
+          })
+          .catch(error => {
+            document.getElementById('loader').style.display = 'none';
+            Swal.fire({
+              title: "Error!",
+              text: "Terjadi kesalahan pada server.",
+              icon: "error",
+              button: "Ok",
+            });
+          });
+      }
+    })
+  })
+</script>

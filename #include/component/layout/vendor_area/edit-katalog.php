@@ -124,3 +124,62 @@
   </div>
 </div>
 <!-- End Modal Content -->
+
+<script>
+  document.getElementById('form_edit_katalog').addEventListener('submit', function(event) {
+    event.preventDefault(); // Mencegah form submission tradisional
+    const katalogId = new URLSearchParams(window.location.search).get('id');
+    Swal.fire({
+      title: 'Edit Katalog',
+      text: "Apakah kamu ingin edit katalog ini?",
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#007bff',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Tampilkan loading
+        document.getElementById('loader').style.display = 'block';
+        fetch(`<?= SERVER_NAME ?>handler/katalog/edit?id=${katalogId}`, {
+            method: 'POST',
+            credentials: 'include',
+            body: new FormData(this)
+          })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('loader').style.display = 'none';
+            if (data.status == 'success') {
+              document.getElementById('loader').style.display = 'none';
+              Swal.fire({
+                title: 'Berhasil',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then(() => {
+                window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
+              });
+            } else {
+              document.getElementById('loader').style.display = 'none';
+              Swal.fire({
+                title: 'Gagal',
+                text: data.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          })
+          .catch(error => {
+            document.getElementById('loader').style.display = 'none';
+            Swal.fire({
+              title: 'Gagal',
+              text: 'Terjadi kesalahan saat menghubungi server.',
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          });
+      }
+    });
+  });
+</script>
