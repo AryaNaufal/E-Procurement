@@ -422,3 +422,175 @@
     </form>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    const userId = $('#user_id').val();
+
+    const handleFileUpload = (buttonId, inputId, formId, type) => {
+      document.getElementById(buttonId).addEventListener('click', async () => {
+        const fileInput = document.getElementById(inputId).files[0];
+        if (fileInput) {
+          if (fileInput.size <= 2 * 1024 * 1024) { // Check file size
+            const formData = new FormData(document.getElementById(formId));
+            formData.append('file', fileInput);
+            Swal.fire({
+              icon: 'info',
+              title: 'Upload Dokumen',
+              text: "Apakah file yang anda upload sudah benar?",
+              showCancelButton: true,
+              confirmButtonColor: '#007bff',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ok',
+              cancelButtonText: 'Batal'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                document.getElementById('loader').style.display = 'block';
+                fetch(`<?= SERVER_NAME ?>handler/upload_file?id=${userId}&type=${type}`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: formData
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    document.getElementById('loader').style.display = 'none';
+                    if (data.status == 'success') {
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: data.message,
+                        confirmButtonText: 'Ok'
+                      });
+                    } else {
+                      Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: data.message
+                      });
+                    }
+                  })
+                  .catch(error => {
+                    document.getElementById('loader').style.display = 'none';
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Gagal',
+                      text: 'Terjadi kesalahan pada server',
+                      confirmButtonText: 'Ok'
+                    });
+                  });
+              }
+            });
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal',
+              text: 'Ukuran File maksimal 2 MB'
+            });
+          }
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Peringatan',
+            text: 'File belum dipilih'
+          });
+        }
+      });
+    };
+
+    const uploadItems = [{
+        buttonId: 'akta-perubahan-btn',
+        inputId: 'input_akta_perubahan',
+        formId: 'form_upload_file_1',
+        type: 'akta_perubahan'
+      },
+      {
+        buttonId: 'sk-menkumham-btn',
+        inputId: 'input_sk_menkumham',
+        formId: 'form_upload_file_2',
+        type: 'sk_menkumham'
+      },
+      {
+        buttonId: 'ktp-pengurus-btn',
+        inputId: 'input_ktp_pengurus_perusahaan',
+        formId: 'form_upload_file_3',
+        type: 'ktp_pengurus_perusahaan'
+      },
+      {
+        buttonId: 'surat-keterangan-domisili-perusahaan-btn',
+        inputId: 'input_surat_keterangan_domisili_perusahaan',
+        formId: 'form_upload_file_4',
+        type: 'surat_keterangan_domisili_perusahaan'
+      },
+      {
+        buttonId: 'siup-btn',
+        inputId: 'input_siup',
+        formId: 'form_upload_file_5',
+        type: 'siup'
+      },
+      {
+        buttonId: 'tdp-btn',
+        inputId: 'input_tdp',
+        formId: 'form_upload_file_6',
+        type: 'tdp'
+      },
+      {
+        buttonId: 'npwp-btn',
+        inputId: 'input_npwp',
+        formId: 'form_upload_file_7',
+        type: 'npwp'
+      },
+      {
+        buttonId: 'pkp-btn',
+        inputId: 'input_pkp',
+        formId: 'form_upload_file_8',
+        type: 'pkp'
+      },
+      {
+        buttonId: 'spt-btn',
+        inputId: 'input_spt',
+        formId: 'form_upload_file_9',
+        type: 'spt'
+      },
+      {
+        buttonId: 'laporan-keuangan-btn',
+        inputId: 'input_laporan_keuangan',
+        formId: 'form_upload_file_10',
+        type: 'laporan_keuangan'
+      },
+      {
+        buttonId: 'rekening-koran-btn',
+        inputId: 'input_rekening_koran',
+        formId: 'form_upload_file_11',
+        type: 'rekening_koran'
+      },
+      {
+        buttonId: 'sertifikasi-btn',
+        inputId: 'input_sertifikasi',
+        formId: 'form_upload_file_12',
+        type: 'sertifikasi'
+      },
+      {
+        buttonId: 'list-daftar-pengalaman-kerja-btn',
+        inputId: 'input_list_daftar_pengalaman_kerja',
+        formId: 'form_upload_file_13',
+        type: 'list_daftar_pengalaman_kerja'
+      },
+      {
+        buttonId: 'list-tenaga-ahli-btn',
+        inputId: 'input_list_tenaga_ahli',
+        formId: 'form_upload_file_14',
+        type: 'list_tenaga_ahli'
+      },
+      {
+        buttonId: 'akta-pendirian-btn',
+        inputId: 'input_akta_pendirian',
+        formId: 'form_upload_file_15',
+        type: 'akta_pendirian'
+      },
+    ];
+
+    uploadItems.forEach(item => {
+      handleFileUpload(item.buttonId, item.inputId, item.formId, item.type);
+    });
+  });
+</script>
