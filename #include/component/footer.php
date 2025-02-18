@@ -62,8 +62,6 @@
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
  <!-- Jquery Function -->
- <script src="<?= SERVER_NAME ?>assets/js/Handler/get-region.js"></script>
- <script src="<?= SERVER_NAME ?>assets/js/Handler/company/add.js"></script>
  <script src="<?= SERVER_NAME ?>assets/js/Feature/see-password.js"></script>
 
  <!-- Auth Function -->

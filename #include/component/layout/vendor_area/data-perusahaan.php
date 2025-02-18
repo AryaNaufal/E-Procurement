@@ -156,3 +156,113 @@
     </div>
   </form>
 </div>
+
+<script>
+  $(document).ready(function() {
+    // Get Regencies
+    $('#province').change(function() {
+      var provinceId = $(this).val();
+      var name = $('#name').val();
+      $.ajax({
+        url: '<?= SERVER_NAME ?>handler/region/get_regencies.php',
+        type: 'GET',
+        data: {
+          province: provinceId,
+          name: name
+        },
+        success: function(response) {
+          $('#regency').html(response);
+          $('#district').html('<option value="">Pilih Kecamatan</option>');
+          $('#village').html('<option value="">Pilih Kelurahan/Desa</option>');
+        }
+      });
+    });
+
+    // Get Districts
+    $('#regency').change(function() {
+      var regencyId = $(this).val();
+      var name = $('#name').val();
+      var provinceId = $('#province').val();
+      $.ajax({
+        url: '<?= SERVER_NAME ?>handler/region/get_districts.php',
+        type: 'GET',
+        data: {
+          regency: regencyId,
+          name: name,
+          province: provinceId
+        },
+        success: function(response) {
+          $('#district').html(response);
+          $('#village').html('<option value="">Pilih Kelurahan/Desa</option>');
+        }
+      });
+    });
+
+    // Get Villages
+    $('#district').change(function() {
+      var districtId = $(this).val();
+      var name = $('#name').val();
+      var provinceId = $('#province').val();
+      var regencyId = $('#regency').val();
+      $.ajax({
+        url: '<?= SERVER_NAME ?>handler/region/get_villages.php',
+        type: 'GET',
+        data: {
+          district: districtId,
+          name: name,
+          province: provinceId,
+          regency: regencyId
+        },
+        success: function(response) {
+          $('#village').html(response);
+        }
+      });
+    });
+  });
+
+  // Add Company
+  document.getElementById('form_add_company').addEventListener('submit', function(event) {
+    event.preventDefault();
+    Swal.fire({
+      icon: 'info',
+      title: 'Tambah Data Perusahaan',
+      text: 'Apakah data perusahaan sudah sesuai?',
+      showCancelButton: true,
+      confirmButtonColor: '#007bff',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Batal'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Tampilkan loading
+        document.getElementById('loader').style.display = 'block';
+        fetch(`<?= SERVER_NAME ?>handler/company/add`, {
+            method: 'POST',
+            credentials: 'include',
+            body: new FormData(this)
+          })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('loader').style.display = 'none';
+            if (data.status === 'success') {
+              Swal.fire({
+                title: 'Berhasil',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              }).then(() => {
+                window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
+              });
+            } else {
+              Swal.fire({
+                title: 'Gagal',
+                text: data.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+      }
+    });
+  });
+</script>

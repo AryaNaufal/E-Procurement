@@ -33,7 +33,11 @@
                       <label class="text-muted" style="font-weight: bold;">Status:</label>
                     </div>
                     <div class="col-lg-4">
-                      <label class="text-danger font-weight-bold">Upload Document</label>
+                      <?php if (!empty($documents['data']) && $documents['status'] === 'success'): ?>
+                        <label class="text-success font-weight-bold">Dokumen Lengkap</label>
+                      <?php else: ?>
+                        <label class="text-danger font-weight-bold">Upload Document</label>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
