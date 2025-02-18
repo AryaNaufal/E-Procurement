@@ -1,10 +1,10 @@
 <!--Breadcrumb Banner Area Start-->
-<div class="breadcrumb-banner-area pt-94 pb-85 bg-3">
+<div class="breadcrumb-banner-area pt-94 pb-85 bg-5">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="breadcrumb-text mb-5">
-          <h2 class="text-center">Pengadaan</h2>
+          <h2 class="text-center text-white">Pengadaan</h2>
         </div>
         <div class="job-search-content text-center">
           <form action="" method="GET" autocomplete="off">
@@ -20,7 +20,7 @@
 <!--End of Breadcrumb Banner Area-->
 
 <!--Start of Job Post Area-->
-<div class="job-post-area pt-130 pb-100 pt-sm-60 pb-sm-30">
+<div class="job-post-area pt-130 pb-100 pb-sm-35 pt-5">
   <div class="container">
     <!-- Section Title Start -->
     <div class="row">
@@ -34,7 +34,7 @@
     <!-- Section Title End -->
     <div class="all-job-post">
       <!-- Nav tabs -->
-      <div class="post-tab nav">
+      <div class="post-tab nav mb-5">
         <a class="nav-link active" data-toggle="tab" href="#all">Semua Kategori</a>
         <a class="nav-link" data-toggle="tab" href="#jasa_lain">Jasa Lainnya</a>
         <a class="nav-link" data-toggle="tab" href="#barang_jasa">Pengadaan Barang &amp; Jasa</a>

@@ -42,7 +42,7 @@
             <div class="card-footer bg-primary text-white text-center border-0 py-4 mt-auto">
               <span class="font-semibold text-xl">Vendor</span>
             </div>
-            <a href="index.php" class="stretched-link"></a>
+            <a href="<?= SERVER_NAME ?>" class="stretched-link"></a>
           </div>
         </div>
 

@@ -10,7 +10,7 @@
         </ol>
       </nav>
     </div>
-    <div class="blog-items content-less">
+    <div class="blog-items content-less px-3">
       <div class="blog-content">
         <div class="blog-item-box">
           <div class="row">
@@ -55,7 +55,7 @@
                 <!-- End Single Item -->
               <?php endforeach; ?>
             <?php else: ?>
-              <p>No articles available or there was an error fetching the news.</p>
+              <p style="padding-left: 1.9rem;">No articles available or there was an error fetching the news.</p>
             <?php endif; ?>
           </div>
 

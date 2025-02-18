@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light py-3">
 
   <div class="logo">
-    <a href="<?= SERVER_NAME ?>index">
+    <a href="<?= SERVER_NAME ?>">
       <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere">
     </a>
   </div>
@@ -13,7 +13,7 @@
   <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent" style="gap: 20px;">
 
     <ul class="main-menu">
-      <li><a href="<?= SERVER_NAME ?>index" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/' || strrchr($_SERVER['REQUEST_URI'], '/') == '/index' ? 'class="active"' : '' ?>>Home</a></li>
+      <li><a href="<?= SERVER_NAME ?>" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/' || strrchr($_SERVER['REQUEST_URI'], '/') == '/index' ? 'class="active"' : '' ?>>Home</a></li>
       <li><a href="<?= SERVER_NAME ?>tentang" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/tentang' ? 'class="active"' : '' ?>>Tentang</a></li>
       <li><a href="<?= SERVER_NAME ?>tender" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/tender' ? 'class="active"' : '' ?>>Tender</a></li>
       <li><a href="<?= SERVER_NAME ?>news" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/news' ? 'class="active"' : '' ?>>News</a></li>
