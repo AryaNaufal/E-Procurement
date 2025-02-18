@@ -2,8 +2,7 @@
   <div class="modal-dialog modal-lg" style="width:100%" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
       </div>
       <div class="modal-body">
         <div class="form-pop-up-content ptb-60 pl-60 pr-60">

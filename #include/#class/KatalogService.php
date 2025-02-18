@@ -35,6 +35,22 @@ class KatalogService
     }
   }
 
+  public function getKatalogOwnership($id)
+  {
+    $sql = "SELECT * FROM katalog WHERE user_id = :id";
+    try {
+      $katalog = $this->db->squery($sql, ['id' => $id]);
+
+      if (empty($katalog)) {
+        return $this->createErrorResponse('Data katalog tidak ditemukan');
+      }
+
+      return $this->createSuccessResponse('Data katalog berhasil diambil', $katalog);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
   public function getImage($id)
   {
     $sql = "SELECT gambar FROM katalog WHERE id = :id";
@@ -48,11 +64,12 @@ class KatalogService
 
   public function postKatalog(array $data)
   {
-    $sql = "INSERT INTO katalog (kode_produk, produk_solusi, tkdn_produk, jenis, harga, expired_harga, kategori, deskripsi, gambar, dokumen) VALUES (:kode_produk, :produk_solusi, :tkdn_produk, :jenis, :harga, :expired_harga, :kategori, :deskripsi, :gambar, :dokumen)";
+    $sql = "INSERT INTO katalog (user_id, kode_produk, produk_solusi, tkdn_produk, jenis, harga, expired_harga, kategori, deskripsi, gambar, dokumen) VALUES (:user_id, :kode_produk, :produk_solusi, :tkdn_produk, :jenis, :harga, :expired_harga, :kategori, :deskripsi, :gambar, :dokumen)";
     try {
       $photo = $this->savePhoto($data['photo']);
       $document = $this->saveDocument($data['document']);
       $this->db->squery($sql, [
+        'user_id' => $data['user_id'],
         'kode_produk' => $data['kode_produk'],
         'produk_solusi' => $data['nama_produk'],
         'tkdn_produk' => $data['tkdn_produk'],
@@ -74,10 +91,7 @@ class KatalogService
   {
     $sql = "UPDATE katalog SET kode_produk = :kode_produk, produk_solusi = :produk_solusi, tkdn_produk = :tkdn_produk, jenis = :jenis, harga = :harga, expired_harga = :expired_harga, kategori = :kategori, deskripsi = :deskripsi, gambar = :gambar, dokumen = :dokumen WHERE id = :id";
     try {
-      $existProduct = $this->db->squery("SELECT * FROM katalog WHERE kode_produk = :kode_produk AND id = :id", [
-        'kode_produk' => $data['kode_produk'],
-        'id' => $id
-      ]);
+      $existProduct = $this->db->squery("SELECT * FROM katalog WHERE id = :id", ['id' => $id]);
 
       $photo = isset($data['photo']) && $data['photo']['error'] == 0 ? $this->savePhoto($data['photo']) : ($existProduct ? $existProduct[0]['gambar'] : null);
       $document = isset($data['document']) && $data['document']['error'] == 0 ? $this->saveDocument($data['document']) : ($existProduct ? $existProduct[0]['dokumen'] : null);

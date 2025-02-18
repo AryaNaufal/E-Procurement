@@ -23,7 +23,7 @@ $documentService = new DocumentService();
 
 $provinces = $regionService->getProvinces();
 $companies = $companyService->getCompanyData($_SESSION['id'] ?? '');
-$katalogs = $katalogService->getKatalog();
+$katalogs = $katalogService->getKatalogOwnership($_SESSION['id'] ?? '');
 $tenders = $tenderService->getTenders();
 $documents = $documentService->getDocument($_SESSION['id'] ?? '');
 $followedTender = $tenderService->getTenderFollowedByUser($_SESSION['id'] ?? '');

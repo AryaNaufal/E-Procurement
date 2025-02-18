@@ -18,17 +18,19 @@
           <center>Aksi</center>
         </th>
       </tr>
-      <?php foreach ($katalogs['data'] as $katalog): ?>
-        <tr>
-          <td><?= $katalog['produk_solusi'] ?></td>
-          <td><?= $katalog['kategori'] ?></td>
-          <td><?= 'Rp ' . number_format($katalog['harga'], 0, ',', '.') ?></td>
-          <td>
-            <a href="<?= SERVER_NAME ?>vendor_area/katalog/edit.php?id=<?= $katalog['id'] ?>" class='btn btn-primary btn-sm'>Edit</a>
-            <button class="btn btn-danger btn-sm text-capitalize delete-katalog-btn" data-id="<?= $katalog['id'] ?>">Delete</button>
-          </td>
-        </tr>
-      <?php endforeach; ?>
+      <?php if (isset($katalogs['status']) && $katalogs['status'] === 'success' && !empty($katalogs['data'])): ?>
+        <?php foreach ($katalogs['data'] as $katalog): ?>
+          <tr>
+            <td><?= $katalog['produk_solusi'] ?></td>
+            <td><?= $katalog['kategori'] ?></td>
+            <td><?= 'Rp ' . number_format($katalog['harga'], 0, ',', '.') ?></td>
+            <td>
+              <a href="<?= SERVER_NAME ?>vendor_area/katalog/edit.php?id=<?= $katalog['id'] ?>" class='btn btn-primary btn-sm'>Edit</a>
+              <button class="btn btn-danger btn-sm text-capitalize delete-katalog-btn" data-id="<?= $katalog['id'] ?>">Delete</button>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </tbody>
   </table>
   <?php include_once __DIR__ . '/../../fragment/katalog-modal.php'; ?>

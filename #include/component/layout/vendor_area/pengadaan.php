@@ -25,6 +25,12 @@
               </td>
             </tr>
           <?php endforeach; ?>
+        <?php else: ?>
+          <tr>
+            <td colspan="3" class="text-center">
+              <?= $followedTender['message'] ?>
+            </td>
+          </tr>
         <?php endif; ?>
       </tbody>
     </table>

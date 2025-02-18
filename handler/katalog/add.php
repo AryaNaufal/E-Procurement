@@ -9,6 +9,7 @@ require_once __DIR__ . '/../../#include/#class/autoload.php';
 $katalogService = new KatalogService();
 
 $data = [
+  'user_id' => $_SESSION['id'],
   'kode_produk' => $_POST['kode_produk'] ?? '',
   'nama_produk' => $_POST['nama_produk'] ?? '',
   'tkdn_produk' => $_POST['tkdn_produk'] ?? '',

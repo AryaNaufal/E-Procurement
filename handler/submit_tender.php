@@ -9,7 +9,7 @@ use App\TenderService;
 
 $tenderService = new TenderService();
 
-$result = $tenderService->submitTender(isset($_SESSION['id']), $_GET['id']);
+$result = $tenderService->submitTender(isset($_SESSION['id']) ? $_SESSION['id'] : '', $_GET['id']);
 
 if (empty($_SESSION['id'])) {
   $response = [

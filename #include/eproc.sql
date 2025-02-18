@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2025 at 06:27 AM
+-- Generation Time: Feb 18, 2025 at 08:21 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `document` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `akta_perubahan` varchar(100) NOT NULL,
   `sk_menkumham` varchar(100) NOT NULL,
   `ktp_pengurus_perusahaan` varchar(100) NOT NULL,
@@ -43,8 +44,7 @@ CREATE TABLE `document` (
   `sertifikasi` varchar(100) NOT NULL,
   `list_daftar_pengalaman_kerja` varchar(100) NOT NULL,
   `list_tenaga_ahli` varchar(100) NOT NULL,
-  `akta_pendirian` varchar(100) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `akta_pendirian` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -55,6 +55,7 @@ CREATE TABLE `document` (
 
 CREATE TABLE `katalog` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `kode_produk` varchar(50) NOT NULL,
   `produk_solusi` varchar(100) NOT NULL,
   `tkdn_produk` int(50) NOT NULL,
@@ -63,8 +64,23 @@ CREATE TABLE `katalog` (
   `expired_harga` int(100) NOT NULL,
   `kategori` enum('Alat Tulis Kantor','Electric','Hardware','Jasa Konsultasi Perorangan','Jasa Konsultasi Perusahaan','Kendaraan Operasional','Perlengkapan Fotografi / Videografi','Property','Rumah Tangga Kantor') NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
-  `gambar` varchar(255) NOT NULL,
-  `dokumen` varchar(255) NOT NULL
+  `gambar` varchar(255) DEFAULT NULL,
+  `dokumen` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `judul` varchar(100) NOT NULL,
+  `slug` varchar(100) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
+  `isi` text NOT NULL,
+  `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91820,20 +91836,6 @@ CREATE TABLE `tender` (
   `closing_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tender`
---
-
-INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `closing_date`) VALUES
-(1, 'Permintaan Peralatan Kerja Redaksi', 'Pengadaan Barang & Jasa', '2024-12-19', '2025-01-19'),
-(2, 'Permintaan Peralatan Kerja Redaksi', 'Pengadaan Barang & Jasa', '2025-01-20', '2025-01-21'),
-(3, 'Permintaan Peralatan Kerja Redaksi 3', 'Pengadaan Barang & Jasa', '2025-01-20', '2025-01-21'),
-(4, 'Permintaan Peralatan Kerja Redaksi 1', 'Pengadaan Barang & Jasaa', '2025-01-20', '2025-01-21'),
-(5, 'Permintaan Peralatan Kerja Redaksi', 'Jasa Konsultasi Bidang Usaha', '2025-01-20', '2025-01-21'),
-(6, 'Permintaan Peralatan Kerja Redaksi 1', 'Pengadaan Barang & Jasa', '2025-01-20', '2025-01-21'),
-(7, 'Permintaan Peralatan Kerja Redaksi 2', 'Pengadaan Barang & Jasa', '2025-01-20', '2025-01-21'),
-(8, 'Permintaan Peralatan Kerja Redaksi 2', 'Pengadaan Barang & Jasaa', '2025-01-20', '2025-01-21');
-
 -- --------------------------------------------------------
 
 --
@@ -91872,13 +91874,6 @@ CREATE TABLE `user` (
   `is_verify` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `pic`, `perusahaan`, `npwp`, `nik`, `is_verify`) VALUES
-(1, 'Arya', 'arya.naufal.andt@gmail.com', '$2y$10$CSDRhf4grk5i434pqWklJ.jX.s0t3/UVP6zxtaTKLoRn4NIuMRuu6', 'Arya', 'Antara', '123123', '', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -91887,6 +91882,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `pic`, `perusahaan`, 
 
 CREATE TABLE `vendor` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `type` varchar(100) NOT NULL,
   `mail` varchar(100) NOT NULL,
@@ -91897,8 +91893,7 @@ CREATE TABLE `vendor` (
   `kota` varchar(100) NOT NULL,
   `kecamatan` varchar(100) NOT NULL,
   `kelurahan` varchar(100) NOT NULL,
-  `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') NOT NULL,
-  `user_id` int(11) NOT NULL
+  `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -91916,6 +91911,13 @@ ALTER TABLE `document`
 -- Indexes for table `katalog`
 --
 ALTER TABLE `katalog`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_id` (`user_id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -91997,6 +91999,12 @@ ALTER TABLE `katalog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `participant`
 --
 ALTER TABLE `participant`
@@ -92006,7 +92014,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT for table `tender`
 --
 ALTER TABLE `tender`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `timeline_pengadaan`
@@ -92018,7 +92026,7 @@ ALTER TABLE `timeline_pengadaan`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `vendor`
@@ -92034,8 +92042,13 @@ ALTER TABLE `vendor`
 -- Constraints for table `document`
 --
 ALTER TABLE `document`
-  ADD CONSTRAINT `document_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `document_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `document_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `katalog`
+--
+ALTER TABLE `katalog`
+  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `participant`

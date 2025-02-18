@@ -145,7 +145,7 @@
           </tbody>
         </table>
       </div>
-      <?php if (isset($followedTender['status']) && $checkFollowedTender === false): ?>
+      <?php if ($checkFollowedTender == false): ?>
         <div class="w-100 d-flex justify-content-center">
           <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;">Submit</button>
         </div>
