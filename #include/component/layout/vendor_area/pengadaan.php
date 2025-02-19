@@ -1,4 +1,4 @@
-<div class="tab-pane container fade mt-4" id="menu4">
+<section class="tab-pane fade mt-4" id="menu4">
   <div id="table_tender">
     <table class="table table-bordered">
       <tbody>
@@ -38,4 +38,4 @@
   <div id="detail_tender"></div>
   <div id="data_tender"></div>
   <?php include_once __DIR__ . '/../../fragment/pengadaan-modal.php'; ?>
-</div>
+</section>

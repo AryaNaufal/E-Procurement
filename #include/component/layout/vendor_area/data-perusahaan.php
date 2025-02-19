@@ -1,4 +1,4 @@
-<div class="tab-pane container" id="menu1">
+<section class="tab-pane" id="menu1">
   <form method="POST" id="form_add_company" action="">
     <div class="d-flex justify-content-center my-4">
       <h5>Data Perusahaan</h5>
@@ -151,11 +151,11 @@
       </div>
     </div>
     <div class="text-center">
-      <button id="simpan" type="submit" name="submit_company" class="text-uppercase"
-        style="color:white; background-color:red">Simpan</button>
+      <button id="simpan" type="submit" name="submit_company" class="text-uppercase mt-5 rounded"
+        style="color:white; background-color:#AA0A2F;">Simpan</button>
     </div>
   </form>
-</div>
+</section>
 
 <script>
   $(document).ready(function() {

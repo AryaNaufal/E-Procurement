@@ -1,7 +1,7 @@
-<div class="tab-pane container active mt-4" id="menuProfile">
+<section class="tab-pane active mt-4" id="menuProfile">
   <div class="row">
     <div class="col-lg-12 mb-3">
-      <label>Informasi Perusahaan</label>
+      <strong class="font-weight-bold">Informasi Perusahaan:</strong>
       <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
         <div class="card-body">
           <div class="row">
@@ -132,7 +132,7 @@
       </div>
     </div>
   </div>
-  <label>Informasi Dokumen Perusahaan</label>
+  <strong class="font-weight-bold">Informasi Dokumen Perusahaan:</strong>
   <div class="row">
     <div class="col-lg-12">
       <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
@@ -203,4 +203,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

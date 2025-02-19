@@ -5,8 +5,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
       </div>
       <div class="modal-body">
-        <div class="form-pop-up-content ptb-60 pl-60 pr-60">
-          <p class="d-flex justify-content-center mb-5" id="modalCatalogtitle" style="font-size:15px;color:black">Tambah E-Katalog</p>
+        <div class="form-pop-up-content ptb-60 px-5">
+          <strong class="d-flex justify-content-center mb-5 font-weight-bold" id="modalCatalogtitle" style="font-size:15px;color:black">Tambah E-Katalog</strong>
           <form method="POST" id="form_add_katalog" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -95,7 +95,7 @@
             </div>
 
             <div class="text-center">
-              <button type="submit" name="submit_katalog" class="text-uppercase">Simpan</button>
+              <button type="submit" name="submit_katalog" class="text-uppercase rounded">Simpan</button>
             </div>
           </form>
         </div>

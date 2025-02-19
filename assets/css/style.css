@@ -1596,9 +1596,68 @@ input[type="checkbox"]:focus {
   border-radius: 10px 0px 0px 10px;
 }
 
+.nav-pills {
+  display: flex;
+  justify-content: flex-start;
+  row-gap: 10px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  background-color: #AA0A2F;
+}
+
+.nav-pills .nav-item a {
+  color: #363636;
+  font-weight: 600;
+  font-family: "montserratregular";
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.card-link {
+  color: #363636;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.card-link:hover {
+  color: #AA0A2F;
+}
+
+.card-body table tbody tr td input {
+  align-content: center;
+}
+
 @media screen and (max-width: 767px) {
   .select-category {
     border-radius: 0px;
+  }
+
+  .nav-pills {
+    justify-content: center;
+  }
+
+  .nav-pills .nav-item a {
+    font-size: 10px;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  .card .card-body {
+    padding: 10px;
+  }
+
+  .card .card-body table td span {
+    display: inline-flex;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  input[type="file"]::file-selector-button {
+    display: block;
   }
 }
 
