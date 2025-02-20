@@ -25,7 +25,7 @@
             <td><?= $katalog['kategori'] ?></td>
             <td><?= 'Rp ' . number_format($katalog['harga'], 0, ',', '.') ?></td>
             <td>
-              <a href="<?= SERVER_NAME ?>vendor_area/katalog/edit.php?id=<?= $katalog['id'] ?>" class='btn btn-primary btn-sm'>Edit</a>
+              <a href="<?= SERVER_NAME ?>vendor_area/katalog/edit?id=<?= $katalog['id'] ?>" class='btn btn-primary btn-sm'>Edit</a>
               <button class="btn btn-danger btn-sm text-capitalize delete-katalog-btn" data-id="<?= $katalog['id'] ?>">Delete</button>
             </td>
           </tr>

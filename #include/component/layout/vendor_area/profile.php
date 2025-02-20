@@ -1,7 +1,12 @@
 <section class="tab-pane active mt-4" id="menuProfile">
   <div class="row">
     <div class="col-lg-12 mb-3">
-      <strong class="font-weight-bold">Informasi Perusahaan:</strong>
+      <div class="d-flex justify-content-between align-items-center">
+        <strong class="font-weight-bold">Informasi Perusahaan:</strong>
+        <?php if (!empty($companies['data'])): ?>
+          <a href="<?= SERVER_NAME ?>vendor_area/company/edit?id=<?= $companies['data'][0]['id'] ?>" class="btn ml-3 text-capitalize text-white" style="background-color: #AA0A2F;">Edit</a>
+        <?php endif; ?>
+      </div>
       <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
         <div class="card-body">
           <div class="row">

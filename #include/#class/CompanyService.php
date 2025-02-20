@@ -70,6 +70,53 @@ class CompanyService
     }
   }
 
+  public function updateCompanyData($id, array $data): array
+  {
+    $checkUserId = "SELECT user_id FROM vendor WHERE user_id = :user_id";
+    $updateCompany = "UPDATE vendor SET 
+    name = :company_name, 
+    type = :company_type, 
+    mail = :company_mail, 
+    phone = :company_phone, 
+    mobile_phone = :company_mobile_phone, 
+    address = :company_address, 
+    provinsi = :company_province, 
+    kota = :company_regency, 
+    kecamatan = :company_district, 
+    kelurahan = :company_village, 
+    kategori = :company_category 
+    WHERE user_id = :user_id";
+
+    try {
+      $checkResult = $this->db->squery_single($checkUserId, [
+        'user_id' => $id
+      ]);
+
+      if (!$checkResult) {
+        return $this->createErrorResponse('Data perusahaan tidak ditemukan');
+      }
+
+      $this->db->supdate($updateCompany, [
+        'company_name' => $data['company_name'],
+        'company_type' => $data['company_type'],
+        'company_mail' => $data['company_mail'],
+        'company_phone' => $data['company_phone'],
+        'company_mobile_phone' => $data['company_mobile_phone'],
+        'company_address' => $data['company_address'],
+        'company_province' => $data['company_province'],
+        'company_regency' => $data['company_regency'],
+        'company_district' => $data['company_district'],
+        'company_village' => $data['company_village'],
+        'company_category' => $data['company_category'],
+        'user_id' => $id
+      ]);
+
+      return $this->createSuccessResponse('Data perusahaan berhasil diupdate');
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
   private function createSuccessResponse(string $message, array $data = []): array
   {
     return [
