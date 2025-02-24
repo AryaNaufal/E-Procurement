@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+use App\LoadEnv;
 use App\CompanyService;
 use App\RegionService;
 
@@ -12,6 +13,7 @@ if (empty($_SESSION)) {
   exit;
 }
 
+$env = new LoadEnv(ROOT_PATH . '.env');
 $regionService = new RegionService();
 $companyService = new CompanyService();
 

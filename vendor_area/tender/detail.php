@@ -1,11 +1,13 @@
 <?php
 session_start();
 
+use App\LoadEnv;
 use App\TenderService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
+$env = new LoadEnv(ROOT_PATH . '.env');
 $tenderService = new TenderService();
 
 $tenders = $tenderService->getTenderById($_GET['id']);
