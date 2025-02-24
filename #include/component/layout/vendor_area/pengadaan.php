@@ -1,4 +1,4 @@
-<section class="tab-pane fade mt-4" id="menu4">
+<section class="tab-pane fade mt-4" id="pegadaan">
   <div id="table_tender">
     <table class="table table-bordered">
       <tbody>

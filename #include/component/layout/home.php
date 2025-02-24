@@ -1,5 +1,5 @@
   <!-- Search Form Start -->
-  <div class="search-job-area bg-5">
+  <section class="search-job-area bg-5">
     <div class="container">
       <div class="row">
         <div class="col-xl-10 col-lg-12 ml-auto mr-auto py-5">
@@ -44,11 +44,11 @@
       </div>
       <!--End of Fun Factor Area-->
     </div>
-  </div>
+  </section>
   <!-- Search Form End -->
 
   <!--Start of Job Post Area-->
-  <div class="job-post-area pb-100 pb-sm-35 pt-5">
+  <section class="job-post-area pb-100 pb-sm-35 pt-5">
     <div class="container">
       <!-- Section Title Start -->
       <div class="row">
@@ -72,11 +72,11 @@
         <?php include __DIR__ . '/../fragment/tab-content.php'; ?>
       </div>
     </div>
-  </div>
+  </section>
   <!-- End of Job Post Area -->
 
   <!-- Working Aera Start -->
-  <div class="woring-area pt-130 pb-100 pt-sm-60 pb-sm-30">
+  <section class="woring-area pt-130 pb-100 pt-sm-60 pb-sm-30">
     <div class="container">
       <!-- Section Title Start -->
       <div class="row">
@@ -118,5 +118,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
   <!-- Working Aera End -->

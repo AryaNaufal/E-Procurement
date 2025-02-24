@@ -23,14 +23,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="card" style="box-shadow: 3px 3px 3px #777;">
-          <h4 class="p-4">Detail Pengadaan</h4>
+          <h3 class="p-4">Detail Pengadaan</h3>
           <div class="card-body">
             <div class="row">
               <?php foreach ($tenders['data'] as $data): ?>
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Kategori:</label>
+                      <label class="text-muted font-weight-bold">Kategori:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['category']) && !empty($data['category'])) ? htmlspecialchars($data['category']) : '-' ?></label>
@@ -38,7 +38,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Deskripsi:</label>
+                      <label class="text-muted font-weight-bold">Deskripsi:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['description']) && !empty($data['description'])) ? htmlspecialchars($data['description']) : '-' ?></label>
@@ -46,7 +46,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Metode Pengadaan:</label>
+                      <label class="text-muted font-weight-bold">Metode Pengadaan:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['metode']) && !empty($data['metode'])) ? htmlspecialchars($data['metode']) : '-' ?></label>
@@ -54,7 +54,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">%PPN:</label>
+                      <label class="text-muted font-weight-bold">%PPN:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['ppn']) && !empty($data['ppn'])) ? htmlspecialchars($data['ppn']) : '-' ?></label>
@@ -64,7 +64,7 @@
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Harga Perkiraan:</label>
+                      <label class="text-muted font-weight-bold">Harga Perkiraan:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['harga_perkiraan']) && !empty($data['harga_perkiraan'])) ? htmlspecialchars($data['harga_perkiraan']) : '-' ?></label>
@@ -72,7 +72,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Kualifikasi Vendor:</label>
+                      <label class="text-muted font-weight-bold">Kualifikasi Vendor:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -80,7 +80,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">PPH:</label>
+                      <label class="text-muted font-weight-bold">PPH:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -88,7 +88,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Registration Date:</label>
+                      <label class="text-muted font-weight-bold">Registration Date:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['registration_date']) && !empty($data['registration_date'])) ? htmlspecialchars($data['registration_date']) : '-' ?></label>
@@ -96,7 +96,7 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Category Termin:</label>
+                      <label class="text-muted font-weight-bold">Category Termin:</label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -109,41 +109,43 @@
         </div>
       </div>
       <div class="col-lg-12 mt-4">
-        <h4 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h4>
+        <h3 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h3>
         <p>deskripsi tender</p>
       </div>
       <div class="col-lg-12 mt-4">
-        <h4 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h4>
-        <table class="table" style="font-size: small;">
-          <thead class="py-3">
-            <tr>
-              <td>Awal Pendaftaran</td>
-              <td>Akhir Pendaftaran</td>
-              <td>Prakualifikasi</td>
-              <td>Aanwijizing</td>
-              <td>Submit Proposal</td>
-              <td>Shortlisted</td>
-              <td>POC</td>
-              <td>Awal Negosiasi</td>
-              <td>Akhir Negosiasi</td>
-              <td>PO</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-              <td>-</td>
-            </tr>
-          </tbody>
-        </table>
+        <h3 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h3>
+        <div id="timeline">
+          <table class="table" style="font-size: small;">
+            <thead class="py-3 font-weight-bold">
+              <tr>
+                <td>Awal Pendaftaran</td>
+                <td>Akhir Pendaftaran</td>
+                <td>Prakualifikasi</td>
+                <td>Aanwijizing</td>
+                <td>Submit Proposal</td>
+                <td>Shortlisted</td>
+                <td>POC</td>
+                <td>Awal Negosiasi</td>
+                <td>Akhir Negosiasi</td>
+                <td>PO</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <?php if ($checkFollowedTender == false): ?>
         <div class="w-100 d-flex justify-content-center">

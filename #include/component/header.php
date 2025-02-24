@@ -101,7 +101,7 @@
   </style>
 </head>
 
-<body>
+<body style="min-width: fit-content; overflow-x: hidden;">
   <div id="loader"></div>
   <?php
   include "fragment/login-modal.php";

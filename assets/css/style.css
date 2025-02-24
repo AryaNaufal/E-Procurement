@@ -1661,6 +1661,19 @@ input[type="checkbox"]:focus {
   }
 }
 
+/* Mobile */
+@media screen and (max-width: 767px) {
+  h3 {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  #data_perusahaan .row {
+    gap: 1.5rem;
+  }
+}
+
+/* Laptop */
 @media screen and (max-width: 984px) {
   .single-job-post {
     margin-bottom: 0px;
@@ -1669,5 +1682,10 @@ input[type="checkbox"]:focus {
   .post-tab a {
     font-size: 12px;
   }
+}
 
+@media screen and (max-width: 1023px) {
+  #timeline {
+    overflow: scroll;
+  }
 }

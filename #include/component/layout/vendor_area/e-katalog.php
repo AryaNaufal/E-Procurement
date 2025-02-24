@@ -1,4 +1,4 @@
-<section class="tab-pane fade" id="menu3">
+<section class="tab-pane fade" id="katalog">
   <div class="text-left my-4">
     <button type="button" class="text-uppercase" style="color:white; background-color:#AA0A2F; border-radius: 5px;" data-toggle="modal" data-target="#katalog-modal">Tambah E-Katalog</button>
   </div>

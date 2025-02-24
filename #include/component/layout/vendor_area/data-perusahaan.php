@@ -1,4 +1,4 @@
-<section class="tab-pane" id="menu1">
+<section class="tab-pane" id="data_perusahaan">
   <form method="POST" id="form_add_company" action="">
     <div class="d-flex justify-content-center my-4">
       <h5>Data Perusahaan</h5>

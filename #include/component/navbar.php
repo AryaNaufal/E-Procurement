@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light py-3">
+<nav class="navbar navbar-expand-lg navbar-light py-3" style="overflow: hidden;">
 
   <div class="logo">
     <a href="<?= SERVER_NAME ?>">

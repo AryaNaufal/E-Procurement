@@ -1,3 +1,22 @@
+<?php
+$documentLabel = [
+  'akta_perubahan' => 'Akta Perubahan',
+  'sk_menkumham' => 'SK Menkumham',
+  'ktp_pengurus_perusahaan' => 'KTP Pengurus Perusahaan',
+  'surat_keterangan_domisili_perusahaan' => 'Surat Keterangan Domisili Perusahaan',
+  'siup' => 'SIUP',
+  'tdp' => 'TDP',
+  'npwp' => 'NPWP',
+  'pkp' => 'PKP',
+  'spt' => 'SPT',
+  'laporan_keuangan' => 'Laporan Keuangan',
+  'rekening_koran' => 'Rekening Koran',
+  'sertifikasi' => 'Sertifikasi',
+  'list_daftar_pengalaman_kerja' => 'List Daftar Pengalaman Kerja',
+  'list_tenaga_ahli' => 'List Tenaga Ahli',
+  'akta_pendirian' => 'Akta Pendirian'
+];
+?>
 <section class="tab-pane active mt-4" id="menuProfile">
   <div class="row">
     <div class="col-lg-12 mb-3">
@@ -25,9 +44,9 @@
                   foreach ($fields as $label => $key): ?>
                     <div class="form-group row">
                       <div class="col-lg-4">
-                        <label class="text-muted"><?= $label ?>:</label>
+                        <label class="text-muted font-weight-bold"><?= $label ?>:</label>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-8">
                         <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($data[$key]) : '-' ?></label>
                       </div>
                     </div>
@@ -35,10 +54,10 @@
 
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted" style="font-weight: bold;">Status:</label>
+                      <label class="text-muted font-weight-bold">Status:</label>
                     </div>
-                    <div class="col-lg-4">
-                      <?php if (!empty($documents['data']) && $documents['status'] === 'success'): ?>
+                    <div class="col-lg-8">
+                      <?php if (!empty($documents['data']) && $documents['status'] === 'success' && $filledDocuments === count($documentLabel)): ?>
                         <label class="text-success font-weight-bold">Dokumen Lengkap</label>
                       <?php else: ?>
                         <label class="text-danger font-weight-bold">Upload Document</label>
@@ -50,9 +69,9 @@
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted">Alamat:</label>
+                      <label class="text-muted font-weight-bold">Alamat:</label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
                       <label class="text-muted"><?= !empty($data['address']) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
@@ -68,9 +87,9 @@
                   foreach ($regions as $label => $key): ?>
                     <div class="form-group row">
                       <div class="col-lg-4">
-                        <label class="text-muted"><?= $label ?>:</label>
+                        <label class="text-muted font-weight-bold"><?= $label ?>:</label>
                       </div>
-                      <div class="col-lg-4">
+                      <div class="col-lg-8">
                         <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($regionService->getRegionName($data[$key])) : '-' ?></label>
                       </div>
                     </div>
@@ -94,7 +113,7 @@
                     <div class="col-lg-4">
                       <label class="text-muted"><?= $label ?>:</label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
                       <label class="text-muted"><?= $value ?></label>
                     </div>
                   </div>
@@ -104,7 +123,7 @@
                   <div class="col-lg-4">
                     <label class="text-muted" style="font-weight: bold;">Status:</label>
                   </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-8">
                     <label class="text-danger font-weight-bold">Upload Document</label>
                   </div>
                 </div>
@@ -125,7 +144,7 @@
                     <div class="col-lg-4">
                       <label class="text-muted"><?= $label ?>:</label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
                       <label class="text-muted"><?= $value ?></label>
                     </div>
                   </div>
@@ -142,67 +161,16 @@
     <div class="col-lg-12">
       <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
         <div class="card-body">
+
           <div class="row">
-            <div class="col-lg-4 mb-3">
-              Akta Perubahan
-              <?= $documents['status'] != 'error' && $documents['data'][0]['akta_perubahan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              SK Menkumham
-              <?= $documents['status'] != 'error' && $documents['data'][0]['sk_menkumham'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              KTP Pengurus Perusahaan
-              <?= $documents['status'] != 'error' && $documents['data'][0]['ktp_pengurus_perusahaan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Surat Keterangan Domisili Perusahaan
-              <?= $documents['status'] != 'error' && $documents['data'][0]['surat_keterangan_domisili_perusahaan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              SIUP
-              <?= $documents['status'] != 'error' && $documents['data'][0]['siup'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              TDP
-              <?= $documents['status'] != 'error' && $documents['data'][0]['tdp'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              NPWP
-              <?= $documents['status'] != 'error' && $documents['data'][0]['npwp'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              PKP
-              <?= $documents['status'] != 'error' && $documents['data'][0]['pkp'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              SPT PPH/PPN
-              <?= $documents['status'] != 'error' && $documents['data'][0]['spt'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Laporan Keuangan
-              <?= $documents['status'] != 'error' && $documents['data'][0]['laporan_keuangan'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Sertifikasi
-              <?= $documents['status'] != 'error' && $documents['data'][0]['sertifikasi'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Akta Pendirian
-              <?= $documents['status'] != 'error' && $documents['data'][0]['akta_pendirian'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Rekening Koran Bank
-              <?= $documents['status'] != 'error' && $documents['data'][0]['rekening_koran'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Daftar Pengalaman Kerja
-              <?= $documents['status'] != 'error' && $documents['data'][0]['list_daftar_pengalaman_kerja'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
-            <div class="col-lg-4 mb-3">
-              Daftar Tenaga Ahli
-              <?= $documents['status'] != 'error' && $documents['data'][0]['list_tenaga_ahli'] != null ? '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' : '' ?>
-            </div>
+            <?php foreach ($documentLabel as $label => $value): ?>
+              <div class="col-lg-4 mb-3">
+                <?= $value ?>
+                <?= $documents['status'] != 'error' && $documents['data'][0][$label] != null ?
+                  '<i class="fa fa-check-circle text-success" aria-hidden="true"></i>' :
+                  '<i class="fa fa-times-circle text-danger" aria-hidden="true"></i>' ?>
+              </div>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>

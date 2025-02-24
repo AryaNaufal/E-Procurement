@@ -1,4 +1,7 @@
-<section class="tab-pane container ptb-60" id="menu1">
+<section class="tab-pane container-fluid ptb-60" id="data_perusahaan">
+  <div class="d-flex justify-content-start mb-3">
+    <a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-uppercase rounded" style="color:white;background-color:#AA0A2F;">Kembali</a>
+  </div>
   <form method="POST" id="form_edit_company" action="">
     <div class="d-flex justify-content-center my-4">
       <h5>Data Perusahaan</h5>

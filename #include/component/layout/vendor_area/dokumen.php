@@ -1,4 +1,4 @@
-<section class="tab-pane fade mt-4" id="menu2">
+<section class="tab-pane fade mt-4" id="dokumen_perusahaan">
   <div class="accordion" id="accordion">
     <!-- Form untuk Akta Perubahan -->
     <form method="post" id="form_upload_file_1" autocomplete="off" enctype="multipart/form-data">
