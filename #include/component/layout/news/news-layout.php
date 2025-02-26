@@ -1,14 +1,12 @@
 <section class="blog-area" style="min-height: calc(100vh - 150px);">
   <div class="container pt-3 pb-5">
-    <div>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb" style="background-color: transparent; font-weight: 600;">
-          <li><a href="<?= SERVER_NAME ?>" style="color: #383838;">home</a></li>
-          <span class="mx-2"> > </span>
-          <li class="fw-bold" style="color: #AA0A2F;"><?= htmlspecialchars($current_menu) ?></li>
-        </ol>
-      </nav>
-    </div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb" style="background-color: transparent; font-weight: 600;">
+        <li><a href="<?= SERVER_NAME ?>" style="color: #383838;">home</a></li>
+        <span class="mx-2"> > </span>
+        <li class="fw-bold" style="color: #AA0A2F;"><?= htmlspecialchars($current_menu) ?></li>
+      </ol>
+    </nav>
     <div class="blog-items content-less px-3">
       <div class="blog-content">
         <div class="blog-item-box">
@@ -19,18 +17,18 @@
                 <div class="col-lg-4 col-md-6 single-item">
                   <div class="item">
                     <div class="thumb">
-                      <a href="<?= SERVER_NAME . 'news/' . $Lib->seo_title($item['judul']); ?>">
+                      <a href="<?= SERVER_NAME . 'news/' . $Lib->seo_title(htmlspecialchars($item['judul'])); ?>">
                         <?php if (isset($item['gambar'])): ?>
                           <img src="<?= SERVER_NAME . 'assets/management/images/news/' . htmlspecialchars($item['gambar']); ?>" alt="Thumb"
                             style="width: 100%; height: 200px; object-fit: cover;">
                         <?php endif; ?>
                       </a>
-                      <div class="date"><strong><?= date('d', strtotime($item['created_at'])) ?></strong> <span><?= date('M', strtotime($item['created_at'])) ?></span></div>
+                      <div class="date"><strong><?= date('d', strtotime(htmlspecialchars($item['created_at']))) ?></strong> <span><?= date('M', strtotime(htmlspecialchars($item['created_at']))) ?></span></div>
                     </div>
                     <div class="info">
                       <h4
                         style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                        <a href="<?= SERVER_NAME . 'news/' . $Lib->seo_title($item['judul']); ?>" aria-label="<?= htmlspecialchars($item['judul']); ?>">
+                        <a href="<?= SERVER_NAME . 'news/' . $Lib->seo_title(htmlspecialchars($item['judul'])); ?>" aria-label="<?= htmlspecialchars($item['judul']); ?>">
                           <?= htmlspecialchars($item['judul']); ?>
                         </a>
                       </h4>
@@ -38,7 +36,7 @@
                         style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
                         <?= htmlspecialchars($item['isi'] ?? 'No description available.'); ?>
                       </p>
-                      <a class="btn circle btn-theme-border btn-sm" href="<?= SERVER_NAME . 'news/' . $Lib->seo_title($item['judul']); ?>">
+                      <a class="btn circle btn-theme-border btn-sm" href="<?= SERVER_NAME . 'news/' . $Lib->seo_title(htmlspecialchars($item['judul'])); ?>">
                         Lihat Selengkapnya
                       </a>
                     </div>

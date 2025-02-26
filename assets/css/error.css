@@ -1,0 +1,34 @@
+/* ============================================================== 
+     # Error 404
+=================================================================== */
+.error-page-area {
+  min-height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-page-area .error-box img {
+  max-width: 60%;
+  margin-bottom: 30px;
+}
+
+.error-page-area .error-box h1 {
+  font-size: 200px;
+  font-weight: 900;
+  line-height: 140px;
+  margin-bottom: 30px;
+  letter-spacing: -13px;
+}
+
+.error-page-area .error-box h2 {
+  font-weight: 900;
+}
+
+.error-page-area .error-box p {
+  padding: 0 15%;
+}
+
+.error-page-area .error-box a.btn {
+  margin-top: 10px;
+}

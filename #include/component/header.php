@@ -13,53 +13,37 @@
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-  <!-- favicon
-    ============================================ -->
+  <!-- favicon -->
   <link rel="icon" href="<?= SERVER_NAME ?>assets/icon/favicon.ico">
 
-  <!-- Google Fonts
-    ============================================ -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-  <!-- All css files are included here
-    ============================================ -->
-  <!-- Bootstrap CSS
-    ============================================ -->
+  <!-- All css files are included here -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/bootstrap.min.css">
 
-  <!-- This core.css file contents all plugins css file
-    ============================================ -->
+  <!-- This core.css file contents all plugins css file -->
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/core.css">
 
-  <!-- Theme shortcodes/elements style
-    ============================================ -->
+  <!-- Theme shortcodes/elements style -->
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/shortcode/shortcodes.css">
 
-  <!--  Theme main style
-    ============================================ -->
+  <!--  Theme main style -->
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/style.css">
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/font-awesome.min.css">
 
 
-  <!-- Color CSS
-          ============================================ -->
+  <!-- Color CSS -->
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/plugins/color.css">
 
-  <!-- Responsive CSS
-    ============================================ -->
+  <!-- Responsive CSS -->
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/responsive.css">
-
-  <!-- Modernizr JS -->
-  <!-- <script type="text/javascript" async=""
-    src="https://www.gstatic.com/recaptcha/releases/iRvKkcsnpNcOYYwhqaQxPITz/recaptcha__id.js" crossorigin="anonymous"
-    integrity="sha384-bu8oxO1mNFo1qyH3vU7LRuw4Kre09Mgu0V49KJs4xNN3yxmEGW/VTVltEbxnxUbv"></script>
-  <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
 
   <!-- jquery latest version -->
   <script src="<?= SERVER_NAME ?>assets/js/vendor/jquery-1.12.4.min.js"></script>
 
-  <!-- Bootstrap framework js
-    ========================================================= -->
+  <!-- Bootstrap framework js -->
   <script src="<?= SERVER_NAME ?>assets/js/bootstrap.min.js"></script>
 
   <script src="<?= SERVER_NAME ?>assets/js/rupiah.js"></script>
@@ -69,6 +53,8 @@
     src="<?= SERVER_NAME ?>assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <link rel="stylesheet"
     href="<?= SERVER_NAME ?>assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+  <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/error.css">
 
   <style>
     * {

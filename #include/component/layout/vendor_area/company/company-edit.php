@@ -1,6 +1,6 @@
-<section class="tab-pane container-fluid ptb-60" id="data_perusahaan">
+<section class="container tab-pane container-fluid ptb-60" id="data_perusahaan" style="min-height: calc(100vh - 150px);">
   <div class="d-flex justify-content-start mb-3">
-    <a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-uppercase rounded" style="color:white;background-color:#AA0A2F;">Kembali</a>
+    <a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-capitalize rounded" style="color:white;background-color:#AA0A2F;">Kembali</a>
   </div>
   <form method="POST" id="form_edit_company" action="">
     <div class="d-flex justify-content-center my-4">
@@ -57,7 +57,7 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Provinsi</label><br>
+        <label>Provinsi</label>
         <select name="province" id="province">
           <?php foreach ($provinces as $province) : ?>
             <option value="<?= $province['id'] ?>" <?= $province['id'] == $companies['data'][0]['provinsi'] ? 'selected' : '' ?>><?= $province['name'] ?></option>
@@ -66,7 +66,7 @@
       </div>
 
       <div class="col-md-6">
-        <label>Kota/Kabupaten</label><br>
+        <label>Kota/Kabupaten</label>
         <select name="regency" id="regency">
           <?php foreach ($regencies as $regency) : ?>
             <option value="<?= $regency['id'] ?>" <?= $regency['id'] === $companies['data'][0]['kota'] ? 'selected' : '' ?>><?= $regency['name'] ?></option>
@@ -77,7 +77,7 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Kecamatan</label><br>
+        <label>Kecamatan</label>
         <select name="district" id="district">
           <?php foreach ($districts as $district) : ?>
             <option value="<?= $district['id'] ?>" <?= $district['id'] === $companies['data'][0]['kecamatan'] ? 'selected' : '' ?>><?= $district['name'] ?></option>
@@ -86,7 +86,7 @@
       </div>
 
       <div class="col-md-6">
-        <label>Kelurahan</label><br>
+        <label>Kelurahan</label>
         <select name="village" id="village">
           <?php foreach ($villages as $village) : ?>
             <option value="<?= $village['id'] ?>" <?= $village['id'] === $companies['data'][0]['kelurahan'] ? 'selected' : '' ?>><?= $village['name'] ?></option>
@@ -155,7 +155,7 @@
 </section>
 
 <script>
-  $(document).ready(function() {
+  $(document)?.ready(function() {
     // Get Regencies
     $('#province').change(function() {
       var provinceId = $(this).val();

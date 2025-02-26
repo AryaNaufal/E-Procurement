@@ -1,6 +1,6 @@
 <section class="tab-pane fade" id="katalog">
   <div class="text-left my-4">
-    <button type="button" class="text-uppercase" style="color:white; background-color:#AA0A2F; border-radius: 5px;" data-toggle="modal" data-target="#katalog-modal">Tambah E-Katalog</button>
+    <button type="button" class="text-uppercase" style="color:white; background-color:#AA0A2F; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#catalog-modal">Tambah E-Katalog</button>
   </div>
   <table class="table table-bordered">
     <tbody>
@@ -33,7 +33,7 @@
       <?php endif; ?>
     </tbody>
   </table>
-  <?php include_once __DIR__ . '/../../fragment/katalog-modal.php'; ?>
+  <?php include_once ROOT_PATH . '#include/component/fragment/catalog-modal.php'; ?>
 </section>
 
 

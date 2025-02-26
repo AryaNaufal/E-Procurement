@@ -1,8 +1,8 @@
-<div class="modal fade" id="katalog-modal" tabindex="-1" role="dialog">
+<div class="modal fade" id="catalog-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" style="width:100%" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
       </div>
       <div class="modal-body">
         <div class="form-pop-up-content ptb-60 px-5">
@@ -79,18 +79,14 @@
             <div class="row">
               <div class="col-md-12">
                 <label style="color:black">Foto Produk</label>
-                <center>
-                  <input type="file" name="photo">
-                </center>
+                <input type="file" name="photo">
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12">
                 <label style="color:black">Dokumen</label>
-                <center>
-                  <input type="file" name="document">
-                </center>
+                <input type="file" name="document">
               </div>
             </div>
 

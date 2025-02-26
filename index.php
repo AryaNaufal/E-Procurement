@@ -2,16 +2,21 @@
 session_start();
 
 require_once __DIR__ . '/#include/config.php';
-require_once __DIR__ . '/#include/#class/autoload.php';
+require_once ROOT_PATH . '#include/#class/autoload.php';
 
 use App\LoadEnv;
+use App\liblary;
+use App\NewsService;
 use App\TenderService;
 use App\UserService;
 
 $env = new LoadEnv(ROOT_PATH . '.env');
+$Lib = new liblary();
 $tenderService = new TenderService();
 $userService = new UserService();
+$newsService = new NewsService();
 
+$news = $newsService->getNews();
 $category = $_GET['category'] ?? '';
 $keyword = $_GET['keyword'] ?? '';
 
@@ -62,7 +67,7 @@ if (isset($tenders['data'])) {
   }
 }
 
-require_once __DIR__ . '/#include/component/header.php';
-require_once __DIR__ . '/#include/component/navbar.php';
-require_once __DIR__ . '/#include/component/layout/home.php';
-require_once __DIR__ . '/#include/component/footer.php';
+require_once ROOT_PATH . '#include/component/header.php';
+require_once ROOT_PATH . '#include/component/navbar.php';
+require_once ROOT_PATH . '#include/component/layout/home/home-layout.php';
+require_once ROOT_PATH . '#include/component/footer.php';

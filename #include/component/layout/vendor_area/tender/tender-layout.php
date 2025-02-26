@@ -35,7 +35,4 @@
       </tbody>
     </table>
   </div>
-  <div id="detail_tender"></div>
-  <div id="data_tender"></div>
-  <?php include_once __DIR__ . '/../../fragment/pengadaan-modal.php'; ?>
 </section>

@@ -5,7 +5,7 @@ use App\LoadEnv;
 use App\TenderService;
 
 require_once __DIR__ . '/../../#include/config.php';
-require_once __DIR__ . '/../../#include/#class/autoload.php';
+require_once ROOT_PATH . '#include/#class/autoload.php';
 
 $env = new LoadEnv(ROOT_PATH . '.env');
 $tenderService = new TenderService();
@@ -33,7 +33,7 @@ $current_menu = "profile";
 $current_sub_menu = NULL;
 $title = "Profile";
 
-require_once __DIR__ . '/../../#include/component/header.php';
-require_once __DIR__ . '/../../#include/component/navbar.php';
-require_once __DIR__ . '/../../#include/component/layout/vendor_area/tender-detail.php';
-require_once __DIR__ . '/../../#include/component/footer.php';
+require_once ROOT_PATH . '#include/component/header.php';
+require_once ROOT_PATH . '#include/component/navbar.php';
+require_once ROOT_PATH . '#include/component/layout/vendor_area/tender/tender-detail.php';
+require_once ROOT_PATH . '#include/component/footer.php';

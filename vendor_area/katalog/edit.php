@@ -1,11 +1,13 @@
 <?php
 session_start();
 
+use App\LoadEnv;
 use App\KatalogService;
 
 require_once __DIR__ . '/../../#include/config.php';
-require_once __DIR__ . '/../../#include/#class/autoload.php';
+require_once ROOT_PATH . '#include/#class/autoload.php';
 
+$env = new LoadEnv(ROOT_PATH . '.env');
 $katalogService = new KatalogService();
 
 $userId = $_GET['id'] ?? '';
@@ -16,7 +18,7 @@ $current_menu = "edit Katalog";
 $current_sub_menu = NULL;
 $title = "Edit Katalog";
 
-require_once __DIR__ . '/../../#include/component/header.php';
-require_once __DIR__ . '/../../#include/component/navbar.php';
-require_once __DIR__ . '/../../#include/component/layout/vendor_area/edit-katalog.php';
-require_once __DIR__ . '/../../#include/component/footer.php';
+require_once ROOT_PATH . '#include/component/header.php';
+require_once ROOT_PATH . '#include/component/navbar.php';
+require_once ROOT_PATH . '#include/component/layout/vendor_area/catalog/catalog-edit.php';
+require_once ROOT_PATH . '#include/component/footer.php';

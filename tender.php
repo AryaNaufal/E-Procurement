@@ -2,7 +2,7 @@
 session_start();
 
 require_once __DIR__ . '/#include/config.php';
-require_once __DIR__ . '/#include/#class/autoload.php';
+require_once ROOT_PATH . '#include/#class/autoload.php';
 
 use App\LoadEnv;
 use App\TenderService;
@@ -41,7 +41,7 @@ $tenderLain = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa', '
 $tenderBarangJasa = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa']);
 $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidang Usaha']);
 
-include_once __DIR__ . "/#include/component/header.php";
-include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/layout/tender.php";
-include_once __DIR__ . "/#include/component/footer.php";
+require_once ROOT_PATH . "#include/component/header.php";
+require_once ROOT_PATH . "#include/component/navbar.php";
+require_once ROOT_PATH . "#include/component/layout/tender/tender-layout.php";
+require_once ROOT_PATH . "#include/component/footer.php";

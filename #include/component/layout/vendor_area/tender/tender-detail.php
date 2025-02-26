@@ -4,7 +4,7 @@
   }
 </style>
 <!--Breadcrumb Banner Area Start-->
-<div class="breadcrumb-banner-area pt-30 pb-10 bg-3">
+<div class="breadcrumb-banner-area pt-94 pb-85 bg-5">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -18,19 +18,22 @@
 <!--End of Breadcrumb Banner Area-->
 
 <!-- About Area Start -->
-<div class="about-area ptb-130 ptb-sm-60" style="padding-top: 45px !important; min-height: calc(100vh - 230px);">
+<section class="about-area ptb-130 ptb-sm-60" style="padding-top: 45px !important; min-height: calc(100vh - 230px);">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="card" style="box-shadow: 3px 3px 3px #777;">
-          <h3 class="p-4">Detail Pengadaan</h3>
+        <div class="card shadow-sm">
+          <h4 class="p-4">Detail Pengadaan</h4>
           <div class="card-body">
             <div class="row">
               <?php foreach ($tenders['data'] as $data): ?>
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Kategori:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        Kategori:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['category']) && !empty($data['category'])) ? htmlspecialchars($data['category']) : '-' ?></label>
@@ -38,7 +41,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Deskripsi:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-wrench" aria-hidden="true"></i>
+                        Spesifikasi Teknis:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['description']) && !empty($data['description'])) ? htmlspecialchars($data['description']) : '-' ?></label>
@@ -46,7 +52,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Metode Pengadaan:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                        Metode Pengadaan:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['metode']) && !empty($data['metode'])) ? htmlspecialchars($data['metode']) : '-' ?></label>
@@ -54,7 +63,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">%PPN:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-percent" aria-hidden="true"></i>
+                        PPN:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['ppn']) && !empty($data['ppn'])) ? htmlspecialchars($data['ppn']) : '-' ?></label>
@@ -64,7 +76,10 @@
                 <div class="col-lg-6">
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Harga Perkiraan:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-money" aria-hidden="true"></i>
+                        Harga Perkiraan:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['harga_perkiraan']) && !empty($data['harga_perkiraan'])) ? htmlspecialchars($data['harga_perkiraan']) : '-' ?></label>
@@ -72,7 +87,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Kualifikasi Vendor:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        Kualifikasi Vendor:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -80,7 +98,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">PPH:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-file" aria-hidden="true"></i>
+                        PPH:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -88,7 +109,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Registration Date:</label>
+                      <label class="text-muted font-weight-bold">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        Registration Date:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['registration_date']) && !empty($data['registration_date'])) ? htmlspecialchars($data['registration_date']) : '-' ?></label>
@@ -96,7 +120,10 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Category Termin:</label>
+                      <label class=" text-muted font-weight-bold">
+                        <i class="fa fa-sliders" aria-hidden="true"></i>
+                        Category Termin:
+                      </label>
                     </div>
                     <div class="col-lg-4">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -109,11 +136,11 @@
         </div>
       </div>
       <div class="col-lg-12 mt-4">
-        <h3 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h3>
+        <h4 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h4>
         <p>deskripsi tender</p>
       </div>
       <div class="col-lg-12 mt-4">
-        <h3 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h3>
+        <h4 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h4>
         <div id="timeline">
           <table class="table" style="font-size: small;">
             <thead class="py-3 font-weight-bold">
@@ -154,15 +181,15 @@
       <?php else: ?>
         <div class="w-100 d-flex flex-column align-items-center justify-content-center mt-5">
           <img src="<?= SERVER_NAME ?>assets/images/success.svg" alt="" style="width: 40%;">
-          <h3>Anda sudah terdaftar pada pengadaan ini.</h3>
+          <h4>Anda sudah terdaftar pada pengadaan ini.</h4>
         </div>
       <?php endif; ?>
     </div>
   </div>
-</div>
+</section>
 
 <script>
-  document.getElementById('submit-tender-btn').addEventListener('click', function(event) {
+  document.getElementById('submit-tender-btn')?.addEventListener('click', function(event) {
     event.preventDefault(); // Mencegah form submission tradisional
     // const tenderId = this.getAttribute('data-id');
     const tenderId = new URLSearchParams(window.location.search).get('id');

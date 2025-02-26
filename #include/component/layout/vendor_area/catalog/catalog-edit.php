@@ -1,5 +1,5 @@
 <!--Breadcrumb Banner Area Start-->
-<div class="breadcrumb-banner-area pt-30 pb-10 bg-3">
+<div class="breadcrumb-banner-area pt-30 pb-10 bg-5">
   <div class="container">
     <div class="row">
       <div class="col-md-12">

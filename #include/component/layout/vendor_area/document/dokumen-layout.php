@@ -5,11 +5,11 @@
       <input type="text" hidden id='user_id' value="<?= $_SESSION['id'] ?>">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#akta_perubahan">
+          <a class="card-link" data-bs-toggle="collapse" href="#akta_perubahan">
             1. Akta Perubahan
           </a>
         </div>
-        <div id="akta_perubahan" class="collapse" data-parent="#accordion">
+        <div id="akta_perubahan" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -35,11 +35,11 @@
     <form method="post" id="form_upload_file_2" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#sk_menkumham">
+          <a class="card-link" data-bs-toggle="collapse" href="#sk_menkumham">
             2. SK Menkumham
           </a>
         </div>
-        <div id="sk_menkumham" class="collapse" data-parent="#accordion">
+        <div id="sk_menkumham" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -65,11 +65,11 @@
     <form method="post" id="form_upload_file_3" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#ktp_pengurus_perusahaan">
+          <a class="card-link" data-bs-toggle="collapse" href="#ktp_pengurus_perusahaan">
             3. KTP Pengurus Perusahaan
           </a>
         </div>
-        <div id="ktp_pengurus_perusahaan" class="collapse" data-parent="#accordion">
+        <div id="ktp_pengurus_perusahaan" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -95,11 +95,11 @@
     <form method="post" id="form_upload_file_4" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#surat_keterangan_domisili_perusahaan">
+          <a class="card-link" data-bs-toggle="collapse" href="#surat_keterangan_domisili_perusahaan">
             4. Surat Keterangan Domisili Perusahaan
           </a>
         </div>
-        <div id="surat_keterangan_domisili_perusahaan" class="collapse" data-parent="#accordion">
+        <div id="surat_keterangan_domisili_perusahaan" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -125,11 +125,11 @@
     <form method="post" id="form_upload_file_5" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#siup">
+          <a class="card-link" data-bs-toggle="collapse" href="#siup">
             5. SIUP
           </a>
         </div>
-        <div id="siup" class="collapse" data-parent="#accordion">
+        <div id="siup" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -155,11 +155,11 @@
     <form method="post" id="form_upload_file_6" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#tdp">
+          <a class="card-link" data-bs-toggle="collapse" href="#tdp">
             6. TDP
           </a>
         </div>
-        <div id="tdp" class="collapse" data-parent="#accordion">
+        <div id="tdp" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -185,11 +185,11 @@
     <form method="post" id="form_upload_file_7" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#npwp">
+          <a class="card-link" data-bs-toggle="collapse" href="#npwp">
             7. NPWP
           </a>
         </div>
-        <div id="npwp" class="collapse" data-parent="#accordion">
+        <div id="npwp" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -215,11 +215,11 @@
     <form method="post" id="form_upload_file_8" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#pkp">
+          <a class="card-link" data-bs-toggle="collapse" href="#pkp">
             8. PKP
           </a>
         </div>
-        <div id="pkp" class="collapse" data-parent="#accordion">
+        <div id="pkp" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -245,11 +245,11 @@
     <form method="post" id="form_upload_file_9" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#spt">
+          <a class="card-link" data-bs-toggle="collapse" href="#spt">
             9. SPT PPH / PPN
           </a>
         </div>
-        <div id="spt" class="collapse" data-parent="#accordion">
+        <div id="spt" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -275,11 +275,11 @@
     <form method="post" id="form_upload_file_10" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#laporan_keuangan">
+          <a class="card-link" data-bs-toggle="collapse" href="#laporan_keuangan">
             10. Laporan Keuangan
           </a>
         </div>
-        <div id="laporan_keuangan" class="collapse" data-parent="#accordion">
+        <div id="laporan_keuangan" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -305,11 +305,11 @@
     <form method="post" id="form_upload_file_11" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#rekening_koran">
+          <a class="card-link" data-bs-toggle="collapse" href="#rekening_koran">
             11. Rekening Koran
           </a>
         </div>
-        <div id="rekening_koran" class="collapse" data-parent="#accordion">
+        <div id="rekening_koran" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -335,11 +335,11 @@
     <form method="post" id="form_upload_file_12" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#sertifikasi">
+          <a class="card-link" data-bs-toggle="collapse" href="#sertifikasi">
             12. Sertifikasi
           </a>
         </div>
-        <div id="sertifikasi" class="collapse" data-parent="#accordion">
+        <div id="sertifikasi" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -365,11 +365,11 @@
     <form method="post" id="form_upload_file_13" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#list_daftar_pengalaman_kerja">
+          <a class="card-link" data-bs-toggle="collapse" href="#list_daftar_pengalaman_kerja">
             13. List Daftar Pengalaman Kerja
           </a>
         </div>
-        <div id="list_daftar_pengalaman_kerja" class="collapse" data-parent="#accordion">
+        <div id="list_daftar_pengalaman_kerja" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -395,11 +395,11 @@
     <form method="post" id="form_upload_file_14" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#list_tenaga_ahli">
+          <a class="card-link" data-bs-toggle="collapse" href="#list_tenaga_ahli">
             14. List Tenaga Ahli
           </a>
         </div>
-        <div id="list_tenaga_ahli" class="collapse" data-parent="#accordion">
+        <div id="list_tenaga_ahli" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>
@@ -425,11 +425,11 @@
     <form method="post" id="form_upload_file_15" autocomplete="off" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
-          <a class="card-link" data-toggle="collapse" href="#akta_pendirian">
+          <a class="card-link" data-bs-toggle="collapse" href="#akta_pendirian">
             15. Akta Pendirian
           </a>
         </div>
-        <div id="akta_pendirian" class="collapse" data-parent="#accordion">
+        <div id="akta_pendirian" class="collapse" data-bs-parent="#accordion">
           <div class="card-body">
             <table>
               <tbody>

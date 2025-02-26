@@ -12,7 +12,7 @@
 
       </div>
       <div class="col-md-4">
-        <label>Tipe Perusahaan</label><br>
+        <label>Tipe Perusahaan</label>
         <select name="tipe_perusahaan" id="tipe_perusahaan" class="form-control">
           <option value="">Pilih Tipe Perusahaan</option>
           <option value="Firma (FA)">Firma (FA)</option>
@@ -54,7 +54,7 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Provinsi</label><br>
+        <label>Provinsi</label>
         <select name="province" id="province">
           <option value="">Pilih Provinsi</option>
           <?php foreach ($provinces as $province) : ?>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="col-md-6">
-        <label>Kota/Kabupaten</label><br>
+        <label>Kota/Kabupaten</label>
         <select name="regency" id="regency">
           <option value="">Pilih Kabupaten/Kota</option>
           <?php foreach ($regencies as $regency) : ?>
@@ -76,7 +76,7 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Kecamatan</label><br>
+        <label>Kecamatan</label>
         <select name="district" id="district">
           <option value="">Pilih Kecamatan</option>
           <?php foreach ($districts as $district) : ?>
@@ -86,7 +86,7 @@
       </div>
 
       <div class="col-md-6">
-        <label>Kelurahan</label><br>
+        <label>Kelurahan</label>
         <select name="village" id="village">
           <option value="">Pilih Kelurahan/Desa</option>
           <?php foreach ($villages as $village) : ?>

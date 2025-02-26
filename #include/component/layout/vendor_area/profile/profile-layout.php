@@ -26,7 +26,7 @@ $documentLabel = [
           <a href="<?= SERVER_NAME ?>vendor_area/company/edit?id=<?= $companies['data'][0]['id'] ?>" class="btn ml-3 text-capitalize text-white" style="background-color: #AA0A2F;">Edit</a>
         <?php endif; ?>
       </div>
-      <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
+      <div class="card my-3 shadow-sm">
         <div class="card-body">
           <div class="row">
             <?php if (!empty($companies['data']) && $companies['status'] === 'success'): ?>
@@ -159,7 +159,7 @@ $documentLabel = [
   <strong class="font-weight-bold">Informasi Dokumen Perusahaan:</strong>
   <div class="row">
     <div class="col-lg-12">
-      <div class="card my-3" style="box-shadow: 3px 3px 3px #777;">
+      <div class="card my-3 shadow-sm">
         <div class="card-body">
 
           <div class="row">

@@ -18,10 +18,8 @@
           </div>
         <?php endforeach; ?>
       <?php else: ?>
-        <div class="col-md-12">
-          <center>
-            <h6><?= htmlspecialchars(isset($tenders['message']) ? $tenders['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-          </center>
+        <div class="col-md-12 text-center">
+          <h6><?= htmlspecialchars(isset($tenders['message']) ? $tenders['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
         </div>
       <?php endif; ?>
     </div>
@@ -40,16 +38,14 @@
                 <p>Tanggal Pendaftaran: <?= htmlspecialchars($tender['registration_date'], ENT_QUOTES, 'UTF-8') ?> - <?= htmlspecialchars($tender['closing_date'], ENT_QUOTES, 'UTF-8') ?></p>
               </div>
               <div class="button-box">
-                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail?id=<?= $tender['id'] ?>" class="button button-black">DETAIL</a>
+                <a href="<?= SERVER_NAME ?>vendor_area/tender/detail?id=<?= htmlspecialchars($tender['id'], ENT_QUOTES, 'UTF-8') ?>" class="button button-black">DETAIL</a>
               </div>
             </div>
           </div>
         <?php endforeach; ?>
       <?php else: ?>
-        <div class="col-md-12">
-          <center>
-            <h6><?= htmlspecialchars(isset($tenderLain['message']) ? $tenderLain['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-          </center>
+        <div class="col-md-12 text-center">
+          <h6><?= isset($tenderLain['message']) ? htmlspecialchars($tenderLain['message'], ENT_QUOTES, 'UTF-8') : 'Tender tidak tersedia' ?></h6>
         </div>
       <?php endif; ?>
     </div>
@@ -74,10 +70,8 @@
           </div>
         <?php endforeach; ?>
       <?php else: ?>
-        <div class="col-md-12">
-          <center>
-            <h6><?= htmlspecialchars(isset($tenderBarangJasa['message']) ? $tenderBarangJasa['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-          </center>
+        <div class="col-md-12 text-center">
+          <h6><?= isset($tenderBarangJasa['message']) ? htmlspecialchars($tenderBarangJasa['message'], ENT_QUOTES, 'UTF-8') : 'Tender tidak tersedia' ?></h6>
         </div>
       <?php endif; ?>
     </div>
@@ -102,10 +96,8 @@
           </div>
         <?php endforeach; ?>
       <?php else: ?>
-        <div class="col-md-12">
-          <center>
-            <h6><?= htmlspecialchars(isset($tenderKonsultasi['message']) ? $tenderKonsultasi['message'] : 'Tender tidak tersedia', ENT_QUOTES, 'UTF-8') ?></h6>
-          </center>
+        <div class="col-md-12 text-center">
+          <h6><?= isset($tenderKonsultasi['message']) ? htmlspecialchars($tenderKonsultasi['message'], ENT_QUOTES, 'UTF-8') : 'Tender tidak tersedia' ?></h6>
         </div>
       <?php endif; ?>
     </div>

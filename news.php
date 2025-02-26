@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include_once __DIR__ . "/#include/config.php";
-include_once __DIR__ . "/#include/#class/autoload.php";
+require_once __DIR__ . "/#include/config.php";
+require_once ROOT_PATH . "#include/#class/autoload.php";
 
 use App\LoadEnv;
 use App\liblary;
@@ -47,15 +47,15 @@ foreach ($news['data'] as $item) {
     $current_sub_menu = $newsData['judul'];
     $title = $newsData['judul'];
 
-    include_once __DIR__ . "/#include/component/header.php";
-    include_once __DIR__ . "/#include/component/navbar.php";
-    include_once __DIR__ . "/#include/component/layout/news-content.php";
-    include_once __DIR__ . "/#include/component/footer.php";
+    require_once ROOT_PATH . "#include/component/header.php";
+    require_once ROOT_PATH . "#include/component/navbar.php";
+    require_once ROOT_PATH . "#include/component/layout/news/news-content.php";
+    require_once ROOT_PATH . "#include/component/footer.php";
     exit;
   }
 }
 
-include_once __DIR__ . "/#include/component/header.php";
-include_once __DIR__ . "/#include/component/navbar.php";
-include_once __DIR__ . "/#include/component/layout/news.php";
-include_once __DIR__ . "/#include/component/footer.php";
+require_once ROOT_PATH . "#include/component/header.php";
+require_once ROOT_PATH . "#include/component/navbar.php";
+require_once ROOT_PATH . "#include/component/layout/news/news-layout.php";
+require_once ROOT_PATH . "#include/component/footer.php";

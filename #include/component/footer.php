@@ -19,37 +19,29 @@
 
  <script src="<?= SERVER_NAME ?>assets/js/popper.js"></script>
 
- <!-- Owl Carousel js
-========================================================= -->
+ <!-- Owl Carousel js -->
  <script src="<?= SERVER_NAME ?>assets/js/owl.carousel.min.js"></script>
 
- <!-- nivo slider js
-========================================================= -->
+ <!-- nivo slider js -->
  <script src="<?= SERVER_NAME ?>assets/plugins/nivo-slider/js/jquery.nivo.slider.js"></script>
  <script src="<?= SERVER_NAME ?>assets/plugins/nivo-slider/home.js"></script>
 
- <!-- Js plugins included in this file
-========================================================= -->
+ <!-- Js plugins included in this file -->
  <script src="<?= SERVER_NAME ?>assets/js/plugins.js"></script>
 
- <!-- Video Player JS
-========================================================= -->
+ <!-- Video Player JS -->
  <script src="<?= SERVER_NAME ?>assets/js/jquery.mb.YTPlayer.js"></script>
 
- <!-- AJax Mail JS
-========================================================= -->
+ <!-- AJax Mail JS -->
  <script src="<?= SERVER_NAME ?>assets/js/ajax-mail.js"></script>
 
- <!-- Mail Chimp JS
-========================================================= -->
+ <!-- Mail Chimp JS -->
  <script src="<?= SERVER_NAME ?>assets/js/jquery.ajaxchimp.min.js"></script>
 
- <!-- Waypoint Js
-========================================================= -->
+ <!-- Waypoint Js -->
  <script src="<?= SERVER_NAME ?>assets/js/waypoints.min.js"></script>
 
- <!-- Main js file contents all jQuery plugins activation
-========================================================= -->
+ <!-- Main js file contents all jQuery plugins activation -->
  <script src="<?= SERVER_NAME ?>assets/js/main.js"></script>
 
  <!-- Sweetalert2 -->
@@ -58,10 +50,7 @@
  <!-- Recaptcha -->
  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
- <!-- Jquery -->
- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
- <!-- Jquery Function -->
+ <!-- Feature Function -->
  <script src="<?= SERVER_NAME ?>assets/js/Feature/see-password.js"></script>
 
  <!-- Auth Function -->

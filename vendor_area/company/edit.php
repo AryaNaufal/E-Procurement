@@ -29,7 +29,7 @@ $current_menu = "company";
 $current_sub_menu = NULL;
 $title = "Company";
 
-require_once __DIR__ . '/../../#include/component/header.php';
-require_once __DIR__ . '/../../#include/component/navbar.php';
-require_once __DIR__ . '/../../#include/component/layout/vendor_area/edit-data-perusahaan.php';
-require_once __DIR__ . '/../../#include/component/footer.php';
+require_once ROOT_PATH . '#include/component/header.php';
+require_once ROOT_PATH . '#include/component/navbar.php';
+require_once ROOT_PATH . '#include/component/layout/vendor_area/company/company-edit.php';
+require_once ROOT_PATH . '#include/component/footer.php';
