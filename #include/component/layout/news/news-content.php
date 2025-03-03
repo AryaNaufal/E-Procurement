@@ -16,7 +16,7 @@
           <div class="item">
             <div class="blog-item-box">
               <div class="thumb">
-                <a href="#"><img src="<?= SERVER_NAME . 'assets/management/images/news/' . htmlspecialchars($item['gambar']); ?>" alt="Thumb" class="w-100"></a>
+                <a href="#"><img src="<?= SERVER_NAME . 'assets/management/images/news/' . htmlspecialchars($newsData['gambar']); ?>" alt="Thumb" class="w-100"></a>
                 <div class="date"><strong><?= date('d', strtotime(htmlspecialchars($newsData['created_at']))) ?></strong> <span><?= date('M', strtotime(htmlspecialchars($newsData['created_at']))) ?></span></div>
               </div>
               <div class="info">

@@ -12,7 +12,7 @@
         <div class="blog-item-box">
           <div class="row">
             <?php if ($pagedNews !== null && !empty($pagedNews)): ?>
-              <?php foreach ($pagedNews as $item): ?>
+              <?php foreach ($pagedNews['data'] as $item): ?>
                 <!-- Single Item -->
                 <div class="col-lg-4 col-md-6 single-item">
                   <div class="item">
