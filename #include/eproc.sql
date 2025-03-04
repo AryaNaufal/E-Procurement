@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2025 at 01:15 PM
+-- Generation Time: Mar 04, 2025 at 11:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -58,7 +58,7 @@ CREATE TABLE `katalog` (
   `user_id` int(11) NOT NULL,
   `kode_produk` varchar(50) NOT NULL,
   `produk_solusi` varchar(100) NOT NULL,
-  `tkdn_produk` int(50) NOT NULL,
+  `tkdn_produk` varchar(100) NOT NULL,
   `jenis` enum('lokal','import') NOT NULL,
   `harga` int(100) NOT NULL,
   `expired_harga` int(100) NOT NULL,
@@ -83,20 +83,6 @@ CREATE TABLE `news` (
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `news`
---
-
-INSERT INTO `news` (`id`, `judul`, `slug`, `gambar`, `isi`, `created_at`) VALUES
-(1, 'News 1', 'news-1', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(2, 'News 2', 'news-2', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(3, 'News 3', 'news-3', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(4, 'News 4', 'news-4', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(5, 'News 5', 'news-5', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(6, 'News 6', 'news-6', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(7, 'News 7', 'news-7', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
-(8, 'News 8', 'news-8', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25');
-
 -- --------------------------------------------------------
 
 --
@@ -109,13 +95,6 @@ CREATE TABLE `participant` (
   `tender_id` int(11) NOT NULL,
   `registration_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `participant`
---
-
-INSERT INTO `participant` (`id`, `user_id`, `tender_id`, `registration_date`) VALUES
-(1, 1, 1, '2025-02-25');
 
 -- --------------------------------------------------------
 
@@ -91851,19 +91830,11 @@ INSERT INTO `reg_villages` (`id`, `district_id`, `name`) VALUES
 
 CREATE TABLE `tender` (
   `id` int(11) NOT NULL,
-  `description` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL,
   `category` varchar(50) NOT NULL,
   `registration_date` date NOT NULL,
   `closing_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tender`
---
-
-INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `closing_date`) VALUES
-(1, 'Permintaan Peralatan Kerja Redaksi', 'Pengadaan Barang & Jasa', '2025-02-01', '2025-02-18'),
-(2, 'Permintaan Peralatan Kerja Redaksi (Tender Ulang)', 'Pengadaan Barang & Jasa', '2025-01-20', '2025-02-28');
 
 -- --------------------------------------------------------
 
@@ -91924,13 +91895,6 @@ CREATE TABLE `vendor` (
   `kelurahan` varchar(100) NOT NULL,
   `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `vendor`
---
-
-INSERT INTO `vendor` (`id`, `user_id`, `name`, `type`, `mail`, `phone`, `mobile_phone`, `address`, `provinsi`, `kota`, `kecamatan`, `kelurahan`, `kategori`) VALUES
-(1, 1, 'antara', 'Perusahaan Negara Umum (PERUM)', 'antara@example.com', '123', '123', 'asd', '31', '3171', '317102', '3171021001', 'Internet,Arsitektur');
 
 --
 -- Indexes for dumped tables
@@ -92032,25 +91996,25 @@ ALTER TABLE `document`
 -- AUTO_INCREMENT for table `katalog`
 --
 ALTER TABLE `katalog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `participant`
 --
 ALTER TABLE `participant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tender`
 --
 ALTER TABLE `tender`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `timeline_pengadaan`
@@ -92068,7 +92032,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `vendor`
 --
 ALTER TABLE `vendor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
