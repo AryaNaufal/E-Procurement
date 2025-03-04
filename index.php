@@ -19,6 +19,7 @@ $newsService = new NewsService();
 $news = $newsService->getNews();
 $category = $_GET['category'] ?? '';
 $keyword = $_GET['keyword'] ?? '';
+$tenders = $tenderService->getTenders();
 
 // Daftar kategori
 $categories = [
@@ -35,14 +36,14 @@ $title = "Home";
 // Ambil data tender berdasarkan kategori dan keyword
 if ($keyword && $categories[$category]['filter'] !== null) {
   if ($category === 'semua_kategori') {
-    $tenders = $tenderService->getTender($keyword);
+    $tender = $tenderService->getTender($keyword);
   } else {
-    $tenders = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
+    $tender = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
   }
 } elseif (isset($currentCategory['filter'])) {
-  $tenders = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
+  $tender = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
 } else {
-  isset($keyword) && $tenders = $tenderService->getTender($keyword);
+  isset($keyword) && $tender = $tenderService->getTender($keyword);
 }
 
 // Ambil data untuk setiap kategori tab-pane
@@ -54,14 +55,17 @@ $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidan
 $tenderBaru = $tenderSelesai = 0;
 if (isset($tenders['data'])) {
   $now = new DateTimeImmutable();
-  foreach ($tenders['data'] as $tender) {
-    $registrationDate = new DateTimeImmutable($tender['registration_date'] ?? 'now');
-    $closingDate = new DateTimeImmutable($tender['closing_date'] ?? 'now');
+  foreach ($tenders['data'] as $item) {
+    $registrationDate = new DateTimeImmutable($item['registration_date'] ?? 'now');
+    $closingDate = new DateTimeImmutable($item['closing_date'] ?? 'now');
 
-    if ($now->diff($registrationDate)->days <= 3) {
+    // Menampilkan Tender yang baru dalam durasi max 3 hari terakhir
+    if ($now->diff($registrationDate)->days <= 3 && $now >= $registrationDate) {
       $tenderBaru++;
     }
-    if ($now->diff($closingDate)->days > 0) {
+
+    // Menampilkan Tender yang sudah selesai
+    if ($now > $closingDate) {
       $tenderSelesai++;
     }
   }

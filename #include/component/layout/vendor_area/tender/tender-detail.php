@@ -29,103 +29,106 @@
               <?php foreach ($tenders['data'] as $data): ?>
                 <div class="col-lg-6">
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-bars" aria-hidden="true"></i>
                         Kategori:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['category']) && !empty($data['category'])) ? htmlspecialchars($data['category']) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-wrench" aria-hidden="true"></i>
                         Spesifikasi Teknis:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['description']) && !empty($data['description'])) ? htmlspecialchars($data['description']) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-gavel" aria-hidden="true"></i>
                         Metode Pengadaan:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['metode']) && !empty($data['metode'])) ? htmlspecialchars($data['metode']) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-percent" aria-hidden="true"></i>
                         PPN:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['ppn']) && !empty($data['ppn'])) ? htmlspecialchars($data['ppn']) : '-' ?></label>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-money" aria-hidden="true"></i>
                         Harga Perkiraan:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['harga_perkiraan']) && !empty($data['harga_perkiraan'])) ? htmlspecialchars($data['harga_perkiraan']) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         Kualifikasi Vendor:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-file" aria-hidden="true"></i>
                         PPH:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                         Registration Date:
                       </label>
                     </div>
-                    <div class="col-lg-4">
-                      <label class="text-muted"><?= (isset($data['registration_date']) && !empty($data['registration_date'])) ? htmlspecialchars($data['registration_date']) : '-' ?></label>
+                    <div class="col-lg-6">
+                      <label class="text-muted">
+                        <?= (isset($data['registration_date']) && !empty($data['registration_date'])) ? htmlspecialchars(date('d-m-Y', strtotime($data['registration_date']))) : '-' ?> 
+                        s/d 
+                        <?= (isset($data['closing_date']) && !empty($data['closing_date'])) ? htmlspecialchars(date('d-m-Y', strtotime($data['closing_date']))) : '-' ?></label>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class=" text-muted font-weight-bold">
                         <i class="fa fa-sliders" aria-hidden="true"></i>
                         Category Termin:
                       </label>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
@@ -175,9 +178,11 @@
         </div>
       </div>
       <?php if ($checkFollowedTender == false): ?>
+        <?php if (isset($data['closing_date']) && strtotime($data['closing_date']) > time()): ?>
         <div class="w-100 d-flex justify-content-center">
           <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;">Submit</button>
         </div>
+        <?php endif; ?>
       <?php else: ?>
         <div class="w-100 d-flex flex-column align-items-center justify-content-center mt-5">
           <img src="<?= SERVER_NAME ?>assets/images/success.svg" alt="" style="width: 40%;">

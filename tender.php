@@ -14,6 +14,7 @@ $userService = new UserService();
 
 $category = $_GET['category'] ?? '';
 $keyword = $_GET['keyword'] ?? '';
+$tenders = $tenderService->getTenders();
 
 // Daftar kategori
 $categories = [
@@ -29,11 +30,11 @@ $title = "Tender";
 
 // Ambil data tender berdasarkan kategori dan keyword
 if ($keyword && $categories[$category]['filter'] !== null) {
-  $tenders = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
+  $tender = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
 } elseif (isset($currentCategory['filter'])) {
-  $tenders = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
+  $tender = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
 } else {
-  isset($keyword) && $tenders = $tenderService->getTender($keyword);
+  isset($keyword) && $tender = $tenderService->getTender($keyword);
 }
 
 // Ambil data untuk setiap kategori tab-pane

@@ -6,7 +6,7 @@
         <div class="col-xl-10 col-lg-12 ml-auto mr-auto py-5">
           <div class="job-search-content text-center">
             <h4 class="text-white mb-5">Selamat Datang di E-Procurement</h4>
-            <form action="" method="GET" autocomplete="off">
+            <form action="<?= SERVER_NAME ?>tender" method="GET" autocomplete="off">
               <div class="form-container">
                 <?php include ROOT_PATH . '#include/component/fragment/search-category.php'; ?>
               </div>
