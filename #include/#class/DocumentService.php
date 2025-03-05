@@ -40,6 +40,13 @@ class DocumentService
 
   public function postDocument($id, $file, $type)
   {
+    $allowedTypes = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
+    $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+    if (!in_array($extension, $allowedTypes)) {
+      return $this->createErrorResponse('Format file tidak diperbolehkan');
+    }
+
     $sqlCheck = "SELECT * FROM document WHERE user_id = :id";
     try {
       $existingDocument = $this->db->squery($sqlCheck, ['id' => $id]);
@@ -167,6 +174,16 @@ class DocumentService
           $sqlUpdate .= implode(", ", array_map(function ($field) {
             return "$field = :$field";
           }, array_keys($updateFields)));
+
+          $existingDocument = $this->db->squery_single($sqlCheck, ['id' => $id]);
+
+          // Hapus file lama jika ada perubahan
+          foreach ($updateFields as $field => $filePath) {
+            if ($existingDocument[$field] != $filePath && file_exists($existingDocument[$field])) {
+              unlink($existingDocument[$field]);
+            }
+          }
+
           $this->db->squery($sqlUpdate, $updateFields);
 
           return $this->createSuccessResponse('Dokumen berhasil diperbarui');
