@@ -23,12 +23,12 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="card shadow-sm">
-          <h4 class="p-4">Detail Pengadaan</h4>
-          <div class="card-body">
+          <h5 class="p-4">Detail Pengadaan</h5>
+          <div class="card-body px-5">
             <div class="row">
               <?php foreach ($tenders['data'] as $data): ?>
                 <div class="col-lg-6">
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -39,7 +39,7 @@
                       <label class="text-muted"><?= (isset($data['category']) && !empty($data['category'])) ? htmlspecialchars($data['category']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-wrench" aria-hidden="true"></i>
@@ -50,7 +50,7 @@
                       <label class="text-muted"><?= (isset($data['description']) && !empty($data['description'])) ? htmlspecialchars($data['description']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-gavel" aria-hidden="true"></i>
@@ -61,7 +61,7 @@
                       <label class="text-muted"><?= (isset($data['metode']) && !empty($data['metode'])) ? htmlspecialchars($data['metode']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-percent" aria-hidden="true"></i>
@@ -74,7 +74,7 @@
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-money" aria-hidden="true"></i>
@@ -85,7 +85,7 @@
                       <label class="text-muted"><?= (isset($data['harga_perkiraan']) && !empty($data['harga_perkiraan'])) ? htmlspecialchars($data['harga_perkiraan']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
@@ -96,7 +96,7 @@
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-file" aria-hidden="true"></i>
@@ -107,7 +107,7 @@
                       <label class="text-muted"><?= (isset($data['address']) && !empty($data['address'])) ? htmlspecialchars($data['address']) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class="text-muted font-weight-bold">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -121,7 +121,7 @@
                         <?= (isset($data['closing_date']) && !empty($data['closing_date'])) ? htmlspecialchars(date('d-m-Y', strtotime($data['closing_date']))) : '-' ?></label>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-6">
                       <label class=" text-muted font-weight-bold">
                         <i class="fa fa-sliders" aria-hidden="true"></i>
@@ -139,11 +139,11 @@
         </div>
       </div>
       <div class="col-lg-12 mt-4">
-        <h4 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h4>
+        <h5 class="border-bottom border-warning pb-2 pl-2">Deskripsi</h5>
         <p>deskripsi tender</p>
       </div>
       <div class="col-lg-12 mt-4">
-        <h4 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h4>
+        <h5 class="border-bottom border-warning pb-2 pl-2">Timeline Pengadaan</h5>
         <div id="timeline">
           <table class="table" style="font-size: small;">
             <thead class="py-3 font-weight-bold">

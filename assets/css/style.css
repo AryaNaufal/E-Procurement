@@ -357,9 +357,8 @@ a.button.large-button {
 .blog-area .item .date span {
   display: block;
   font-size: 14px;
-  /* background: #AA0A2F; */
   background: #AA0A2F;
-  color: var(--white);
+  color: white;
   padding: 0 19px;
   border-radius: 0 0 8px 8px;
   min-width: 70px;
@@ -388,6 +387,7 @@ a.button.large-button {
   padding: 0;
   font-weight: 900;
   font-family: var(--font-heading);
+  background: white;
 }
 
 .blog-area .item .info .meta ul li {
@@ -1121,6 +1121,7 @@ ul.pagination {
 .pagination li.page-item.active a {
   background: #AA0A2F;
   border-color: #AA0A2F;
+  color: white;
 }
 
 .btn-theme-border {

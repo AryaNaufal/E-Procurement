@@ -10,12 +10,12 @@
           <form method="POST" id="form_add_katalog" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label style="color:black">Kode Produk</label>
+                <label class="form-label" style="color:#393939">Kode Produk</label>
                 <input type="text" maxlength="150" name="kode_produk" id="kode_produk"
                   placeholder="Kode Produk" class="form-control" required="">
               </div>
               <div class="col-md-6 mb-3">
-                <label style="color:black">Produk / Solusi</label>
+                <label class="form-label" style="color:#393939">Produk / Solusi</label>
                 <input type="text" maxlength="150" name="nama_produk" id="produk_solusi"
                   placeholder="Produk / Solusi" class="form-control" required="">
               </div>
@@ -23,12 +23,12 @@
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label style="color:black">TKDN Produk</label>
+                <label class="form-label" style="color:#393939">TKDN Produk</label>
                 <input type="text" maxlength="150" name="tkdn_produk" id="tkdn" placeholder="TKDN Produk"
                   class="form-control" required="">
               </div>
               <div class="col-md-6 mb-3">
-                <label style="color:black">Jenis</label>
+                <label class="form-label" style="color:#393939">Jenis</label>
                 <select name="jenis_produk" id="jenis_produk" class="form-control" required="">
                   <option value="">Pilih Jenis</option>
                   <option value="lokal">Lokal</option>
@@ -39,12 +39,12 @@
 
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label style="color:black">Harga</label>
+                <label class="form-label" style="color:#393939">Harga</label>
                 <input type="text" name="harga_produk" id="harga" placeholder="Harga" class="form-control"
                   onkeydown="return numbersonly(this, event);">
               </div>
               <div class="col-md-6 mb-3">
-                <label style="color:black">Expired Harga</label>
+                <label class="form-label" style="color:#393939">Expired Harga</label>
                 <input type="text" name="expired_harga" id="expired" placeholder="Expired Harga"
                   class="form-control datepicker" style="background-color:white" onkeydown="return numbersonly(this, event);" step="1">
               </div>
@@ -52,7 +52,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-3">
-                <label style="color:black">Kategori</label>
+                <label class="form-label" style="color:#393939">Kategori</label>
                 <select name="kategori_produk" id="kategori_katalog" class="form-control" required="">
                   <option value="">Pilih Kategori</option>
                   <option value="Alat Tulis Kantor">Alat Tulis Kantor</option>
@@ -70,7 +70,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-3">
-                <label style="color:black">Deskripsi</label>
+                <label class="form-label" style="color:#393939">Deskripsi</label>
                 <textarea name="deskripsi_produk" id="deskripsi" placeholder="Deskripsi" class="form-control"
                   required=""></textarea>
               </div>
@@ -78,14 +78,14 @@
 
             <div class="row">
               <div class="col-md-12">
-                <label style="color:black">Foto Produk</label>
+                <label class="form-label" style="color:#393939">Foto Produk</label>
                 <input type="file" name="photo">
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12">
-                <label style="color:black">Dokumen</label>
+                <label class="form-label" style="color:#393939">Dokumen</label>
                 <input type="file" name="document">
               </div>
             </div>

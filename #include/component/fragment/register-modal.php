@@ -1,7 +1,7 @@
 <!--Start of Login Form-->
 <div id="quickview-register">
   <!-- Modal -->
-  <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" style="z-index: 1; position: fixed;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -16,25 +16,31 @@
             <hr class="my-3">
             <form method="post" id="form_daftar" autocomplete="off" class="mt-3">
               <div class="form-group">
-                <label style="color: #393939; font-size: 14px !important;">Pilih Jenis Akun</label>
+                <label class="form-label" style="font-size: 14px; color:#393939 !important;">Pilih Jenis Akun</label>
                 <div class="btn-group btn-group-toggle w-100 mb-3" data-toggle="buttons">
                   <label onclick="get_akun('1')" class="btn btn-outline-danger w-50 m-auto" style="font-size: 12px !important; border-radius: 3px !important; margin-right: 16px !important;">
-                    <input type="radio" name="type_akun" value="1" id="type_akun_1" class="m-auto" autocomplete="off" required> Perusahaan
+                    <input type="radio" name="type_akun" value="1" id="type_akun_1" class="m-auto d-none" autocomplete="off" required> Perusahaan
                   </label>
                   <label onclick="get_akun('2')" class="btn btn-outline-danger w-50 m-auto" style="font-size: 12px !important; border-radius: 3px !important; margin-right: 20px;">
-                    <input type="radio" name="type_akun" value="2" id="type_akun_2" autocomplete="off" required> Individu
+                    <input type="radio" name="type_akun" value="2" id="type_akun_2" class="m-auto d-none" autocomplete="off" required> Individu
                   </label>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="username" style="color: #393939; font-size: 14px !important;">Username</label>
+              <div class="form-group mb-3">
+                <label for="username" class="form-label" style="font-size: 14px; color:#393939 !important;">Username</label>
                 <input type="text" name="username" id="username" placeholder="Username" class="form-control" required>
               </div>
-              <div class="form-group">
-                <label for="psw" style="color: #393939; font-size: 14px !important;">Password</label>
+
+              <!-- <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label" style="font-size: 14px; color:#393939 !important;">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div> -->
+
+              <div class="form-group mb-3">
+                <label for="psw" class="form-label" style="font-size: 14px; color:#393939 !important;">Password</label>
                 <input type="password" id="psw" name="password" placeholder="Password" class="form-control" onkeyup="password_validation()" required>
                 <input type="hidden" name="validation_pwd" id="validation_pwd_val" value="0">
-                <div style="font-size:11px;color:black;">
+                <div class="my-3" style="font-size:11px;color:black;">
                   Password harus berisi :
                 </div>
                 <table style="color: #393939; font-size: 12px !important;">
@@ -51,24 +57,29 @@
                   </tr>
                 </table>
               </div>
-              <div class="form-group">
-                <label for="email" style="color: #393939; font-size: 14px !important;">Email</label>
+
+              <div class="form-group mb-3">
+                <label for="email" class="form-label" style="font-size: 14px; color:#393939 !important;">Email</label>
                 <input type="email" name="email" id="email" placeholder="Email" class="form-control" required>
               </div>
-              <div class="form-group">
-                <label for="nama_lengkap" style="color: #393939; font-size: 14px !important;">Nama PIC</label>
+
+              <div class="form-group mb-3">
+                <label for="nama_lengkap" class="form-label" style="font-size: 14px; color:#393939 !important;">Nama PIC</label>
                 <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama PIC" class="form-control" required>
               </div>
-              <div class="form-group">
-                <label for="company_name" style="color: #393939; font-size: 14px !important;">Nama Perusahaan</label>
+
+              <div class="form-group mb-3">
+                <label for="company_name" class="form-label" style="font-size: 14px; color:#393939 !important;">Nama Perusahaan</label>
                 <input type="text" name="company_name" id="company_name" placeholder="Nama Perusahaan" class="form-control" required>
               </div>
-              <div class="form-group" id="div_npwp" style="display:none;">
-                <label for="company_npwp" style="color: #393939; font-size: 14px !important;">NPWP Perusahaan</label>
+
+              <div class="form-group mb-3" id="div_npwp" style="display:none;">
+                <label for="company_npwp" class="form-label" style="font-size: 14px; color:#393939 !important;">NPWP Perusahaan</label>
                 <input type="text" name="company_npwp" id="company_npwp" maxlength="15" placeholder="NPWP Perusahaan" class="form-control">
               </div>
-              <div class="form-group" id="div_nik" style="display:none;">
-                <label for="pic_ktp" style="color: #393939; font-size: 14px !important;">NIK</label>
+
+              <div class="form-group mb-3" id="div_nik" style="display:none;">
+                <label for="pic_ktp" class="form-label" style="font-size: 14px; color:#393939 !important;">NIK</label>
                 <input type="text" name="pic_ktp" id="pic_ktp" maxlength="16" placeholder="NIK" class="form-control">
               </div>
               <!-- <div class="g-recaptcha my-3" data-sitekey=" -->
@@ -96,12 +107,23 @@
       $("#div_npwp").show();
       $("#company_npwp").prop('required', true);
       $("#pic_ktp").prop('required', false);
+
+      $('label.btn').on('click', function() {
+        $('label.btn').removeClass('active');
+        $(this).addClass('active');
+      });
+
     } else {
       $("#div_npwp").hide();
       $("#company_npwp").val("");
       $("#div_nik").show();
       $("#pic_ktp").prop('required', true);
       $("#company_npwp").prop('required', false);
+
+      $('label.btn').on('click', function() {
+        $('label.btn').removeClass('active');
+        $(this).addClass('active');
+      });
     }
   }
 

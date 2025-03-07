@@ -3,7 +3,7 @@
   <div class="search-job-area bg-5">
     <div class="container">
       <div class="row">
-        <div class="col-xl-10 col-lg-12 ml-auto mr-auto py-5">
+        <div class="col-xl-12 col-lg-12 ml-auto mr-auto py-5">
           <div class="job-search-content text-center">
             <h4 class="text-white mb-5">Selamat Datang di E-Procurement</h4>
             <form action="<?= SERVER_NAME ?>tender" method="GET" autocomplete="off">
@@ -17,25 +17,25 @@
       <!--Start of Fun Factor Area-->
       <div class="fun-factor-area bg-1 text-center ptb-20 pt-sm-20 pb-sm-20">
         <div class="row">
-          <div class="col-md-3 col-6">
+          <div class="col-md-3">
             <div class="single-fun-factor">
               <h1><span><?= isset($tenders['data']) ? count($tenders['data']) : 0 ?></span></h1>
               <h3>Semua Tender</h3>
             </div>
           </div>
-          <div class="col-md-3 col-6">
+          <div class="col-md-3">
             <div class="single-fun-factor">
               <h1><span><?= isset($tenders['data']) ? $tenderBaru : 0 ?></span></h1>
               <h3>Tender Baru</h3>
             </div>
           </div>
-          <div class="col-md-3 col-6">
+          <div class="col-md-3">
             <div class="single-fun-factor">
               <h1><span><?= isset($tenders['data']) ? $tenderSelesai : 0 ?></span></h1>
               <h3>Tender Selesai</h3>
             </div>
           </div>
-          <div class="col-md-3 col-6">
+          <div class="col-md-3">
             <div class="single-fun-factor">
               <h1><span>0</span></h1>
               <h3>Vendor</h3>
@@ -70,7 +70,7 @@
           <a class="nav-link" data-bs-toggle="tab" href="#konsultasi">Jasa Konsultasi Bidang Usaha</a>
         </div>
         <!-- Tab panes -->
-        <?php include  ROOT_PATH . '#include/component/fragment/tab-content.php'; ?>
+        <?php include ROOT_PATH . '#include/component/fragment/tab-content.php'; ?>
       </div>
     </div>
   </div>
@@ -144,26 +144,26 @@
           $count = 0;
           foreach (array_slice($news['data'], -3) as $item):
             $count++;
-        ?>
-            <!-- Single item -->
-            <div class="single-item col-lg-4 col-md-6">
-              <div class="item">
-                <div class="thumb">
-                  <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>"><img class="img-fluid" src="<?= SERVER_NAME . 'assets/management/images/news/' .  $item['gambar'] ?>" alt="Thumb"></a>
-                  <div class="date"><strong><?= date('d', strtotime($item['created_at'])) ?></strong> <span><?= date('M', strtotime($item['created_at'])) ?></span></div>
-                </div>
-                <div class="info">
-                  <h4 class="overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                    <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>" aria-label="<?= $item['judul'] ?>"><?= $item['judul'] ?></a>
-                  </h4>
-                  <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                    <?= htmlspecialchars($item['isi'] ?? 'No description available.') ?>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- End Single item -->
-          <?php endforeach; ?>
+            ?>
+                            <!-- Single item -->
+                            <div class="single-item col-lg-4 col-md-6">
+                              <div class="item">
+                                <div class="thumb">
+                                  <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>"><img class="img-fluid" src="<?= SERVER_NAME . 'assets/management/images/news/' . $item['gambar'] ?>" alt="Thumb"></a>
+                                  <div class="date"><strong><?= date('d', strtotime($item['created_at'])) ?></strong> <span><?= date('M', strtotime($item['created_at'])) ?></span></div>
+                                </div>
+                                <div class="info">
+                                  <h4 class="overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                    <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>" aria-label="<?= $item['judul'] ?>"><?= $item['judul'] ?></a>
+                                  </h4>
+                                  <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                    <?= htmlspecialchars($item['isi'] ?? 'No description available.') ?>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- End Single item -->
+                  <?php endforeach; ?>
         <?php endif; ?>
 
         <div class="d-flex justify-content-center w-100">

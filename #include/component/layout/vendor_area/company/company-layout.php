@@ -6,13 +6,13 @@
 
     <div class="row">
       <div class="col-md-4">
-        <label>Nama Perusahaan</label>
+        <label class="form-label">Nama Perusahaan</label>
         <input type="text" maxlength="150" name="nama_perusahaan" id="nama_perusahaan"
           placeholder="Nama Perusahaan" class="form-control" value="" required="">
 
       </div>
       <div class="col-md-4">
-        <label>Tipe Perusahaan</label>
+        <label class="form-label">Tipe Perusahaan</label>
         <select name="tipe_perusahaan" id="tipe_perusahaan" class="form-control">
           <option value="">Pilih Tipe Perusahaan</option>
           <option value="Firma (FA)">Firma (FA)</option>
@@ -26,7 +26,7 @@
         </select>
       </div>
       <div class="col-md-4">
-        <label>Email Perusahaan</label>
+        <label class="form-label">Email Perusahaan</label>
         <input maxlength="130" type="text" name="email_perusahaan" id="email_perusahaan"
           placeholder="Email Perusahaan" value="" class="form-control">
       </div>
@@ -34,12 +34,12 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>No. Tlp Perusahaan</label>
+        <label class="form-label">No. Tlp Perusahaan</label>
         <input type="text" name="no_tlp" id="no_tlp" placeholder="No. Tlp Perusahaan" maxlength="30"
           class="form-control" value="">
       </div>
       <div class="col-md-6">
-        <label>No. Hp Perusahaan</label>
+        <label class="form-label">No. Hp Perusahaan</label>
         <input type="text" name="no_hp" id="no_hp" placeholder="No. Hp Perusahaan" maxlength="30"
           class="form-control" value="">
       </div>
@@ -47,14 +47,14 @@
 
     <div class="row mt-4">
       <div class="col-md-12">
-        <label>Alamat</label>
+        <label class="form-label">Alamat</label>
         <textarea name="alamat_perusahaan" id="alamat" rows="3" class="form-control"></textarea>
       </div>
     </div>
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Provinsi</label>
+        <label class="form-label">Provinsi</label>
         <select name="province" id="province">
           <option value="">Pilih Provinsi</option>
           <?php foreach ($provinces as $province) : ?>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="col-md-6">
-        <label>Kota/Kabupaten</label>
+        <label class="form-label">Kota/Kabupaten</label>
         <select name="regency" id="regency">
           <option value="">Pilih Kabupaten/Kota</option>
           <?php foreach ($regencies as $regency) : ?>
@@ -76,7 +76,7 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Kecamatan</label>
+        <label class="form-label">Kecamatan</label>
         <select name="district" id="district">
           <option value="">Pilih Kecamatan</option>
           <?php foreach ($districts as $district) : ?>
@@ -86,7 +86,7 @@
       </div>
 
       <div class="col-md-6">
-        <label>Kelurahan</label>
+        <label class="form-label">Kelurahan</label>
         <select name="village" id="village">
           <option value="">Pilih Kelurahan/Desa</option>
           <?php foreach ($villages as $village) : ?>
@@ -102,51 +102,45 @@
 
     <div class="row">
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Internet" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="internet">
-          <label class="custom-control-label" for="internet">Internet</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Internet" style="margin-right: -18px;" type="checkbox" id="internet">
+          <label class="form-label" for="internet">Internet</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Arsitektur" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="arsitektur">
-          <label class="custom-control-label" for="arsitektur">Arsitektur</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Arsitektur" style="margin-right: -18px;" type="checkbox" id="arsitektur">
+          <label class="form-label" for="arsitektur">Arsitektur</label>
         </div>
 
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Makanan dan Minuman" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="makanan_dan_minuman">
-          <label class="custom-control-label" for="makanan_dan_minuman">Makanan & Minuman</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Makanan dan Minuman" style="margin-right: -18px;" type="checkbox" id="makanan_dan_minuman">
+          <label class="form-label" for="makanan_dan_minuman">Makanan & Minuman</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Logistik" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="logistik">
-          <label class="custom-control-label" for="logistik">Logistik</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Logistik" style="margin-right: -18px;" type="checkbox" id="logistik">
+          <label class="form-label" for="logistik">Logistik</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Sofware house" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="software_house">
-          <label class="custom-control-label" for="software_house">Sofware house</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Sofware house" style="margin-right: -18px;" type="checkbox" id="software_house">
+          <label class="form-label" for="software_house">Sofware house</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Perlengkapan Fotografi" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="perlengkapan_fotografi">
-          <label class="custom-control-label" for="perlengkapan_fotografi">Perlengkapan Fotografi</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Perlengkapan Fotografi" style="margin-right: -18px;" type="checkbox" id="perlengkapan_fotografi">
+          <label class="form-label" for="perlengkapan_fotografi">Perlengkapan Fotografi</label>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <!--Start of Login Form-->
 <div id="quickview-login">
   <!-- Modal -->
-  <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" style="z-index: 1; position: fixed;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

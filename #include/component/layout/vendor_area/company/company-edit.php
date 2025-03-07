@@ -4,18 +4,18 @@
   </div>
   <form method="POST" id="form_edit_company" action="">
     <div class="d-flex justify-content-center my-4">
-      <h5>Data Perusahaan</h5>
+      <h5>Edit Data Perusahaan</h5>
     </div>
 
     <div class="row">
       <div class="col-md-4">
-        <label>Nama Perusahaan</label>
+        <label class="form-label">Nama Perusahaan</label>
         <input type="text" maxlength="150" name="nama_perusahaan" id="nama_perusahaan"
           placeholder="Nama Perusahaan" class="form-control" value="<?= $companies['data'][0]['name'] ?>" required>
 
       </div>
       <div class="col-md-4">
-        <label>Tipe Perusahaan</label>
+        <label class="form-label">Tipe Perusahaan</label>
         <select name="tipe_perusahaan" id="tipe_perusahaan" class="form-control">
           <option value="">Pilih Tipe Perusahaan</option>
           <option value="Firma (FA)" <?= $companies['data'][0]['type'] == 'Firma (FA)' ? 'selected' : '' ?>>Firma (FA)</option>
@@ -29,7 +29,7 @@
         </select>
       </div>
       <div class="col-md-4">
-        <label>Email Perusahaan</label>
+        <label class="form-label">Email Perusahaan</label>
         <input maxlength="130" type="text" name="email_perusahaan" id="email_perusahaan"
           placeholder="Email Perusahaan" value="<?= $companies['data'][0]['mail'] ?>" class="form-control">
       </div>
@@ -37,12 +37,12 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>No. Tlp Perusahaan</label>
+        <label class="form-label">No. Tlp Perusahaan</label>
         <input type="text" name="no_tlp" id="no_tlp" placeholder="No. Tlp Perusahaan" maxlength="30"
           class="form-control" value="<?= $companies['data'][0]['phone'] ?>">
       </div>
       <div class="col-md-6">
-        <label>No. Hp Perusahaan</label>
+        <label class="form-label">No. Hp Perusahaan</label>
         <input type="text" name="no_hp" id="no_hp" placeholder="No. Hp Perusahaan" maxlength="30"
           class="form-control" value="<?= $companies['data'][0]['mobile_phone'] ?>">
       </div>
@@ -50,25 +50,25 @@
 
     <div class="row mt-4">
       <div class="col-md-12">
-        <label>Alamat</label>
+        <label class="form-label">Alamat</label>
         <textarea name="alamat_perusahaan" id="alamat" rows="3" class="form-control" placeholder="Alamat Perusahaan" style="resize: none;"><?= $companies['data'][0]['address'] ?></textarea>
       </div>
     </div>
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Provinsi</label>
+        <label class="form-label">Provinsi</label>
         <select name="province" id="province">
-          <?php foreach ($provinces as $province) : ?>
+          <?php foreach ($provinces as $province): ?>
             <option value="<?= $province['id'] ?>" <?= $province['id'] == $companies['data'][0]['provinsi'] ? 'selected' : '' ?>><?= $province['name'] ?></option>
           <?php endforeach; ?>
         </select>
       </div>
 
       <div class="col-md-6">
-        <label>Kota/Kabupaten</label>
+        <label class="form-label">Kota/Kabupaten</label>
         <select name="regency" id="regency">
-          <?php foreach ($regencies as $regency) : ?>
+          <?php foreach ($regencies as $regency): ?>
             <option value="<?= $regency['id'] ?>" <?= $regency['id'] === $companies['data'][0]['kota'] ? 'selected' : '' ?>><?= $regency['name'] ?></option>
           <?php endforeach; ?>
         </select>
@@ -77,18 +77,18 @@
 
     <div class="row mt-4">
       <div class="col-md-6">
-        <label>Kecamatan</label>
+        <label class="form-label">Kecamatan</label>
         <select name="district" id="district">
-          <?php foreach ($districts as $district) : ?>
+          <?php foreach ($districts as $district): ?>
             <option value="<?= $district['id'] ?>" <?= $district['id'] === $companies['data'][0]['kecamatan'] ? 'selected' : '' ?>><?= $district['name'] ?></option>
           <?php endforeach; ?>
         </select>
       </div>
 
       <div class="col-md-6">
-        <label>Kelurahan</label>
+        <label class="form-label">Kelurahan</label>
         <select name="village" id="village">
-          <?php foreach ($villages as $village) : ?>
+          <?php foreach ($villages as $village): ?>
             <option value="<?= $village['id'] ?>" <?= $village['id'] === $companies['data'][0]['kelurahan'] ? 'selected' : '' ?>><?= $village['name'] ?></option>
           <?php endforeach; ?>
         </select>
@@ -100,56 +100,49 @@
     </div>
     <div class="row">
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Internet" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="internet" <?= in_array('Internet', $selectedCategory) ? 'checked' : '' ?>>
-          <label class="custom-control-label" for="internet">Internet</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Internet" style="margin-right: -18px;" type="checkbox" id="internet" <?= in_array('Internet', $selectedCategory) ? 'checked' : '' ?>>
+          <label class="form-label" for="internet">Internet</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Arsitektur" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="arsitektur" <?= in_array('Arsitektur', $selectedCategory) ? 'checked' : '' ?>>
-          <label class="custom-control-label" for="arsitektur">Arsitektur</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Arsitektur" style="margin-right: -18px;" type="checkbox" id="arsitektur" <?= in_array('Arsitektur', $selectedCategory) ? 'checked' : '' ?>>
+          <label class="form-label" for="arsitektur">Arsitektur</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Makanan dan Minuman" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="makanan_dan_minuman" <?= in_array('Makanan dan Minuman', $selectedCategory) ? 'checked' : '' ?>>
-          <label class="custom-control-label" for="makanan_dan_minuman">Makanan & Minuman</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Makanan dan Minuman" style="margin-right: -18px;" type="checkbox" id="makanan_dan_minuman" <?= in_array('Makanan dan Minuman', $selectedCategory) ? 'checked' : '' ?>>
+          <label class="form-label" for="makanan_dan_minuman">Makanan & Minuman</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Logistik" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="logistik" <?= in_array('Logistik', $selectedCategory) ? 'checked' : '' ?>>
-          <label class="custom-control-label" for="logistik">Logistik</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Logistik" style="margin-right: -18px;" type="checkbox" id="logistik" <?= in_array('Logistik', $selectedCategory) ? 'checked' : '' ?>>
+          <label class="form-label" for="logistik">Logistik</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Software house" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="software_house" <?= in_array('Software house', $selectedCategory) ? 'checked' : '' ?>>
-          <label class="custom-control-label" for="software_house">Sofware house</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Software house" style="margin-right: -18px;" type="checkbox" id="software_house" <?= in_array('Software house', $selectedCategory) ? 'checked' : '' ?>>
+          <label class="form-label" for="software_house">Sofware house</label>
         </div>
       </div>
 
       <div class="col-md-3">
-        <div class="custom-control custom-checkbox">
-          <input name="category[]" value="Perlengkapan Fotografi" style="margin-right: -18px;" type="checkbox"
-            class="custom-control-input" id="perlengkapan_fotografi" <?= in_array('Perlengkapan Fotografi', $selectedCategory) ? 'checked' : '' ?>>
-          <label class="custom-control-label" for="perlengkapan_fotografi">Perlengkapan Fotografi</label>
+        <div class="d-flex" style="gap:20px;">
+          <input name="category[]" value="Perlengkapan Fotografi" style="margin-right: -18px;" type="checkbox" id="perlengkapan_fotografi" <?= in_array('Perlengkapan Fotografi', $selectedCategory) ? 'checked' : '' ?>>
+          <label class="form-label" for="perlengkapan_fotografi">Perlengkapan Fotografi</label>
         </div>
       </div>
     </div>
     <div class="text-center">
-      <button id="simpan" type="submit" name="submit_edit_company" class="text-uppercase mt-5 rounded"
-        style="color:white; background-color:#AA0A2F;">Simpan</button>
+      <button id="simpan" type="submit" name="submit_edit_company" class="text-uppercase mt-5 rounded" style="color:white; background-color:#AA0A2F;">Simpan</button>
     </div>
   </form>
 </section>

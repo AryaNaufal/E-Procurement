@@ -1,7 +1,7 @@
 <!--Start of Reset Password Form-->
 <div id="quickview-reset_pwd">
   <!-- Modal -->
-  <div class="modal fade" id="ResetPwdModal" tabindex="-1" role="dialog">
+  <div class="modal fade" id="ResetPwdModal" tabindex="-1" role="dialog" style="z-index: 999999; position: fixed;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

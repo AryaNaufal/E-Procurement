@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light py-3" style="overflow: hidden;">
+<nav class="navbar navbar-expand-lg navbar-light py-3 px-4 nav-md" style="overflow: hidden;">
 
   <div class="logo">
     <a href="<?= SERVER_NAME ?>">
@@ -23,14 +23,14 @@
 
     <div class="login-btn">
       <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
-        <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user">My Info</a>
+        <a class="modal-view button z-0" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user">My Info</a>
       <?php } else { ?>
-        <a class="modal-view button" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#RegisterModal">Daftar</a>
+        <a class="modal-view button z-0" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#RegisterModal">Daftar</a>
       <?php } ?>
       <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
-        <a class="modal-view button" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout.php">Logout</a>
+        <a class="modal-view button z-0" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout.php">Logout</a>
       <?php } else { ?>
-        <a class="modal-view button" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#LoginModal">Login</a>
+        <a class="modal-view button z-0" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#LoginModal">Login</a>
       <?php } ?>
     </div>
   </div>

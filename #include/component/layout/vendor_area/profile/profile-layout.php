@@ -21,7 +21,7 @@ $documentLabel = [
   <div class="row">
     <div class="col-lg-12 mb-3">
       <div class="d-flex justify-content-between align-items-center">
-        <strong class="font-weight-bold">Informasi Perusahaan:</strong>
+        <h6>Informasi Perusahaan:</h6>
         <?php if (!empty($companies['data'])): ?>
           <a href="<?= SERVER_NAME ?>vendor_area/company/edit?id=<?= $companies['data'][0]['id'] ?>" class="btn ml-3 text-capitalize text-white" style="background-color: #AA0A2F;">Edit</a>
         <?php endif; ?>
@@ -42,9 +42,9 @@ $documentLabel = [
                   ];
 
                   foreach ($fields as $label => $key): ?>
-                    <div class="form-group row">
+                    <div class="form-group mb-4 row">
                       <div class="col-lg-4">
-                        <label class="text-muted font-weight-bold"><?= $label ?>:</label>
+                        <label class="text-muted fw-bold"><?= $label ?>:</label>
                       </div>
                       <div class="col-lg-8">
                         <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($data[$key]) : '-' ?></label>
@@ -52,24 +52,24 @@ $documentLabel = [
                     </div>
                   <?php endforeach; ?>
 
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Status:</label>
+                      <label class="text-muted fw-bold">Status:</label>
                     </div>
                     <div class="col-lg-8">
                       <?php if (!empty($documents['data']) && $documents['status'] === 'success' && $filledDocuments === count($documentLabel)): ?>
-                        <label class="text-success font-weight-bold">Dokumen Lengkap</label>
+                        <label class="text-success fw-bold">Dokumen Lengkap</label>
                       <?php else: ?>
-                        <label class="text-danger font-weight-bold">Upload Document</label>
+                        <label class="text-danger fw-bold">Upload Document</label>
                       <?php endif; ?>
                     </div>
                   </div>
                 </div>
 
                 <div class="col-lg-6">
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-4">
-                      <label class="text-muted font-weight-bold">Alamat:</label>
+                      <label class="text-muted fw-bold">Alamat:</label>
                     </div>
                     <div class="col-lg-8">
                       <label class="text-muted"><?= !empty($data['address']) ? htmlspecialchars($data['address']) : '-' ?></label>
@@ -85,9 +85,9 @@ $documentLabel = [
                   ];
 
                   foreach ($regions as $label => $key): ?>
-                    <div class="form-group row">
+                    <div class="form-group mb-4 row">
                       <div class="col-lg-4">
-                        <label class="text-muted font-weight-bold"><?= $label ?>:</label>
+                        <label class="text-muted fw-bold"><?= $label ?>:</label>
                       </div>
                       <div class="col-lg-8">
                         <label class="text-muted"><?= !empty($data[$key]) ? htmlspecialchars($regionService->getRegionName($data[$key])) : '-' ?></label>
@@ -109,7 +109,7 @@ $documentLabel = [
                 ];
 
                 foreach ($emptyFields as $label => $value): ?>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-4">
                       <label class="text-muted"><?= $label ?>:</label>
                     </div>
@@ -119,12 +119,12 @@ $documentLabel = [
                   </div>
                 <?php endforeach; ?>
 
-                <div class="form-group row">
+                <div class="form-group mb-4 row">
                   <div class="col-lg-4">
                     <label class="text-muted" style="font-weight: bold;">Status:</label>
                   </div>
                   <div class="col-lg-8">
-                    <label class="text-danger font-weight-bold">Upload Document</label>
+                    <label class="text-danger fw-bold">Upload Document</label>
                   </div>
                 </div>
               </div>
@@ -140,7 +140,7 @@ $documentLabel = [
                 ];
 
                 foreach ($emptyRegions as $label => $value): ?>
-                  <div class="form-group row">
+                  <div class="form-group mb-4 row">
                     <div class="col-lg-4">
                       <label class="text-muted"><?= $label ?>:</label>
                     </div>
@@ -156,7 +156,7 @@ $documentLabel = [
       </div>
     </div>
   </div>
-  <strong class="font-weight-bold">Informasi Dokumen Perusahaan:</strong>
+  <h6>Informasi Dokumen Perusahaan:</h6>
   <div class="row">
     <div class="col-lg-12">
       <div class="card my-3 shadow-sm">

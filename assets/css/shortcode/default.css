@@ -111,6 +111,7 @@ a,
 .btn {
     -webkit-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
+    text-decoration: none;
 }
 
 a:focus,
@@ -199,6 +200,7 @@ p {
 label {
     font-size: 14px;
     font-weight: 400;
+    color: #393939;
 }
 
 *::-moz-selection {
@@ -2712,6 +2714,11 @@ a.button:hover {
 
 a.button.button-red {
     background: #F15B65;
+}
+
+a.button-red-outline {
+    border: 1px solid #AA0A2F;
+    color: #AA0A2F;
 }
 
 .button-black {
