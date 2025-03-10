@@ -1,6 +1,6 @@
 <section class="container tab-pane container-fluid ptb-60" id="data_perusahaan" style="min-height: calc(100vh - 150px);">
   <div class="d-flex justify-content-start mb-3">
-    <a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-capitalize rounded" style="color:white;background-color:#AA0A2F;">Kembali</a>
+    <a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-capitalize rounded text-white" style="background-color:#AA0A2F;">Kembali</a>
   </div>
   <form method="POST" id="form_edit_company" action="">
     <div class="d-flex justify-content-center my-4">
@@ -142,7 +142,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button id="simpan" type="submit" name="submit_edit_company" class="text-uppercase mt-5 rounded" style="color:white; background-color:#AA0A2F;">Simpan</button>
+      <button id="simpan" type="submit" name="submit_edit_company" class="text-uppercase mt-5 rounded text-white" style="background-color:#AA0A2F;">Simpan</button>
     </div>
   </form>
 </section>

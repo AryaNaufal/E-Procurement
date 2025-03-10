@@ -18,7 +18,7 @@
                     <input name="file" type="file" id="input_akta_perubahan">
                   </td>
                   <td>
-                    <button type="button" id="akta-perubahan-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="akta-perubahan-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -48,7 +48,7 @@
                     <input name="file" type="file" id="input_sk_menkumham">
                   </td>
                   <td>
-                    <button type="button" id="sk-menkumham-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="sk-menkumham-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -78,7 +78,7 @@
                     <input name="file" type="file" id="input_ktp_pengurus_perusahaan">
                   </td>
                   <td>
-                    <button type="button" id="ktp-pengurus-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="ktp-pengurus-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -108,7 +108,7 @@
                     <input name="file" type="file" id="input_surat_keterangan_domisili_perusahaan">
                   </td>
                   <td>
-                    <button type="button" id="surat-keterangan-domisili-perusahaan-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="surat-keterangan-domisili-perusahaan-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -138,7 +138,7 @@
                     <input name="file" type="file" id="input_siup">
                   </td>
                   <td>
-                    <button type="button" id="siup-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="siup-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -168,7 +168,7 @@
                     <input name="file" type="file" id="input_tdp">
                   </td>
                   <td>
-                    <button type="button" id="tdp-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="tdp-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -198,7 +198,7 @@
                     <input name="file" type="file" id="input_npwp">
                   </td>
                   <td>
-                    <button type="button" id="npwp-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="npwp-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -228,7 +228,7 @@
                     <input name="file" type="file" id="input_pkp">
                   </td>
                   <td>
-                    <button type="button" id="pkp-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="pkp-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -258,7 +258,7 @@
                     <input name="file" type="file" id="input_spt">
                   </td>
                   <td>
-                    <button type="button" id="spt-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="spt-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -288,7 +288,7 @@
                     <input name="file" type="file" id="input_laporan_keuangan">
                   </td>
                   <td>
-                    <button type="button" id="laporan-keuangan-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="laporan-keuangan-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -318,7 +318,7 @@
                     <input name="file" type="file" id="input_rekening_koran">
                   </td>
                   <td>
-                    <button type="button" id="rekening-koran-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="rekening-koran-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -348,7 +348,7 @@
                     <input name="file" type="file" id="input_sertifikasi">
                   </td>
                   <td>
-                    <button type="button" id="sertifikasi-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="sertifikasi-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -378,7 +378,7 @@
                     <input name="file" type="file" id="input_list_daftar_pengalaman_kerja">
                   </td>
                   <td>
-                    <button type="button" id="list-daftar-pengalaman-kerja-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="list-daftar-pengalaman-kerja-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -408,7 +408,7 @@
                     <input name="file" type="file" id="input_list_tenaga_ahli">
                   </td>
                   <td>
-                    <button type="button" id="list-tenaga-ahli-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="list-tenaga-ahli-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>
@@ -438,7 +438,7 @@
                     <input name="file" type="file" id="input_akta_pendirian">
                   </td>
                   <td>
-                    <button type="button" id="akta-pendirian-btn" class="text-uppercase rounded" style="color:white;background-color: #AA0A2F;">Upload</button>
+                    <button type="button" id="akta-pendirian-btn" class="text-uppercase rounded text-white" style="background-color: #AA0A2F;">Upload</button>
                     <span>
                       File Maximum Size 2 Mb
                     </span>

@@ -1,7 +1,7 @@
 <!-- Modal Content -->
 <section class="container tab-pane container-fluid ptb-60">
 	<div class="d-flex justify-content-start mb-3">
-		<a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-capitalize rounded" style="color:white;background-color:#AA0A2F;">Kembali</a>
+		<a href="<?= SERVER_NAME ?>vendor_area/user/" class="btn text-capitalize rounded text-white" style="background-color:#AA0A2F;">Kembali</a>
 	</div>
 	<form method="POST" id="form_edit_katalog" action="" enctype="multipart/form-data">
 		<div class="d-flex justify-content-center my-4">
@@ -107,7 +107,7 @@
 		<?php endforeach; ?>
 
 		<div class="text-center">
-			<button type="submit" class="text-uppercase rounded" style="color:white;background-color:#AA0A2F;">Simpan</button>
+			<button type="submit" class="text-uppercase rounded text-white" style="background-color:#AA0A2F;">Simpan</button>
 		</div>
 	</form>
 </section>

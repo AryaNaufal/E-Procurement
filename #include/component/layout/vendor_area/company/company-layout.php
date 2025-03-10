@@ -145,8 +145,8 @@
       </div>
     </div>
     <div class="text-center">
-      <button id="simpan" type="submit" name="submit_company" class="text-uppercase mt-5 rounded"
-        style="color:white; background-color:#AA0A2F;">Simpan</button>
+      <button id="simpan" type="submit" name="submit_company" class="text-uppercase mt-5 rounded text-white"
+        style="background-color:#AA0A2F;">Simpan</button>
     </div>
   </form>
 </section>
