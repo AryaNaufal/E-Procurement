@@ -42,9 +42,11 @@ $villages = $selectedDistrict ? $regionService->getVillages($selectedDistrict) :
 
 $filledDocuments = 0;
 
-foreach ($documents['data'][0] as $key => $document) {
-  if (!empty($document) && !in_array($key, ['id', 'user_id'])) {
-    $filledDocuments++;
+if (isset($documents['data'][0])) {
+  foreach ($documents['data'][0] as $key => $document) {
+    if (!empty($document) && !in_array($key, ['id', 'user_id'])) {
+      $filledDocuments++;
+    }
   }
 }
 
