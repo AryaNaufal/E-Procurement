@@ -20,6 +20,9 @@
 <!-- About Area Start -->
 <section class="about-area ptb-130 ptb-sm-60" style="padding-top: 45px !important; min-height: calc(100vh - 230px);">
   <div class="container">
+    <div class="d-flex justify-content-start mb-3">
+      <button type="button" class="btn text-capitalize rounded text-white" style="background-color:#AA0A2F;" onclick="window.history.back()">Kembali</button>
+    </div>
     <div class="row">
       <div class="col-lg-12">
         <div class="card shadow-sm">
@@ -116,8 +119,8 @@
                     </div>
                     <div class="col-lg-6">
                       <label class="text-muted">
-                        <?= (isset($data['registration_date']) && !empty($data['registration_date'])) ? htmlspecialchars(date('d-m-Y', strtotime($data['registration_date']))) : '-' ?> 
-                        s/d 
+                        <?= (isset($data['registration_date']) && !empty($data['registration_date'])) ? htmlspecialchars(date('d-m-Y', strtotime($data['registration_date']))) : '-' ?>
+                        s/d
                         <?= (isset($data['closing_date']) && !empty($data['closing_date'])) ? htmlspecialchars(date('d-m-Y', strtotime($data['closing_date']))) : '-' ?></label>
                     </div>
                   </div>
@@ -179,9 +182,9 @@
       </div>
       <?php if ($checkFollowedTender == false): ?>
         <?php if (isset($data['closing_date']) && strtotime($data['closing_date']) > time()): ?>
-        <div class="w-100 d-flex justify-content-center">
-          <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;">Submit</button>
-        </div>
+          <div class="w-100 d-flex justify-content-center">
+            <button type="submit" id="submit-tender-btn" class="text-white rounded" style="background-color: orange;">Submit</button>
+          </div>
         <?php endif; ?>
       <?php else: ?>
         <div class="w-100 d-flex flex-column align-items-center justify-content-center mt-5">
@@ -196,7 +199,6 @@
 <script>
   document.getElementById('submit-tender-btn')?.addEventListener('click', function(event) {
     event.preventDefault(); // Mencegah form submission tradisional
-    // const tenderId = this.getAttribute('data-id');
     const tenderId = new URLSearchParams(window.location.search).get('id');
     Swal.fire({
       title: 'Submit Pengadaan',
