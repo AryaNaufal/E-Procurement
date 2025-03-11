@@ -51,7 +51,7 @@ class DocumentService
     try {
       $existingDocument = $this->db->squery($sqlCheck, ['id' => $id]);
 
-      $filePath = '../assets/document/' . basename($file['name']);
+      $filePath = ROOT_PATH . 'assets/document/' . basename($file['name']);
 
       if (!empty($existingDocument)) {
         $updateFields = [];
@@ -163,6 +163,13 @@ class DocumentService
             }
             break;
 
+          case 'proposal':
+            if ($existingDocument[0]['proposal'] != $filePath) {
+              move_uploaded_file($file['tmp_name'], ROOT_PATH . "assets/document/proposal/" . basename($file['name']));
+              $updateFields['proposal'] = $filePath;
+            }
+            break;
+
           default:
             return $this->createErrorResponse('Invalid file type');
         }
@@ -179,9 +186,15 @@ class DocumentService
 
           // Hapus file lama jika ada perubahan
           foreach ($updateFields as $field => $filePath) {
-            if ($existingDocument[$field] != $filePath && file_exists($existingDocument[$field])) {
-              unlink($existingDocument[$field]);
+            // dokumen
+            if ($existingDocument[$field] != $filePath && file_exists(ROOT_PATH . "assets/document/" . $existingDocument[$field])) {
+              unlink(ROOT_PATH . "assets/document/" . $existingDocument[$field]);
             }
+            // proposal
+            if ($existingDocument[$field] != $filePath && file_exists(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field])) {
+              unlink(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field]);
+            }
+            $updateFields[$field] = basename($filePath);
           }
 
           $this->db->squery($sqlUpdate, $updateFields);
@@ -196,25 +209,26 @@ class DocumentService
       move_uploaded_file($file['tmp_name'], $filePath);
 
       // Menyimpan file pertama kali sesuai dengan type yang diterima
-      $sqlInsert = "INSERT INTO document (user_id, akta_perubahan, sk_menkumham, ktp_pengurus_perusahaan, surat_keterangan_domisili_perusahaan, siup, tdp, npwp, pkp, spt, laporan_keuangan, rekening_koran, sertifikasi, list_daftar_pengalaman_kerja, list_tenaga_ahli, akta_pendirian) 
-                  VALUES (:user_id, :akta_perubahan, :sk_menkumham, :ktp_pengurus_perusahaan, :surat_keterangan_domisili_perusahaan, :siup, :tdp, :npwp, :pkp, :spt, :laporan_keuangan, :rekening_koran, :sertifikasi, :list_daftar_pengalaman_kerja, :list_tenaga_ahli, :akta_pendirian)";
+      $sqlInsert = "INSERT INTO document (user_id, akta_perubahan, sk_menkumham, ktp_pengurus_perusahaan, surat_keterangan_domisili_perusahaan, siup, tdp, npwp, pkp, spt, laporan_keuangan, rekening_koran, sertifikasi, list_daftar_pengalaman_kerja, list_tenaga_ahli, akta_pendirian, proposal) 
+                  VALUES (:user_id, :akta_perubahan, :sk_menkumham, :ktp_pengurus_perusahaan, :surat_keterangan_domisili_perusahaan, :siup, :tdp, :npwp, :pkp, :spt, :laporan_keuangan, :rekening_koran, :sertifikasi, :list_daftar_pengalaman_kerja, :list_tenaga_ahli, :akta_pendirian, :proposal)";
       $this->db->squery($sqlInsert, [
         'user_id' => $id,
-        'akta_perubahan' => ($type == 'akta_perubahan') ? $filePath : '',
-        'sk_menkumham' => ($type == 'sk_menkumham') ? $filePath : '',
-        'ktp_pengurus_perusahaan' => ($type == 'ktp_pengurus_perusahaan') ? $filePath : '',
-        'surat_keterangan_domisili_perusahaan' => ($type == 'surat_keterangan_domisili_perusahaan') ? $filePath : '',
-        'siup' => ($type == 'siup') ? $filePath : '',
-        'tdp' => ($type == 'tdp') ? $filePath : '',
-        'npwp' => ($type == 'npwp') ? $filePath : '',
-        'pkp' => ($type == 'pkp') ? $filePath : '',
-        'spt' => ($type == 'spt') ? $filePath : '',
-        'laporan_keuangan' => ($type == 'laporan_keuangan') ? $filePath : '',
-        'rekening_koran' => ($type == 'rekening_koran') ? $filePath : '',
-        'sertifikasi' => ($type == 'sertifikasi') ? $filePath : '',
-        'list_daftar_pengalaman_kerja' => ($type == 'list_daftar_pengalaman_kerja') ? $filePath : '',
-        'list_tenaga_ahli' => ($type == 'list_tenaga_ahli') ? $filePath : '',
-        'akta_pendirian' => ($type == 'akta_pendirian') ? $filePath : ''
+        'akta_perubahan' => ($type == 'akta_perubahan') ? basename($filePath) : '',
+        'sk_menkumham' => ($type == 'sk_menkumham') ? basename($filePath) : '',
+        'ktp_pengurus_perusahaan' => ($type == 'ktp_pengurus_perusahaan') ? basename($filePath) : '',
+        'surat_keterangan_domisili_perusahaan' => ($type == 'surat_keterangan_domisili_perusahaan') ? basename($filePath) : '',
+        'siup' => ($type == 'siup') ? basename($filePath) : '',
+        'tdp' => ($type == 'tdp') ? basename($filePath) : '',
+        'npwp' => ($type == 'npwp') ? basename($filePath) : '',
+        'pkp' => ($type == 'pkp') ? basename($filePath) : '',
+        'spt' => ($type == 'spt') ? basename($filePath) : '',
+        'laporan_keuangan' => ($type == 'laporan_keuangan') ? basename($filePath) : '',
+        'rekening_koran' => ($type == 'rekening_koran') ? basename($filePath) : '',
+        'sertifikasi' => ($type == 'sertifikasi') ? basename($filePath) : '',
+        'list_daftar_pengalaman_kerja' => ($type == 'list_daftar_pengalaman_kerja') ? basename($filePath) : '',
+        'list_tenaga_ahli' => ($type == 'list_tenaga_ahli') ? basename($filePath) : '',
+        'akta_pendirian' => ($type == 'akta_pendirian') ? basename($filePath) : '',
+        'proposal' => ($type == 'proposal') ? basename($filePath) : '',
       ]);
 
       return $this->createSuccessResponse('Dokumen berhasil disimpan');

@@ -143,7 +143,7 @@
         case "tor":
           bodyArea.innerHTML = `
             <div class="d-flex flex-column justify-content-center align-items-center">
-              <p>Silahkan download, dokumen TOR <a href="#">disini</a></p>
+              <p>Silahkan download dokumen TOR <a href="<?= SERVER_NAME ?>assets/document/workflow/tor.pdf" download="TOR.pdf">disini</a></p>
             </div>
           `;
           break;
@@ -151,8 +151,8 @@
           bodyArea.innerHTML = `
             <div class="d-flex flex-column justify-content-center align-items-center">
               <div class="my-3">
-                <a href="#" class="btn rounded text-white" style="background-color:orange;"><i class="fa fa-download" aria-hidden="true"></i> Download Invitation</a>
-                <a href="#" class="btn rounded text-white" style="background-color:orange;"><i class="fa fa-download" aria-hidden="true"></i> Download Info</a>
+                <a href="<?= SERVER_NAME ?>assets/document/workflow/invitation.pdf" download="invitation.pdf" class="btn rounded text-white" style="background-color:orange;"><i class="fa fa-download" aria-hidden="true"></i> Download Invitation</a>
+                <a href="<?= SERVER_NAME ?>assets/document/workflow/info.pdf" download="info.pdf" class="btn rounded text-white" style="background-color:orange;"><i class="fa fa-download" aria-hidden="true"></i> Download Info</a>
               </div>
             </div>
           `;
@@ -161,31 +161,77 @@
           bodyArea.innerHTML = `
             <div class="d-flex flex-column justify-content-center align-items-center gap-3">
               <p>Silahkan Upload Proposal Anda disini</p>
-              <input type="file" class="form-control" style="height:auto;">
-              <a href="#" class="btn btn-success rounded text-white"><i class="fa fa-upload" aria-hidden="true"></i> Upload</a>
-              <a href="#" class="btn btn-primary rounded text-white"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+              <form id="form-upload-file" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center gap-3">
+                <input type="text" hidden id='user_id' value="<?= $_SESSION['id'] ?>">
+                <input type="file" name="file" id="input-file" class="form-control" style="height:auto;">
+                <?php if (isset($documents['data'][0]['proposal'])): ?>
+                  <p>Dokumen Lama: <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $documents['data'][0]['proposal'] ?>" target="_blank">Lihat Dokumen</a></p>
+                <?php endif; ?>
+                <button type="submit" class="btn btn-success rounded text-white" id="btn-upload-file">
+                  <i class="fa fa-upload" aria-hidden="true"></i> Upload
+                </button>
+                <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $documents['data'][0]['proposal'] ?>" target="_blank" download="<?= $documents['data'][0]['proposal'] ?>" class="btn btn-primary rounded text-white">
+                  <i class="fa fa-download" aria-hidden="true"></i> Download
+                </a>
+              </form>
             </div>
           `;
+          document.getElementById('form-upload-file')?.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userId = $('#user_id').val();
+
+            const fileInput = document.getElementById("input-file");
+            const formData = new FormData(this);
+
+            fetch(`<?= SERVER_NAME ?>handler/upload_file?id=${userId}&type=proposal`, {
+                method: 'POST',
+                credentials: 'include',
+                body: formData
+              })
+              .then(response => response.json())
+              .then(data => {
+                if (data.status === 'success') {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: data.message
+                  });
+                } else if (data.status === 'error') {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: data.message
+                  });
+                }
+              })
+              .catch(error => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Terjadi kesalahan saat menghubungi server'
+                });
+              });
+          });
           break;
         case "shortlisted":
           bodyArea.innerHTML = `
-            <div class="d-flex flex-column justify-content-center align-items-center">
-              <p>Maaf, anda tidak terpilih di pengadaan ini.</p>
-            </div>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <p>Maaf, anda tidak terpilih di pengadaan ini.</p>
+          </div>
           `;
           break;
         case "poc":
           bodyArea.innerHTML = `
-            <div class="d-flex flex-column justify-content-center align-items-center">
-              <p>Silahkan download, undangan POC <a href="#">disini</a></p>
-            </div>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <p>Silahkan download, undangan POC <a href="<?= SERVER_NAME ?>assets/document/workflow/poc.pdf" download="POC.pdf">disini</a></p>
+          </div>
           `;
           break;
         case "announcement":
           bodyArea.innerHTML = `
-            <div class="d-flex flex-column justify-content-center align-items-center">
-              <p>Selamat anda menempati possisi rank <strong class="fw-bold">2</strong> dengan total score <strong class="fw-bold">905</strong></p>
-            </div>
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <p>Selamat anda menempati possisi rank <strong class="fw-bold">2</strong> dengan total score <strong class="fw-bold">905</strong></p>
+          </div>
           `;
           break;
       }

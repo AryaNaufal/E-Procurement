@@ -11,7 +11,7 @@ use App\TenderService;
 require_once __DIR__ . '/../../#include/config.php';
 require_once ROOT_PATH . '#include/#class/autoload.php';
 
-if (empty($_SESSION)) {
+if (!isset($_SESSION['email']) && !isset($_SESSION['is_verify']) && $_SESSION['is_verify'] != '1') {
   header("Location: " . SERVER_NAME . "");
   exit;
 }
