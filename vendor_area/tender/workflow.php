@@ -17,6 +17,14 @@ $documentService = new DocumentService();
 
 $documents = $documentService->getDocuments();
 
+// Fetching proposal milik user
+foreach ($documents['data'] as $document) {
+  if ($document['user_id'] === $_SESSION['id']) {
+      $document;
+      break;
+  }
+}
+
 $current_menu = "workflow";
 $current_sub_menu = NULL;
 $title = "Workflow";

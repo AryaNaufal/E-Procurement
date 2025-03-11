@@ -181,18 +181,18 @@ class DocumentService
           $sqlUpdate .= implode(", ", array_map(function ($field) {
             return "$field = :$field";
           }, array_keys($updateFields)));
+          $sqlUpdate .= " WHERE user_id = $id";
 
           $existingDocument = $this->db->squery_single($sqlCheck, ['id' => $id]);
 
           // Hapus file lama jika ada perubahan
           foreach ($updateFields as $field => $filePath) {
-            // dokumen
-            if ($existingDocument[$field] != $filePath && file_exists(ROOT_PATH . "assets/document/" . $existingDocument[$field])) {
-              unlink(ROOT_PATH . "assets/document/" . $existingDocument[$field]);
-            }
-            // proposal
-            if ($existingDocument[$field] != $filePath && file_exists(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field])) {
-              unlink(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field]);
+            if ($existingDocument[$field] != basename($filePath)) {
+              if ($field === 'proposal' && file_exists(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field])) {
+                unlink(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field]);
+              } else if (file_exists(ROOT_PATH . "assets/document/" . $existingDocument[$field])) {
+                unlink(ROOT_PATH . "assets/document/" . $existingDocument[$field]);
+              }
             }
             $updateFields[$field] = basename($filePath);
           }
@@ -233,7 +233,7 @@ class DocumentService
 
       return $this->createSuccessResponse('Dokumen berhasil disimpan');
     } catch (Exception $e) {
-      return $this->createErrorResponse('Terjadi kesalahan pada server');
+      return $this->createErrorResponse('Terjadi kesalahan pada server' . $e->getMessage());
     }
   }
 

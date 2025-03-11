@@ -143,7 +143,7 @@
         case "tor":
           bodyArea.innerHTML = `
             <div class="d-flex flex-column justify-content-center align-items-center">
-              <p>Silahkan download dokumen TOR <a href="<?= SERVER_NAME ?>assets/document/workflow/tor.pdf" download="TOR.pdf">disini</a></p>
+              <p>Silahkan download dokumen TOR <a href="<?= SERVER_NAME ?>assets/document/workflow/TOR.pdf" download="TOR.pdf">disini</a></p>
             </div>
           `;
           break;
@@ -164,13 +164,13 @@
               <form id="form-upload-file" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center gap-3">
                 <input type="text" hidden id='user_id' value="<?= $_SESSION['id'] ?>">
                 <input type="file" name="file" id="input-file" class="form-control" style="height:auto;">
-                <?php if (isset($documents['data'][0]['proposal'])): ?>
-                  <p>Dokumen Lama: <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $documents['data'][0]['proposal'] ?>" target="_blank">Lihat Dokumen</a></p>
+                <?php if (isset($document['proposal'])): ?>
+                  <p>Dokumen Lama: <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $document['proposal'] ?>" target="_blank">Lihat Dokumen</a></p>
                 <?php endif; ?>
                 <button type="submit" class="btn btn-success rounded text-white" id="btn-upload-file">
                   <i class="fa fa-upload" aria-hidden="true"></i> Upload
                 </button>
-                <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $documents['data'][0]['proposal'] ?>" target="_blank" download="<?= $documents['data'][0]['proposal'] ?>" class="btn btn-primary rounded text-white">
+                <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $document['proposal'] ?>" target="_blank" download="<?= $document['proposal'] ?>" class="btn btn-primary rounded text-white">
                   <i class="fa fa-download" aria-hidden="true"></i> Download
                 </a>
               </form>
@@ -223,7 +223,7 @@
         case "poc":
           bodyArea.innerHTML = `
           <div class="d-flex flex-column justify-content-center align-items-center">
-            <p>Silahkan download, undangan POC <a href="<?= SERVER_NAME ?>assets/document/workflow/poc.pdf" download="POC.pdf">disini</a></p>
+            <p>Silahkan download, undangan POC <a href="<?= SERVER_NAME ?>assets/document/workflow/POC.pdf" download="POC.pdf">disini</a></p>
           </div>
           `;
           break;
