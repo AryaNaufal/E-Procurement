@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2025 at 11:18 AM
+-- Generation Time: Mar 12, 2025 at 12:36 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -93,7 +93,8 @@ CREATE TABLE `participant` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `tender_id` int(11) NOT NULL,
-  `registration_date` date NOT NULL
+  `registration_date` date NOT NULL,
+  `proposal` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91836,6 +91837,42 @@ CREATE TABLE `tender` (
   `closing_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tender`
+--
+
+INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `closing_date`) VALUES
+(1, 'Jasa Konsultasi Pemasaran Digital untuk UMKM', 'Jasa Konsultasi Bidang Usaha', '2025-03-01', '2025-03-03'),
+(2, 'Jasa Konsultasi Sistem Manajemen Keuangan', 'Jasa Konsultasi Bidang Usaha', '2025-03-02', '2025-03-12'),
+(3, 'Pengadaan Laptop untuk Kantor Cabang', 'Pengadaan Barang & Jasa', '2025-03-03', '2025-03-13'),
+(4, 'Jasa Konsultasi untuk Pengembangan Aplikasi Mobile', 'Jasa Konsultasi Bidang Usaha', '2025-03-04', '2025-03-14'),
+(5, 'Pengadaan Layanan IT untuk Sistem Keamanan Data', 'Pengadaan Layanan IT', '2025-03-05', '2025-03-15'),
+(6, 'Jasa Konsultasi Perencanaan Strategi Bisnis', 'Jasa Konsultasi Bidang Usaha', '2025-03-06', '2025-03-16'),
+(7, 'Pengadaan Peralatan Kantor dan Komputer', 'Pengadaan Barang & Jasa', '2025-03-07', '2025-03-17'),
+(8, 'Jasa Konsultasi Transformasi Digital untuk Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-08', '2025-03-18'),
+(9, 'Pengadaan Layanan IT untuk Cloud Computing', 'Pengadaan Layanan IT', '2025-03-09', '2025-03-19'),
+(10, 'Jasa Konsultasi Pengelolaan Sumber Daya Manusia', 'Jasa Konsultasi Bidang Usaha', '2025-03-10', '2025-03-20'),
+(11, 'Pengadaan Sistem Manajemen Keamanan Jaringan', 'Pengadaan Layanan IT', '2025-03-11', '2025-03-21'),
+(12, 'Jasa Konsultasi Pengembangan Infrastruktur IT', 'Jasa Konsultasi Bidang Usaha', '2025-03-12', '2025-03-22'),
+(13, 'Pengadaan Perangkat Keras Komputer untuk Dinas', 'Pengadaan Barang & Jasa', '2025-03-13', '2025-03-23'),
+(14, 'Pengadaan Layanan Jaringan dan Infrastruktur TI', 'Pengadaan Layanan IT', '2025-03-14', '2025-03-24'),
+(15, 'Jasa Konsultasi untuk Pengembangan Produk Baru', 'Jasa Konsultasi Bidang Usaha', '2025-03-15', '2025-03-25'),
+(16, 'Jasa Konsultasi Keuangan untuk Startups', 'Jasa Konsultasi Bidang Usaha', '2025-03-16', '2025-03-26'),
+(17, 'Pengadaan Barang Kantor untuk Layanan Pendidikan', 'Pengadaan Barang & Jasa', '2025-03-17', '2025-03-27'),
+(18, 'Jasa Konsultasi Pengelolaan Risiko untuk Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-18', '2025-03-28'),
+(19, 'Pengadaan Layanan IT untuk Integrasi Sistem Bisnis', 'Pengadaan Layanan IT', '2025-03-19', '2025-03-29'),
+(20, 'Pengadaan Peralatan Kantor dan Aksesori IT', 'Pengadaan Barang & Jasa', '2025-03-20', '2025-03-30'),
+(21, 'Jasa Konsultasi Implementasi ERP di Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-21', '2025-03-31'),
+(22, 'Jasa Konsultasi Pengelolaan Kinerja Organisasi', 'Jasa Konsultasi Bidang Usaha', '2025-03-22', '2025-04-01'),
+(23, 'Pengadaan Layanan TI untuk Pemeliharaan Infrastruktur Jaringan', 'Pengadaan Layanan IT', '2025-03-23', '2025-04-02'),
+(24, 'Pengadaan Layanan Pengembangan Web untuk Pemerintah', 'Pengadaan Layanan IT', '2025-03-24', '2025-04-03'),
+(25, 'Jasa Konsultasi Manajemen Proyek IT untuk Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-25', '2025-04-04'),
+(26, 'Pengadaan Server dan Perangkat Keras IT untuk Organisasi', 'Pengadaan Barang & Jasa', '2025-03-26', '2025-04-05'),
+(27, 'Jasa Konsultasi Pengembangan Sistem Keuangan Digital', 'Jasa Konsultasi Bidang Usaha', '2025-03-27', '2025-04-06'),
+(28, 'Pengadaan Layanan Cloud Hosting untuk Bisnis', 'Pengadaan Layanan IT', '2025-03-28', '2025-04-07'),
+(29, 'Jasa Konsultasi Penyusunan Strategi Bisnis Digital', 'Jasa Konsultasi Bidang Usaha', '2025-03-29', '2025-04-08'),
+(30, 'Pengadaan Alat Tulis Kantor untuk Instansi Pemerintah', 'Pengadaan Barang & Jasa', '2025-03-30', '2025-04-09');
+
 -- --------------------------------------------------------
 
 --
@@ -92014,7 +92051,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT for table `tender`
 --
 ALTER TABLE `tender`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `timeline_pengadaan`
