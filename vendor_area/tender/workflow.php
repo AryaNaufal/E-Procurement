@@ -3,6 +3,7 @@ session_start();
 
 use App\DocumentService;
 use App\LoadEnv;
+use App\TenderService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once ROOT_PATH . '#include/#class/autoload.php';
@@ -13,17 +14,12 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['is_verify']) && $_SESSION['i
 }
 
 $env = new LoadEnv(ROOT_PATH . '.env');
+
+$tenderService = new TenderService();
 $documentService = new DocumentService();
 
-$documents = $documentService->getDocuments();
-
-// Fetching proposal milik user
-foreach ($documents['data'] as $document) {
-  if ($document['user_id'] === $_SESSION['id']) {
-      $document;
-      break;
-  }
-}
+$tender = $tenderService->getTenderById($_GET['id']);
+$proposal = $documentService->getProposal($_GET['id']);
 
 $current_menu = "workflow";
 $current_sub_menu = NULL;

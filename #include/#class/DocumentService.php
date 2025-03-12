@@ -38,6 +38,17 @@ class DocumentService
     }
   }
 
+  public function getProposal(string $id)
+  {
+    $sql = "SELECT proposal FROM participant WHERE tender_id = :id";
+    try {
+      $proposal = $this->db->squery_single($sql, ['id' => $id]);
+      return $this->createSuccessResponse('Proposal berhasil diambil', $proposal);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
   public function postDocument($id, $file, $type)
   {
     $allowedTypes = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
@@ -61,112 +72,105 @@ class DocumentService
           case 'akta_perubahan':
             if ($existingDocument[0]['akta_perubahan'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['akta_perubahan'] = $filePath;
+              $updateFields['akta_perubahan'] = basename($filePath);
             }
             break;
 
           case 'sk_menkumham':
             if ($existingDocument[0]['sk_menkumham'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['sk_menkumham'] = $filePath;
+              $updateFields['sk_menkumham'] = basename($filePath);
             }
             break;
 
           case 'ktp_pengurus_perusahaan':
             if ($existingDocument[0]['ktp_pengurus_perusahaan'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['ktp_pengurus_perusahaan'] = $filePath;
+              $updateFields['ktp_pengurus_perusahaan'] = basename($filePath);
             }
             break;
 
           case 'surat_keterangan_domisili_perusahaan':
             if ($existingDocument[0]['surat_keterangan_domisili_perusahaan'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['surat_keterangan_domisili_perusahaan'] = $filePath;
+              $updateFields['surat_keterangan_domisili_perusahaan'] = basename($filePath);
             }
             break;
 
           case 'siup':
             if ($existingDocument[0]['siup'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['siup'] = $filePath;
+              $updateFields['siup'] = basename($filePath);
             }
             break;
 
           case 'tdp':
             if ($existingDocument[0]['tdp'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['tdp'] = $filePath;
+              $updateFields['tdp'] = basename($filePath);
             }
             break;
 
           case 'npwp':
             if ($existingDocument[0]['npwp'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['npwp'] = $filePath;
+              $updateFields['npwp'] = basename($filePath);
             }
             break;
 
           case 'pkp':
             if ($existingDocument[0]['pkp'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['pkp'] = $filePath;
+              $updateFields['pkp'] = basename($filePath);
             }
             break;
 
           case 'spt':
             if ($existingDocument[0]['spt'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['spt'] = $filePath;
+              $updateFields['spt'] = basename($filePath);
             }
             break;
 
           case 'laporan_keuangan':
             if ($existingDocument[0]['laporan_keuangan'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['laporan_keuangan'] = $filePath;
+              $updateFields['laporan_keuangan'] = basename($filePath);
             }
             break;
 
           case 'rekening_koran':
             if ($existingDocument[0]['rekening_koran'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['rekening_koran'] = $filePath;
+              $updateFields['rekening_koran'] = basename($filePath);
             }
             break;
 
           case 'sertifikasi':
             if ($existingDocument[0]['sertifikasi'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['sertifikasi'] = $filePath;
+              $updateFields['sertifikasi'] = basename($filePath);
             }
             break;
 
           case 'list_daftar_pengalaman_kerja':
             if ($existingDocument[0]['list_daftar_pengalaman_kerja'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['list_daftar_pengalaman_kerja'] = $filePath;
+              $updateFields['list_daftar_pengalaman_kerja'] = basename($filePath);
             }
             break;
 
           case 'list_tenaga_ahli':
             if ($existingDocument[0]['list_tenaga_ahli'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['list_tenaga_ahli'] = $filePath;
+              $updateFields['list_tenaga_ahli'] = basename($filePath);
             }
             break;
 
           case 'akta_pendirian':
             if ($existingDocument[0]['akta_pendirian'] != $filePath) {
               move_uploaded_file($file['tmp_name'], $filePath);
-              $updateFields['akta_pendirian'] = $filePath;
-            }
-            break;
-
-          case 'proposal':
-            if ($existingDocument[0]['proposal'] != $filePath) {
-              move_uploaded_file($file['tmp_name'], ROOT_PATH . "assets/document/proposal/" . basename($file['name']));
-              $updateFields['proposal'] = $filePath;
+              $updateFields['akta_pendirian'] = basename($filePath);
             }
             break;
 
@@ -185,18 +189,6 @@ class DocumentService
 
           $existingDocument = $this->db->squery_single($sqlCheck, ['id' => $id]);
 
-          // Hapus file lama jika ada perubahan
-          foreach ($updateFields as $field => $filePath) {
-            if ($existingDocument[$field] != basename($filePath)) {
-              if ($field === 'proposal' && file_exists(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field])) {
-                unlink(ROOT_PATH . "assets/document/proposal/" . $existingDocument[$field]);
-              } else if (file_exists(ROOT_PATH . "assets/document/" . $existingDocument[$field])) {
-                unlink(ROOT_PATH . "assets/document/" . $existingDocument[$field]);
-              }
-            }
-            $updateFields[$field] = basename($filePath);
-          }
-
           $this->db->squery($sqlUpdate, $updateFields);
 
           return $this->createSuccessResponse('Dokumen berhasil diperbarui');
@@ -209,8 +201,8 @@ class DocumentService
       move_uploaded_file($file['tmp_name'], $filePath);
 
       // Menyimpan file pertama kali sesuai dengan type yang diterima
-      $sqlInsert = "INSERT INTO document (user_id, akta_perubahan, sk_menkumham, ktp_pengurus_perusahaan, surat_keterangan_domisili_perusahaan, siup, tdp, npwp, pkp, spt, laporan_keuangan, rekening_koran, sertifikasi, list_daftar_pengalaman_kerja, list_tenaga_ahli, akta_pendirian, proposal) 
-                  VALUES (:user_id, :akta_perubahan, :sk_menkumham, :ktp_pengurus_perusahaan, :surat_keterangan_domisili_perusahaan, :siup, :tdp, :npwp, :pkp, :spt, :laporan_keuangan, :rekening_koran, :sertifikasi, :list_daftar_pengalaman_kerja, :list_tenaga_ahli, :akta_pendirian, :proposal)";
+      $sqlInsert = "INSERT INTO document (user_id, akta_perubahan, sk_menkumham, ktp_pengurus_perusahaan, surat_keterangan_domisili_perusahaan, siup, tdp, npwp, pkp, spt, laporan_keuangan, rekening_koran, sertifikasi, list_daftar_pengalaman_kerja, list_tenaga_ahli, akta_pendirian) 
+                  VALUES (:user_id, :akta_perubahan, :sk_menkumham, :ktp_pengurus_perusahaan, :surat_keterangan_domisili_perusahaan, :siup, :tdp, :npwp, :pkp, :spt, :laporan_keuangan, :rekening_koran, :sertifikasi, :list_daftar_pengalaman_kerja, :list_tenaga_ahli, :akta_pendirian)";
       $this->db->squery($sqlInsert, [
         'user_id' => $id,
         'akta_perubahan' => ($type == 'akta_perubahan') ? basename($filePath) : '',
@@ -227,13 +219,39 @@ class DocumentService
         'sertifikasi' => ($type == 'sertifikasi') ? basename($filePath) : '',
         'list_daftar_pengalaman_kerja' => ($type == 'list_daftar_pengalaman_kerja') ? basename($filePath) : '',
         'list_tenaga_ahli' => ($type == 'list_tenaga_ahli') ? basename($filePath) : '',
-        'akta_pendirian' => ($type == 'akta_pendirian') ? basename($filePath) : '',
-        'proposal' => ($type == 'proposal') ? basename($filePath) : '',
+        'akta_pendirian' => ($type == 'akta_pendirian') ? basename($filePath) : ''
       ]);
 
       return $this->createSuccessResponse('Dokumen berhasil disimpan');
     } catch (Exception $e) {
-      return $this->createErrorResponse('Terjadi kesalahan pada server' . $e->getMessage());
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
+    }
+  }
+
+  public function postProposal($id, $file): array
+  {
+    $allowedTypes = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
+    $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+    if (!in_array($extension, $allowedTypes)) {
+      return $this->createErrorResponse('Format file tidak diperbolehkan');
+    }
+
+    $uploadDir = ROOT_PATH . 'assets/document/proposal/';
+    $filePath = sprintf('%sproposal_%s_%s.%s', $uploadDir, $_SESSION['id'], $id, $extension);
+
+    try {
+      $this->db->squery(
+        "UPDATE participant SET proposal = :proposal WHERE tender_id = :id",
+        [
+          'id' => $id,
+          'proposal' => sprintf('proposal_%s_%s.%s', $_SESSION['id'], $id, $extension)
+        ]
+      );
+      move_uploaded_file($file['tmp_name'], $filePath);
+      return $this->createSuccessResponse('Berhasil upload proposal');
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi kesalahan pada server');
     }
   }
 

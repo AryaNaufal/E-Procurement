@@ -5,7 +5,7 @@
         <i class="fa fa-arrow-left" aria-hidden="true" style="font-size: 25px; cursor: pointer;" onclick="window.history.back()"></i>
         <h3>Workflow Pengadaan</h3>
       </div>
-      <p>Pembelian 200 unit laptop</p>
+      <p><?= $tender['data'][0]['description'] ?></p>
     </div>
 
     <div class="d-flex justify-content-center flex-wrap" style="gap: 20px; width: 100%;">
@@ -164,13 +164,13 @@
               <form id="form-upload-file" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center gap-3">
                 <input type="text" hidden id='user_id' value="<?= $_SESSION['id'] ?>">
                 <input type="file" name="file" id="input-file" class="form-control" style="height:auto;">
-                <?php if (isset($document['proposal'])): ?>
-                  <p>Dokumen Lama: <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $document['proposal'] ?>" target="_blank">Lihat Dokumen</a></p>
+                <?php if (isset($proposal['data']['proposal']) && !empty($proposal['data']['proposal'])): ?>
+                  <p>Dokumen Lama: <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $proposal['data']['proposal'] ?>" target="_blank">Lihat Dokumen</a></p>
                 <?php endif; ?>
                 <button type="submit" class="btn btn-success rounded text-white" id="btn-upload-file">
                   <i class="fa fa-upload" aria-hidden="true"></i> Upload
                 </button>
-                <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $document['proposal'] ?>" target="_blank" download="<?= $document['proposal'] ?>" class="btn btn-primary rounded text-white">
+                <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $proposal['data']['proposal'] ?>" target="_blank" download="<?= $proposal['data']['proposal'] ?>" class="btn btn-primary rounded text-white">
                   <i class="fa fa-download" aria-hidden="true"></i> Download
                 </a>
               </form>
@@ -178,12 +178,11 @@
           `;
           document.getElementById('form-upload-file')?.addEventListener('submit', function(event) {
             event.preventDefault();
-            const userId = $('#user_id').val();
 
             const fileInput = document.getElementById("input-file");
             const formData = new FormData(this);
 
-            fetch(`<?= SERVER_NAME ?>handler/upload_file?id=${userId}&type=proposal`, {
+            fetch(`<?= SERVER_NAME ?>handler/submit_proposal.php?id=<?= $_GET['id'] ?>`, {
                 method: 'POST',
                 credentials: 'include',
                 body: formData
@@ -195,6 +194,8 @@
                     icon: 'success',
                     title: 'Berhasil',
                     text: data.message
+                  }).then(() => {
+                    window.location.reload();
                   });
                 } else if (data.status === 'error') {
                   Swal.fire({
