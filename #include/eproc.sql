@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2025 at 12:36 PM
+-- Generation Time: Mar 18, 2025 at 11:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91881,16 +91881,20 @@ INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `clo
 
 CREATE TABLE `timeline_pengadaan` (
   `id` int(11) NOT NULL,
-  `awal_pendaftaran` date NOT NULL,
-  `akhir_pendaftaran` date NOT NULL,
-  `perkualifikasi` datetime(6) NOT NULL,
-  `aanwijizing` datetime(6) NOT NULL,
-  `submit_proposal` datetime(6) NOT NULL,
-  `shortlisted` datetime(6) NOT NULL,
-  `poc` datetime(6) NOT NULL,
-  `awal_negosiasi` int(50) NOT NULL,
-  `akhir_negosiasi` int(50) NOT NULL,
-  `po` int(50) NOT NULL
+  `participant_id` int(11) NOT NULL,
+  `tender_id` int(11) NOT NULL,
+  `awal_pendaftaran` date DEFAULT NULL,
+  `akhir_pendaftaran` date DEFAULT NULL,
+  `prakualifikasi` date DEFAULT NULL,
+  `tor` date DEFAULT NULL,
+  `aanwijizing` date DEFAULT NULL,
+  `submit_proposal` date DEFAULT NULL,
+  `shortlisted` date DEFAULT NULL,
+  `poc` date DEFAULT NULL,
+  `announcement` date DEFAULT NULL,
+  `awal_negosiasi` date DEFAULT NULL,
+  `akhir_negosiasi` date DEFAULT NULL,
+  `po` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91963,7 +91967,8 @@ ALTER TABLE `news`
 ALTER TABLE `participant`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_participant_user` (`user_id`),
-  ADD KEY `fk_participant_tender` (`tender_id`);
+  ADD KEY `fk_participant_tender` (`tender_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `reg_districts`
@@ -92002,7 +92007,9 @@ ALTER TABLE `tender`
 -- Indexes for table `timeline_pengadaan`
 --
 ALTER TABLE `timeline_pengadaan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tender_id` (`tender_id`),
+  ADD UNIQUE KEY `participant_id` (`participant_id`);
 
 --
 -- Indexes for table `user`
@@ -92111,6 +92118,13 @@ ALTER TABLE `reg_regencies`
 --
 ALTER TABLE `reg_villages`
   ADD CONSTRAINT `fk_district` FOREIGN KEY (`district_id`) REFERENCES `reg_districts` (`id`);
+
+--
+-- Constraints for table `timeline_pengadaan`
+--
+ALTER TABLE `timeline_pengadaan`
+  ADD CONSTRAINT `FK_participant_user_id` FOREIGN KEY (`participant_id`) REFERENCES `participant` (`user_id`),
+  ADD CONSTRAINT `FK_tender_id` FOREIGN KEY (`tender_id`) REFERENCES `participant` (`tender_id`);
 
 --
 -- Constraints for table `vendor`
