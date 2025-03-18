@@ -213,7 +213,7 @@
       if (result.isConfirmed) {
         // Tampilkan loading
         document.getElementById('loader').style.display = 'block';
-        fetch(`<?= SERVER_NAME ?>handler/submit_tender.php?id=${tenderId}`, {
+        fetch(`<?= SERVER_NAME ?>handler/submit_tender?id=${tenderId}&participant_id=${<?= $_SESSION['id'] ?>}&tender_id=${<?= $_GET['id'] ?>}`, {
             method: 'POST',
             credentials: 'include'
           })

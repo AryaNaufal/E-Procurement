@@ -6,10 +6,17 @@ require_once __DIR__ . '/../#include/config.php';
 require_once __DIR__ . '/../#include/#class/autoload.php';
 
 use App\TenderService;
+use App\TimelineService;
 
 $tenderService = new TenderService();
+$timelineService = new TimelineService();
+
+$participantId = $_GET['participant_id'];
+$tenderId = $_GET['tender_id'];
+$date = date("Y-m-d");
 
 $result = $tenderService->submitTender(isset($_SESSION['id']) ? $_SESSION['id'] : '', $_GET['id']);
+$insertPendaftaran = $timelineService->insertPendaftaran($participantId, $tenderId, $date);
 
 if (empty($_SESSION['id'])) {
   $response = [
@@ -21,7 +28,7 @@ if (empty($_SESSION['id'])) {
   exit;
 }
 
-if ($result['status'] === 'success') {
+if ($result['status'] === 'success' && $insertPendaftaran['status'] === 'success') {
   $response = [
     'status' => $result['status'],
     'message' => $result['message']

@@ -3,7 +3,9 @@ session_start();
 
 use App\DocumentService;
 use App\LoadEnv;
+use App\ParticipantService;
 use App\TenderService;
+use App\TimelineService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once ROOT_PATH . '#include/#class/autoload.php';
@@ -17,9 +19,17 @@ $env = new LoadEnv(ROOT_PATH . '.env');
 
 $tenderService = new TenderService();
 $documentService = new DocumentService();
+$participantService = new ParticipantService();
+$timelineService = new TimelineService();
 
+$participant = $participantService->getParticipantByTenderId($_SESSION['id'], $_GET['id']);
 $tender = $tenderService->getTenderById($_GET['id']);
 $proposal = $documentService->getProposal($_GET['id']);
+$timeline = $timelineService->getTimeline($_GET['id']);
+
+if ($participant == null) {
+  header("Location: " . SERVER_NAME . "");
+}
 
 $current_menu = "workflow";
 $current_sub_menu = NULL;

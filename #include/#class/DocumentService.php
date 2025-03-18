@@ -42,7 +42,7 @@ class DocumentService
   {
     $sql = "SELECT proposal FROM participant WHERE tender_id = :id";
     try {
-      $proposal = $this->db->squery_single($sql, ['id' => $id]);
+      $proposal = $this->db->squery($sql, ['id' => $id]);
       return $this->createSuccessResponse('Proposal berhasil diambil', $proposal);
     } catch (Exception $e) {
       return $this->createErrorResponse('Terjadi kesalahan pada server');
