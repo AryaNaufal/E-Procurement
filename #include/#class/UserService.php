@@ -72,6 +72,25 @@ class UserService
         return $this->createErrorResponse('Password Tidak Sesuai');
       }
 
+      // Get ip address
+      $ipaddress = '';
+      if (getenv('HTTP_CLIENT_IP'))
+        $ipaddress = getenv('HTTP_CLIENT_IP');
+      else if (getenv('HTTP_X_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+      else if (getenv('HTTP_X_FORWARDED'))
+        $ipaddress = getenv('HTTP_X_FORWARDED');
+      else if (getenv('HTTP_FORWARDED_FOR'))
+        $ipaddress = getenv('HTTP_FORWARDED_FOR');
+      else if (getenv('HTTP_FORWARDED'))
+        $ipaddress = getenv('HTTP_FORWARDED');
+      else if (getenv('REMOTE_ADDR'))
+        $ipaddress = getenv('REMOTE_ADDR');
+      else
+        $ipaddress = 'UNKNOWN';
+
+      $this->db->supdate('UPDATE user SET login_terakhir = :login_terakhir, ip_login = :ip WHERE email = :email', ['login_terakhir' => date('Y-m-d H:i:s'), 'ip' => $ipaddress, 'email' => $user['email']]);
+
       return $this->createSuccessResponse('Anda Telah Berhasil Masuk', [
         // Set session data after successful login
         $_SESSION['id'] = $user['id'],
@@ -105,22 +124,34 @@ class UserService
       return $this->createErrorResponse(implode(' and ', $errors) . ' already exist');
     }
 
-    // Proses registrasi: data belum disimpan, hanya di-simpan sementara
     $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
-    $_SESSION['verification_code'] = $verification_code;
-    $_SESSION['email'] = $data['email'];
-    $_SESSION['username'] = $data['username'];
-    $_SESSION['password'] = $data['password'];
-    $_SESSION['pic'] = $data['pic'];
-    $_SESSION['perusahaan'] = $data['perusahaan'];
-    $_SESSION['npwp'] = $data['npwp'];
-    $_SESSION['nik'] = $data['nik'];
 
-    // Kirim email verifikasi
-    $emailService = new MailService();
-    $emailService->sendMailVerification($data['email'], $verification_code);
+    try {
+      $sql = "INSERT INTO user (username, email, password, pic, perusahaan, npwp, nik, tanggal_registrasi, verification_code, is_verify) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik, :tanggal_registrasi, :verification_code, 0)";
 
-    return $this->createSuccessResponse('Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.', []);
+      // Enkripsi password
+      $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
+
+      $this->db->sinsert($sql, [
+        "username" => $data['username'],
+        "email" => $data['email'],
+        "password" => $password_hash,
+        "pic" => $data['pic'],
+        "perusahaan" => $data['perusahaan'],
+        "npwp" => $data['npwp'],
+        "nik" => $data['nik'],
+        "tanggal_registrasi" => date('Y-m-d'),
+        "verification_code" => $verification_code
+      ]);
+
+      // Kirim email verifikasi
+      $emailService = new MailService();
+      $emailService->sendMailVerification($data['email'], $verification_code);
+
+      return $this->createSuccessResponse('Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.', []);
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi Kesalahan Pada Server' . $e->getMessage());
+    }
   }
 
   public function sendResetPassword(array $data)

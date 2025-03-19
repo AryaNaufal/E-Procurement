@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
@@ -42,39 +43,12 @@ class MailService
 
   public function verifyUser()
   {
-    // Validasi apakah verification_code tersedia di session dan URL
-    if (isset($_GET['code'], $_SESSION['verification_code']) && $_GET['code'] === $_SESSION['verification_code']) {
-      // Ambil data dari session
-      $email = $_SESSION['email'];
-      $username = $_SESSION['username'];
-      $password = $_SESSION['password'];
-      $pic = $_SESSION['pic'];
-      $perusahaan = $_SESSION['perusahaan'];
-      $npwp = $_SESSION['npwp'];
-      $nik = $_SESSION['nik'];
-
-      // Enkripsi password
-      $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-      // Simpan ke database
-      $query = "INSERT INTO user (username, email, password, pic, perusahaan, npwp, nik, is_verify) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik, 1)";
-      $this->db->sinsert($query, [
-        'username' => $username,
-        'email' => $email,
-        'password' => $password_hash,
-        'pic' => $pic,
-        'perusahaan' => $perusahaan,
-        'npwp' => $npwp,
-        'nik' => $nik
-      ]);
-
-      // Hapus session setelah sukses
-      session_unset();
-      session_destroy();
-
+    try {
+      $sql = "UPDATE user SET is_verify = :id, tanggal_verifikasi = :tanggal_verifikasi WHERE verification_code = :code";
+      $this->db->supdate($sql, ['id' => 1, 'tanggal_verifikasi' => date('Y-m-d H:i:s'), 'code' => $_GET['code']]);
       return $this->createSuccessResponse('Akun Anda telah berhasil diverifikasi dan diaktifkan.');
-    } else {
-      return $this->createErrorResponse('Kode verifikasi tidak valid atau telah kedaluwarsa.');
+    } catch (Exception $e) {
+      return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
     }
   }
 
