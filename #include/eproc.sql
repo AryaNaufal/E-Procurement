@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2025 at 11:26 AM
+-- Generation Time: Mar 19, 2025 at 11:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91912,6 +91912,11 @@ CREATE TABLE `user` (
   `perusahaan` varchar(50) NOT NULL,
   `npwp` varchar(50) DEFAULT NULL,
   `nik` varchar(50) DEFAULT NULL,
+  `tanggal_registrasi` date DEFAULT NULL,
+  `tanggal_verifikasi` date DEFAULT NULL,
+  `ip_login` varchar(100) DEFAULT NULL,
+  `login_terakhir` datetime DEFAULT NULL,
+  `verification_code` varchar(100) DEFAULT NULL,
   `is_verify` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
