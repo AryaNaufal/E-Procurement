@@ -1,10 +1,10 @@
 var validation_pwd = 0;
-var pwd_myInput = document.getElementById("psw");
-var pwd_letter = document.getElementById("pwd_letter");
-var pwd_capital = document.getElementById("pwd_capital");
-var pwd_number = document.getElementById("pwd_number");
-var pwd_sc = document.getElementById("pwd_special_character");
-var pwd_length = document.getElementById("pwd_length");
+var pwd_myInput = document.getElementById("Password");
+var pwd_letter = document.getElementById("password-letter");
+var pwd_capital = document.getElementById("password-capital");
+var pwd_number = document.getElementById("password-number");
+var pwd_sc = document.getElementById("password-special-character");
+var pwd_length = document.getElementById("password-length");
 
 function password_validation() {
   // Validate lowercase letters
@@ -77,5 +77,5 @@ function password_validation() {
     validation_pwd = 1;
   }
 
-  $("#validation_pwd_val").val(validation_pwd);
+  $("#validation-password-val").val(validation_pwd);
 }

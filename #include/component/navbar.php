@@ -25,7 +25,7 @@
       <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
         <a class="modal-view button z-0" style="cursor:pointer;" href="<?= SERVER_NAME ?>vendor_area/user">My Info</a>
       <?php } else { ?>
-        <a class="modal-view button z-0" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#RegisterModal">Daftar</a>
+        <a class="modal-view button z-0" style="cursor:pointer;" href="<?= SERVER_NAME ?>register">Daftar</a>
       <?php } ?>
       <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
         <a class="modal-view button z-0" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout.php">Logout</a>
