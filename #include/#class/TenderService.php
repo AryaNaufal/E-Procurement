@@ -21,7 +21,7 @@ class TenderService
 
   public function getTender(string $keyword): array
   {
-    $query = "SELECT * FROM tender WHERE description LIKE :keyword OR category LIKE :keyword LIMIT 6";
+    $query = "SELECT * FROM tender WHERE description LIKE :keyword OR category LIKE :keyword AND closing_date >= NOW() LIMIT 6";
     return $this->fetchTenders($query, ['keyword' => "%{$keyword}%"]);
   }
 
@@ -38,7 +38,7 @@ class TenderService
     }
 
     $placeholders = implode(',', array_fill(0, count($categories), '?'));
-    $query = "SELECT * FROM tender WHERE category {$operator} ({$placeholders}) LIMIT 6";
+    $query = "SELECT * FROM tender WHERE category {$operator} ({$placeholders}) AND closing_date >= NOW() LIMIT 6";
 
     return $this->fetchTenders($query, $categories);
   }
