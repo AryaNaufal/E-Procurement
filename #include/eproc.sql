@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2025 at 11:11 AM
+-- Generation Time: Mar 25, 2025 at 08:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91881,7 +91881,7 @@ INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `clo
 
 CREATE TABLE `timeline_pengadaan` (
   `id` int(11) NOT NULL,
-  `participant_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `tender_id` int(11) NOT NULL,
   `awal_pendaftaran` date DEFAULT NULL,
   `akhir_pendaftaran` date DEFAULT NULL,
@@ -92014,7 +92014,7 @@ ALTER TABLE `tender`
 ALTER TABLE `timeline_pengadaan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `tender_id` (`tender_id`),
-  ADD UNIQUE KEY `participant_id` (`participant_id`);
+  ADD KEY `user_id` (`user_id`) USING BTREE;
 
 --
 -- Indexes for table `user`
@@ -92128,8 +92128,8 @@ ALTER TABLE `reg_villages`
 -- Constraints for table `timeline_pengadaan`
 --
 ALTER TABLE `timeline_pengadaan`
-  ADD CONSTRAINT `FK_participant_user_id` FOREIGN KEY (`participant_id`) REFERENCES `participant` (`user_id`),
-  ADD CONSTRAINT `FK_tender_id` FOREIGN KEY (`tender_id`) REFERENCES `participant` (`tender_id`);
+  ADD CONSTRAINT `FK_participant_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `FK_tender_id` FOREIGN KEY (`tender_id`) REFERENCES `tender` (`id`);
 
 --
 -- Constraints for table `vendor`
