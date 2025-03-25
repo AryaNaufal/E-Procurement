@@ -24,11 +24,11 @@ class TimelineService
     }
   }
 
-  public function insertPendaftaran(string $participantId, string $tenderId, string $date)
+  public function insertPendaftaran(string $participantId, string $tenderId, string $registrationDate, string $closingDate)
   {
-    $sql = "INSERT INTO timeline_pengadaan (participant_id, tender_id, awal_pendaftaran) VALUES (:participant_id, :tender_id, :date)";
+    $sql = "INSERT INTO timeline_pengadaan (participant_id, tender_id, awal_pendaftaran, akhir_pendaftaran) VALUES (:participant_id, :tender_id, :awal_pendaftaran, :akhir_pendaftaran)";
     try {
-      $this->db->supdate($sql, ['participant_id' => $participantId, 'tender_id' => $tenderId, 'date' => $date]);
+      $this->db->supdate($sql, ['participant_id' => $participantId, 'tender_id' => $tenderId, 'awal_pendaftaran' => $registrationDate, 'akhir_pendaftaran' => $closingDate]);
       return $this->createSuccessResponse('Timeline berhasil ditambahkan');
     } catch (Exception $e) {
       return $this->createErrorResponse('Terjadi kesalahan pada server');

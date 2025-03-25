@@ -3,15 +3,18 @@ session_start();
 
 use App\LoadEnv;
 use App\TenderService;
+use App\TimelineService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once ROOT_PATH . '#include/#class/autoload.php';
 
 $env = new LoadEnv(ROOT_PATH . '.env');
 $tenderService = new TenderService();
+$timelineService = new TimelineService();
 
 $tenders = $tenderService->getTenderById($_GET['id']);
 $followedTender = $tenderService->getTenderFollowedByUser($_SESSION['id'] ?? '');
+$timeline = $timelineService->getTimeline($_GET['id']);
 
 $checkFollowedTender = false;
 

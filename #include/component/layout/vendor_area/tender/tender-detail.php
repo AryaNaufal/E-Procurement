@@ -165,16 +165,13 @@
             </thead>
             <tbody>
               <tr>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
+                <?php if (isset($timeline['data'][0])): ?>
+                  <?php for ($i = 3; $i < count($timeline['data'][0]); $i++): ?>
+                    <?php $key = array_keys($timeline['data'][0])[$i];
+                    $value = $timeline['data'][0][$key]; ?>
+                    <td><?= $value ?></td>
+                  <?php endfor; ?>
+                <?php endif; ?>
               </tr>
             </tbody>
           </table>
