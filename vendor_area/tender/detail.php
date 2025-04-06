@@ -19,17 +19,17 @@ $timeline = $timelineService->getTimeline($_GET['id']);
 $checkFollowedTender = false;
 
 if (isset($followedTender['status']) && $followedTender['status'] === 'success' && !empty($followedTender['data'])) {
-  foreach ($followedTender['data'] as $item) {
-    if ($item['id'] === $tenders['data'][0]['id']) {
-      $checkFollowedTender = true;
-      break;
+    foreach ($followedTender['data'] as $item) {
+        if ($item['id'] === $tenders['data'][0]['id']) {
+            $checkFollowedTender = true;
+            break;
+        }
     }
-  }
 }
 
 if (empty($tenders['data'])) {
-  header("Location: " . SERVER_NAME . "");
-  exit;
+    header("Location: " . SERVER_NAME . "");
+    exit;
 }
 
 $current_menu = "profile";

@@ -12,8 +12,8 @@ require_once __DIR__ . '/../../#include/config.php';
 require_once ROOT_PATH . '#include/#class/autoload.php';
 
 if (!isset($_SESSION['email']) && !isset($_SESSION['is_verify']) && $_SESSION['is_verify'] != '1') {
-  header("Location: " . SERVER_NAME . "");
-  exit;
+    header("Location: " . SERVER_NAME . "");
+    exit;
 }
 
 $env = new LoadEnv(ROOT_PATH . '.env');
@@ -43,11 +43,11 @@ $villages = $selectedDistrict ? $regionService->getVillages($selectedDistrict) :
 $filledDocuments = 0;
 
 if (isset($documents['data'][0])) {
-  foreach ($documents['data'][0] as $key => $document) {
-    if (!empty($document) && !in_array($key, ['id', 'user_id'])) {
-      $filledDocuments++;
+    foreach ($documents['data'][0] as $key => $document) {
+        if (!empty($document) && !in_array($key, ['id', 'user_id'])) {
+            $filledDocuments++;
+        }
     }
-  }
 }
 
 $current_menu = "profile";

@@ -9,8 +9,8 @@ use App\LoadEnv;
 $env = new LoadEnv(ROOT_PATH . '.env');
 
 if ((isset($_SESSION['verification_code']) != isset($_GET['code'])) || empty($_SESSION['verification_code'])) {
-  echo "<script>window.location.href = '" . SERVER_NAME . "';</script>";
-  exit;
+    echo "<script>window.location.href = '" . SERVER_NAME . "';</script>";
+    exit;
 }
 
 $current_menu = "reset password";

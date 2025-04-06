@@ -20,27 +20,27 @@ $result = $tenderService->submitTender(isset($_SESSION['id']) ? $_SESSION['id'] 
 $insertPendaftaran = $timelineService->insertPendaftaran($participantId, $tenderId, $date, $closingDate);
 
 if (empty($_SESSION['id'])) {
-  $response = [
-    'status' => 'error',
-    'message' => 'Anda belum login'
-  ];
+    $response = [
+        'status' => 'error',
+        'message' => 'Anda belum login'
+    ];
 
-  echo json_encode($response);
-  exit;
+    echo json_encode($response);
+    exit;
 }
 
 if ($result['status'] === 'success' && $insertPendaftaran['status'] === 'success') {
-  $response = [
-    'status' => $result['status'],
-    'message' => $result['message']
-  ];
+    $response = [
+        'status' => $result['status'],
+        'message' => $result['message']
+    ];
 
-  echo json_encode($response);
+    echo json_encode($response);
 } else {
-  $response = [
-    'status' => $result['status'],
-    'message' => $result['message']
-  ];
+    $response = [
+        'status' => $result['status'],
+        'message' => $result['message']
+    ];
 
-  echo json_encode($response);
+    echo json_encode($response);
 }

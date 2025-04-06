@@ -8,25 +8,25 @@ require_once __DIR__ . '/../#include/config.php';
 require_once __DIR__ . '/../#include/#class/autoload.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-  $documentService = new DocumentService();
+    $documentService = new DocumentService();
 
-  $id = $_GET['id'];
-  $file = $_FILES['file'];
-  $type = $_GET['type'];
+    $id = $_GET['id'];
+    $file = $_FILES['file'];
+    $type = $_GET['type'];
 
-  $result = $documentService->postDocument($id, $file, $type);
+    $result = $documentService->postDocument($id, $file, $type);
 
-  if ($result['status'] === 'success') {
-    $response = [
-      "status" => $result['status'],
-      "message" => $result['message'],
-    ];
-  } else {
-    $response = [
-      "status" => $result['status'],
-      "message" => $result['message'],
-    ];
-  }
+    if ($result['status'] === 'success') {
+        $response = [
+            "status" => $result['status'],
+            "message" => $result['message'],
+        ];
+    } else {
+        $response = [
+            "status" => $result['status'],
+            "message" => $result['message'],
+        ];
+    }
 
-  echo json_encode($response);
+    echo json_encode($response);
 }

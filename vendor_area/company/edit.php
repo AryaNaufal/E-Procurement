@@ -9,8 +9,8 @@ require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
 if (empty($_SESSION)) {
-  header("Location: " . SERVER_NAME . "");
-  exit;
+    header("Location: " . SERVER_NAME . "");
+    exit;
 }
 
 $env = new LoadEnv(ROOT_PATH . '.env');

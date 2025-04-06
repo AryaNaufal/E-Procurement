@@ -15,15 +15,15 @@ $date = date("Y-m-d");
 $result = $timelineService->insertTor($participantId, $tenderId, $date);
 
 if ($result['status'] === 'success') {
-  $response = [
-    "status" => $result['status'],
-    "message" => $result['message'],
-  ];
+    $response = [
+        "status" => $result['status'],
+        "message" => $result['message'],
+    ];
 } else {
-  $response = [
-    "status" => $result['status'],
-    "message" => $result['message'],
-  ];
+    $response = [
+        "status" => $result['status'],
+        "message" => $result['message'],
+    ];
 }
 
 echo json_encode($response);

@@ -23,10 +23,10 @@ $tenders = $tenderService->getTenders();
 
 // Daftar kategori
 $categories = [
-  'semua_kategori' => ['filter' => null],
-  'jasa_konsultasi' => ['filter' => ['Jasa Konsultasi Bidang Usaha']],
-  'pegadaan_barang' => ['filter' => ['Pengadaan Barang & Jasa']],
-  'jasa_lain' => ['filter' => ['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'operator' => 'NOT IN'],
+    'semua_kategori' => ['filter' => null],
+    'jasa_konsultasi' => ['filter' => ['Jasa Konsultasi Bidang Usaha']],
+    'pegadaan_barang' => ['filter' => ['Pengadaan Barang & Jasa']],
+    'jasa_lain' => ['filter' => ['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'operator' => 'NOT IN'],
 ];
 
 // Tentukan kategori yang dipilih
@@ -35,15 +35,15 @@ $title = "Home";
 
 // Ambil data tender berdasarkan kategori dan keyword
 if ($keyword) {
-  if (isset($categories[$category]['filter'])) {
-    $tender = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
-  } else {
-    $tender = $tenderService->getTender($keyword);
-  }
+    if (isset($categories[$category]['filter'])) {
+        $tender = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
+    } else {
+        $tender = $tenderService->getTender($keyword);
+    }
 } elseif (isset($currentCategory['filter'])) {
-  $tender = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
+    $tender = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
 } else {
-  $tender = $tenders;
+    $tender = $tenders;
 }
 
 // Ambil data untuk setiap kategori tab-pane
@@ -54,21 +54,21 @@ $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidan
 // Hitung tender baru (max 3 hari terakhir) dan tender selesai
 $tenderBaru = $tenderSelesai = 0;
 if (isset($tenders['data'])) {
-  $now = new DateTimeImmutable();
-  foreach ($tenders['data'] as $item) {
-    $registrationDate = new DateTimeImmutable($item['registration_date'] ?? 'now');
-    $closingDate = new DateTimeImmutable($item['closing_date'] ?? 'now');
+    $now = new DateTimeImmutable();
+    foreach ($tenders['data'] as $item) {
+        $registrationDate = new DateTimeImmutable($item['registration_date'] ?? 'now');
+        $closingDate = new DateTimeImmutable($item['closing_date'] ?? 'now');
 
-    // Menampilkan Tender yang baru dalam durasi max 3 hari terakhir
-    if ($now->diff($registrationDate)->days <= 3 && $now >= $registrationDate) {
-      $tenderBaru++;
-    }
+        // Menampilkan Tender yang baru dalam durasi max 3 hari terakhir
+        if ($now->diff($registrationDate)->days <= 3 && $now >= $registrationDate) {
+            $tenderBaru++;
+        }
 
-    // Menampilkan Tender yang sudah selesai
-    if ($now > $closingDate) {
-      $tenderSelesai++;
+        // Menampilkan Tender yang sudah selesai
+        if ($now > $closingDate) {
+            $tenderSelesai++;
+        }
     }
-  }
 }
 
 require_once ROOT_PATH . '#include/component/header.php';
