@@ -19,6 +19,16 @@ class TenderService
         return $this->fetchTenders("SELECT * FROM tender WHERE closing_date >= NOW() LIMIT 6");
     }
 
+    public function getNewTenders(): array
+    {
+        return $this->fetchTenders("SELECT * FROM tender WHERE registration_date>= CURDATE() - INTERVAL 3 DAY;");
+    }
+
+    public function getClosingTenders(): array
+    {
+        return $this->fetchTenders("SELECT * FROM tender WHERE closing_date <= NOW()");
+    }
+
     public function getTender(string $keyword): array
     {
         $query = "SELECT * FROM tender WHERE description LIKE :keyword OR category LIKE :keyword AND closing_date >= NOW() LIMIT 6";

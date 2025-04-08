@@ -52,24 +52,8 @@ $tenderBarangJasa = $tenderService->getTendersByCategory(['Pengadaan Barang & Ja
 $tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidang Usaha']);
 
 // Hitung tender baru (max 3 hari terakhir) dan tender selesai
-$tenderBaru = $tenderSelesai = 0;
-if (isset($tenders['data'])) {
-    $now = new DateTimeImmutable();
-    foreach ($tenders['data'] as $item) {
-        $registrationDate = new DateTimeImmutable($item['registration_date'] ?? 'now');
-        $closingDate = new DateTimeImmutable($item['closing_date'] ?? 'now');
-
-        // Menampilkan Tender yang baru dalam durasi max 3 hari terakhir
-        if ($now->diff($registrationDate)->days <= 3 && $now >= $registrationDate) {
-            $tenderBaru++;
-        }
-
-        // Menampilkan Tender yang sudah selesai
-        if ($now > $closingDate) {
-            $tenderSelesai++;
-        }
-    }
-}
+$tenderBaru = count($tenderService->getNewTenders()['data'] ?? []);
+$tenderSelesai = count($tenderService->getClosingTenders()['data'] ?? []);
 
 require_once ROOT_PATH . '#include/component/header.php';
 require_once ROOT_PATH . '#include/component/navbar.php';

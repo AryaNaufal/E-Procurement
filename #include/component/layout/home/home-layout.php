@@ -25,13 +25,13 @@
           </div>
           <div class="col-md-3">
             <div class="single-fun-factor">
-              <h1><span><?= isset($tenders['data']) ? $tenderBaru : 0 ?></span></h1>
+              <h1><span><?= isset($tenderBaru) ? $tenderBaru : 0 ?></span></h1>
               <h3>Tender Baru</h3>
             </div>
           </div>
           <div class="col-md-3">
             <div class="single-fun-factor">
-              <h1><span><?= isset($tenders['data']) ? $tenderSelesai : 0 ?></span></h1>
+              <h1><span><?= isset($tenderSelesai) ? $tenderSelesai : 0 ?></span></h1>
               <h3>Tender Selesai</h3>
             </div>
           </div>
@@ -144,26 +144,26 @@
           $count = 0;
           foreach (array_slice($news['data'], -3) as $item):
             $count++;
-            ?>
-                            <!-- Single item -->
-                            <div class="single-item col-lg-4 col-md-6">
-                              <div class="item">
-                                <div class="thumb">
-                                  <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>"><img class="img-fluid" src="<?= SERVER_NAME . 'assets/management/images/news/' . $item['gambar'] ?>" alt="Thumb"></a>
-                                  <div class="date"><strong><?= date('d', strtotime($item['created_at'])) ?></strong> <span><?= date('M', strtotime($item['created_at'])) ?></span></div>
-                                </div>
-                                <div class="info">
-                                  <h4 class="overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                    <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>" aria-label="<?= $item['judul'] ?>"><?= $item['judul'] ?></a>
-                                  </h4>
-                                  <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                                    <?= htmlspecialchars($item['isi'] ?? 'No description available.') ?>
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- End Single item -->
-                  <?php endforeach; ?>
+        ?>
+            <!-- Single item -->
+            <div class="single-item col-lg-4 col-md-6">
+              <div class="item">
+                <div class="thumb">
+                  <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>"><img class="img-fluid" src="<?= SERVER_NAME . 'assets/management/images/news/' . $item['gambar'] ?>" alt="Thumb"></a>
+                  <div class="date"><strong><?= date('d', strtotime($item['created_at'])) ?></strong> <span><?= date('M', strtotime($item['created_at'])) ?></span></div>
+                </div>
+                <div class="info">
+                  <h4 class="overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                    <a href="<?= SERVER_NAME . "news/" . $Lib->seo_title($item['judul']); ?>" aria-label="<?= $item['judul'] ?>"><?= $item['judul'] ?></a>
+                  </h4>
+                  <p style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                    <?= htmlspecialchars($item['isi'] ?? 'No description available.') ?>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- End Single item -->
+          <?php endforeach; ?>
         <?php endif; ?>
 
         <div class="d-flex justify-content-center w-100">
