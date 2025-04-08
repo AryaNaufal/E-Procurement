@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ResponseMessage;
 use Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
@@ -46,9 +47,13 @@ class MailService
         try {
             $sql = "UPDATE user SET is_verify = :id, tanggal_verifikasi = :tanggal_verifikasi WHERE verification_code = :code";
             $this->db->supdate($sql, ['id' => 1, 'tanggal_verifikasi' => date('Y-m-d H:i:s'), 'code' => $_GET['code']]);
-            return $this->createSuccessResponse('Akun Anda telah berhasil diverifikasi dan diaktifkan.');
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Akun Anda telah berhasil diverifikasi dan diaktifkan.'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
         }
     }
 
@@ -76,22 +81,5 @@ class MailService
         } catch (PHPMailerException $e) {
             echo "Email gagal dikirim. Error: {$mail->ErrorInfo}";
         }
-    }
-
-    private function createSuccessResponse(string $message, array $data = []): array
-    {
-        return [
-            'status' => 'success',
-            'message' => $message,
-            'data' => $data
-        ];
-    }
-
-    private function createErrorResponse(string $message): array
-    {
-        return [
-            'status' => 'error',
-            'message' => $message
-        ];
     }
 }

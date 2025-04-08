@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ResponseMessage;
 use Exception;
 
 class NewsService
@@ -18,9 +19,14 @@ class NewsService
         $sql = "SELECT * FROM news";
         try {
             $news = $this->db->squery($sql, []);
-            return $this->createSuccessResponse('Data Berita berhasil diambil', $news);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data Berita berhasil diambil',
+                data: $news
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -29,9 +35,14 @@ class NewsService
         $sql = "SELECT * FROM news WHERE slug = :slug";
         try {
             $news = $this->db->squery($sql, ['slug' => $slug]);
-            return $this->createSuccessResponse('Data Berita berhasil diambil', $news);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data Berita berhasil diambil',
+                data: $news
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -40,9 +51,14 @@ class NewsService
         $sql = "SELECT * FROM news LIMIT $limit OFFSET $offset";
         try {
             $news = $this->db->squery($sql, []);
-            return $this->createSuccessResponse('Data Berita berhasil diambil', $news);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data Berita berhasil diambil',
+                data: $news
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -51,26 +67,14 @@ class NewsService
         $sql = "SELECT COUNT(*) AS total FROM news";
         try {
             $result = $this->db->squery($sql, []);
-            return $this->createSuccessResponse('Total news count fetched successfully', $result);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Error fetching total news count');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Total news count fetched successfully',
+                data: $result
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Error fetching total news count'
+            );
         }
-    }
-
-    private function createSuccessResponse(string $message, array $data = []): array
-    {
-        return [
-            'status' => 'success',
-            'message' => $message,
-            'data' => $data
-        ];
-    }
-
-    private function createErrorResponse(string $message): array
-    {
-        return [
-            'status' => 'error',
-            'message' => $message
-        ];
     }
 }

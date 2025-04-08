@@ -2,8 +2,8 @@
 
 namespace App;
 
+use App\ResponseMessage;
 use Exception;
-use PDO;
 
 class TenderService
 {
@@ -34,7 +34,9 @@ class TenderService
     public function getTendersByCategory(array $categories, string $operator = 'IN'): array
     {
         if (empty($categories)) {
-            return $this->createErrorResponse('Kategori tidak tersedia');
+            return ResponseMessage::createErrorResponse(
+                message: 'Kategori tidak tersedia'
+            );
         }
 
         $placeholders = implode(',', array_fill(0, count($categories), '?'));
@@ -46,7 +48,9 @@ class TenderService
     public function searchTender(array $categories, string $keyword, string $operator = 'IN'): array
     {
         if (empty($categories)) {
-            return $this->createErrorResponse('Kategori tidak tersedia');
+            return ResponseMessage::createErrorResponse(
+                message: 'Kategori tidak tersedia'
+            );
         }
 
         $placeholders = implode(',', array_fill(0, count($categories), '?'));
@@ -62,12 +66,19 @@ class TenderService
             $tenders = $this->db->squery($query, $params);
 
             if (empty($tenders)) {
-                return $this->createErrorResponse('Tender tidak ditemukan');
+                return ResponseMessage::createErrorResponse(
+                    message: 'Tender tidak ditemukan'
+                );
             }
 
-            return $this->createSuccessResponse('', $tenders);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: '',
+                data: $tenders
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -79,13 +90,19 @@ class TenderService
             $checkSubmit = $this->db->squery("SELECT * FROM participant WHERE user_id = :user_id AND tender_id = :tender_id", ['user_id' => $user_id, 'tender_id' => $tender_id]);
 
             if (!empty($checkSubmit)) {
-                return $this->createErrorResponse('Anda sudah terdaftar pada pengadaan ini');
+                return ResponseMessage::createErrorResponse(
+                    message: 'Anda sudah terdaftar pada pengadaan ini'
+                );
             }
 
             $this->db->squery($query, ['user_id' => $user_id, 'tender_id' => $tender_id, 'registration_date' => date('Y-m-d H:i:s')]);
-            return $this->createSuccessResponse('Pendaftaran berhasil');
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Pendaftaran berhasil'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -97,29 +114,19 @@ class TenderService
             $result = $this->db->squery($query, ['user_id' => $userId]);
 
             if (empty($result)) {
-                return $this->createErrorResponse('Tender tidak ditemukan untuk user tersebut');
+                return ResponseMessage::createErrorResponse(
+                    message: 'Tender tidak ditemukan untuk user tersebut'
+                );
             }
 
-            return $this->createSuccessResponse('', $result);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: '',
+                data: $result
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
-    }
-
-    private function createSuccessResponse(string $message, array $data = []): array
-    {
-        return [
-            'status' => 'success',
-            'message' => $message,
-            'data' => $data
-        ];
-    }
-
-    private function createErrorResponse(string $message): array
-    {
-        return [
-            'status' => 'error',
-            'message' => $message
-        ];
     }
 }

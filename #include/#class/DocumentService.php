@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ResponseMessage;
 use Exception;
 
 class DocumentService
@@ -18,9 +19,14 @@ class DocumentService
 		$sql = "SELECT * FROM document";
 		try {
 			$document = $this->db->squery($sql, []);
-			return $this->createSuccessResponse('Data katalog berhasil diambil', $document);
-		} catch (Exception $e) {
-			return $this->createErrorResponse('Terjadi kesalahan pada server');
+			return ResponseMessage::createSuccessResponse(
+				message: 'Data katalog berhasil diambil',
+				data: $document
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
 	}
 
@@ -30,11 +36,18 @@ class DocumentService
 		try {
 			$document = $this->db->squery($sql, ['id' => $id]);
 			if (empty($document)) {
-				return $this->createErrorResponse('Dokumen tidak ditemukan');
+				return ResponseMessage::createErrorResponse(
+					message: 'Dokumen tidak ditemukan'
+				);
 			}
-			return $this->createSuccessResponse('Dokumen  berhasil diambil', $document);
-		} catch (Exception $e) {
-			return $this->createErrorResponse('Terjadi kesalahan pada server');
+			return ResponseMessage::createSuccessResponse(
+				message: 'Dokumen  berhasil diambil',
+				data: $document
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
 	}
 
@@ -43,9 +56,14 @@ class DocumentService
 		$sql = "SELECT proposal FROM participant WHERE tender_id = :id";
 		try {
 			$proposal = $this->db->squery($sql, ['id' => $id]);
-			return $this->createSuccessResponse('Proposal berhasil diambil', $proposal);
-		} catch (Exception $e) {
-			return $this->createErrorResponse('Terjadi kesalahan pada server');
+			return ResponseMessage::createSuccessResponse(
+				message: 'Proposal berhasil diambil',
+				data: $proposal
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
 	}
 
@@ -55,7 +73,9 @@ class DocumentService
 		$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
 		if (!in_array($extension, $allowedTypes)) {
-			return $this->createErrorResponse('Format file tidak diperbolehkan');
+			return ResponseMessage::createErrorResponse(
+				message: 'Format file tidak diperbolehkan'
+			);
 		}
 
 		$sqlCheck = "SELECT * FROM document WHERE user_id = :id";
@@ -175,7 +195,9 @@ class DocumentService
 						break;
 
 					default:
-						return $this->createErrorResponse('Invalid file type');
+						return ResponseMessage::createErrorResponse(
+							message: 'Invalid file type'
+						);
 				}
 
 				// Jika ada perubahan, lakukan update
@@ -191,10 +213,14 @@ class DocumentService
 
 					$this->db->squery($sqlUpdate, $updateFields);
 
-					return $this->createSuccessResponse('Dokumen berhasil diperbarui');
+					return ResponseMessage::createSuccessResponse(
+						message: 'Dokumen berhasil diperbarui'
+					);
 				}
 
-				return $this->createSuccessResponse('Dokumen sudah ada, tidak ada perubahan yang dilakukan');
+				return ResponseMessage::createSuccessResponse(
+					message: 'Dokumen sudah ada, tidak ada perubahan yang dilakukan'
+				);
 			}
 
 			// Jika dokumen belum ada, lakukan insert baru
@@ -222,9 +248,13 @@ class DocumentService
 				'akta_pendirian' => ($type == 'akta_pendirian') ? basename($filePath) : ''
 			]);
 
-			return $this->createSuccessResponse('Dokumen berhasil disimpan');
-		} catch (Exception $e) {
-			return $this->createErrorResponse('Terjadi kesalahan pada server');
+			return ResponseMessage::createSuccessResponse(
+				message: 'Dokumen berhasil disimpan'
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
 	}
 
@@ -234,7 +264,9 @@ class DocumentService
 		$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
 		if (!in_array($extension, $allowedTypes)) {
-			return $this->createErrorResponse('Format file tidak diperbolehkan');
+			return ResponseMessage::createErrorResponse(
+				message: 'Format file tidak diperbolehkan'
+			);
 		}
 
 		$uploadDir = ROOT_PATH . 'assets/document/proposal/';
@@ -249,26 +281,13 @@ class DocumentService
 				]
 			);
 			move_uploaded_file($file['tmp_name'], $filePath);
-			return $this->createSuccessResponse('Berhasil upload proposal');
-		} catch (Exception $e) {
-			return $this->createErrorResponse('Terjadi kesalahan pada server');
+			return ResponseMessage::createSuccessResponse(
+				message: 'Berhasil upload proposal'
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
-	}
-
-	private function createSuccessResponse(string $message, array $data = []): array
-	{
-		return [
-			'status' => 'success',
-			'message' => $message,
-			'data' => $data
-		];
-	}
-
-	private function createErrorResponse(string $message): array
-	{
-		return [
-			'status' => 'error',
-			'message' => $message
-		];
 	}
 }

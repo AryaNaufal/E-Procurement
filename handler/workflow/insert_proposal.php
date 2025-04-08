@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $date = date("Y-m-d");
 
     $result = $documentService->postProposal($id, $file);
-    $insertProposal = $timelineService->insertProposal($participantId, $tenderId, $date);
+    $insertProposal = $timelineService->insertTimelineProposal($participantId, $tenderId, $date);
 
     if ($result['status'] === 'success' && $insertProposal['status'] === 'success') {
         $response = [

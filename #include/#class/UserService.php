@@ -4,6 +4,7 @@ namespace App;
 
 include ROOT_PATH . 'vendor/autoload.php';
 
+use App\ResponseMessage;
 use Exception;
 
 class UserService
@@ -23,12 +24,19 @@ class UserService
             $users = $this->db->squery($query, []);
 
             if (empty($users)) {
-                return $this->createErrorResponse('No users available');
+                return ResponseMessage::createErrorResponse(
+                    message: 'User Tidak Ditemukan'
+                );
             }
 
-            return $this->createSuccessResponse('Users retrieved successfully', $users);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Users retrieved successfully',
+                data: $users
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
         }
     }
 
@@ -44,12 +52,17 @@ class UserService
 
             // Memeriksa user
             if (empty($user)) {
-                return $this->createErrorResponse('User Tidak Ditemukan');
+                return ResponseMessage::createErrorResponse('User Tidak Ditemukan');
             }
 
-            return $this->createSuccessResponse('', $user);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
+            return ResponseMessage::createSuccessResponse(
+                message: '',
+                data: $user
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
         }
     }
 
@@ -64,12 +77,16 @@ class UserService
 
             // Memeriksa user
             if (!$user) {
-                return $this->createErrorResponse('User Tidak Ditemukan');
+                return ResponseMessage::createErrorResponse(
+                    message: 'User Tidak Ditemukan'
+                );
             }
 
             // Verifikasi password
             if (!password_verify($data['password'], $user['password'])) {
-                return $this->createErrorResponse('Password Tidak Sesuai');
+                return ResponseMessage::createErrorResponse(
+                    message: 'Password Tidak Sesuai'
+                );
             }
 
             // Get ip address
@@ -91,22 +108,28 @@ class UserService
 
             $this->db->supdate('UPDATE user SET login_terakhir = :login_terakhir, ip_login = :ip WHERE email = :email', ['login_terakhir' => date('Y-m-d H:i:s'), 'ip' => $ipaddress, 'email' => $user['email']]);
 
-            return $this->createSuccessResponse('Anda Telah Berhasil Masuk', [
-                // Set session data after successful login
-                $_SESSION['id'] = $user['id'],
-                $_SESSION['username'] = $user['username'],
-                $_SESSION['email'] = $user['email'],
-                $_SESSION['is_verify'] = $user['is_verify']
-            ]);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Anda Telah Berhasil Masuk',
+                data: [
+                    $_SESSION['id'] = $user['id'],
+                    $_SESSION['username'] = $user['username'],
+                    $_SESSION['email'] = $user['email'],
+                    $_SESSION['is_verify'] = $user['is_verify']
+                ]
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
         }
     }
 
     public function registerUser(array $data)
     {
         if (empty($data['email']) || empty($data['password'])) {
-            return $this->createErrorResponse('Email dan Password Wajib Diisi');
+            return ResponseMessage::createErrorResponse(
+                message: 'Email dan Password Wajib Diisi'
+            );
         }
 
         // Periksa jika email sudah terdaftar
@@ -115,13 +138,17 @@ class UserService
 
         if ($checkEmail['status'] === 'success' || $checkUsername['status'] === 'success') {
             $errors = [];
+
             if ($checkEmail['status'] === 'success') {
                 $errors[] = 'Email';
             }
             if ($checkUsername['status'] === 'success') {
                 $errors[] = 'Username';
             }
-            return $this->createErrorResponse(implode(' and ', $errors) . ' already exist');
+
+            return ResponseMessage::createErrorResponse(
+                message: implode(' and ', $errors) . ' already exist'
+            );
         }
 
         $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
@@ -148,44 +175,64 @@ class UserService
             $emailService = new MailService();
             $emailService->sendMailVerification($data['email'], $verification_code);
 
-            return $this->createSuccessResponse('Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.', []);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi Kesalahan Pada Server' . $e->getMessage());
+            return ResponseMessage::createSuccessResponse(
+                message: 'Pendaftaran Berhasil, periksa email Anda untuk aktivasi akun.',
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
         }
     }
 
     public function sendResetPassword(array $data)
     {
         if (empty($data['email'])) {
-            return $this->createErrorResponse('Email Wajib Diisi');
+            return ResponseMessage::createErrorResponse(
+                message: 'Email Wajib Diisi'
+            );
         }
 
         $checkEmail = $this->getUser($data['email']);
 
         if ($checkEmail['status'] !== 'success') {
-            return $this->createErrorResponse('Email tidak terdaftar');
+            return ResponseMessage::createErrorResponse(
+                message: 'Email tidak terdaftar'
+            );
         }
 
-        // Proses reset password: data belum disimpan, hanya di-simpan sementara
-        $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
-        $_SESSION['verification_code'] = $verification_code;
-        $_SESSION['email'] = $data['email'];
+        try {
+            // Proses reset password: data belum disimpan, hanya di-simpan sementara
+            $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
+            $_SESSION['verification_code'] = $verification_code;
+            $_SESSION['email'] = $data['email'];
 
-        // Kirim email verifikasi
-        $emailService = new MailService();
-        $emailService->sendResetPasswordVerification($data['email'], $verification_code);
+            // Kirim email verifikasi
+            $emailService = new MailService();
+            $emailService->sendResetPasswordVerification($data['email'], $verification_code);
 
-        return $this->createSuccessResponse('Email verifikasi telah dikirim. Silakan cek email Anda', []);
+            return ResponseMessage::createSuccessResponse(
+                message: 'Email verifikasi telah dikirim. Silakan cek email Anda'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
+        }
     }
 
     public function resetPassword(array $data)
     {
         if (empty($data['password'])) {
-            return $this->createErrorResponse('Password Wajib Diisi');
+            return ResponseMessage::createErrorResponse(
+                message: 'Password Wajib Diisi'
+            );
         }
 
         if (strlen($data['password']) < 8) {
-            return $this->createErrorResponse('Password minimal 8 karakter');
+            return ResponseMessage::createErrorResponse(
+                message: 'Password minimal 8 karakter'
+            );
         }
 
         $sql = "UPDATE user SET password = :password WHERE email = :email AND is_verify = 1";
@@ -199,26 +246,13 @@ class UserService
             session_unset();
             session_destroy();
 
-            return $this->createSuccessResponse('Password berhasil direset');
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi Kesalahan Pada Server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Password berhasil direset'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi Kesalahan Pada Server'
+            );
         }
-    }
-
-    private function createSuccessResponse(string $message, array $data = []): array
-    {
-        return [
-            'status' => 'success',
-            'message' => $message,
-            'data' => $data
-        ];
-    }
-
-    private function createErrorResponse(string $message): array
-    {
-        return [
-            'status' => 'error',
-            'message' => $message
-        ];
     }
 }

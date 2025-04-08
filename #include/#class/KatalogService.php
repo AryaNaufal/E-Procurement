@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ResponseMessage;
 use Exception;
 
 class KatalogService
@@ -18,9 +19,14 @@ class KatalogService
         $sql = "SELECT * FROM katalog";
         try {
             $katalog = $this->db->squery($sql, []);
-            return $this->createSuccessResponse('Data katalog berhasil diambil', $katalog);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data katalog berhasil diambil',
+                data: $katalog
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -29,9 +35,14 @@ class KatalogService
         $sql = "SELECT * FROM katalog WHERE id = :id";
         try {
             $katalog = $this->db->squery($sql, ['id' => $id]);
-            return $this->createSuccessResponse('Data katalog berhasil diambil', $katalog);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data katalog berhasil diambil',
+                data: $katalog
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -42,12 +53,19 @@ class KatalogService
             $katalog = $this->db->squery($sql, ['id' => $id]);
 
             if (empty($katalog)) {
-                return $this->createErrorResponse('Data katalog tidak ditemukan');
+                return ResponseMessage::createErrorResponse(
+                    message: 'Data katalog tidak ditemukan'
+                );
             }
 
-            return $this->createSuccessResponse('Data katalog berhasil diambil', $katalog);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data katalog berhasil diambil',
+                data: $katalog
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -56,9 +74,14 @@ class KatalogService
         $sql = "SELECT gambar FROM katalog WHERE id = :id";
         try {
             $katalog = $this->db->squery($sql, ['id' => $id]);
-            return $this->createSuccessResponse('Data katalog berhasil diambil', $katalog);
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server');
+            return ResponseMessage::createSuccessResponse(
+                message: 'Data katalog berhasil diambil',
+                data: $katalog
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -81,9 +104,13 @@ class KatalogService
                 'gambar' => $photo,
                 'dokumen' => $document
             ]);
-            return $this->createSuccessResponse('Katalog berhasil ditambahkan');
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server: ' . $e->getMessage());
+            return ResponseMessage::createSuccessResponse(
+                message: 'Katalog berhasil ditambahkan'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -110,9 +137,13 @@ class KatalogService
                 'dokumen' => $document
             ]);
 
-            return $this->createSuccessResponse('Katalog berhasil diubah');
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server: ' . $e->getMessage());
+            return ResponseMessage::createSuccessResponse(
+                message: 'Katalog berhasil diubah'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -132,9 +163,13 @@ class KatalogService
             $sql = "DELETE FROM katalog WHERE id = :id";
             $this->db->squery($sql, ['id' => $id]);
 
-            return $this->createSuccessResponse('Katalog berhasil dihapus');
-        } catch (Exception $e) {
-            return $this->createErrorResponse('Terjadi kesalahan pada server: ' . $e->getMessage());
+            return ResponseMessage::createSuccessResponse(
+                message: 'Katalog berhasil dihapus'
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Terjadi kesalahan pada server'
+            );
         }
     }
 
@@ -170,22 +205,5 @@ class KatalogService
         } else {
             throw new Exception("Gagal menyimpan dokumen.");
         }
-    }
-
-    private function createSuccessResponse(string $message, array $data = []): array
-    {
-        return [
-            'status' => 'success',
-            'message' => $message,
-            'data' => $data
-        ];
-    }
-
-    private function createErrorResponse(string $message): array
-    {
-        return [
-            'status' => 'error',
-            'message' => $message
-        ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\ResponseMessage;
 use Exception;
 
 class CompanyService
@@ -20,12 +21,19 @@ class CompanyService
 			$companyData = $this->db->squery($sql, ['id' => $id]);
 
 			if (!$companyData) {
-				return $this->createErrorResponse('Data perusahaan tidak ditemukan.');
+				return ResponseMessage::createErrorResponse(
+					message: 'Data perusahaan tidak ditemukan.'
+				);
 			}
 
-			return $this->createSuccessResponse('Data perusahaan berhasil ditemukan.', $companyData);
-		} catch (Exception $e) {
-			return $this->createErrorResponse($e->getMessage());
+			return ResponseMessage::createSuccessResponse(
+				message: 'Data perusahaan berhasil ditemukan.',
+				data: $companyData
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
 	}
 
@@ -38,11 +46,13 @@ class CompanyService
 			]);
 
 			if ($checkResult) {
-				return $this->createErrorResponse('Data perusahaan sudah ada');
+				return ResponseMessage::createErrorResponse(
+					message: 'Data perusahaan sudah ada'
+				);
 			}
 
 			$sql = "INSERT INTO vendor (name, type, mail, phone, mobile_phone, address, provinsi, kota, kecamatan, kelurahan, kategori, user_id) 
-      VALUES (:company_name, :company_type, :company_mail, :company_phone, :company_mobile_phone, :company_address, :company_province, :company_regency, :company_district, :company_village, :company_category, :user_id)";
+      		VALUES (:company_name, :company_type, :company_mail, :company_phone, :company_mobile_phone, :company_address, :company_province, :company_regency, :company_district, :company_village, :company_category, :user_id)";
 
 			$companyData = $this->db->sinsert($sql, [
 				'company_name' => $data['company_name'],
@@ -60,13 +70,18 @@ class CompanyService
 			]);
 
 			if (!$companyData) {
-				return $this->createErrorResponse('Data perusahaan gagal disimpan');
+				return ResponseMessage::createErrorResponse(
+					message: 'Data perusahaan gagal disimpan'
+				);
 			}
 
-			return $this->createSuccessResponse('Data perusahaan berhasil disimpan');
-		} catch (Exception $e) {
-			error_log("Database error: " . $e->getMessage());
-			return $this->createErrorResponse('Database error: ' . $e->getMessage());
+			return ResponseMessage::createSuccessResponse(
+				message: 'Data perusahaan berhasil disimpan'
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
 	}
 
@@ -93,7 +108,9 @@ class CompanyService
 			]);
 
 			if (!$checkResult) {
-				return $this->createErrorResponse('Data perusahaan tidak ditemukan');
+				return ResponseMessage::createErrorResponse(
+					message: 'Data perusahaan tidak ditemukan'
+				);
 			}
 
 			$this->db->supdate($updateCompany, [
@@ -111,26 +128,13 @@ class CompanyService
 				'user_id' => $id
 			]);
 
-			return $this->createSuccessResponse('Data perusahaan berhasil diupdate');
-		} catch (Exception $e) {
-			return $this->createErrorResponse('Terjadi kesalahan pada server');
+			return ResponseMessage::createSuccessResponse(
+				message: 'Data perusahaan berhasil diupdate'
+			);
+		} catch (Exception) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Terjadi kesalahan pada server'
+			);
 		}
-	}
-
-	private function createSuccessResponse(string $message, array $data = []): array
-	{
-		return [
-			'status' => 'success',
-			'message' => $message,
-			'data' => $data
-		];
-	}
-
-	private function createErrorResponse(string $message): array
-	{
-		return [
-			'status' => 'error',
-			'message' => $message
-		];
 	}
 }

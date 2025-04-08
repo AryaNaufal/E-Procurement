@@ -12,7 +12,7 @@ $participantId = $_GET['participant_id'];
 $tenderId = $_GET['tender_id'];
 $date = date("Y-m-d");
 
-$result = $timelineService->insertAanwijizing($participantId, $tenderId, $date);
+$result = $timelineService->insertTimelineAanwijizing($participantId, $tenderId, $date);
 
 if ($result['status'] === 'success') {
     $response = [
