@@ -258,7 +258,7 @@ class DocumentService
 		}
 	}
 
-	public function postProposal($id, $file): array
+	public function postProposal(string $tenderId, array $file): array
 	{
 		$allowedTypes = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
 		$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -270,16 +270,33 @@ class DocumentService
 		}
 
 		$uploadDir = ROOT_PATH . 'assets/document/proposal/';
-		$filePath = sprintf('%sproposal_%s_%s.%s', $uploadDir, $_SESSION['id'], $id, $extension);
+		$filePath = sprintf('%sproposal_%s_%s.%s', $uploadDir, $_SESSION['id'], $tenderId, $extension);
 
 		try {
+			$proposalCheck = $this->db->squery("SELECT proposal FROM participant WHERE tender_id = :tender_id", ['tender_id' => $tenderId]);
+
+			if (empty($proposalCheck)) {
+				$this->db->squery(
+					"INSERT INTO participant (user_id, tender_id, registration_date, proposal) 
+					VALUES (:user_id, :tender_id, :registration_date, :proposal)",
+					[
+						'user_id' => $_SESSION['id'],
+						'tender_id' => $tenderId,
+						'registration_date' => date('Y-m-d H:i:s'),
+						'proposal' => sprintf('%sproposal_%s_%s.%s', $uploadDir, $_SESSION['id'], $tenderId, $extension)
+					]
+				);
+			}
+
 			$this->db->squery(
-				"UPDATE participant SET proposal = :proposal WHERE tender_id = :id",
+				"UPDATE participant SET proposal = :proposal WHERE user_id = :user_id AND tender_id = :tender_id",
 				[
-					'id' => $id,
-					'proposal' => sprintf('proposal_%s_%s.%s', $_SESSION['id'], $id, $extension)
+					'user_id' => $_SESSION['id'],
+					'tender_id' => $tenderId,
+					'proposal' => sprintf('proposal_%s_%s.%s', $_SESSION['id'], $tenderId, $extension)
 				]
 			);
+
 			move_uploaded_file($file['tmp_name'], $filePath);
 			return ResponseMessage::createSuccessResponse(
 				message: 'Berhasil upload proposal'

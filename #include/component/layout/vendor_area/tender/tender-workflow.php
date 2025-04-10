@@ -337,7 +337,7 @@
             <button type="submit" class="btn btn-success rounded text-white" id="btn-upload-file">
               <i class="fa fa-upload" aria-hidden="true"></i> Upload
             </button>
-            <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $proposal['data'][0]['proposal'] ?>" target="_blank" download="<?= $proposal['data'][0]['proposal'] ?>" class="btn btn-primary rounded text-white">
+            <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= isset($proposal['data'][0]['proposal']) ?? $proposal['data'][0]['proposal'] ?>" target="_blank" download="<?= isset($proposal['data'][0]['proposal']) ?? $proposal['data'][0]['proposal'] ?>" class="btn btn-primary rounded text-white">
               <i class="fa fa-download" aria-hidden="true"></i> Download
             </a>
           </form>
@@ -349,7 +349,7 @@
         const fileInput = document.getElementById("input-file");
         const formData = new FormData(this);
 
-        fetch(`<?= SERVER_NAME ?>handler/workflow/insert_proposal?id=${<?= $_GET['id'] ?>}&participant_id=${<?= $_SESSION['id'] ?>}&tender_id=${<?= $_GET['id'] ?>}`, {
+        fetch(`<?= SERVER_NAME ?>handler/workflow/insert_proposal?id=<?= $_GET['id'] ?>&user_id=<?= $_SESSION['id'] ?>&tender_id=<?= $_GET['id'] ?>`, {
             method: 'POST',
             credentials: 'include',
             body: formData

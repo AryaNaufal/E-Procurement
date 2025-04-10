@@ -15,22 +15,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $id = $_GET['id'];
     $file = $_FILES['file'];
 
-    $participantId = $_GET['participant_id'];
+    $userId = $_GET['user_id'];
     $tenderId = $_GET['tender_id'];
     $date = date("Y-m-d");
 
-    $result = $documentService->postProposal($id, $file);
-    $insertProposal = $timelineService->insertTimelineProposal($participantId, $tenderId, $date);
+    $proposal = $documentService->postProposal(
+        tenderId: $tenderId,
+        file: $file
+    );
 
-    if ($result['status'] === 'success' && $insertProposal['status'] === 'success') {
+    $timeline = $timelineService->insertTimelineProposal(
+        userId: $userId,
+        tenderId: $tenderId,
+        date: $date
+    );
+
+    if ($proposal['status'] === 'success') {
         $response = [
-            "status" => $result['status'],
-            "message" => $result['message'],
+            "status" => $proposal['status'],
+            "message" => $proposal['message'],
         ];
     } else {
         $response = [
-            "status" => $result['status'],
-            "message" => $result['message'],
+            "status" => $proposal['status'],
+            "message" => $proposal['message'],
         ];
     }
 
