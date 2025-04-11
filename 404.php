@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . "/#include/config.php";
-require_once ROOT_PATH . "#include/#class/Autoload.php";
+require_once 'vendor/autoload.php';
 
 $current_menu = "404";
 $current_sub_menu = NULL;

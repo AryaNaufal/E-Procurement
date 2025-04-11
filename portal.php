@@ -2,7 +2,7 @@
 session_start();
 
 require_once __DIR__ . "/#include/config.php";
-require_once ROOT_PATH . "#include/#class/autoload.php";
+require_once 'vendor/autoload.php';
 
 $current_menu = "portal";
 $current_sub_menu = NULL;
