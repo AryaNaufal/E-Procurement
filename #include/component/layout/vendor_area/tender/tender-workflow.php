@@ -293,7 +293,7 @@
 
     function checkBothButtonsClicked() {
       if (invitationClicked && infoClicked) {
-        fetch(`<?= SERVER_NAME ?>handler/workflow/insert_aanwijizing?participant_id=${<?= $_SESSION['id'] ?>}&tender_id=${<?= $_GET['id'] ?>}`)
+        fetch(`<?= SERVER_NAME ?>handler/workflow/insert_aanwijizing?user_id=<?= $_SESSION['id'] ?>&tender_id=<?= $_GET['id'] ?>`)
           .then(response => response.json())
           .then(data => {
             if (data.status === 'success') {
