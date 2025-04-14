@@ -8,21 +8,25 @@ require_once __DIR__ . '/../../#include/#class/autoload.php';
 
 $timelineService = new TimelineService();
 
-$participantId = $_GET['participant_id'];
+$userId = $_GET['user_id'];
 $tenderId = $_GET['tender_id'];
 $date = date("Y-m-d");
 
-$result = $timelineService->insertTimelineTor($participantId, $tenderId, $date);
+$tor = $timelineService->insertTimelineTor(
+    userId: $userId,
+    tenderId: $tenderId,
+    date: $date
+);
 
-if ($result['status'] === 'success') {
+if ($tor['status'] === 'success') {
     $response = [
-        "status" => $result['status'],
-        "message" => $result['message'],
+        "status" => $tor['status'],
+        "message" => $tor['message'],
     ];
 } else {
     $response = [
-        "status" => $result['status'],
-        "message" => $result['message'],
+        "status" => $tor['status'],
+        "message" => $tor['message'],
     ];
 }
 

@@ -234,7 +234,7 @@
         </div>
       `;
       document.getElementById("insert_tor").onclick = () => {
-        fetch(`<?= SERVER_NAME ?>handler/workflow/insert_tor?participant_id=${<?= $_SESSION['id'] ?>}&tender_id=${<?= $_GET['id'] ?>}`)
+        fetch(`<?= SERVER_NAME ?>handler/workflow/insert_tor?user_id=<?= $_SESSION['id'] ?>&tender_id=<?= $_GET['id'] ?>`)
           .then(response => response.json())
           .then(data => {
             if (data.status === 'success') {
@@ -331,13 +331,13 @@
           <form id="form-upload-file" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center gap-3">
             <input type="text" hidden id='user_id' value="<?= $_SESSION['id'] ?>">
             <input type="file" name="file" id="input-file" class="form-control" style="height:auto;">
-            <?php if (isset($proposal['data'][0]['proposal']) && !empty($proposal['data'][0]['proposal'])): ?>
+            <?php if (isset($proposal['data'][0]['proposal'])): ?>
               <p>Dokumen Lama: <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= $proposal['data'][0]['proposal'] ?>" target="_blank">Lihat Dokumen</a></p>
             <?php endif; ?>
             <button type="submit" class="btn btn-success rounded text-white" id="btn-upload-file">
               <i class="fa fa-upload" aria-hidden="true"></i> Upload
             </button>
-            <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= isset($proposal['data'][0]['proposal']) ?? $proposal['data'][0]['proposal'] ?>" target="_blank" download="<?= isset($proposal['data'][0]['proposal']) ?? $proposal['data'][0]['proposal'] ?>" class="btn btn-primary rounded text-white">
+            <a href="<?= SERVER_NAME ?>assets/document/proposal/<?= isset($proposal['data'][0]['proposal']) && !empty($proposal['data'][0]['proposal']) ? $proposal['data'][0]['proposal'] : '' ?>" target="_blank" download="<?= isset($proposal['data'][0]['proposal']) && !empty($proposal['data'][0]['proposal']) ? $proposal['data'][0]['proposal'] : '' ?>" class="btn btn-primary rounded text-white">
               <i class="fa fa-download" aria-hidden="true"></i> Download
             </a>
           </form>

@@ -43,12 +43,14 @@ class TimelineService
         }
     }
 
-    public function insertTimelineTor(string $participantId, string $tenderId, string $date)
+    public function insertTimelineTor(string $userId, string $tenderId, string $date)
     {
-        $sql = "UPDATE timeline_pengadaan SET tor = :date WHERE participant_id = :participant_id AND tender_id = :tender_id AND tor IS NULL";
+        $sql = "UPDATE timeline_pengadaan SET tor = :date WHERE user_id = :user_id AND tender_id = :tender_id AND tor IS NULL";
         try {
-            $this->db->supdate($sql, ['participant_id' => $participantId, 'tender_id' => $tenderId, 'date' => $date]);
-            return;
+            $this->db->supdate($sql, ['user_id' => $userId, 'tender_id' => $tenderId, 'date' => $date]);
+            return ResponseMessage::createSuccessResponse(
+                message: ''
+            );
         } catch (Exception) {
             return ResponseMessage::createErrorResponse(
                 message: 'Terjadi kesalahan pada server'
