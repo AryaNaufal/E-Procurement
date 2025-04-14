@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2025 at 08:08 AM
+-- Generation Time: Apr 14, 2025 at 08:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -82,6 +82,20 @@ CREATE TABLE `news` (
   `isi` text NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `judul`, `slug`, `gambar`, `isi`, `created_at`) VALUES
+(1, 'News 1', 'news-1', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(2, 'News 2', 'news-2', 'nws_200826030036_400764.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(3, 'News 3', 'news-3', 'nws_200826030113_242246.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(4, 'News 4', 'news-4', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(5, 'News 5', 'news-5', 'nws_200826030036_400764.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(6, 'News 6', 'news-6', 'nws_200826030113_242246.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(7, 'News 7', 'news-7', 'nws_200826030011_272283.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25'),
+(8, 'News 8', 'news-8', 'nws_200826030036_400764.jpg', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi est voluptate corporis quae nulla modi accusamus rerum quam soluta consequatur tenetur architecto, sapiente, ab, minus eum eligendi itaque placeat voluptatibus.\r\n       Aspernatur, error! Deleniti excepturi adipisci, mollitia vitae suscipit optio at nihil voluptatum eveniet iste sapiente eligendi autem quia possimus facilis earum! Nihil magnam minus tempora maiores eius sequi, consectetur quidem!\r\n       Ipsum molestias libero quibusdam ut non, dolores ea placeat eius amet, maxime porro eos sit enim unde quis. Hic dolorem eveniet nulla beatae sed sunt aliquam enim sapiente nostrum iste.\r\n       Similique ducimus ipsam expedita non rerum dolor sequi facilis consequatur. Ex facilis perferendis natus tempore vero consequuntur aspernatur pariatur a, id architecto impedit dolore, quisquam corrupti sint tenetur necessitatibus adipisci.\r\n       Reprehenderit dolorum fugit nisi officiis voluptatibus. Porro, alias harum. Libero adipisci quas, error id asperiores ullam consequatur eius cumque dolorem earum at, saepe placeat fugiat natus nisi quam odio aliquam.', '2025-02-25');
 
 -- --------------------------------------------------------
 
@@ -91842,36 +91856,35 @@ CREATE TABLE `tender` (
 --
 
 INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `closing_date`) VALUES
-(1, 'Jasa Konsultasi Pemasaran Digital untuk UMKM', 'Jasa Konsultasi Bidang Usaha', '2025-03-01', '2025-03-03'),
-(2, 'Jasa Konsultasi Sistem Manajemen Keuangan', 'Jasa Konsultasi Bidang Usaha', '2025-03-02', '2025-03-12'),
-(3, 'Pengadaan Laptop untuk Kantor Cabang', 'Pengadaan Barang & Jasa', '2025-03-03', '2025-03-13'),
-(4, 'Jasa Konsultasi untuk Pengembangan Aplikasi Mobile', 'Jasa Konsultasi Bidang Usaha', '2025-03-04', '2025-03-14'),
-(5, 'Pengadaan Layanan IT untuk Sistem Keamanan Data', 'Pengadaan Layanan IT', '2025-03-05', '2025-03-15'),
-(6, 'Jasa Konsultasi Perencanaan Strategi Bisnis', 'Jasa Konsultasi Bidang Usaha', '2025-03-06', '2025-03-16'),
-(7, 'Pengadaan Peralatan Kantor dan Komputer', 'Pengadaan Barang & Jasa', '2025-03-07', '2025-03-17'),
-(8, 'Jasa Konsultasi Transformasi Digital untuk Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-08', '2025-03-18'),
-(9, 'Pengadaan Layanan IT untuk Cloud Computing', 'Pengadaan Layanan IT', '2025-03-09', '2025-03-19'),
-(10, 'Jasa Konsultasi Pengelolaan Sumber Daya Manusia', 'Jasa Konsultasi Bidang Usaha', '2025-03-10', '2025-03-20'),
-(11, 'Pengadaan Sistem Manajemen Keamanan Jaringan', 'Pengadaan Layanan IT', '2025-03-11', '2025-03-21'),
-(12, 'Jasa Konsultasi Pengembangan Infrastruktur IT', 'Jasa Konsultasi Bidang Usaha', '2025-03-12', '2025-03-22'),
-(13, 'Pengadaan Perangkat Keras Komputer untuk Dinas', 'Pengadaan Barang & Jasa', '2025-03-13', '2025-03-23'),
-(14, 'Pengadaan Layanan Jaringan dan Infrastruktur TI', 'Pengadaan Layanan IT', '2025-03-14', '2025-03-24'),
-(15, 'Jasa Konsultasi untuk Pengembangan Produk Baru', 'Jasa Konsultasi Bidang Usaha', '2025-03-15', '2025-03-25'),
-(16, 'Jasa Konsultasi Keuangan untuk Startups', 'Jasa Konsultasi Bidang Usaha', '2025-03-16', '2025-03-26'),
-(17, 'Pengadaan Barang Kantor untuk Layanan Pendidikan', 'Pengadaan Barang & Jasa', '2025-03-17', '2025-03-27'),
-(18, 'Jasa Konsultasi Pengelolaan Risiko untuk Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-18', '2025-03-28'),
-(19, 'Pengadaan Layanan IT untuk Integrasi Sistem Bisnis', 'Pengadaan Layanan IT', '2025-03-19', '2025-03-29'),
-(20, 'Pengadaan Peralatan Kantor dan Aksesori IT', 'Pengadaan Barang & Jasa', '2025-03-20', '2025-03-30'),
-(21, 'Jasa Konsultasi Implementasi ERP di Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-21', '2025-03-31'),
-(22, 'Jasa Konsultasi Pengelolaan Kinerja Organisasi', 'Jasa Konsultasi Bidang Usaha', '2025-03-22', '2025-04-01'),
-(23, 'Pengadaan Layanan TI untuk Pemeliharaan Infrastruktur Jaringan', 'Pengadaan Layanan IT', '2025-03-23', '2025-04-02'),
-(24, 'Pengadaan Layanan Pengembangan Web untuk Pemerintah', 'Pengadaan Layanan IT', '2025-03-24', '2025-04-03'),
-(25, 'Jasa Konsultasi Manajemen Proyek IT untuk Perusahaan', 'Jasa Konsultasi Bidang Usaha', '2025-03-25', '2025-04-04'),
-(26, 'Pengadaan Server dan Perangkat Keras IT untuk Organisasi', 'Pengadaan Barang & Jasa', '2025-03-26', '2025-04-05'),
-(27, 'Jasa Konsultasi Pengembangan Sistem Keuangan Digital', 'Jasa Konsultasi Bidang Usaha', '2025-03-27', '2025-04-06'),
-(28, 'Pengadaan Layanan Cloud Hosting untuk Bisnis', 'Pengadaan Layanan IT', '2025-03-28', '2025-04-07'),
-(29, 'Jasa Konsultasi Penyusunan Strategi Bisnis Digital', 'Jasa Konsultasi Bidang Usaha', '2025-03-29', '2025-04-08'),
-(30, 'Pengadaan Alat Tulis Kantor untuk Instansi Pemerintah', 'Pengadaan Barang & Jasa', '2025-03-30', '2025-04-09');
+(1, 'Konsultasi Digitalisasi Proses Bisnis', 'Jasa Konsultasi Bidang Usaha', '2025-04-01', '2025-05-01'),
+(2, 'Pengadaan Server dan Perangkat Jaringan', 'Pengadaan Barang & Jasa', '2025-04-02', '2025-05-03'),
+(3, 'Implementasi Sistem Keamanan Siber', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-03', '2025-05-05'),
+(4, 'Konsultasi Strategi Transformasi Digital', 'Jasa Konsultasi Bidang Usaha', '2025-04-04', '2025-05-07'),
+(5, 'Pengadaan Laptop dan Software Lisensi', 'Pengadaan Barang & Jasa', '2025-04-05', '2025-05-09'),
+(6, 'Pemeliharaan Infrastruktur IT', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-06', '2025-05-11'),
+(7, 'Studi Kelayakan Teknologi ERP', 'Jasa Konsultasi Bidang Usaha', '2025-04-07', '2025-05-13'),
+(8, 'Pengadaan Perangkat Smart Meeting', 'Pengadaan Barang & Jasa', '2025-04-08', '2025-05-15'),
+(9, 'Jasa Pengembangan Aplikasi Mobile', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-09', '2025-05-17'),
+(10, 'Audit IT dan Keamanan Informasi', 'Jasa Konsultasi Bidang Usaha', '2025-04-10', '2025-05-19'),
+(11, 'Pengadaan CCTV dan Sistem Monitoring', 'Pengadaan Barang & Jasa', '2025-04-11', '2025-05-21'),
+(12, 'Pembangunan Portal Digital Layanan Publik', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-12', '2025-05-23'),
+(13, 'Konsultasi Tata Kelola TI', 'Jasa Konsultasi Bidang Usaha', '2025-04-13', '2025-05-25'),
+(14, 'Pengadaan Aplikasi Keuangan', 'Pengadaan Barang & Jasa', '2025-04-14', '2025-05-27'),
+(15, 'Jasa Pengelolaan Cloud Server', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-15', '2025-05-29'),
+(16, 'Analisis Risiko Keamanan TI', 'Jasa Konsultasi Bidang Usaha', '2025-04-16', '2025-05-31'),
+(17, 'Pengadaan Akses Point Wireless', 'Pengadaan Barang & Jasa', '2025-04-17', '2025-06-01'),
+(18, 'Pengembangan Sistem Manajemen Dokumen', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-18', '2025-06-03'),
+(19, 'Penyusunan Rencana Induk TI', 'Jasa Konsultasi Bidang Usaha', '2025-04-19', '2025-06-05'),
+(20, 'Penerapan Sistem e-Procurement', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-21', '2025-06-09'),
+(21, 'Konsultasi Business Continuity Plan', 'Jasa Konsultasi Bidang Usaha', '2025-04-22', '2025-06-11'),
+(22, 'Pengadaan UPS dan Stabilizer', 'Pengadaan Barang & Jasa', '2025-04-23', '2025-06-13'),
+(23, 'Pengelolaan Big Data dan Analitik', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-24', '2025-06-15'),
+(24, 'Evaluasi Sistem Informasi Manajemen', 'Jasa Konsultasi Bidang Usaha', '2025-04-25', '2025-06-17'),
+(25, 'Pengadaan Perangkat Videotron', 'Pengadaan Barang & Jasa', '2025-04-26', '2025-06-19'),
+(26, 'Pembuatan Dashboard Kinerja Digital', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-27', '2025-06-21'),
+(27, 'Konsultasi Penerapan ISO 27001', 'Jasa Konsultasi Bidang Usaha', '2025-04-28', '2025-06-23'),
+(28, 'Pengadaan Perangkat Keras IT', 'Pengadaan Barang & Jasa', '2025-04-29', '2025-06-25'),
+(29, 'Pembuatan Sistem Informasi Akademik', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-30', '2025-06-27');
 
 -- --------------------------------------------------------
 
@@ -91951,14 +91964,14 @@ CREATE TABLE `vendor` (
 --
 ALTER TABLE `document`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`);
+  ADD UNIQUE KEY `fk_user_id` (`user_id`) USING BTREE;
 
 --
 -- Indexes for table `katalog`
 --
 ALTER TABLE `katalog`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id` (`user_id`);
+  ADD KEY `fk_user_id` (`user_id`) USING BTREE;
 
 --
 -- Indexes for table `news`
@@ -91972,8 +91985,7 @@ ALTER TABLE `news`
 ALTER TABLE `participant`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_participant_user` (`user_id`),
-  ADD KEY `fk_participant_tender` (`tender_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `fk_participant_tender` (`tender_id`);
 
 --
 -- Indexes for table `reg_districts`
@@ -92013,8 +92025,8 @@ ALTER TABLE `tender`
 --
 ALTER TABLE `timeline_pengadaan`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `tender_id` (`tender_id`),
-  ADD KEY `user_id` (`user_id`) USING BTREE;
+  ADD KEY `fk_user_id` (`user_id`) USING BTREE,
+  ADD KEY `fk_tender_id` (`tender_id`) USING BTREE;
 
 --
 -- Indexes for table `user`
@@ -92029,7 +92041,7 @@ ALTER TABLE `user`
 --
 ALTER TABLE `vendor`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `fk_id` (`user_id`) USING BTREE;
+  ADD UNIQUE KEY `fk_user_id` (`user_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -92051,7 +92063,7 @@ ALTER TABLE `katalog`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `participant`
@@ -92063,7 +92075,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT for table `tender`
 --
 ALTER TABLE `tender`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `timeline_pengadaan`
