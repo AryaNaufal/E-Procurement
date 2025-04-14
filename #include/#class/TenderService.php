@@ -16,7 +16,7 @@ class TenderService
 
     public function getTenders(): array
     {
-        return $this->fetchTenders("SELECT * FROM tender WHERE closing_date >= NOW() LIMIT 6");
+        return $this->fetchTenders("SELECT * FROM tender");
     }
 
     public function getNewTenders(): array
