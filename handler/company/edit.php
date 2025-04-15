@@ -23,7 +23,10 @@ $data = [
   'company_category' => isset($_POST['category']) ? implode(',', $_POST['category']) : '',
 ];
 
-$result = $companyService->updateCompanyData($_SESSION['id'], $data);
+$result = $companyService->updateCompanyData(
+  userId: $_SESSION['id'],
+  data: $data
+);
 
 if ($result['status'] === 'success') {
   $response = [

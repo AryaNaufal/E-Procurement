@@ -14,11 +14,11 @@ class CompanyService
 		$this->db = new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 	}
 
-	public function getCompanyData(string $id): array
+	public function getCompanyData(string $userId): array
 	{
-		$sql = "SELECT * FROM vendor WHERE user_id = :id";
+		$sql = "SELECT * FROM vendor WHERE user_id = :user_id";
 		try {
-			$companyData = $this->db->squery($sql, ['id' => $id]);
+			$companyData = $this->db->squery($sql, ['user_id' => $userId]);
 
 			if (!$companyData) {
 				return ResponseMessage::createErrorResponse(
@@ -42,7 +42,7 @@ class CompanyService
 		$checkUserId = "SELECT user_id FROM vendor WHERE user_id = :user_id";
 		try {
 			$checkResult = $this->db->squery_single($checkUserId, [
-				'user_id' => $_SESSION['id']
+				'user_id' => $data['user_id']
 			]);
 
 			if ($checkResult) {
@@ -66,7 +66,7 @@ class CompanyService
 				'company_district' => $data['company_district'],
 				'company_village' => $data['company_village'],
 				'company_category' => $data['company_category'],
-				'user_id' => $_SESSION['id']
+				'user_id' => $data['user_id']
 			]);
 
 			if (!$companyData) {
@@ -85,7 +85,7 @@ class CompanyService
 		}
 	}
 
-	public function updateCompanyData($id, array $data): array
+	public function updateCompanyData(string $userId, array $data): array
 	{
 		$checkUserId = "SELECT user_id FROM vendor WHERE user_id = :user_id";
 		$updateCompany = "UPDATE vendor SET 
@@ -104,7 +104,7 @@ class CompanyService
 
 		try {
 			$checkResult = $this->db->squery_single($checkUserId, [
-				'user_id' => $id
+				'user_id' => $userId
 			]);
 
 			if (!$checkResult) {
@@ -125,7 +125,7 @@ class CompanyService
 				'company_district' => $data['company_district'],
 				'company_village' => $data['company_village'],
 				'company_category' => $data['company_category'],
-				'user_id' => $id
+				'user_id' => $userId
 			]);
 
 			return ResponseMessage::createSuccessResponse(

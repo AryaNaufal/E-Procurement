@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $date = date("Y-m-d");
 
     $proposal = $documentService->postProposal(
+        userId: $userId,
         tenderId: $tenderId,
         file: $file
     );

@@ -14,7 +14,7 @@ class DocumentService
 		$this->db = new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 	}
 
-	public function getDocuments()
+	public function getDocuments(): array
 	{
 		$sql = "SELECT * FROM document";
 		try {
@@ -30,11 +30,11 @@ class DocumentService
 		}
 	}
 
-	public function getDocument($id)
+	public function getDocument(string $userId): array
 	{
-		$sql = "SELECT * FROM document WHERE id = :id";
+		$sql = "SELECT * FROM document WHERE id = :user_id";
 		try {
-			$document = $this->db->squery($sql, ['id' => $id]);
+			$document = $this->db->squery($sql, ['user_id' => $userId]);
 			if (empty($document)) {
 				return ResponseMessage::createErrorResponse(
 					message: 'Dokumen tidak ditemukan'
@@ -51,11 +51,11 @@ class DocumentService
 		}
 	}
 
-	public function getProposal(string $id)
+	public function getProposal(string $userId): array
 	{
-		$sql = "SELECT proposal FROM participant WHERE tender_id = :id";
+		$sql = "SELECT proposal FROM participant WHERE tender_id = :user_id";
 		try {
-			$proposal = $this->db->squery($sql, ['id' => $id]);
+			$proposal = $this->db->squery($sql, ['user_id' => $userId]);
 			return ResponseMessage::createSuccessResponse(
 				message: 'Proposal berhasil diambil',
 				data: $proposal
@@ -67,186 +67,98 @@ class DocumentService
 		}
 	}
 
-	public function postDocument($id, $file, $type)
+	public function postDocument(string $userId, array $file, string $type): array
 	{
-		$allowedTypes = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
-		$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+		// Validasi file ekstensi dan MIME
+		$allowedExtensions = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
+		$allowedMimeTypes = [
+			'application/msword',
+			'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+			'application/vnd.ms-excel',
+			'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+			'application/pdf',
+			'image/jpeg',
+			'image/png'
+		];
 
-		if (!in_array($extension, $allowedTypes)) {
+		$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+		$mimeType = mime_content_type($file['tmp_name']);
+
+		if (!in_array($extension, $allowedExtensions) || !in_array($mimeType, $allowedMimeTypes)) {
 			return ResponseMessage::createErrorResponse(
 				message: 'Format file tidak diperbolehkan'
 			);
 		}
 
-		$sqlCheck = "SELECT * FROM document WHERE user_id = :id";
-		try {
-			$existingDocument = $this->db->squery($sqlCheck, ['id' => $id]);
+		// Validasi dokumen type
+		$validFields = [
+			'akta_perubahan',
+			'sk_menkumham',
+			'ktp_pengurus_perusahaan',
+			'surat_keterangan_domisili_perusahaan',
+			'siup',
+			'tdp',
+			'npwp',
+			'pkp',
+			'spt',
+			'laporan_keuangan',
+			'rekening_koran',
+			'sertifikasi',
+			'list_daftar_pengalaman_kerja',
+			'list_tenaga_ahli',
+			'akta_pendirian'
+		];
 
-			$filePath = ROOT_PATH . 'assets/document/' . basename($file['name']);
+		if (!in_array($type, $validFields)) {
+			return ResponseMessage::createErrorResponse(
+				message: 'Tipe dokumen tidak dikenali'
+			);
+		}
+
+		try {
+			$sqlCheck = "SELECT * FROM document WHERE user_id = :user_id";
+			$existingDocument = $this->db->squery($sqlCheck, ['user_id' => $userId]);
+
+			// Buat nama file baru yang unik
+			$originalName = pathinfo($file['name'], PATHINFO_FILENAME);
+			$safeName = preg_replace('/[^a-zA-Z0-9-_]/', '_', strtolower($originalName));
+			$newFileName = "document_{$userId}_{$safeName}.{$extension}";
+			$filePath = ROOT_PATH . 'assets/document/' . $newFileName;
 
 			if (!empty($existingDocument)) {
-				$updateFields = [];
+				$oldFile = $existingDocument[0][$type] ?? null;
 
-				// Cek dan perbarui field berdasarkan type yang diterima
-				switch ($type) {
-					case 'akta_perubahan':
-						if ($existingDocument[0]['akta_perubahan'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['akta_perubahan'] = basename($filePath);
-						}
-						break;
-
-					case 'sk_menkumham':
-						if ($existingDocument[0]['sk_menkumham'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['sk_menkumham'] = basename($filePath);
-						}
-						break;
-
-					case 'ktp_pengurus_perusahaan':
-						if ($existingDocument[0]['ktp_pengurus_perusahaan'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['ktp_pengurus_perusahaan'] = basename($filePath);
-						}
-						break;
-
-					case 'surat_keterangan_domisili_perusahaan':
-						if ($existingDocument[0]['surat_keterangan_domisili_perusahaan'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['surat_keterangan_domisili_perusahaan'] = basename($filePath);
-						}
-						break;
-
-					case 'siup':
-						if ($existingDocument[0]['siup'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['siup'] = basename($filePath);
-						}
-						break;
-
-					case 'tdp':
-						if ($existingDocument[0]['tdp'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['tdp'] = basename($filePath);
-						}
-						break;
-
-					case 'npwp':
-						if ($existingDocument[0]['npwp'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['npwp'] = basename($filePath);
-						}
-						break;
-
-					case 'pkp':
-						if ($existingDocument[0]['pkp'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['pkp'] = basename($filePath);
-						}
-						break;
-
-					case 'spt':
-						if ($existingDocument[0]['spt'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['spt'] = basename($filePath);
-						}
-						break;
-
-					case 'laporan_keuangan':
-						if ($existingDocument[0]['laporan_keuangan'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['laporan_keuangan'] = basename($filePath);
-						}
-						break;
-
-					case 'rekening_koran':
-						if ($existingDocument[0]['rekening_koran'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['rekening_koran'] = basename($filePath);
-						}
-						break;
-
-					case 'sertifikasi':
-						if ($existingDocument[0]['sertifikasi'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['sertifikasi'] = basename($filePath);
-						}
-						break;
-
-					case 'list_daftar_pengalaman_kerja':
-						if ($existingDocument[0]['list_daftar_pengalaman_kerja'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['list_daftar_pengalaman_kerja'] = basename($filePath);
-						}
-						break;
-
-					case 'list_tenaga_ahli':
-						if ($existingDocument[0]['list_tenaga_ahli'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['list_tenaga_ahli'] = basename($filePath);
-						}
-						break;
-
-					case 'akta_pendirian':
-						if ($existingDocument[0]['akta_pendirian'] != $filePath) {
-							move_uploaded_file($file['tmp_name'], $filePath);
-							$updateFields['akta_pendirian'] = basename($filePath);
-						}
-						break;
-
-					default:
-						return ResponseMessage::createErrorResponse(
-							message: 'Invalid file type'
-						);
+				// Hapus file lama jika ada
+				if ($oldFile && file_exists(ROOT_PATH . 'assets/document/' . $oldFile)) {
+					unlink(ROOT_PATH . 'assets/document/' . $oldFile);
 				}
 
-				// Jika ada perubahan, lakukan update
-				if (!empty($updateFields)) {
-					$updateFields['user_id'] = $id;
-					$sqlUpdate = "UPDATE document SET ";
-					$sqlUpdate .= implode(", ", array_map(function ($field) {
-						return "$field = :$field";
-					}, array_keys($updateFields)));
-					$sqlUpdate .= " WHERE user_id = $id";
+				move_uploaded_file($file['tmp_name'], $filePath);
 
-					$existingDocument = $this->db->squery_single($sqlCheck, ['id' => $id]);
-
-					$this->db->squery($sqlUpdate, $updateFields);
-
-					return ResponseMessage::createSuccessResponse(
-						message: 'Dokumen berhasil diperbarui'
-					);
-				}
+				$sqlUpdate = "UPDATE document SET $type = :value WHERE user_id = :user_id";
+				$this->db->squery($sqlUpdate, [
+					'value' => $newFileName,
+					'user_id' => $userId
+				]);
 
 				return ResponseMessage::createSuccessResponse(
-					message: 'Dokumen sudah ada, tidak ada perubahan yang dilakukan'
+					message: 'Dokumen berhasil diperbarui'
 				);
 			}
 
-			// Jika dokumen belum ada, lakukan insert baru
+			// Insert pertama kali
 			move_uploaded_file($file['tmp_name'], $filePath);
 
-			// Menyimpan file pertama kali sesuai dengan type yang diterima
-			$sqlInsert = "INSERT INTO document (user_id, akta_perubahan, sk_menkumham, ktp_pengurus_perusahaan, surat_keterangan_domisili_perusahaan, siup, tdp, npwp, pkp, spt, laporan_keuangan, rekening_koran, sertifikasi, list_daftar_pengalaman_kerja, list_tenaga_ahli, akta_pendirian) 
-                  VALUES (:user_id, :akta_perubahan, :sk_menkumham, :ktp_pengurus_perusahaan, :surat_keterangan_domisili_perusahaan, :siup, :tdp, :npwp, :pkp, :spt, :laporan_keuangan, :rekening_koran, :sertifikasi, :list_daftar_pengalaman_kerja, :list_tenaga_ahli, :akta_pendirian)";
-			$this->db->squery($sqlInsert, [
-				'user_id' => $id,
-				'akta_perubahan' => ($type == 'akta_perubahan') ? basename($filePath) : '',
-				'sk_menkumham' => ($type == 'sk_menkumham') ? basename($filePath) : '',
-				'ktp_pengurus_perusahaan' => ($type == 'ktp_pengurus_perusahaan') ? basename($filePath) : '',
-				'surat_keterangan_domisili_perusahaan' => ($type == 'surat_keterangan_domisili_perusahaan') ? basename($filePath) : '',
-				'siup' => ($type == 'siup') ? basename($filePath) : '',
-				'tdp' => ($type == 'tdp') ? basename($filePath) : '',
-				'npwp' => ($type == 'npwp') ? basename($filePath) : '',
-				'pkp' => ($type == 'pkp') ? basename($filePath) : '',
-				'spt' => ($type == 'spt') ? basename($filePath) : '',
-				'laporan_keuangan' => ($type == 'laporan_keuangan') ? basename($filePath) : '',
-				'rekening_koran' => ($type == 'rekening_koran') ? basename($filePath) : '',
-				'sertifikasi' => ($type == 'sertifikasi') ? basename($filePath) : '',
-				'list_daftar_pengalaman_kerja' => ($type == 'list_daftar_pengalaman_kerja') ? basename($filePath) : '',
-				'list_tenaga_ahli' => ($type == 'list_tenaga_ahli') ? basename($filePath) : '',
-				'akta_pendirian' => ($type == 'akta_pendirian') ? basename($filePath) : ''
-			]);
+			// Siapkan data insert
+			$fields = array_fill_keys($validFields, '');
+			$fields[$type] = $newFileName;
+			$fields['user_id'] = $userId;
+
+			$columns = implode(', ', array_keys($fields));
+			$placeholders = ':' . implode(', :', array_keys($fields));
+
+			$sqlInsert = "INSERT INTO document ($columns) VALUES ($placeholders)";
+			$this->db->squery($sqlInsert, $fields);
 
 			return ResponseMessage::createSuccessResponse(
 				message: 'Dokumen berhasil disimpan'
@@ -258,7 +170,7 @@ class DocumentService
 		}
 	}
 
-	public function postProposal(string $tenderId, array $file): array
+	public function postProposal(string $userId, string $tenderId, array $file): array
 	{
 		$allowedTypes = ['doc', 'docx', 'xls', 'xlsx', 'pdf', 'jpg', 'jpeg', 'png'];
 		$extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
@@ -270,7 +182,7 @@ class DocumentService
 		}
 
 		$uploadDir = ROOT_PATH . 'assets/document/proposal/';
-		$filePath = sprintf('%sproposal_%s_%s.%s', $uploadDir, $_SESSION['id'], $tenderId, $extension);
+		$filePath = sprintf('%sproposal_%s_%s.%s', $uploadDir, $userId, $tenderId, $extension);
 
 		try {
 			$proposalCheck = $this->db->squery("SELECT proposal FROM participant WHERE tender_id = :tender_id", ['tender_id' => $tenderId]);
@@ -280,10 +192,10 @@ class DocumentService
 					"INSERT INTO participant (user_id, tender_id, registration_date, proposal) 
 					VALUES (:user_id, :tender_id, :registration_date, :proposal)",
 					[
-						'user_id' => $_SESSION['id'],
+						'user_id' => $userId,
 						'tender_id' => $tenderId,
 						'registration_date' => date('Y-m-d H:i:s'),
-						'proposal' => sprintf('%sproposal_%s_%s.%s', $uploadDir, $_SESSION['id'], $tenderId, $extension)
+						'proposal' => sprintf('%sproposal_%s_%s.%s', $uploadDir, $userId, $tenderId, $extension)
 					]
 				);
 			}
@@ -291,9 +203,9 @@ class DocumentService
 			$this->db->squery(
 				"UPDATE participant SET proposal = :proposal WHERE user_id = :user_id AND tender_id = :tender_id",
 				[
-					'user_id' => $_SESSION['id'],
+					'user_id' => $userId,
 					'tender_id' => $tenderId,
-					'proposal' => sprintf('proposal_%s_%s.%s', $_SESSION['id'], $tenderId, $extension)
+					'proposal' => sprintf('proposal_%s_%s.%s', $userId, $tenderId, $extension)
 				]
 			);
 

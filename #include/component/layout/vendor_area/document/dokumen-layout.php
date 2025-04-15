@@ -476,7 +476,7 @@
             }).then((result) => {
               if (result.isConfirmed) {
                 document.getElementById('loader').style.display = 'block';
-                fetch(`<?= SERVER_NAME ?>handler/upload_file?id=${userId}&type=${type}`, {
+                fetch(`<?= SERVER_NAME ?>handler/upload_file?user_id=${userId}&type=${type}`, {
                     method: 'POST',
                     credentials: 'include',
                     body: formData

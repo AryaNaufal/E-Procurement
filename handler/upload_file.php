@@ -10,11 +10,15 @@ require_once __DIR__ . '/../#include/#class/autoload.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $documentService = new DocumentService();
 
-    $id = $_GET['id'];
+    $userId = $_GET['user_id'];
     $file = $_FILES['file'];
     $type = $_GET['type'];
 
-    $result = $documentService->postDocument($id, $file, $type);
+    $result = $documentService->postDocument(
+        userId: $userId,
+        file: $file,
+        type: $type
+    );
 
     if ($result['status'] === 'success') {
         $response = [
