@@ -10,18 +10,20 @@ $katalogService = new KatalogService();
 
 $katalogId = $_GET['id'];
 
-$result = $katalogService->deleteKatalog($katalogId);
+$result = $katalogService->deleteKatalog(
+    katalogId: $katalogId
+);
 
 if ($result['status'] === 'success') {
-  $response = [
-    "status" => $result['status'],
-    "message" => $result['message']
-  ];
-  echo json_encode($response);
+    $response = [
+        "status" => $result['status'],
+        "message" => $result['message']
+    ];
 } else {
-  $response = [
-    "status" => $result['status'],
-    "message" => $result['message']
-  ];
-  echo json_encode($response);
+    $response = [
+        "status" => $result['status'],
+        "message" => $result['message']
+    ];
 }
+
+echo json_encode($response);

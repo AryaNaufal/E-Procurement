@@ -85,7 +85,7 @@
 				<div class="col-md-12">
 					<label class="form-label">Foto Produk</label>
 					<?php if ($data['gambar']): ?>
-						<p>Foto Lama: <a href="<?= $data['gambar'] ?>" target="_blank">Lihat Foto</a></p>
+						<p>Foto Lama: <a href="<?= SERVER_NAME . 'assets/katalog/image/' . $data['gambar'] ?>" target="_blank">Lihat Foto</a></p>
 					<?php endif; ?>
 					<center>
 						<input type="file" name="photo">
@@ -97,7 +97,7 @@
 				<div class="col-md-12">
 					<label class="form-label">Dokumen</label>
 					<?php if ($data['dokumen']): ?>
-						<p>Dokumen Lama: <a href="<?= $data['dokumen'] ?>" target="_blank">Lihat Dokumen</a></p>
+						<p>Dokumen Lama: <a href="<?= SERVER_NAME . 'assets/katalog/document/' . $data['dokumen'] ?>" target="_blank">Lihat Dokumen</a></p>
 					<?php endif; ?>
 					<center>
 						<input type="file" name="document">
