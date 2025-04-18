@@ -19,8 +19,8 @@ $data = [
     'expired_harga' => preg_replace('/\D/', '', $_POST['expired_harga']),
     'kategori_produk' => $_POST['kategori_produk'],
     'deskripsi_produk' => $_POST['deskripsi_produk'],
-    'photo' => isset($_FILES['photo']) && $_FILES['photo']['error'] == 0 ? $_FILES['photo'] : null,
-    'document' => isset($_FILES['document']) && $_FILES['document']['error'] == 0 ? $_FILES['document'] : null
+    'gambar' => isset($_FILES['photo']) && $_FILES['photo']['error'] == 0 ? $_FILES['photo'] : null,
+    'dokumen' => isset($_FILES['document']) && $_FILES['document']['error'] == 0 ? $_FILES['document'] : null
 ];
 
 $result = $katalogService->putKatalog(

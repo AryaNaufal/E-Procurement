@@ -7,7 +7,7 @@ use Exception;
 
 class KatalogService
 {
-    private $db;
+    protected $db;
 
     public function __construct()
     {
@@ -30,11 +30,18 @@ class KatalogService
         }
     }
 
-    public function getKatalogById(string $userId): array
+    public function getKatalogById(string $katalogId): array
     {
         $sql = "SELECT * FROM katalog WHERE id = :id";
         try {
-            $katalog = $this->db->squery($sql, ['id' => $userId]);
+            $katalog = $this->db->squery($sql, ['id' => $katalogId]);
+
+            if (empty($katalog)) {
+                return ResponseMessage::createErrorResponse(
+                    message: 'Data katalog tidak ditemukan'
+                );
+            }
+
             return ResponseMessage::createSuccessResponse(
                 message: 'Data katalog berhasil diambil',
                 data: $katalog
@@ -120,10 +127,16 @@ class KatalogService
         try {
             $existProduct = $this->db->squery("SELECT * FROM katalog WHERE id = :id", ['id' => $katalogId]);
 
-            $photo = isset($data['photo']) && $data['photo']['error'] == 0 ? $this->savePhoto($data['photo']) : ($existProduct ? $existProduct[0]['gambar'] : null);
-            $document = isset($data['document']) && $data['document']['error'] == 0 ? $this->saveDocument($data['document']) : ($existProduct ? $existProduct[0]['dokumen'] : null);
+            if (empty($existProduct)) {
+                return ResponseMessage::createErrorResponse(
+                    message: 'Data katalog tidak ditemukan'
+                );
+            }
 
-            $this->db->squery($sql, [
+            $photo = isset($data['gambar']) && $data['gambar']['error'] == 0 ? $this->savePhoto($data['gambar']) : ($existProduct ? $existProduct[0]['gambar'] : null);
+            $document = isset($data['dokumen']) && $data['dokumen']['error'] == 0 ? $this->saveDocument($data['dokumen']) : ($existProduct ? $existProduct[0]['dokumen'] : null);
+
+            $this->db->supdate($sql, [
                 'id' => $katalogId,
                 'kode_produk' => $data['kode_produk'],
                 'produk_solusi' => $data['nama_produk'],
@@ -149,19 +162,26 @@ class KatalogService
 
     public function deleteKatalog(string $katalogId): array
     {
-        $target_dir = __DIR__ . '/';
+        $target_dir = ROOT_PATH . 'assets/katalog';
 
         try {
             $katalog = $this->db->squery("SELECT gambar, dokumen FROM katalog WHERE id = :id", ['id' => $katalogId]);
 
-            foreach (['gambar', 'dokumen'] as $field) {
-                if (file_exists($target_dir . $katalog[0][$field])) {
-                    unlink($target_dir . $katalog[0][$field]);
+            if (empty($katalog)) {
+                return ResponseMessage::createErrorResponse(
+                    message: 'Data katalog tidak ditemukan'
+                );
+            }
+
+            foreach (['dokumen' => '/document/', 'gambar' => '/image/'] as $field => $subdir) {
+                $filePath = $target_dir . $subdir . $katalog[0][$field];
+                if (file_exists($filePath)) {
+                    unlink($filePath);
                 }
             }
 
             $sql = "DELETE FROM katalog WHERE id = :id";
-            $this->db->squery($sql, ['id' => $katalogId]);
+            $this->db->sdelete($sql, ['id' => $katalogId]);
 
             return ResponseMessage::createSuccessResponse(
                 message: 'Katalog berhasil dihapus'
@@ -173,7 +193,7 @@ class KatalogService
         }
     }
 
-    private function savePhoto(array $photo): string
+    protected function savePhoto(array $photo): string
     {
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
         $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
@@ -209,7 +229,7 @@ class KatalogService
         }
     }
 
-    private function saveDocument(array $document): string
+    protected function saveDocument(array $document): string
     {
         $allowedExtensions = ['pdf', 'docx'];
         $allowedMimeTypes = [
