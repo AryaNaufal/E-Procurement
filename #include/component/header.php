@@ -48,12 +48,6 @@
 
   <script src="<?= SERVER_NAME ?>assets/js/rupiah.js"></script>
 
-  <!-- Bootstrap DatePicker -->
-  <script
-    src="<?= SERVER_NAME ?>assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-  <link rel="stylesheet"
-    href="<?= SERVER_NAME ?>assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-
   <link rel="stylesheet" href="<?= SERVER_NAME ?>assets/css/error.css">
 
   <style>

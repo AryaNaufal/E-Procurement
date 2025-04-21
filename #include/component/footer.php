@@ -22,10 +22,6 @@
  <!-- Owl Carousel js -->
  <script src="<?= SERVER_NAME ?>assets/js/owl.carousel.min.js"></script>
 
- <!-- nivo slider js -->
- <script src="<?= SERVER_NAME ?>assets/plugins/nivo-slider/js/jquery.nivo.slider.js"></script>
- <script src="<?= SERVER_NAME ?>assets/plugins/nivo-slider/home.js"></script>
-
  <!-- Js plugins included in this file -->
  <script src="<?= SERVER_NAME ?>assets/js/plugins.js"></script>
 

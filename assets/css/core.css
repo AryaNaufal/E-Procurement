@@ -14,8 +14,6 @@ Note: This core style file includes all external plugins css file.
 @import url("material-design-iconic-font.min.css");
 @import url("plugins/meanmenu.min.css");
 @import url("plugins/animate.css");
-@import url("../plugins/nivo-slider/css/nivo-slider.css");
-@import url("../plugins/nivo-slider/css/preview.css");
 @import url("plugins/jquery-ui.min.css");
 @import url("plugins/owl.carousel.css");
 @import url("shortcode/default.css");
