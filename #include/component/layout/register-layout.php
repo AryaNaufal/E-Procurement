@@ -1,7 +1,7 @@
 <section class="py-5" style="min-height: 100vh">
   <div class="container">
     <h2>Daftar Akun</h2>
-    <form method="post" id="register_form" autocomplete="off" class="mt-3">
+    <form method="post" id="register_form" class="mt-3">
       <div class="form-group">
         <label class="form-label" style="font-size: 14px; color:#393939 !important;">Pilih Jenis Akun</label>
         <div class="btn-group btn-group-toggle w-100 mb-3" data-toggle="buttons">
@@ -57,12 +57,12 @@
 
       <div class="form-group mb-3" id="div-npwp" style="display:none;">
         <label for="company-npwp" class="form-label" style="font-size: 14px; color:#393939 !important;">NPWP Perusahaan</label>
-        <input type="text" name="company_npwp" id="company-npwp" maxlength="15" placeholder="NPWP Perusahaan" class="form-control">
+        <input type="text" name="company_npwp" id="company-npwp" maxlength="15" placeholder="NPWP Perusahaan" class="form-control" required>
       </div>
 
       <div class="form-group mb-3" id="div-nik" style="display:none;">
         <label for="pic-ktp" class="form-label" style="font-size: 14px; color:#393939 !important;">NIK</label>
-        <input type="text" name="pic_ktp" id="pic-ktp" maxlength="16" placeholder="NIK" class="form-control">
+        <input type="text" name="pic_ktp" id="pic-ktp" maxlength="16" placeholder="NIK" class="form-control" required>
       </div>
       <!-- <div class="g-recaptcha my-3" data-sitekey=" -->
       <?php

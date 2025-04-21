@@ -15,7 +15,6 @@ class MailService
     {
         $this->db = new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
-
     public function sendMailVerification(string $email, string $verification_code)
     {
         $env = new LoadEnv(ROOT_PATH . '.env');
@@ -33,14 +32,22 @@ class MailService
             $mail->setFrom($env->get('EMAIL'), 'No Reply');
             $mail->addAddress($email);
             $mail->Subject = 'Verifikasi Email';
+            $mail->isHTML(true);
+
             $verification_link = SERVER_NAME . "handler/auth/verify.php?code=$verification_code";
-            $mail->Body = "Klik link berikut untuk verifikasi: $verification_link";
+            $template_path = ROOT_PATH . '#include/component/fragment/mail-body-verification-email.php';
+
+            $mail->Body = $this->loadTemplate($template_path, [
+                'verification_link' => $verification_link,
+                'email' => $email
+            ]);
 
             $mail->send();
         } catch (PHPMailerException $e) {
             echo "Email gagal dikirim. Error: {$mail->ErrorInfo}";
         }
     }
+
 
     public function verifyUser()
     {
@@ -81,5 +88,13 @@ class MailService
         } catch (PHPMailerException $e) {
             echo "Email gagal dikirim. Error: {$mail->ErrorInfo}";
         }
+    }
+
+    private function loadTemplate(string $template_path, array $data = []): string
+    {
+        extract($data);
+        ob_start();
+        include($template_path);
+        return ob_get_clean();
     }
 }
