@@ -15,13 +15,13 @@ class ParticipantService
 
     public function getParticipants()
     {
-        $participants = $this->db->query('SELECT * FROM participant;');
+        $participants = $this->db->query('SELECT * FROM participants;');
         return $participants;
     }
 
     public function getParticipantById(string $id)
     {
-        $participant = $this->db->squery('SELECT * FROM participant WHERE id = :id;', ['id' => $id]);
+        $participant = $this->db->squery('SELECT * FROM participants WHERE id = :id;', ['id' => $id]);
         return ResponseMessage::createSuccessResponse(
             message: 'Data participant berhasil diambil',
             data: $participant
@@ -30,7 +30,7 @@ class ParticipantService
 
     public function getParticipantByTenderId(string $userId, string $tenderId): array
     {
-        $participant = $this->db->squery('SELECT * FROM participant WHERE user_id = :user_id AND tender_id = :tender_id;', ['user_id' => $userId, 'tender_id' => $tenderId]);
+        $participant = $this->db->squery('SELECT * FROM participants WHERE user_id = :user_id AND tender_id = :tender_id;', ['user_id' => $userId, 'tender_id' => $tenderId]);
         return ResponseMessage::createSuccessResponse(
             message: 'Data participant berhasil diambil',
             data: $participant

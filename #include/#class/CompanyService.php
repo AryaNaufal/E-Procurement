@@ -16,7 +16,7 @@ class CompanyService
 
 	public function getCompanyData(string $userId): array
 	{
-		$sql = "SELECT * FROM vendor WHERE user_id = :user_id";
+		$sql = "SELECT * FROM vendors WHERE user_id = :user_id";
 		try {
 			$companyData = $this->db->squery($sql, ['user_id' => $userId]);
 
@@ -39,7 +39,7 @@ class CompanyService
 
 	public function postCompanyData(array $data): array
 	{
-		$checkUserId = "SELECT user_id FROM vendor WHERE user_id = :user_id";
+		$checkUserId = "SELECT user_id FROM vendors WHERE user_id = :user_id";
 		try {
 			$checkResult = $this->db->squery_single($checkUserId, [
 				'user_id' => $data['user_id']
@@ -51,7 +51,7 @@ class CompanyService
 				);
 			}
 
-			$sql = "INSERT INTO vendor (name, type, mail, phone, mobile_phone, address, provinsi, kota, kecamatan, kelurahan, kategori, user_id) 
+			$sql = "INSERT INTO vendors (name, type, mail, phone, mobile_phone, address, provinsi, kota, kecamatan, kelurahan, kategori, user_id) 
       		VALUES (:company_name, :company_type, :company_mail, :company_phone, :company_mobile_phone, :company_address, :company_province, :company_regency, :company_district, :company_village, :company_category, :user_id)";
 
 			$companyData = $this->db->sinsert($sql, [
@@ -87,8 +87,8 @@ class CompanyService
 
 	public function updateCompanyData(string $userId, array $data): array
 	{
-		$checkUserId = "SELECT user_id FROM vendor WHERE user_id = :user_id";
-		$updateCompany = "UPDATE vendor SET 
+		$checkUserId = "SELECT user_id FROM vendors WHERE user_id = :user_id";
+		$updateCompany = "UPDATE vendors SET 
     		name = :company_name, 
     		type = :company_type, 
     		mail = :company_mail, 

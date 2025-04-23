@@ -1,6 +1,6 @@
 <section class="tab-pane fade" id="katalog">
   <div class="text-left my-4">
-    <button type="button" class="text-uppercase z-0 text-white" style="background-color:#AA0A2F; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#catalog-modal">Tambah E-Katalog</button>
+    <button type="button" class="text-uppercase z-0 text-white" style="background-color:#AA0A2F; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#catalog-modal">Tambah Katalog</button>
   </div>
   <table class="table table-bordered">
     <tbody>
@@ -30,6 +30,12 @@
             </td>
           </tr>
         <?php endforeach; ?>
+      <?php else: ?>
+        <tr>
+          <td colspan="4" class="text-center">
+            <p class="fw-bold m-0">Belum Memiliki Katalog</p>
+          </td>
+        </tr>
       <?php endif; ?>
     </tbody>
   </table>
@@ -50,7 +56,8 @@
           confirmButtonColor: '#007bff',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Ok',
-          cancelButtonText: 'Batal'
+          cancelButtonText: 'Batal',
+          reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
             // Tampilkan loading
@@ -67,7 +74,8 @@
                     title: 'Berhasil',
                     text: data.message,
                     icon: 'success',
-                    confirmButtonText: 'Ok'
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#007bff'
                   }).then(() => {
                     window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
                   });
@@ -76,7 +84,8 @@
                     title: 'Gagal',
                     text: data.message,
                     icon: 'error',
-                    confirmButtonText: 'Ok'
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: '#007bff',
                   });
                 }
               });
@@ -88,7 +97,8 @@
             title: 'Gagal',
             text: 'Terjadi kesalahan saat menghubungi server.',
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#007bff',
           })
         });
     });

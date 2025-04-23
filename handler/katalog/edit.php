@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-use App\KatalogService;
+use App\CatalogService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
-$katalogService = new KatalogService();
+$catalogService = new CatalogService();
 
 $katalogId = $_GET['id'] ?? '';
 
@@ -23,7 +23,7 @@ $data = [
     'dokumen' => isset($_FILES['document']) && $_FILES['document']['error'] == 0 ? $_FILES['document'] : null
 ];
 
-$result = $katalogService->putKatalog(
+$result = $catalogService->putCatalog(
     katalogId: $katalogId,
     data: $data
 );

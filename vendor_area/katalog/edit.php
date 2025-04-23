@@ -2,21 +2,21 @@
 session_start();
 
 use App\LoadEnv;
-use App\KatalogService;
+use App\CatalogService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once ROOT_PATH . '#include/#class/autoload.php';
 
 $env = new LoadEnv(ROOT_PATH . '.env');
-$katalogService = new KatalogService();
+$catalogService = new CatalogService();
 
 $katalogId = $_GET['id'] ?? '';
 
-$katalogId = $katalogService->getKatalogById($katalogId);
+$katalogId = $catalogService->getCatalogById($katalogId);
 
-$current_menu = "edit Katalog";
+$current_menu = "edit Catalog";
 $current_sub_menu = NULL;
-$title = "Edit Katalog";
+$title = "Edit Catalog";
 
 require_once ROOT_PATH . '#include/component/header.php';
 require_once ROOT_PATH . '#include/component/navbar.php';

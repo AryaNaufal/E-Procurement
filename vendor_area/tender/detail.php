@@ -14,7 +14,7 @@ $timelineService = new TimelineService();
 
 $tenders = $tenderService->getTenderById($_GET['id']);
 $followedTender = $tenderService->getTenderFollowedByUser($_SESSION['id'] ?? '');
-$timeline = $timelineService->getTimeline($_GET['id']);
+$timeline = $timelineService->getTimeline($_SESSION['id'] ?? '', $_GET['id']);
 
 $checkFollowedTender = false;
 

@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-use App\KatalogService;
+use App\CatalogService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
-$katalogService = new KatalogService();
+$catalogService = new CatalogService();
 
 $katalogId = $_GET['id'];
 
-$result = $katalogService->deleteKatalog(
+$result = $catalogService->deleteCatalog(
     katalogId: $katalogId
 );
 

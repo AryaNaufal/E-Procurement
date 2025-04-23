@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2025 at 08:57 AM
+-- Generation Time: Apr 23, 2025 at 03:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,48 +24,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `document`
+-- Table structure for table `catalogs`
 --
 
-CREATE TABLE `document` (
+CREATE TABLE `catalogs` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `akta_perubahan` varchar(100) NOT NULL,
-  `sk_menkumham` varchar(100) NOT NULL,
-  `ktp_pengurus_perusahaan` varchar(100) NOT NULL,
-  `surat_keterangan_domisili_perusahaan` varchar(100) NOT NULL,
-  `siup` varchar(100) NOT NULL,
-  `tdp` varchar(100) NOT NULL,
-  `npwp` varchar(100) NOT NULL,
-  `pkp` varchar(100) NOT NULL,
-  `spt` varchar(100) NOT NULL,
-  `laporan_keuangan` varchar(100) NOT NULL,
-  `rekening_koran` varchar(100) NOT NULL,
-  `sertifikasi` varchar(100) NOT NULL,
-  `list_daftar_pengalaman_kerja` varchar(100) NOT NULL,
-  `list_tenaga_ahli` varchar(100) NOT NULL,
-  `akta_pendirian` varchar(100) NOT NULL
+  `user_id` int(11) DEFAULT NULL,
+  `kode_produk` varchar(100) DEFAULT NULL,
+  `produk_solusi` varchar(100) DEFAULT NULL,
+  `tkdn_produk` varchar(100) DEFAULT NULL,
+  `jenis` enum('lokal','import') DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL,
+  `expired_harga` int(11) DEFAULT NULL,
+  `kategori` enum('Alat Tulis Kantor','Electric','Hardware','Jasa Konsultasi Perorangan','Jasa Konsultasi Perusahaan','Kendaraan Operasional','Perlengkapan Fotografi / Videografi','Property','Rumah Tangga Kantor') DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  `dokumen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `katalog`
+-- Table structure for table `documents`
 --
 
-CREATE TABLE `katalog` (
+CREATE TABLE `documents` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `kode_produk` varchar(50) NOT NULL,
-  `produk_solusi` varchar(100) NOT NULL,
-  `tkdn_produk` varchar(100) NOT NULL,
-  `jenis` enum('lokal','import') NOT NULL,
-  `harga` int(100) NOT NULL,
-  `expired_harga` int(100) NOT NULL,
-  `kategori` enum('Alat Tulis Kantor','Electric','Hardware','Jasa Konsultasi Perorangan','Jasa Konsultasi Perusahaan','Kendaraan Operasional','Perlengkapan Fotografi / Videografi','Property','Rumah Tangga Kantor') NOT NULL,
-  `deskripsi` varchar(255) NOT NULL,
-  `gambar` varchar(255) DEFAULT NULL,
-  `dokumen` varchar(255) DEFAULT NULL
+  `akta_perubahan` varchar(255) DEFAULT NULL,
+  `sk_menkumham` varchar(255) DEFAULT NULL,
+  `ktp_pengurus_perusahaan` varchar(255) DEFAULT NULL,
+  `surat_keterangan_domisili_perusahaan` varchar(255) DEFAULT NULL,
+  `siup` varchar(255) DEFAULT NULL,
+  `tdp` varchar(255) DEFAULT NULL,
+  `npwp` varchar(255) DEFAULT NULL,
+  `pkp` varchar(255) DEFAULT NULL,
+  `spt` varchar(255) DEFAULT NULL,
+  `laporan_keuangan` varchar(255) DEFAULT NULL,
+  `rekening_koran` varchar(255) DEFAULT NULL,
+  `sertifikasi` varchar(255) DEFAULT NULL,
+  `list_daftar_pengalaman_kerja` varchar(255) DEFAULT NULL,
+  `list_tenaga_ahli` varchar(255) DEFAULT NULL,
+  `akta_pendirian` varchar(255) DEFAULT NULL,
+  `proposal` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -100,15 +101,15 @@ INSERT INTO `news` (`id`, `judul`, `slug`, `gambar`, `isi`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `participant`
+-- Table structure for table `participants`
 --
 
-CREATE TABLE `participant` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `participants` (
   `user_id` int(11) NOT NULL,
   `tender_id` int(11) NOT NULL,
-  `registration_date` date NOT NULL,
-  `proposal` varchar(100) DEFAULT NULL
+  `registration_date` date DEFAULT NULL,
+  `proposal` varchar(255) DEFAULT NULL,
+  `is_accepted` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91840,22 +91841,22 @@ INSERT INTO `reg_villages` (`id`, `district_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tender`
+-- Table structure for table `tenders`
 --
 
-CREATE TABLE `tender` (
+CREATE TABLE `tenders` (
   `id` int(11) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  `category` varchar(50) NOT NULL,
-  `registration_date` date NOT NULL,
-  `closing_date` date NOT NULL
+  `description` varchar(255) DEFAULT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  `registration_date` date DEFAULT NULL,
+  `closing_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tender`
+-- Dumping data for table `tenders`
 --
 
-INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `closing_date`) VALUES
+INSERT INTO `tenders` (`id`, `description`, `category`, `registration_date`, `closing_date`) VALUES
 (1, 'Konsultasi Digitalisasi Proses Bisnis', 'Jasa Konsultasi Bidang Usaha', '2025-04-01', '2025-05-01'),
 (2, 'Pengadaan Server dan Perangkat Jaringan', 'Pengadaan Barang & Jasa', '2025-04-02', '2025-05-03'),
 (3, 'Implementasi Sistem Keamanan Siber', 'Jasa Lainnya Terkait dengan Bidang Technology', '2025-04-03', '2025-05-05'),
@@ -91889,10 +91890,10 @@ INSERT INTO `tender` (`id`, `description`, `category`, `registration_date`, `clo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `timeline_pengadaan`
+-- Table structure for table `timelines`
 --
 
-CREATE TABLE `timeline_pengadaan` (
+CREATE TABLE `timelines` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `tender_id` int(11) NOT NULL,
@@ -91913,15 +91914,15 @@ CREATE TABLE `timeline_pengadaan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `pic` varchar(50) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `pic` varchar(100) DEFAULT NULL,
   `perusahaan` varchar(50) NOT NULL,
   `npwp` varchar(50) DEFAULT NULL,
   `nik` varchar(50) DEFAULT NULL,
@@ -91930,29 +91931,29 @@ CREATE TABLE `user` (
   `ip_login` varchar(100) DEFAULT NULL,
   `login_terakhir` datetime DEFAULT NULL,
   `verification_code` varchar(100) DEFAULT NULL,
-  `is_verify` tinyint(1) NOT NULL
+  `is_verify` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vendor`
+-- Table structure for table `vendors`
 --
 
-CREATE TABLE `vendor` (
+CREATE TABLE `vendors` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `mail` varchar(100) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `mobile_phone` varchar(20) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `provinsi` varchar(100) NOT NULL,
-  `kota` varchar(100) NOT NULL,
-  `kecamatan` varchar(100) NOT NULL,
-  `kelurahan` varchar(100) NOT NULL,
-  `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') NOT NULL
+  `name` varchar(100) DEFAULT NULL,
+  `type` varchar(100) DEFAULT NULL,
+  `mail` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `mobile_phone` varchar(20) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `provinsi` varchar(100) DEFAULT NULL,
+  `kota` varchar(100) DEFAULT NULL,
+  `kecamatan` varchar(100) DEFAULT NULL,
+  `kelurahan` varchar(100) DEFAULT NULL,
+  `kategori` set('Internet','Arsitektur','Makanan dan Minuman','Logistik','Software house','Perlengkapan Fotografi') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -91960,18 +91961,18 @@ CREATE TABLE `vendor` (
 --
 
 --
--- Indexes for table `document`
+-- Indexes for table `catalogs`
 --
-ALTER TABLE `document`
+ALTER TABLE `catalogs`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `fk_user_id` (`user_id`) USING BTREE;
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `katalog`
+-- Indexes for table `documents`
 --
-ALTER TABLE `katalog`
+ALTER TABLE `documents`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id` (`user_id`) USING BTREE;
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `news`
@@ -91980,12 +91981,11 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `participant`
+-- Indexes for table `participants`
 --
-ALTER TABLE `participant`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_participant_user` (`user_id`),
-  ADD KEY `fk_participant_tender` (`tender_id`);
+ALTER TABLE `participants`
+  ADD PRIMARY KEY (`user_id`,`tender_id`),
+  ADD KEY `tender_id` (`tender_id`);
 
 --
 -- Indexes for table `reg_districts`
@@ -92015,48 +92015,47 @@ ALTER TABLE `reg_villages`
   ADD KEY `fk_district` (`district_id`);
 
 --
--- Indexes for table `tender`
+-- Indexes for table `tenders`
 --
-ALTER TABLE `tender`
+ALTER TABLE `tenders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `timeline_pengadaan`
+-- Indexes for table `timelines`
 --
-ALTER TABLE `timeline_pengadaan`
+ALTER TABLE `timelines`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id` (`user_id`) USING BTREE,
-  ADD KEY `fk_tender_id` (`tender_id`) USING BTREE;
+  ADD UNIQUE KEY `user_id` (`user_id`,`tender_id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `vendor`
+-- Indexes for table `vendors`
 --
-ALTER TABLE `vendor`
+ALTER TABLE `vendors`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `fk_user_id` (`user_id`) USING BTREE;
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `document`
+-- AUTO_INCREMENT for table `catalogs`
 --
-ALTER TABLE `document`
+ALTER TABLE `catalogs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `katalog`
+-- AUTO_INCREMENT for table `documents`
 --
-ALTER TABLE `katalog`
+ALTER TABLE `documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -92066,33 +92065,27 @@ ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `participant`
+-- AUTO_INCREMENT for table `tenders`
 --
-ALTER TABLE `participant`
+ALTER TABLE `tenders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tender`
+-- AUTO_INCREMENT for table `timelines`
 --
-ALTER TABLE `tender`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `timeline_pengadaan`
---
-ALTER TABLE `timeline_pengadaan`
+ALTER TABLE `timelines`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `vendor`
+-- AUTO_INCREMENT for table `vendors`
 --
-ALTER TABLE `vendor`
+ALTER TABLE `vendors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -92100,23 +92093,23 @@ ALTER TABLE `vendor`
 --
 
 --
--- Constraints for table `document`
+-- Constraints for table `catalogs`
 --
-ALTER TABLE `document`
-  ADD CONSTRAINT `document_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `catalogs`
+  ADD CONSTRAINT `catalogs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `katalog`
+-- Constraints for table `documents`
 --
-ALTER TABLE `katalog`
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `documents`
+  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `participant`
+-- Constraints for table `participants`
 --
-ALTER TABLE `participant`
-  ADD CONSTRAINT `fk_participant_tender` FOREIGN KEY (`tender_id`) REFERENCES `tender` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_participant_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+ALTER TABLE `participants`
+  ADD CONSTRAINT `participants_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `participants_ibfk_2` FOREIGN KEY (`tender_id`) REFERENCES `tenders` (`id`);
 
 --
 -- Constraints for table `reg_districts`
@@ -92137,17 +92130,16 @@ ALTER TABLE `reg_villages`
   ADD CONSTRAINT `fk_district` FOREIGN KEY (`district_id`) REFERENCES `reg_districts` (`id`);
 
 --
--- Constraints for table `timeline_pengadaan`
+-- Constraints for table `timelines`
 --
-ALTER TABLE `timeline_pengadaan`
-  ADD CONSTRAINT `FK_participant_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `FK_tender_id` FOREIGN KEY (`tender_id`) REFERENCES `tender` (`id`);
+ALTER TABLE `timelines`
+  ADD CONSTRAINT `timelines_ibfk_1` FOREIGN KEY (`user_id`,`tender_id`) REFERENCES `participants` (`user_id`, `tender_id`);
 
 --
--- Constraints for table `vendor`
+-- Constraints for table `vendors`
 --
-ALTER TABLE `vendor`
-  ADD CONSTRAINT `fk_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+ALTER TABLE `vendors`
+  ADD CONSTRAINT `vendors_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -28,7 +28,7 @@
         <?php else: ?>
           <tr>
             <td colspan="3" class="text-center">
-              <?= $followedTender['message'] ?>
+              <p class="fw-bold m-0">Belum Mengikuti Pengadaan</p>
             </td>
           </tr>
         <?php endif; ?>

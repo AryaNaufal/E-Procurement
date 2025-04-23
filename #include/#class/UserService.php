@@ -18,7 +18,7 @@ class UserService
 
     public function getUsers()
     {
-        $query = "SELECT * FROM user";
+        $query = "SELECT * FROM users";
 
         try {
             $users = $this->db->squery($query, []);
@@ -42,7 +42,7 @@ class UserService
 
     public function getUser(string $params)
     {
-        $query = "SELECT * FROM user WHERE id = :id OR username = :username OR email = :email LIMIT 1";
+        $query = "SELECT * FROM users WHERE id = :id OR username = :username OR email = :email LIMIT 1";
         try {
             $user = $this->db->squery_single($query, [
                 'id' => $params,
@@ -68,7 +68,7 @@ class UserService
 
     public function loginUser(array $data)
     {
-        $query = "SELECT * FROM user WHERE email = :email OR username = :username LIMIT 1";
+        $query = "SELECT * FROM users WHERE email = :email OR username = :username LIMIT 1";
         try {
             $user = $this->db->squery_single($query, [
                 'email' => $data['email'],
@@ -106,7 +106,7 @@ class UserService
             else
                 $ipaddress = 'UNKNOWN';
 
-            $this->db->supdate('UPDATE user SET login_terakhir = :login_terakhir, ip_login = :ip WHERE email = :email', ['login_terakhir' => date('Y-m-d H:i:s'), 'ip' => $ipaddress, 'email' => $user['email']]);
+            $this->db->supdate('UPDATE users SET login_terakhir = :login_terakhir, ip_login = :ip WHERE email = :email', ['login_terakhir' => date('Y-m-d H:i:s'), 'ip' => $ipaddress, 'email' => $user['email']]);
 
             return ResponseMessage::createSuccessResponse(
                 message: 'Anda Telah Berhasil Masuk',
@@ -154,7 +154,7 @@ class UserService
         $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
 
         try {
-            $sql = "INSERT INTO user (username, email, password, pic, perusahaan, npwp, nik, tanggal_registrasi, verification_code, is_verify) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik, :tanggal_registrasi, :verification_code, 0)";
+            $sql = "INSERT INTO users (username, email, password, pic, perusahaan, npwp, nik, tanggal_registrasi, verification_code, is_verify) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik, :tanggal_registrasi, :verification_code, 0)";
 
             // Enkripsi password
             $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -235,7 +235,7 @@ class UserService
             );
         }
 
-        $sql = "UPDATE user SET password = :password WHERE email = :email AND is_verify = 1";
+        $sql = "UPDATE users SET password = :password WHERE email = :email AND is_verify = 1";
 
         try {
             $this->db->supdate($sql, [

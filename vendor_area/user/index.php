@@ -4,7 +4,7 @@ session_start();
 use App\LoadEnv;
 use App\CompanyService;
 use App\DocumentService;
-use App\KatalogService;
+use App\CatalogService;
 use App\RegionService;
 use App\TenderService;
 
@@ -19,13 +19,13 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['is_verify']) && $_SESSION['i
 $env = new LoadEnv(ROOT_PATH . '.env');
 $regionService = new RegionService();
 $companyService = new CompanyService();
-$katalogService = new KatalogService();
+$catalogService = new CatalogService();
 $tenderService = new TenderService();
 $documentService = new DocumentService();
 
 $provinces = $regionService->getProvinces();
 $companies = $companyService->getCompanyData($_SESSION['id'] ?? '');
-$katalogs = $katalogService->getKatalogOwnership($_SESSION['id'] ?? '');
+$katalogs = $catalogService->getCatalogOwnership($_SESSION['id'] ?? '');
 $tenders = $tenderService->getTenders();
 $documents = $documentService->getDocument($_SESSION['id'] ?? '');
 $followedTender = $tenderService->getTenderFollowedByUser($_SESSION['id'] ?? '');
@@ -44,7 +44,7 @@ $filledDocuments = 0;
 
 if (isset($documents['data'][0])) {
     foreach ($documents['data'][0] as $key => $document) {
-        if (!empty($document) && !in_array($key, ['id', 'user_id'])) {
+        if (!empty($document) && !in_array($key, ['id', 'user_id', 'proposal'])) {
             $filledDocuments++;
         }
     }

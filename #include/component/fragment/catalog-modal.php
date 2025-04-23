@@ -111,7 +111,8 @@
       confirmButtonColor: '#007bff',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Ok',
-      cancelButtonText: 'Batal'
+      cancelButtonText: 'Batal',
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         // Tampilkan loading
@@ -129,7 +130,8 @@
                 title: 'Berhasil',
                 text: data.message,
                 icon: 'success',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#007bff'
               }).then(() => {
                 window.location.href = '<?= SERVER_NAME ?>vendor_area/user/';
               });
@@ -139,6 +141,7 @@
                 text: data.message,
                 icon: "error",
                 button: "Ok",
+                confirmButtonColor: '#007bff',
               });
             }
           })
@@ -149,6 +152,7 @@
               text: "Terjadi kesalahan pada server.",
               icon: "error",
               button: "Ok",
+              confirmButtonColor: '#007bff',
             });
           });
       }

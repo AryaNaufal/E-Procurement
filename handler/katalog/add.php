@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-use App\KatalogService;
+use App\CatalogService;
 
 require_once __DIR__ . '/../../#include/config.php';
 require_once __DIR__ . '/../../#include/#class/autoload.php';
 
-$katalogService = new KatalogService();
+$catalogService = new CatalogService();
 
 $data = [
   'user_id' => $_SESSION['id'],
@@ -22,18 +22,18 @@ $data = [
   'document' => $_FILES['document'] ?? null
 ];
 
-$result = $katalogService->postKatalog($data);
+$result = $catalogService->postCatalog($data);
 
 if ($result['status'] === 'success') {
   $response = [
     "status" => $result['status'],
     "message" => $result['message']
   ];
-  echo json_encode($response);
 } else {
   $response = [
     "status" => $result['status'],
     "message" => $result['message']
   ];
-  echo json_encode($response);
 }
+
+echo json_encode($response);

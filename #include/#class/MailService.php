@@ -52,7 +52,7 @@ class MailService
     public function verifyUser()
     {
         try {
-            $sql = "UPDATE user SET is_verify = :id, tanggal_verifikasi = :tanggal_verifikasi WHERE verification_code = :code";
+            $sql = "UPDATE users SET is_verify = :id, tanggal_verifikasi = :tanggal_verifikasi WHERE verification_code = :code";
             $this->db->supdate($sql, ['id' => 1, 'tanggal_verifikasi' => date('Y-m-d H:i:s'), 'code' => $_GET['code']]);
             return ResponseMessage::createSuccessResponse(
                 message: 'Akun Anda telah berhasil diverifikasi dan diaktifkan.'
@@ -81,8 +81,15 @@ class MailService
             $mail->setFrom($env->get('EMAIL'), 'No Reply');
             $mail->addAddress($email);
             $mail->Subject = 'Reset Password';
+            $mail->isHTML(true);
+
             $verification_link = SERVER_NAME . "reset_password.php?code=$verification_code";
-            $mail->Body = "Klik link berikut untuk reset password: $verification_link";
+            $template_path = ROOT_PATH . '#include/component/fragment/mail-body-reset-email.php';
+
+            $mail->Body = $this->loadTemplate($template_path, [
+                'verification_link' => $verification_link,
+                'email' => $email
+            ]);
 
             $mail->send();
         } catch (PHPMailerException $e) {

@@ -14,11 +14,11 @@ class TimelineService
         $this->db = new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     }
 
-    public function getTimeline($id)
+    public function getTimeline(string $userId, string $tenderId)
     {
-        $sql = "SELECT * FROM timeline_pengadaan WHERE tender_id = :id";
+        $sql = "SELECT * FROM timelines WHERE user_id = :user_id AND tender_id = :tender_id";
         try {
-            $timeline = $this->db->squery($sql, ['id' => $id]);
+            $timeline = $this->db->squery($sql, ['user_id' => $userId, 'tender_id' => $tenderId]);
             return ResponseMessage::createSuccessResponse(
                 message: 'Timeline berhasil diambil',
                 data: $timeline
@@ -32,10 +32,12 @@ class TimelineService
 
     public function insertPendaftaran(string $participantId, string $tenderId, string $registrationDate, string $closingDate)
     {
-        $sql = "INSERT INTO timeline_pengadaan (user_id, tender_id, awal_pendaftaran, akhir_pendaftaran) VALUES (:user_id, :tender_id, :awal_pendaftaran, :akhir_pendaftaran)";
+        $sql = "INSERT INTO timelines (user_id, tender_id, awal_pendaftaran, akhir_pendaftaran) VALUES (:user_id, :tender_id, :awal_pendaftaran, :akhir_pendaftaran)";
         try {
             $this->db->supdate($sql, ['user_id' => $participantId, 'tender_id' => $tenderId, 'awal_pendaftaran' => $registrationDate, 'akhir_pendaftaran' => $closingDate]);
-            return;
+            return ResponseMessage::createSuccessResponse(
+                message: ''
+            );
         } catch (Exception) {
             return ResponseMessage::createErrorResponse(
                 message: 'Terjadi kesalahan pada server'
@@ -45,7 +47,7 @@ class TimelineService
 
     public function insertTimelineTor(string $userId, string $tenderId, string $date)
     {
-        $sql = "UPDATE timeline_pengadaan SET tor = :date WHERE user_id = :user_id AND tender_id = :tender_id AND tor IS NULL";
+        $sql = "UPDATE timelines SET tor = :date WHERE user_id = :user_id AND tender_id = :tender_id AND tor IS NULL";
         try {
             $this->db->supdate($sql, ['user_id' => $userId, 'tender_id' => $tenderId, 'date' => $date]);
             return ResponseMessage::createSuccessResponse(
@@ -60,7 +62,7 @@ class TimelineService
 
     public function insertTimelineAanwijizing(string $userId, string $tenderId, string $date)
     {
-        $sql = "UPDATE timeline_pengadaan SET aanwijizing = :date WHERE user_id = :user_id AND tender_id = :tender_id AND aanwijizing IS NULL";
+        $sql = "UPDATE timelines SET aanwijizing = :date WHERE user_id = :user_id AND tender_id = :tender_id AND aanwijizing IS NULL";
         try {
             $this->db->supdate($sql, [
                 'user_id' => $userId,
@@ -79,7 +81,7 @@ class TimelineService
 
     public function insertTimelineProposal(string $userId, string $tenderId, string $date)
     {
-        $sql = "UPDATE timeline_pengadaan SET submit_proposal = :date WHERE user_id = :user_id AND tender_id = :tender_id AND submit_proposal IS NULL";
+        $sql = "UPDATE timelines SET submit_proposal = :date WHERE user_id = :user_id AND tender_id = :tender_id AND submit_proposal IS NULL";
         try {
             $this->db->supdate($sql, [
                 'user_id' => $userId,

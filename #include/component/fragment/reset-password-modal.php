@@ -1,7 +1,7 @@
 <!--Start of Reset Password Form-->
 <div id="quickview-reset_pwd">
   <!-- Modal -->
-  <div class="modal fade" id="ResetPwdModal" tabindex="-1" role="dialog" style="z-index: 999999; position: fixed;">
+  <div class="modal fade" id="ResetPwdModal" tabindex="-1" role="dialog" style="position: fixed;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -55,7 +55,8 @@
             title: 'Berhasil',
             text: data.message,
             icon: 'success',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#007bff'
           }).then(() => {
             window.location.href = '<?= SERVER_NAME ?>';
           });
@@ -64,7 +65,8 @@
             title: 'Gagal',
             text: data.message,
             icon: 'error',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#007bff'
           });
         }
       })
@@ -74,7 +76,8 @@
           title: 'Gagal',
           text: 'Terjadi kesalahan saat menghubungi server.',
           icon: 'error',
-          confirmButtonText: 'OK'
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#007bff'
         });
       });
   });

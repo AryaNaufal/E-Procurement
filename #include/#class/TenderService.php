@@ -16,28 +16,28 @@ class TenderService
 
     public function getTenders(): array
     {
-        return $this->fetchTenders("SELECT * FROM tender");
+        return $this->fetchTenders("SELECT * FROM tenders");
     }
 
     public function getNewTenders(): array
     {
-        return $this->fetchTenders("SELECT * FROM tender WHERE registration_date>= CURDATE() - INTERVAL 3 DAY;");
+        return $this->fetchTenders("SELECT * FROM tenders WHERE registration_date>= CURDATE() - INTERVAL 3 DAY;");
     }
 
     public function getClosingTenders(): array
     {
-        return $this->fetchTenders("SELECT * FROM tender WHERE closing_date <= NOW()");
+        return $this->fetchTenders("SELECT * FROM tenders WHERE closing_date <= NOW()");
     }
 
     public function getTender(string $keyword): array
     {
-        $query = "SELECT * FROM tender WHERE description LIKE :keyword OR category LIKE :keyword AND closing_date >= NOW() LIMIT 6";
+        $query = "SELECT * FROM tenders WHERE description LIKE :keyword OR category LIKE :keyword AND closing_date >= NOW() LIMIT 6";
         return $this->fetchTenders($query, ['keyword' => "%{$keyword}%"]);
     }
 
     public function getTenderById(string $id): array
     {
-        $query = "SELECT * FROM tender WHERE id = :id";
+        $query = "SELECT * FROM tenders WHERE id = :id";
         return $this->fetchTenders($query, ['id' => $id]);
     }
 
@@ -50,7 +50,7 @@ class TenderService
         }
 
         $placeholders = implode(',', array_fill(0, count($categories), '?'));
-        $query = "SELECT * FROM tender WHERE category {$operator} ({$placeholders}) AND closing_date >= NOW() LIMIT 6";
+        $query = "SELECT * FROM tenders WHERE category {$operator} ({$placeholders}) AND closing_date >= NOW() LIMIT 6";
 
         return $this->fetchTenders($query, $categories);
     }
@@ -64,7 +64,7 @@ class TenderService
         }
 
         $placeholders = implode(',', array_fill(0, count($categories), '?'));
-        $query = "SELECT * FROM tender WHERE category {$operator} ({$placeholders}) AND description LIKE ? LIMIT 6";
+        $query = "SELECT * FROM tenders WHERE category {$operator} ({$placeholders}) AND description LIKE ? LIMIT 6";
         $params = array_merge($categories, ["%{$keyword}%"]);
 
         return $this->fetchTenders($query, $params);
@@ -94,10 +94,10 @@ class TenderService
 
     public function submitTender(string $user_id, string $tender_id): array
     {
-        $query = "INSERT INTO participant (user_id, tender_id, registration_date) VALUES (:user_id, :tender_id, :registration_date)";
+        $query = "INSERT INTO participants (user_id, tender_id, registration_date, is_accepted) VALUES (:user_id, :tender_id, :registration_date, 'pending')";
 
         try {
-            $checkSubmit = $this->db->squery("SELECT * FROM participant WHERE user_id = :user_id AND tender_id = :tender_id", ['user_id' => $user_id, 'tender_id' => $tender_id]);
+            $checkSubmit = $this->db->squery("SELECT * FROM participants WHERE user_id = :user_id AND tender_id = :tender_id", ['user_id' => $user_id, 'tender_id' => $tender_id]);
 
             if (!empty($checkSubmit)) {
                 return ResponseMessage::createErrorResponse(
@@ -118,7 +118,7 @@ class TenderService
 
     public function getTenderFollowedByUser(string $userId): array
     {
-        $query = "SELECT t.id, t.description, t.category FROM tender t JOIN participant p ON t.id = p.tender_id WHERE p.user_id = :user_id";
+        $query = "SELECT t.id, t.description, t.category FROM tenders t JOIN participants p ON t.id = p.tender_id WHERE p.user_id = :user_id";
 
         try {
             $result = $this->db->squery($query, ['user_id' => $userId]);

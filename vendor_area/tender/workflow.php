@@ -24,8 +24,8 @@ $timelineService = new TimelineService();
 
 $participant = $participantService->getParticipantByTenderId($_SESSION['id'], $_GET['id']);
 $tender = $tenderService->getTenderById($_GET['id']);
-$proposal = $documentService->getProposal($_GET['id']);
-$timeline = $timelineService->getTimeline($_GET['id']);
+$proposal = $documentService->getProposal($_SESSION['id'], $_GET['id']);
+$timeline = $timelineService->getTimeline($_SESSION['id'], $_GET['id']);
 
 if ($participant == null) {
     header("Location: " . SERVER_NAME . "");

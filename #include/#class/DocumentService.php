@@ -16,7 +16,7 @@ class DocumentService
 
 	public function getDocuments(): array
 	{
-		$sql = "SELECT * FROM document";
+		$sql = "SELECT * FROM documents";
 		try {
 			$document = $this->db->squery($sql, []);
 			return ResponseMessage::createSuccessResponse(
@@ -32,7 +32,7 @@ class DocumentService
 
 	public function getDocument(string $userId): array
 	{
-		$sql = "SELECT * FROM document WHERE id = :user_id";
+		$sql = "SELECT * FROM documents WHERE id = :user_id";
 		try {
 			$document = $this->db->squery($sql, ['user_id' => $userId]);
 			if (empty($document)) {
@@ -51,11 +51,11 @@ class DocumentService
 		}
 	}
 
-	public function getProposal(string $userId): array
+	public function getProposal(string $userId, string $tenderId): array
 	{
-		$sql = "SELECT proposal FROM participant WHERE tender_id = :user_id";
+		$sql = "SELECT proposal FROM participants WHERE user_id = :user_id AND tender_id = :tender_id";
 		try {
-			$proposal = $this->db->squery($sql, ['user_id' => $userId]);
+			$proposal = $this->db->squery($sql, ['user_id' => $userId, 'tender_id' => $tenderId]);
 			return ResponseMessage::createSuccessResponse(
 				message: 'Proposal berhasil diambil',
 				data: $proposal
@@ -116,7 +116,7 @@ class DocumentService
 		}
 
 		try {
-			$sqlCheck = "SELECT * FROM document WHERE user_id = :user_id";
+			$sqlCheck = "SELECT * FROM documents WHERE user_id = :user_id";
 			$existingDocument = $this->db->squery($sqlCheck, ['user_id' => $userId]);
 
 			// Buat nama file baru yang unik
@@ -135,7 +135,7 @@ class DocumentService
 
 				move_uploaded_file($file['tmp_name'], $filePath);
 
-				$sqlUpdate = "UPDATE document SET $type = :value WHERE user_id = :user_id";
+				$sqlUpdate = "UPDATE documents SET $type = :value WHERE user_id = :user_id";
 				$this->db->squery($sqlUpdate, [
 					'value' => $newFileName,
 					'user_id' => $userId
@@ -157,7 +157,7 @@ class DocumentService
 			$columns = implode(', ', array_keys($fields));
 			$placeholders = ':' . implode(', :', array_keys($fields));
 
-			$sqlInsert = "INSERT INTO document ($columns) VALUES ($placeholders)";
+			$sqlInsert = "INSERT INTO documents ($columns) VALUES ($placeholders)";
 			$this->db->squery($sqlInsert, $fields);
 
 			return ResponseMessage::createSuccessResponse(
@@ -185,7 +185,7 @@ class DocumentService
 		$filePath = sprintf('%sproposal_%s_%s.%s', $uploadDir, $userId, $tenderId, $extension);
 
 		try {
-			$proposalCheck = $this->db->squery("SELECT proposal FROM participant WHERE tender_id = :tender_id", ['tender_id' => $tenderId]);
+			$proposalCheck = $this->db->squery("SELECT proposal FROM participants WHERE tender_id = :tender_id", ['tender_id' => $tenderId]);
 
 			if (empty($proposalCheck)) {
 				$this->db->squery(
@@ -201,10 +201,18 @@ class DocumentService
 			}
 
 			$this->db->squery(
-				"UPDATE participant SET proposal = :proposal WHERE user_id = :user_id AND tender_id = :tender_id",
+				"UPDATE participants SET proposal = :proposal WHERE user_id = :user_id AND tender_id = :tender_id",
 				[
 					'user_id' => $userId,
 					'tender_id' => $tenderId,
+					'proposal' => sprintf('proposal_%s_%s.%s', $userId, $tenderId, $extension)
+				]
+			);
+
+			$this->db->squery(
+				"UPDATE documents SET proposal = :proposal WHERE user_id = :user_id",
+				[
+					'user_id' => $userId,
 					'proposal' => sprintf('proposal_%s_%s.%s', $userId, $tenderId, $extension)
 				]
 			);
@@ -213,9 +221,9 @@ class DocumentService
 			return ResponseMessage::createSuccessResponse(
 				message: 'Berhasil upload proposal'
 			);
-		} catch (Exception) {
+		} catch (Exception $e) {
 			return ResponseMessage::createErrorResponse(
-				message: 'Terjadi kesalahan pada server'
+				message: 'Terjadi kesalahan pada server' . $e
 			);
 		}
 	}

@@ -16,7 +16,7 @@ $tenderId = $_GET['tender_id'];
 $date = date("Y-m-d");
 $closingDate = $tenderService->getTenderById($tenderId)['data'][0]['closing_date'];
 
-$result = $tenderService->submitTender(isset($_SESSION['id']) ? $_SESSION['id'] : '', $_GET['id']);
+$result = $tenderService->submitTender($participantId, $tenderId);
 $insertPendaftaran = $timelineService->insertPendaftaran($participantId, $tenderId, $date, $closingDate);
 
 if (empty($_SESSION['id'])) {
@@ -34,13 +34,11 @@ if ($result['status'] === 'success' && $insertPendaftaran['status'] === 'success
         'status' => $result['status'],
         'message' => $result['message']
     ];
-
-    echo json_encode($response);
 } else {
     $response = [
         'status' => $result['status'],
         'message' => $result['message']
     ];
-
-    echo json_encode($response);
 }
+
+echo json_encode($response);
