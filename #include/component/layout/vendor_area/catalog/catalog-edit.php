@@ -7,7 +7,7 @@
 		<div class="d-flex justify-content-center my-4">
 			<h5>Edit Katalog</h5>
 		</div>
-		<?php foreach ($katalogId['data'] as $data): ?>
+		<?php foreach ($catalogId['data'] as $data): ?>
 			<div class="row">
 				<div class="col-md-6 mb-3">
 					<label class="form-label">Kode Produk</label>
@@ -116,7 +116,7 @@
 <script>
 	document.getElementById('form_edit_katalog').addEventListener('submit', function(event) {
 		event.preventDefault(); // Mencegah form submission tradisional
-		const katalogId = new URLSearchParams(window.location.search).get('id');
+		const catalogId = new URLSearchParams(window.location.search).get('id');
 		Swal.fire({
 			title: 'Edit Katalog',
 			text: "Apakah kamu ingin edit katalog ini?",
@@ -131,7 +131,7 @@
 			if (result.isConfirmed) {
 				// Tampilkan loading
 				document.getElementById('loader').style.display = 'block';
-				fetch(`<?= SERVER_NAME ?>handler/katalog/edit?id=${katalogId}`, {
+				fetch(`<?= SERVER_NAME ?>handler/katalog/edit?id=${catalogId}`, {
 						method: 'POST',
 						credentials: 'include',
 						body: new FormData(this)

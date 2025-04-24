@@ -47,7 +47,7 @@
   document.querySelectorAll('.delete-katalog-btn').forEach(button => {
     button.addEventListener('click', function(event) {
       event.preventDefault();
-      const katalogId = this.getAttribute('data-id');
+      const catalogId = this.getAttribute('data-id');
       Swal.fire({
           title: 'Hapus Katalog',
           text: "Apakah kamu ingin menghapus katalog ini?",
@@ -62,7 +62,7 @@
           if (result.isConfirmed) {
             // Tampilkan loading
             document.getElementById('loader').style.display = 'block';
-            fetch(`<?= SERVER_NAME ?>handler/katalog/delete?id=${katalogId}`, {
+            fetch(`<?= SERVER_NAME ?>handler/katalog/delete?id=${catalogId}`, {
                 method: 'POST',
                 credentials: 'include'
               })

@@ -30,11 +30,11 @@ class CatalogService
         }
     }
 
-    public function getCatalogById(string $katalogId): array
+    public function getCatalogById(string $catalogId): array
     {
         $sql = "SELECT * FROM catalogs WHERE id = :id";
         try {
-            $katalog = $this->db->squery($sql, ['id' => $katalogId]);
+            $katalog = $this->db->squery($sql, ['id' => $catalogId]);
 
             if (empty($katalog)) {
                 return ResponseMessage::createErrorResponse(
@@ -121,11 +121,11 @@ class CatalogService
         }
     }
 
-    public function putCatalog(string $katalogId, array $data): array
+    public function putCatalog(string $catalogId, array $data): array
     {
         $sql = "UPDATE catalogs SET kode_produk = :kode_produk, produk_solusi = :produk_solusi, tkdn_produk = :tkdn_produk, jenis = :jenis, harga = :harga, expired_harga = :expired_harga, kategori = :kategori, deskripsi = :deskripsi, gambar = :gambar, dokumen = :dokumen WHERE id = :id";
         try {
-            $existProduct = $this->db->squery("SELECT * FROM catalogs WHERE id = :id", ['id' => $katalogId]);
+            $existProduct = $this->db->squery("SELECT * FROM catalogs WHERE id = :id", ['id' => $catalogId]);
 
             if (empty($existProduct)) {
                 return ResponseMessage::createErrorResponse(
@@ -137,7 +137,7 @@ class CatalogService
             $document = isset($data['dokumen']) && $data['dokumen']['error'] == 0 ? $this->saveDocument($data['dokumen']) : ($existProduct ? $existProduct[0]['dokumen'] : null);
 
             $this->db->supdate($sql, [
-                'id' => $katalogId,
+                'id' => $catalogId,
                 'kode_produk' => $data['kode_produk'],
                 'produk_solusi' => $data['nama_produk'],
                 'tkdn_produk' => $data['tkdn_produk'],
@@ -160,12 +160,12 @@ class CatalogService
         }
     }
 
-    public function deleteCatalog(string $katalogId): array
+    public function deleteCatalog(string $catalogId): array
     {
         $target_dir = ROOT_PATH . 'assets/katalog';
 
         try {
-            $katalog = $this->db->squery("SELECT gambar, dokumen FROM catalogs WHERE id = :id", ['id' => $katalogId]);
+            $katalog = $this->db->squery("SELECT gambar, dokumen FROM catalogs WHERE id = :id", ['id' => $catalogId]);
 
             if (empty($katalog)) {
                 return ResponseMessage::createErrorResponse(
@@ -181,7 +181,7 @@ class CatalogService
             }
 
             $sql = "DELETE FROM catalogs WHERE id = :id";
-            $this->db->sdelete($sql, ['id' => $katalogId]);
+            $this->db->sdelete($sql, ['id' => $catalogId]);
 
             return ResponseMessage::createSuccessResponse(
                 message: 'Catalog berhasil dihapus'

@@ -10,9 +10,9 @@ require_once ROOT_PATH . '#include/#class/autoload.php';
 $env = new LoadEnv(ROOT_PATH . '.env');
 $catalogService = new CatalogService();
 
-$katalogId = $_GET['id'] ?? '';
+$catalogId = $_GET['id'] ?? '';
 
-$katalogId = $catalogService->getCatalogById($katalogId);
+$catalogId = $catalogService->getCatalogById($catalogId);
 
 $current_menu = "edit Catalog";
 $current_sub_menu = NULL;

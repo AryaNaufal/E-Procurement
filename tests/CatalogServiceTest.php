@@ -192,9 +192,9 @@ class CatalogServiceTest extends TestCase
 
     public function testPutCatalogSuccess()
     {
-        $katalogId = '1';
+        $catalogId = '1';
         $existingData = [[
-            'id' => $katalogId,
+            'id' => $catalogId,
             'gambar' => 'gambar_lama.jpg',
             'dokumen' => 'dokumen_lama.pdf'
         ]];
@@ -228,7 +228,7 @@ class CatalogServiceTest extends TestCase
                 })
             );
 
-        $response = $this->catalogService->putCatalog($katalogId, $inputData);
+        $response = $this->catalogService->putCatalog($catalogId, $inputData);
 
         $this->assertEquals(ResponseMessage::createSuccessResponse(
             message: 'Catalog berhasil diubah'
@@ -237,7 +237,7 @@ class CatalogServiceTest extends TestCase
 
     public function testPutCatalogNotFound()
     {
-        $katalogId = '999';
+        $catalogId = '999';
         $inputData = [
             'kode_produk' => 'A123',
             'nama_produk' => 'Produk A',
@@ -253,7 +253,7 @@ class CatalogServiceTest extends TestCase
 
         $this->dbMock->method('squery')->willReturn([]);
 
-        $response = $this->catalogService->putCatalog($katalogId, $inputData);
+        $response = $this->catalogService->putCatalog($catalogId, $inputData);
 
         $this->assertEquals(ResponseMessage::createErrorResponse(
             message: 'Data katalog tidak ditemukan'
@@ -262,7 +262,7 @@ class CatalogServiceTest extends TestCase
 
     public function testPutCatalogFail()
     {
-        $katalogId = '1';
+        $catalogId = '1';
         $inputData =  [
             'kode_produk' => 'A123',
             'nama_produk' => 'Produk A',
@@ -277,7 +277,7 @@ class CatalogServiceTest extends TestCase
         ];
 
         $existingData = [[
-            'id' => $katalogId,
+            'id' => $catalogId,
             'kode_produk' => 'A123',
             'produk_solusi' => 'Produk A',
             'tkdn_produk' => '50',
@@ -299,7 +299,7 @@ class CatalogServiceTest extends TestCase
 
         $this->dbMock->method('supdate')->willThrowException(new Exception('DB update error'));
 
-        $response = $this->catalogService->putCatalog($katalogId, $inputData);
+        $response = $this->catalogService->putCatalog($catalogId, $inputData);
 
         $this->assertEquals(ResponseMessage::createErrorResponse(
             message: 'Terjadi kesalahan pada server'
@@ -309,7 +309,7 @@ class CatalogServiceTest extends TestCase
     public function testDeleteCatalogSuccess()
     {
         define('ROOT_PATH', __DIR__);
-        $katalogId = '1';
+        $catalogId = '1';
         $gambar = 'gambar.jpg';
         $dokumen = 'dokumen.pdf';
 
@@ -321,11 +321,11 @@ class CatalogServiceTest extends TestCase
             ->method('sdelete')
             ->with(
                 $this->stringContains('DELETE FROM katalog'),
-                ['id' => $katalogId]
+                ['id' => $catalogId]
             )
             ->willReturn(true);
 
-        $response = $this->catalogService->deleteCatalog($katalogId);
+        $response = $this->catalogService->deleteCatalog($catalogId);
 
         $this->assertEquals(ResponseMessage::createSuccessResponse(
             message: 'Catalog berhasil dihapus'
@@ -334,11 +334,11 @@ class CatalogServiceTest extends TestCase
 
     public function testDeleteCatalogFail()
     {
-        $katalogId = '3';
+        $catalogId = '3';
 
         $this->dbMock->method('squery')->willThrowException(new Exception('DB error'));
 
-        $response = $this->catalogService->deleteCatalog($katalogId);
+        $response = $this->catalogService->deleteCatalog($catalogId);
 
         $this->assertEquals(ResponseMessage::createErrorResponse(
             message: 'Terjadi kesalahan pada server'

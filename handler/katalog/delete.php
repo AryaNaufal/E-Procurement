@@ -8,10 +8,10 @@ require_once __DIR__ . '/../../#include/#class/autoload.php';
 
 $catalogService = new CatalogService();
 
-$katalogId = $_GET['id'];
+$catalogId = $_GET['id'];
 
 $result = $catalogService->deleteCatalog(
-    katalogId: $katalogId
+    catalogId: $catalogId
 );
 
 if ($result['status'] === 'success') {
