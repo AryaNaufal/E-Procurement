@@ -18,7 +18,11 @@
               <div class="form-box">
                 <input type="email" name="email" placeholder="Email" class="mb-14" required>
               </div>
-              <!-- <div class="g-recaptcha my-3" data-sitekey="6Lepm9UpAAAAAGicQkWtrUl970c2ML7F7zeVdigo"></div> -->
+              <div class="g-recaptcha my-3" data-sitekey=" 
+              <?php
+              echo $env->get("RECAPTCHA_SITE_KEY")
+              ?>
+              "></div>
               <div class="text-center">
                 <button type="submit" class="text-uppercase rounded">Reset</button>
               </div>

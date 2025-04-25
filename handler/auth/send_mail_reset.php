@@ -22,6 +22,19 @@ $email = trim($_POST['email'] ?? null);
 
 $userService = new UserService();
 $result = $userService->sendResetPassword(['email' => $email]);
+$recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
+
+// Validasi recaptcha
+$recaptchaSecret = $env->get('RECAPTCHA_SECRET_KEY');
+$recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+$recaptchaVerifyResponse = file_get_contents($recaptchaUrl . "?secret=$recaptchaSecret&response=" . $recaptchaResponse);
+$recaptchaResult = json_decode($recaptchaVerifyResponse);
+
+if (!$recaptchaResult->success) {
+    echo 'Recaptcha tidak valid.';
+    unset($_POST['g-recaptcha-response']);
+    exit;
+}
 
 $response = [
     "status" => $result['status'],

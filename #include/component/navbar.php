@@ -2,7 +2,7 @@
 
   <div class="logo">
     <a href="<?= SERVER_NAME ?>">
-      <img src="<?= SERVER_NAME ?>assets/images/logo/antara-logo-colour.png" alt="JobHere">
+      <img src="<?= SERVER_NAME ?>assets/images/logo/logo-e-procurement.png" alt="JobHere">
     </a>
   </div>
 
