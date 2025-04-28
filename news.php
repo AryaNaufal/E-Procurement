@@ -40,7 +40,7 @@ if (isset($newsContent['data'][0])) {
   $newsData = $newsContent['data'][0];
   $current_menu = $newsData['judul'];
   $current_sub_menu = $newsData['judul'];
-  $title = $newsData['judul'];
+  $title = "News - " . $newsData['judul'];
 
   require_once ROOT_PATH . "#include/component/header.php";
   require_once ROOT_PATH . "#include/component/navbar.php";

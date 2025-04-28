@@ -205,7 +205,8 @@
       confirmButtonColor: '#007bff',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Ok',
-      cancelButtonText: 'Batal'
+      cancelButtonText: 'Batal',
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         // Tampilkan loading

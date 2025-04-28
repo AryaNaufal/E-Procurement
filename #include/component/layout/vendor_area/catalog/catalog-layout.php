@@ -1,6 +1,6 @@
 <section class="tab-pane fade" id="katalog">
   <div class="text-left my-4">
-    <button type="button" class="text-uppercase z-0 text-white" style="background-color:#AA0A2F; border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#catalog-modal">Tambah Katalog</button>
+    <button type="button" class="text-uppercase z-0 text-white" style="background-color:#AA0A2F; border-radius: 5px;" data-toggle="modal" data-target="#catalog-modal">Tambah Katalog</button>
   </div>
   <table class="table table-bordered">
     <tbody>

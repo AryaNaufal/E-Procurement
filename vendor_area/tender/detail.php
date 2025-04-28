@@ -32,9 +32,9 @@ if (empty($tenders['data'])) {
     exit;
 }
 
-$current_menu = "profile";
+$current_menu = "tender";
 $current_sub_menu = NULL;
-$title = "Profile";
+$title = "Tender - " . $tenders['data'][0]['description'];
 
 require_once ROOT_PATH . '#include/component/header.php';
 require_once ROOT_PATH . '#include/component/navbar.php';

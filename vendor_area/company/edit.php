@@ -27,7 +27,7 @@ $villages = $regionService->getVillages($companies['data'][0]['kecamatan'] ?? ''
 
 $current_menu = "company";
 $current_sub_menu = NULL;
-$title = "Company";
+$title = "Edit Company";
 
 require_once ROOT_PATH . '#include/component/header.php';
 require_once ROOT_PATH . '#include/component/navbar.php';

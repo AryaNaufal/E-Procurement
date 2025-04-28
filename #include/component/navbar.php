@@ -6,18 +6,18 @@
     </a>
   </div>
 
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse justify-content-end " id="navbarSupportedContent" style="gap: 20px;">
 
     <ul class="main-menu">
-      <li><a href="<?= SERVER_NAME ?>" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/' || strrchr($_SERVER['REQUEST_URI'], '/') == '/index' ? 'class="active"' : '' ?>>Home</a></li>
-      <li><a href="<?= SERVER_NAME ?>about" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/about' ? 'class="active"' : '' ?>>Tentang</a></li>
-      <li><a href="<?= SERVER_NAME ?>tender" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/tender' ? 'class="active"' : '' ?>>Pengadaan</a></li>
-      <li><a href="<?= SERVER_NAME ?>news" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/news' ? 'class="active"' : '' ?>>Berita</a></li>
-      <li><a href="<?= SERVER_NAME ?>portal" <?= $active = strrchr($_SERVER['REQUEST_URI'], '/') == '/portal' ? 'class="active"' : '' ?>>Portal</a></li>
+      <li><a href="<?= SERVER_NAME ?>" <?= $title == 'Home' ? 'class="active"' : '' ?>>Home</a></li>
+      <li><a href="<?= SERVER_NAME ?>about" <?= $title == 'Tentang' ? 'class="active"' : '' ?>>Tentang</a></li>
+      <li><a href="<?= SERVER_NAME ?>tender" <?= (strpos($title, 'Tender') !== false) ? 'class="active"' : '' ?>>Pengadaan</a></li>
+      <li><a href="<?= SERVER_NAME ?>news" <?= (strpos($title, 'News') !== false) ? 'class="active"' : '' ?>>Berita</a></li>
+      <li><a href="<?= SERVER_NAME ?>portal">Portal</a></li>
     </ul>
 
 
@@ -30,7 +30,7 @@
       <?php if (isset($_SESSION['email']) && isset($_SESSION['is_verify']) && $_SESSION['is_verify'] == '1') { ?>
         <a class="modal-view button z-0" style="cursor:pointer;" href="<?= SERVER_NAME ?>handler/auth/logout.php">Logout</a>
       <?php } else { ?>
-        <a class="modal-view button z-0" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#LoginModal">Login</a>
+        <a class="modal-view button z-0 text-white" style="cursor:pointer;" data-toggle="modal" data-target="#LoginModal">Login</a>
       <?php } ?>
     </div>
   </div>

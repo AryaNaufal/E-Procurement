@@ -5,7 +5,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
         </div>
         <div class="modal-body">
           <div class="form-pop-up-content ptb-30 pl-60 pr-60">
@@ -27,7 +27,7 @@
                 // echo $env->get("RECAPTCHA_SITE_KEY")
                 ?>
                 <!-- "></div> -->
-                <a href="#" data-bs-toggle="modal" data-bs-target="#ResetPwdModal" style="cursor:pointer; color:#0091ff; font-size: 12px;">Forgot Password ?</a>
+                <a href="#" data-toggle="modal" data-target="#ResetPwdModal" style="cursor:pointer; color:#0091ff; font-size: 12px;">Forgot Password ?</a>
               </div>
               <div class="text-center mt-3">
                 <button type="submit" class="text-uppercase rounded">Login</button>

@@ -12,39 +12,86 @@ $env = new LoadEnv(ROOT_PATH . '.env');
 $tenderService = new TenderService();
 $userService = new UserService();
 
-$category = $_GET['category'] ?? '';
+$categoryParam = $_GET['category'] ?? 'semua_kategori';
 $keyword = $_GET['keyword'] ?? '';
-$tenders = $tenderService->getTenders();
 
-// Daftar kategori
-$categories = [
-    'semua_kategori' => ['filter' => null],
-    'jasa_konsultasi' => ['filter' => ['Jasa Konsultasi Bidang Usaha']],
-    'pegadaan_barang' => ['filter' => ['Pengadaan Barang & Jasa']],
-    'jasa_lain' => ['filter' => ['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'operator' => 'NOT IN'],
+$itemsPerPage = 6;
+$page = max(1, (int)($_GET['page'] ?? 1));
+
+$categoryMap = [
+    'barang_jasa' => [
+        'categories' => ['Pengadaan Barang & Jasa'],
+        'operator' => 'IN',
+    ],
+    'jasa_konsultasi' => [
+        'categories' => ['Jasa Konsultasi Bidang Usaha'],
+        'operator' => 'IN',
+    ],
+    'jasa_lain' => [
+        'categories' => ['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'],
+        'operator' => 'NOT IN',
+    ],
+    'semua_kategori' => [
+        'categories' => [],
+        'operator' => '',
+    ]
 ];
 
-// Tentukan kategori yang dipilih
-$currentCategory = $categories[$category] ?? $categories['semua_kategori'];
+$currentCategory = $categoryMap[$categoryParam] ?? $categoryMap['semua_kategori'];
+$categories = $currentCategory['categories'];
+$operator = $currentCategory['operator'];
+
 $title = "Tender";
 
-// Ambil data tender berdasarkan kategori dan keyword
-if ($keyword) {
-    if (isset($categories[$category]['filter'])) {
-        $tender = $tenderService->searchTender($currentCategory['filter'] ?? [], $keyword, $currentCategory['operator'] ?? 'IN');
-    } else {
-        $tender = $tenderService->getTender($keyword);
-    }
-} elseif (isset($currentCategory['filter'])) {
-    $tender = $tenderService->getTendersByCategory($currentCategory['filter'] ?? [], $currentCategory['operator'] ?? 'IN');
+// Pagination Sesuai kategori
+if (!empty($categories)) {
+    $totalItemsResponse = $tenderService->getTotalCategoryCount($categories, $operator);
+    $totalItems = $totalItemsResponse['data'][0]['total'] ?? 0;
+
+    $pagedNews = $tenderService->getTendersByCategory(
+        categories: $categories,
+        operator: $operator,
+        limit: $itemsPerPage,
+        offset: ($page - 1) * $itemsPerPage
+    )['data'] ?? [];
 } else {
-    $tender = $tenders;
+    $tenders = $tenderService->getTenders();
+    $totalItems = count($tenders['data'] ?? []);
+    $pagedNews = array_slice($tenders['data'] ?? [], ($page - 1) * $itemsPerPage, $itemsPerPage);
 }
 
-// Ambil data untuk setiap kategori tab-pane
-$tenderLain = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa', 'Jasa Konsultasi Bidang Usaha'], 'NOT IN');
-$tenderBarangJasa = $tenderService->getTendersByCategory(['Pengadaan Barang & Jasa']);
-$tenderKonsultasi = $tenderService->getTendersByCategory(['Jasa Konsultasi Bidang Usaha']);
+// Pagination Sesuai kategori + Keyword
+if (!empty($keyword)) {
+    if (!empty($categories)) {
+        $filteredData = $tenderService->searchTender($categories, $keyword, $operator)['data'] ?? [];
+    } else {
+        $allTenders = $tenderService->getTenders()['data'] ?? [];
+        $filteredData = array_filter($allTenders, function ($tender) use ($keyword) {
+            return stripos($tender['description'], $keyword) !== false;
+        });
+    }
+
+    $totalItems = count($filteredData);
+    $pagedNews = array_slice($filteredData, ($page - 1) * $itemsPerPage, $itemsPerPage);
+} else {
+    if (!empty($categories)) {
+        $totalItemsResponse = $tenderService->getTotalCategoryCount($categories, $operator);
+        $totalItems = $totalItemsResponse['data'][0]['total'] ?? 0;
+
+        $pagedNews = $tenderService->getTendersByCategory(
+            categories: $categories,
+            operator: $operator,
+            limit: $itemsPerPage,
+            offset: ($page - 1) * $itemsPerPage
+        )['data'] ?? [];
+    } else {
+        $tenders = $tenderService->getTenders();
+        $totalItems = count($tenders['data'] ?? []);
+        $pagedNews = array_slice($tenders['data'] ?? [], ($page - 1) * $itemsPerPage, $itemsPerPage);
+    }
+}
+
+$totalPages = max(1, ceil($totalItems / $itemsPerPage));
 
 require_once ROOT_PATH . "#include/component/header.php";
 require_once ROOT_PATH . "#include/component/navbar.php";

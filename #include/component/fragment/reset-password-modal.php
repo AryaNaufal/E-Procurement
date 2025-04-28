@@ -5,7 +5,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span><i class="zmdi zmdi-close"></i></span></button>
         </div>
         <div class="modal-body">
           <div class="form-pop-up-content ptb-30 pl-60 pr-60">

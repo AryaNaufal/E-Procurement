@@ -41,7 +41,7 @@ class TenderService
         return $this->fetchTenders($query, ['id' => $id]);
     }
 
-    public function getTendersByCategory(array $categories, string $operator = 'IN'): array
+    public function getTendersByCategory(array $categories, string $operator = 'IN', int $limit = 6, int $offset = 0): array
     {
         if (empty($categories)) {
             return ResponseMessage::createErrorResponse(
@@ -50,9 +50,26 @@ class TenderService
         }
 
         $placeholders = implode(',', array_fill(0, count($categories), '?'));
-        $query = "SELECT * FROM tenders WHERE category {$operator} ({$placeholders}) AND closing_date >= NOW() LIMIT 6";
+        $query = "SELECT * FROM tenders WHERE category {$operator} ({$placeholders}) AND closing_date >= NOW() LIMIT $limit OFFSET $offset";
 
         return $this->fetchTenders($query, $categories);
+    }
+
+    public function getTotalCategoryCount(array $categories, string $operator = 'IN')
+    {
+        $placeholders = implode(',', array_fill(0, count($categories), '?'));
+        $sql = "SELECT COUNT(*) AS total FROM tenders WHERE category {$operator} ({$placeholders})";
+        try {
+            $result = $this->db->squery($sql, $categories);
+            return ResponseMessage::createSuccessResponse(
+                message: 'Total news count fetched successfully',
+                data: $result
+            );
+        } catch (Exception) {
+            return ResponseMessage::createErrorResponse(
+                message: 'Error fetching total news count'
+            );
+        }
     }
 
     public function searchTender(array $categories, string $keyword, string $operator = 'IN'): array

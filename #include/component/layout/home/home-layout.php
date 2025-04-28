@@ -64,13 +64,22 @@
       <div class="all-job-post">
         <!-- Nav tabs -->
         <div class="post-tab nav mb-5">
-          <a class="nav-link active" data-bs-toggle="tab" href="#all">Semua Kategori</a>
-          <a class="nav-link" data-bs-toggle="tab" href="#jasa_lain">Jasa Lainnya</a>
-          <a class="nav-link" data-bs-toggle="tab" href="#barang_jasa">Pengadaan Barang &amp; Jasa</a>
-          <a class="nav-link" data-bs-toggle="tab" href="#konsultasi">Jasa Konsultasi Bidang Usaha</a>
+          <a class="nav-link active" data-toggle="tab" href="#all">Semua Kategori</a>
+          <a class="nav-link" data-toggle="tab" href="#jasa_lain">Jasa Lainnya</a>
+          <a class="nav-link" data-toggle="tab" href="#barang_jasa">Pengadaan Barang &amp; Jasa</a>
+          <a class="nav-link" data-toggle="tab" href="#konsultasi">Jasa Konsultasi Bidang Usaha</a>
         </div>
         <!-- Tab panes -->
-        <?php include ROOT_PATH . '#include/component/fragment/tab-content.php'; ?>
+        <?php include ROOT_PATH . '#include/component/layout/home/home-tender.php'; ?>
+      </div>
+      <div class="d-flex justify-content-center w-100">
+        <!-- Start Atribute Navigation -->
+        <div style="background-color: #AA0A2F; padding: 10px 20px; border-radius: 5px;">
+          <ul>
+            <li class="button"><a href="tender" class="text-white">Lihat Semua</a></li>
+          </ul>
+        </div>
+        <!-- End Atribute Navigation -->
       </div>
     </div>
   </div>
@@ -130,7 +139,7 @@
         <div class="col-md-12">
           <div class="section-title text-center ">
             <h2>Info</h2>
-            <p>Infor terbaru seputar E-Procurement</p>
+            <p>Informasi terbaru seputar E-Procurement</p>
           </div>
         </div>
       </div>
