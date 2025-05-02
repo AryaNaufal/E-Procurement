@@ -114,6 +114,7 @@ class UserService
                     $_SESSION['id'] = $user['id'],
                     $_SESSION['username'] = $user['username'],
                     $_SESSION['email'] = $user['email'],
+                    $_SESSION['role'] = $user['role'],
                     $_SESSION['is_verify'] = $user['is_verify']
                 ]
             );
