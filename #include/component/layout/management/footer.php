@@ -21,10 +21,11 @@
 <!-- Data picker -->
 <script src="<?= SERVER_NAME ?>assets/management/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
-<?php include_once(ROOT_PATH . "#ajax/chart/budget-by-status.php"); ?>
-<?php include_once(ROOT_PATH . "#ajax/chart/tender-by-workflow.php"); ?>
-<?php include_once(ROOT_PATH . "#ajax/chart/request.php"); ?>
 <?php include_once(ROOT_PATH . "#ajax/chart/type-tender.php"); ?>
+<?php include_once(ROOT_PATH . "#ajax/chart/tender-status.php"); ?>
+<?php include_once(ROOT_PATH . "#ajax/chart/budget-by-status.php"); ?>
+<?php include_once(ROOT_PATH . "#ajax/chart/request.php"); ?>
+<?php include_once(ROOT_PATH . "#ajax/chart/tender-by-workflow.php"); ?>
 
 <script>
     $(document).ready(function() {

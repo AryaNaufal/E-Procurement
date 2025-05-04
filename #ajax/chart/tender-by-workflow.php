@@ -82,7 +82,7 @@
             new Chart(ctxWorkflowChart, {
                 type: 'bar',
                 data: workflowData,
-                options: requestOptions,
+                options: workflowOptions,
                 plugins: [{
                     beforeDraw: function(chart) {
                         let ctx = chart.chart.ctx;
