@@ -21,6 +21,10 @@
 <!-- Data picker -->
 <script src="<?= SERVER_NAME ?>assets/management/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
+<!-- Data tables -->
+<script src="<?= SERVER_NAME ?>assets/management/js/plugins/dataTables/datatables.min.js"></script>
+
+
 <?php include_once(ROOT_PATH . "#ajax/chart/type-tender.php"); ?>
 <?php include_once(ROOT_PATH . "#ajax/chart/tender-status.php"); ?>
 <?php include_once(ROOT_PATH . "#ajax/chart/budget-by-status.php"); ?>
@@ -36,6 +40,18 @@
             calendarWeeks: true,
             autoclose: true
         });
+    });
+</script>
+
+<script>
+    $.fn.dataTable.Buttons.defaults.dom.button.className = 'btn btn-white btn-sm';
+
+    $(document).ready(function() {
+        $('.dataTables-example').DataTable({
+            pageLength: 10,
+            responsive: true,
+        });
+
     });
 </script>
 

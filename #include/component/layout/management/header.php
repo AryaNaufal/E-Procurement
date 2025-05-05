@@ -11,6 +11,8 @@
 
     <link href="<?= SERVER_NAME ?>assets/management/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= SERVER_NAME ?>assets/management/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="<?= SERVER_NAME ?>assets/management/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
 
     <link href="<?= SERVER_NAME ?>assets/management/css/animate.css" rel="stylesheet">
     <link href="<?= SERVER_NAME ?>assets/management/css/style.css" rel="stylesheet">

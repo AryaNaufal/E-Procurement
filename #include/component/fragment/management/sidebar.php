@@ -24,27 +24,25 @@
                     <img src="<?= SERVER_NAME ?>assets/management/img/logo/logo-antara.png" alt="" style="max-width: 25px;">
                 </div>
             </li>
-            <li class="active">
+            <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>>
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
                     <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?= SERVER_NAME ?>management/" <?= strpos($title, 'Staf') ? 'class="text-white"' : 'style="display: none;"' ?>>Home</a></li>
-                    <li><a href="<?= SERVER_NAME ?>management/" <?= strpos($title, 'direktur') ? 'class="text-white"' : 'style="display: none;"' ?>>Home</a></li>
+                    <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/">Home</a></li>
                 </ul>
             </li>
-            <li>
+            <li <?= (basename($_SERVER['REQUEST_URI']) == 'katalog' || basename($_SERVER['REQUEST_URI']) == 'departement' || basename($_SERVER['REQUEST_URI']) == 'scoring' || basename($_SERVER['REQUEST_URI']) == 'sub-scoring' || basename($_SERVER['REQUEST_URI']) == 'vendor-type' || basename($_SERVER['REQUEST_URI']) == 'vendor-category' || basename($_SERVER['REQUEST_URI']) == 'vendor' || basename($_SERVER['REQUEST_URI']) == 'blacklist-reason') ? 'class="active"' : ''; ?>>
                 <a href="index.html"><i class="fa fa-book"></i> <span class="nav-label">Master</span>
                     <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="">Catalog Category</a></li>
-                    <li><a href="">Departement</a></li>
-                    <li><a href="">Scoring</a></li>
-                    <li><a href="">Sub Scoring</a></li>
-                    <li><a href="">User</a></li>
-                    <li><a href="">Vendor Type</a></li>
-                    <li><a href="">Vendor Category</a></li>
-                    <li><a href="">Vendor</a></li>
-                    <li><a href="">Blacklist Reason</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'katalog') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/katalog.php">Catalog Category</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'departement') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/departement.php">Departement</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'scoring') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/scoring.php">Scoring</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'sub-scoring') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/sub-scoring.php">Sub Scoring</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor-type') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-type.php">Vendor Type</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor-category') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-category.php">Vendor Category</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor.php">Vendor</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'blacklist-reason') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/blacklist-reason.php">Blacklist Reason</a></li>
                 </ul>
             </li>
         </ul>
