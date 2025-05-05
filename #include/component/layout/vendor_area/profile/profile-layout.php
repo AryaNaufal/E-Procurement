@@ -34,7 +34,7 @@ $documentLabel = [
                 <div class="col-lg-6">
                   <?php
                   $fields = [
-                    'Nama Perusahaan' => 'name',
+                    'Nama Perusahaan' => 'nama_perusahaan',
                     'Tipe Perusahaan' => 'type',
                     'Email Perusahaan' => 'mail',
                     'No.Tlp Perusahaan' => 'phone',

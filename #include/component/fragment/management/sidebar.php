@@ -25,14 +25,28 @@
                 </div>
             </li>
             <li class="active">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span>
+                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
                     <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?= SERVER_NAME ?>management/" <?= strpos($title, 'Staf') ? 'class="text-white"' : 'style="display: none;"' ?>>Home</a></li>
                     <li><a href="<?= SERVER_NAME ?>management/" <?= strpos($title, 'direktur') ? 'class="text-white"' : 'style="display: none;"' ?>>Home</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="index.html"><i class="fa fa-book"></i> <span class="nav-label">Master</span>
+                    <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="">Catalog Category</a></li>
+                    <li><a href="">Departement</a></li>
+                    <li><a href="">Scoring</a></li>
+                    <li><a href="">Sub Scoring</a></li>
+                    <li><a href="">User</a></li>
+                    <li><a href="">Vendor Type</a></li>
+                    <li><a href="">Vendor Category</a></li>
+                    <li><a href="">Vendor</a></li>
+                    <li><a href="">Blacklist Reason</a></li>
+                </ul>
+            </li>
         </ul>
-
     </div>
 </nav>

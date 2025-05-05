@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2025 at 03:09 AM
+-- Generation Time: May 05, 2025 at 09:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91923,7 +91923,6 @@ CREATE TABLE `users` (
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `pic` varchar(100) DEFAULT NULL,
-  `perusahaan` varchar(50) NOT NULL,
   `npwp` varchar(50) DEFAULT NULL,
   `nik` varchar(50) DEFAULT NULL,
   `tanggal_registrasi` date DEFAULT NULL,
@@ -91931,7 +91930,8 @@ CREATE TABLE `users` (
   `ip_login` varchar(100) DEFAULT NULL,
   `login_terakhir` datetime DEFAULT NULL,
   `verification_code` varchar(100) DEFAULT NULL,
-  `is_verify` tinyint(1) DEFAULT NULL
+  `is_verify` tinyint(1) DEFAULT NULL,
+  `role` varchar(100) DEFAULT 'vendor'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91943,7 +91943,7 @@ CREATE TABLE `users` (
 CREATE TABLE `vendors` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
+  `nama_perusahaan` varchar(100) DEFAULT NULL,
   `type` varchar(100) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
@@ -92068,7 +92068,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `tenders`
 --
 ALTER TABLE `tenders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `timelines`

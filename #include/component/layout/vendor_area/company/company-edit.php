@@ -11,7 +11,7 @@
       <div class="col-md-4">
         <label class="form-label">Nama Perusahaan</label>
         <input type="text" maxlength="150" name="nama_perusahaan" id="nama_perusahaan"
-          placeholder="Nama Perusahaan" class="form-control" value="<?= $companies['data'][0]['name'] ?>" required>
+          placeholder="Nama Perusahaan" class="form-control" value="<?= $companies['data'][0]['nama_perusahaan'] ?>" required>
 
       </div>
       <div class="col-md-4">

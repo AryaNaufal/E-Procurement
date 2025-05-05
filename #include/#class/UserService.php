@@ -155,7 +155,7 @@ class UserService
         $verification_code = bin2hex(random_bytes(16)); // Membuat kode verifikasi unik
 
         try {
-            $sql = "INSERT INTO users (username, email, password, pic, perusahaan, npwp, nik, tanggal_registrasi, verification_code, is_verify) VALUES (:username, :email, :password, :pic, :perusahaan, :npwp, :nik, :tanggal_registrasi, :verification_code, 0)";
+            $sql = "INSERT INTO users (username, email, password, pic, npwp, nik, tanggal_registrasi, verification_code, is_verify) VALUES (:username, :email, :password, :pic, :npwp, :nik, :tanggal_registrasi, :verification_code, 0)";
 
             // Enkripsi password
             $password_hash = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -165,11 +165,14 @@ class UserService
                 "email" => $data['email'],
                 "password" => $password_hash,
                 "pic" => $data['pic'],
-                "perusahaan" => $data['perusahaan'],
                 "npwp" => $data['npwp'],
                 "nik" => $data['nik'],
                 "tanggal_registrasi" => date('Y-m-d'),
                 "verification_code" => $verification_code
+            ]);
+
+            $this->db->sinsert('INSERT INTO vendors (user_id, nama_perusahaan) VALUES (LAST_INSERT_ID(), :nama_perusahaan)', [
+                'nama_perusahaan' => $data['perusahaan']
             ]);
 
             // Kirim email verifikasi
