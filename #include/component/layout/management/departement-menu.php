@@ -24,7 +24,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <form action="">
-                                                <div class="form-group"><label>Catalog Cateogry</label> <input type="email" placeholder="Catalog Cateogry" class="form-control"></div>
+                                                <div class="form-group"><label>Departement</label> <input type="text" placeholder="Departement" class="form-control"></div>
                                                 <button class="btn btn-primary float-right">submit</button>
                                             </form>
                                         </div>
