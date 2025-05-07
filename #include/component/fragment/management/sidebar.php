@@ -31,7 +31,7 @@
                     <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/">Home</a></li>
                 </ul>
             </li>
-            <li <?= (basename($_SERVER['REQUEST_URI']) == 'katalog' || basename($_SERVER['REQUEST_URI']) == 'departement' || basename($_SERVER['REQUEST_URI']) == 'scoring' || basename($_SERVER['REQUEST_URI']) == 'sub-scoring' || basename($_SERVER['REQUEST_URI']) == 'vendor-type' || basename($_SERVER['REQUEST_URI']) == 'vendor-category' || basename($_SERVER['REQUEST_URI']) == 'vendor' || basename($_SERVER['REQUEST_URI']) == 'blacklist-reason') ? 'class="active"' : ''; ?>>
+            <li <?= (basename($_SERVER['REQUEST_URI']) == 'katalog' || basename($_SERVER['REQUEST_URI']) == 'departement' || basename($_SERVER['REQUEST_URI']) == 'scoring' || basename($_SERVER['REQUEST_URI']) == 'sub-scoring' || basename($_SERVER['REQUEST_URI']) == 'user' || basename($_SERVER['REQUEST_URI']) == 'vendor-type' || basename($_SERVER['REQUEST_URI']) == 'vendor-category' || basename($_SERVER['REQUEST_URI']) == 'vendor' || basename($_SERVER['REQUEST_URI']) == 'blacklist-reason') ? 'class="active"' : ''; ?>>
                 <a href="index.html"><i class="fa fa-book"></i> <span class="nav-label">Master</span>
                     <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -39,6 +39,7 @@
                     <li <?= (basename($_SERVER['REQUEST_URI']) == 'departement') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/departement.php">Departement</a></li>
                     <li <?= (basename($_SERVER['REQUEST_URI']) == 'scoring') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/scoring.php">Scoring</a></li>
                     <li <?= (basename($_SERVER['REQUEST_URI']) == 'sub-scoring') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/sub-scoring.php">Sub Scoring</a></li>
+                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'user') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/user.php">User</a></li>
                     <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor-type') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-type.php">Vendor Type</a></li>
                     <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor-category') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-category.php">Vendor Category</a></li>
                     <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor.php">Vendor</a></li>
