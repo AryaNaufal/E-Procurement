@@ -1,0 +1,292 @@
+[
+    {
+        "id": 1,
+        "name": "Portal",
+        "read": false,
+        "add": false,
+        "edit": false,
+        "delete": false,
+        "all": false,
+        "clear": false
+    },
+    {
+        "id": 2,
+        "name": "Master",
+        "all": false,
+        "clear": false,
+        "children": [
+            {
+                "id": 3,
+                "name": "Catalog Category",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 4,
+                "name": "Departement",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 5,
+                "name": "Scoring",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 6,
+                "name": "Sub Scoring",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 7,
+                "name": "User",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 8,
+                "name": "User Role",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 9,
+                "name": "Vendor Type",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 10,
+                "name": "Vendor Category",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 11,
+                "name": "Vendor",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 12,
+                "name": "Blacklist Reason",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Budget",
+        "all": false,
+        "clear": false,
+        "children": [
+            {
+                "id": 14,
+                "name": "Budget",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 15,
+                "name": "Budget Review",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            }
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Request",
+        "all": false,
+        "clear": false,
+        "children": [
+            {
+                "id": 17,
+                "name": "Request",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 18,
+                "name": "Request Review",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Vendor",
+        "all": false,
+        "clear": false,
+        "children": [
+            {
+                "id": 20,
+                "name": "Vendor",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 21,
+                "name": "Vendor Blacklist",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Pengadaan",
+        "all": false,
+        "clear": false,
+        "children": [
+            {
+                "id": 23,
+                "name": "Dokumen/File",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 24,
+                "name": "Pengadaan Category",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 25,
+                "name": "Scoring Pengadaan",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            },
+            {
+                "id": 26,
+                "name": "Pengadaan",
+                "read": false,
+                "add": false,
+                "edit": false,
+                "delete": false,
+                "all": false,
+                "clear": false
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Catalog",
+        "read": false,
+        "add": false,
+        "edit": false,
+        "delete": false,
+        "all": false,
+        "clear": false
+    },
+    {
+        "id": 28,
+        "name": "Reporting",
+        "read": false,
+        "add": false,
+        "edit": false,
+        "delete": false,
+        "all": false,
+        "clear": false
+    },
+    {
+        "id": 29,
+        "name": "News",
+        "read": false,
+        "add": false,
+        "edit": false,
+        "delete": false,
+        "all": false,
+        "clear": false
+    },
+    {
+        "id": 30,
+        "name": "Log Activity",
+        "read": false,
+        "add": false,
+        "edit": false,
+        "delete": false,
+        "all": false,
+        "clear": false
+    }
+]

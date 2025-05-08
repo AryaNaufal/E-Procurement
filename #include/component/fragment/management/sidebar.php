@@ -31,19 +31,30 @@
                     <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/">Home</a></li>
                 </ul>
             </li>
-            <li <?= (basename($_SERVER['REQUEST_URI']) == 'katalog' || basename($_SERVER['REQUEST_URI']) == 'departement' || basename($_SERVER['REQUEST_URI']) == 'scoring' || basename($_SERVER['REQUEST_URI']) == 'sub-scoring' || basename($_SERVER['REQUEST_URI']) == 'user' || basename($_SERVER['REQUEST_URI']) == 'vendor-type' || basename($_SERVER['REQUEST_URI']) == 'vendor-category' || basename($_SERVER['REQUEST_URI']) == 'vendor' || basename($_SERVER['REQUEST_URI']) == 'blacklist-reason') ? 'class="active"' : ''; ?>>
+            <li <?= (
+                    strpos($_SERVER['REQUEST_URI'], 'katalog/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'departement/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'scoring/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'sub-scoring/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'user/') !== false ||
+                    strpos($_SERVER['REQUEST_URI'], 'user-role/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'vendor-type/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'vendor-category/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'vendor/') ||
+                    strpos($_SERVER['REQUEST_URI'], 'blacklist-reason/')) ? 'class="active"' : ''; ?>>
                 <a href="index.html"><i class="fa fa-book"></i> <span class="nav-label">Master</span>
                     <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'katalog') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/katalog.php">Catalog Category</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'departement') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/departement.php">Departement</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'scoring') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/scoring.php">Scoring</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'sub-scoring') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/sub-scoring.php">Sub Scoring</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'user') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/user.php">User</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor-type') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-type.php">Vendor Type</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor-category') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-category.php">Vendor Category</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'vendor') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor.php">Vendor</a></li>
-                    <li <?= (basename($_SERVER['REQUEST_URI']) == 'blacklist-reason') ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/blacklist-reason.php">Blacklist Reason</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'katalog/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/katalog">Catalog Category</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'departement/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/departement">Departement</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'scoring/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/scoring">Scoring</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'sub-scoring/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/sub-scoring">Sub Scoring</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'user/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/user">User</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'user-role/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/user-role">User Role</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'vendor-type/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-type">Vendor Type</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'vendor-category/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-category">Vendor Category</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'vendor/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor">Vendor</a></li>
+                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'blacklist-reason/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/blacklist-reason">Blacklist Reason</a></li>
                 </ul>
             </li>
         </ul>

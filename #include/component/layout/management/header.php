@@ -19,6 +19,12 @@
 
     <link href="<?= SERVER_NAME ?>assets/management/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
+    <!-- EasyUI -->
+    <link rel="stylesheet" type="text/css" href="<?= SERVER_NAME ?>assets/management/plugins/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<?= SERVER_NAME ?>assets/management/plugins/easyui/themes/icon.css">
+    <script src="<?= SERVER_NAME ?>assets/management/plugins/easyui/jquery.min.js"></script>
+    <script src="<?= SERVER_NAME ?>assets/management/plugins/easyui/jquery.easyui.min.js"></script>
+
 </head>
 
 <body>
