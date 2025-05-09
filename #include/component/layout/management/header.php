@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dashboard Tender dan Request Management">
 
+    <!-- favicon -->
+    <link rel="icon" href="<?= SERVER_NAME ?>assets/management/img/logo/logo-antara.png">
+
     <title><?= htmlspecialchars($title, ENT_QUOTES, 'UTF-8') ?></title>
 
     <link href="<?= SERVER_NAME ?>assets/management/css/bootstrap.min.css" rel="stylesheet">

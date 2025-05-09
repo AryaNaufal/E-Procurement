@@ -7,47 +7,61 @@
         </div>
 
         <div class="wrapper wrapper-content animated fadeInRight">
-            <h1 class="mt-0 mb-4 font-bold">Manage User Role</h1>
+            <h1 class="mt-0 mb-4 font-bold">Manage Vendor</h1>
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-content">
-                            <a href="<?= SERVER_NAME ?>management/user-role/add-user-role.php">
-                                <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#myModal5">
-                                    <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create User Role
-                                </button>
-                            </a>
 
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <thead>
                                         <tr>
+                                            <th>Company</th>
+                                            <th>Username</th>
+                                            <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
                                             <th>Action</th>
-                                            <th>User Role</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>PT A</td>
+                                            <td>Andi</td>
+                                            <td>Andi</td>
+                                            <td>andi@gmail.com</td>
+                                            <td>Aktif</td>
                                             <td class="center">
                                                 <button class="btn btn-info">Edit</button>
                                                 <button class="btn btn-danger">Hapus</button>
+                                                <button class="btn btn-warning">Detail</button>
                                             </td>
-                                            <td>Administrator</td>
                                         </tr>
                                         <tr>
+                                            <td>PT B</td>
+                                            <td>Budi</td>
+                                            <td>Budi</td>
+                                            <td>budi@gmail.com</td>
+                                            <td>Aktif</td>
                                             <td class="center">
                                                 <button class="btn btn-info">Edit</button>
                                                 <button class="btn btn-danger">Hapus</button>
+                                                <button class="btn btn-warning">Detail</button>
                                             </td>
-                                            <td>Assisten Manager</td>
                                         </tr>
                                         <tr>
+                                            <td>PT C</td>
+                                            <td>Tono</td>
+                                            <td>Tono</td>
+                                            <td>tono@gmail.com</td>
+                                            <td>Aktif</td>
                                             <td class="center">
                                                 <button class="btn btn-info">Edit</button>
                                                 <button class="btn btn-danger">Hapus</button>
+                                                <button class="btn btn-warning">Detail</button>
                                             </td>
-                                            <td>Director</td>
                                         </tr>
                                     </tbody>
                                 </table>

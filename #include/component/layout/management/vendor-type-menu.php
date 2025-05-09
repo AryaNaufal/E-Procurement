@@ -7,14 +7,14 @@
         </div>
 
         <div class="wrapper wrapper-content animated fadeInRight">
-            <h1 class="mt-0 mb-4 font-bold">Manage Catalog Category</h1>
+            <h1 class="mt-0 mb-4 font-bold">Manage Vendor Type</h1>
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-content">
                             <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#myModal5">
-                                <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create Catalog Category
+                                <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create Vendor Type
                             </button>
                             <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
@@ -24,52 +24,56 @@
                                         </div>
                                         <div class="modal-body">
                                             <form action="">
-                                                <div class="form-group"><label>Catalog Cateogry</label> <input type="email" placeholder="Catalog Cateogry" class="form-control"></div>
+                                                <div class="form-group"><label>Vendor Type</label> <input type="text" placeholder="Vendor Type" class="form-control"></div>
                                                 <button class="btn btn-primary float-right">submit</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Catalog Category</th>
-                                            <th>Created Date</th>
+                                            <th>Vendor Type</th>
+                                            <th>Created Data</th>
                                             <th>Last Update</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeX">
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
+                                        <tr>
+                                            <td>Firma (FA)</td>
+                                            <td>6/05/2025 15:30:00</td>
+                                            <td>6/05/2025 15:30:00</td>
                                             <td class="center">
                                                 <button class="btn btn-info">Edit</button>
                                                 <button class="btn btn-danger">Hapus</button>
                                             </td>
                                         </tr>
-                                        <tr class="gradeC">
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.0
-                                            </td>
-                                            <td>Win 95+</td>
+                                        <tr>
+                                            <td>Koperasi</td>
+                                            <td>6/05/2025 15:30:00</td>
+                                            <td>6/05/2025 15:30:00</td>
                                             <td class="center">
                                                 <button class="btn btn-info">Edit</button>
                                                 <button class="btn btn-danger">Hapus</button>
                                             </td>
                                         </tr>
-                                        <tr class="gradeA">
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.5
+                                        <tr>
+                                            <td>Perseroan Komanditer (CV)</td>
+                                            <td>6/05/2025 15:30:00</td>
+                                            <td>6/05/2025 15:30:00</td>
+                                            <td class="center">
+                                                <button class="btn btn-info">Edit</button>
+                                                <button class="btn btn-danger">Hapus</button>
                                             </td>
-                                            <td>Win 95+</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Perseroan Terbatas (PT)</td>
+                                            <td>6/05/2025 15:30:00</td>
+                                            <td>6/05/2025 15:30:00</td>
                                             <td class="center">
                                                 <button class="btn btn-info">Edit</button>
                                                 <button class="btn btn-danger">Hapus</button>

@@ -5,12 +5,10 @@
                 <div class="dropdown profile-element">
                     <img alt="image" class="rounded-circle" src="<?= SERVER_NAME ?>assets/management/img/profile_small.jpg" />
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="block m-t-xs font-bold">Selamat Datang</span>
+                        <span class="block m-t-xs font-bold"><?= $_SESSION['username'] ? $_SESSION['username'] : ''; ?></span>
                         <span class="block font-bold">
-                            <?php
-                            $_SESSION['username'] ? print($_SESSION['username']) : print('');
-                            ?></span>
-                        <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </span>
+                        <span class="text-muted text-xs block"><?= $_SESSION['role'] ?> <b class="caret"></b></span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a class="dropdown-item" href="profile.html">Profile</a></li>
@@ -31,30 +29,38 @@
                     <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/">Home</a></li>
                 </ul>
             </li>
-            <li <?= (
-                    strpos($_SERVER['REQUEST_URI'], 'katalog/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'departement/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'scoring/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'sub-scoring/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'user/') !== false ||
-                    strpos($_SERVER['REQUEST_URI'], 'user-role/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'vendor-type/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'vendor-category/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'vendor/') ||
-                    strpos($_SERVER['REQUEST_URI'], 'blacklist-reason/')) ? 'class="active"' : ''; ?>>
+            <?php
+            $menuItems = [
+                'katalog/' => 'Catalog Category',
+                'departement/' => 'Departement',
+                'scoring/' => 'Scoring',
+                'sub-scoring/' => 'Sub Scoring',
+                'user/' => 'User',
+                'user-role/' => 'User Role',
+                'vendor-type/' => 'Vendor Type',
+                'vendor-category/' => 'Vendor Category',
+                'vendor/' => 'Vendor',
+                'blacklist-reason/' => 'Blacklist Reason'
+            ];
+
+            $currentUri = $_SERVER['REQUEST_URI'];
+            $activeMenu = false;
+            foreach ($menuItems as $path => $label) {
+                if (strpos($currentUri, $path) !== false) {
+                    $activeMenu = true;
+                    break;
+                }
+            }
+            ?>
+            <li class="<?= $activeMenu ? 'active' : ''; ?>">
                 <a href="index.html"><i class="fa fa-book"></i> <span class="nav-label">Master</span>
                     <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'katalog/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/katalog">Catalog Category</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'departement/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/departement">Departement</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'scoring/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/scoring">Scoring</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'sub-scoring/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/sub-scoring">Sub Scoring</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'user/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/user">User</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'user-role/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/user-role">User Role</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'vendor-type/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-type">Vendor Type</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'vendor-category/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor-category">Vendor Category</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'vendor/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/vendor">Vendor</a></li>
-                    <li <?= (strpos($_SERVER['REQUEST_URI'], 'blacklist-reason/')) ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/blacklist-reason">Blacklist Reason</a></li>
+                    <?php foreach ($menuItems as $path => $label): ?>
+                        <li class="<?= strpos($currentUri, $path) !== false ? 'active' : ''; ?>">
+                            <a href="<?= SERVER_NAME . 'management/' . trim($path, '/') ?>"><?= $label ?></a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
         </ul>

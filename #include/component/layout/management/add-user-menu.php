@@ -7,7 +7,7 @@
         </div>
 
         <div class="wrapper wrapper-content animated fadeInRight">
-            <h1 class="mt-0 mb-4">Manage User</h1>
+            <h1 class="mt-0 mb-4 font-bold">Manage User</h1>
 
             <div class="row">
                 <div class="col-lg-12">
