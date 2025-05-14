@@ -13,5 +13,5 @@ $current_sub_menu = NULL;
 $title = "User Role";
 
 require_once ROOT_PATH . '#include/component/layout/management/header.php';
-require_once ROOT_PATH . '#include/component/layout/management/user-role-menu.php';
+require_once ROOT_PATH . '#include/component/layout/management/master/user/user-role-menu.php';
 require_once ROOT_PATH . '#include/component/layout/management/footer.php';

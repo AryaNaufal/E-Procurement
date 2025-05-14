@@ -13,5 +13,5 @@ $current_sub_menu = NULL;
 $title = "Departement";
 
 require_once ROOT_PATH . '#include/component/layout/management/header.php';
-require_once ROOT_PATH . '#include/component/layout/management/departement-menu.php';
+require_once ROOT_PATH . '#include/component/layout/management/master/departement/departement-menu.php';
 require_once ROOT_PATH . '#include/component/layout/management/footer.php';

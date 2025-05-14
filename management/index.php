@@ -12,8 +12,8 @@ $env = new LoadEnv(ROOT_PATH . '.env');
 $Lib = new liblary();
 
 $title = "Management - Staf";
-
-
+$current_menu = "dashboard";
+$current_sub_menu = NULL;
 
 require_once ROOT_PATH . '#include/component/layout/management/header.php';
 if ($_SESSION['role'] == 'staf') {

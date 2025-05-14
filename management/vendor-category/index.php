@@ -13,5 +13,5 @@ $current_sub_menu = NULL;
 $title = "Vendor Category";
 
 require_once ROOT_PATH . '#include/component/layout/management/header.php';
-require_once ROOT_PATH . '#include/component/layout/management/vendor-category-menu.php';
+require_once ROOT_PATH . '#include/component/layout/management/master/vendor/vendor-category-menu.php';
 require_once ROOT_PATH . '#include/component/layout/management/footer.php';

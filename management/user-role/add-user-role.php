@@ -8,10 +8,10 @@ require_once __DIR__ . '/../../#include/#class/autoload.php';
 
 $env = new LoadEnv(ROOT_PATH . '.env');
 
-$current_menu = "add user role";
+$current_menu = "user role";
 $current_sub_menu = NULL;
 $title = "Add User Role";
 
 require_once ROOT_PATH . '#include/component/layout/management/header.php';
-require_once ROOT_PATH . '#include/component/layout/management/add-user-role-menu.php';
+require_once ROOT_PATH . '#include/component/layout/management/master/user/add-user-role-menu.php';
 require_once ROOT_PATH . '#include/component/layout/management/footer.php';

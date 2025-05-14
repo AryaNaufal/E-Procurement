@@ -1,3 +1,27 @@
+<?php
+$menuMasterItems = [
+    'catalog/' => 'Catalog Category',
+    'departement/' => 'Departement',
+    'scoring/' => 'Scoring',
+    'sub-scoring/' => 'Sub Scoring',
+    'user/' => 'User',
+    'user-role/' => 'User Role',
+    'vendor-type/' => 'Vendor Type',
+    'vendor-category/' => 'Vendor Category',
+    'vendor/' => 'Vendor',
+    'blacklist-reason/' => 'Blacklist Reason'
+];
+
+$currentUri = $_SERVER['REQUEST_URI'];
+$activeMenu = false;
+foreach ($menuMasterItems as $path => $label) {
+    if (strcasecmp($current_menu, $label) === 0) {
+        $activeMenu = true;
+        break;
+    }
+}
+?>
+
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
@@ -22,45 +46,33 @@
                     <img src="<?= SERVER_NAME ?>assets/management/img/logo/logo-antara.png" alt="" style="max-width: 25px;">
                 </div>
             </li>
-            <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>>
+            <li class="<?= $current_menu == 'dashboard' ? 'active' : ''; ?>">
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
                     <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li <?= basename($_SERVER['REQUEST_URI']) == 'management' ? 'class="active"' : ''; ?>><a href="<?= SERVER_NAME ?>management/">Home</a></li>
+                <ul class="nav nav-second-level <?= $current_menu == 'dashboard' ? '' : 'collapse'; ?>">
+                    <li class="<?= $current_menu == 'dashboard' ? 'active' : ''; ?>"><a href="<?= SERVER_NAME ?>management/">Home</a></li>
                 </ul>
             </li>
-            <?php
-            $menuItems = [
-                'katalog/' => 'Catalog Category',
-                'departement/' => 'Departement',
-                'scoring/' => 'Scoring',
-                'sub-scoring/' => 'Sub Scoring',
-                'user/' => 'User',
-                'user-role/' => 'User Role',
-                'vendor-type/' => 'Vendor Type',
-                'vendor-category/' => 'Vendor Category',
-                'vendor/' => 'Vendor',
-                'blacklist-reason/' => 'Blacklist Reason'
-            ];
 
-            $currentUri = $_SERVER['REQUEST_URI'];
-            $activeMenu = false;
-            foreach ($menuItems as $path => $label) {
-                if (strpos($currentUri, $path) !== false) {
-                    $activeMenu = true;
-                    break;
-                }
-            }
-            ?>
             <li class="<?= $activeMenu ? 'active' : ''; ?>">
-                <a href="index.html"><i class="fa fa-book"></i> <span class="nav-label">Master</span>
+                <a href=""><i class="fa fa-book"></i> <span class="nav-label">Master</span>
                     <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <?php foreach ($menuItems as $path => $label): ?>
-                        <li class="<?= strpos($currentUri, $path) !== false ? 'active' : ''; ?>">
-                            <a href="<?= SERVER_NAME . 'management/' . trim($path, '/') ?>"><?= $label ?></a>
+                <ul class="nav nav-second-level <?= $activeMenu ? '' : 'collapse'; ?>">
+                    <?php foreach ($menuMasterItems as $path => $label): ?>
+                        <li class="<?= strcasecmp($current_menu, $label) === 0 ? 'active' : ''; ?>" style="width: 100%;">
+                            <a href="<?= SERVER_NAME . 'management/' . trim($path, '/') ?>">
+                                <?= $label ?>
+                            </a>
                         </li>
                     <?php endforeach; ?>
+                </ul>
+            </li>
+
+            <li class="<?= $current_menu == 'budget review' ? 'active' : ''; ?>">
+                <a href=""><i class="fa fa-money"></i> <span class="nav-label">Budget</span>
+                    <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level <?= $current_menu == 'budget review' ? '' : 'collapse'; ?>">
+                    <li class="<?= $current_menu == 'budget review' ? 'active' : ''; ?>"><a href="<?= SERVER_NAME ?>management/budget">Budget Review</a></li>
                 </ul>
             </li>
         </ul>
