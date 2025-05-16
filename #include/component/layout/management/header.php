@@ -20,6 +20,10 @@
     <link href="<?= SERVER_NAME ?>assets/management/css/animate.css" rel="stylesheet">
     <link href="<?= SERVER_NAME ?>assets/management/css/style.css" rel="stylesheet">
 
+    <link href="<?= SERVER_NAME ?>assets/management/css/plugins/summernote/summernote-bs4.css" rel="stylesheet">
+    <link href="<?= SERVER_NAME ?>assets/management/js/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+
     <link href="<?= SERVER_NAME ?>assets/management/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
     <!-- EasyUI -->

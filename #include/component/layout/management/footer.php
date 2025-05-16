@@ -24,6 +24,9 @@
 <!-- Data tables -->
 <script src="<?= SERVER_NAME ?>assets/management/js/plugins/dataTables/datatables.min.js"></script>
 
+<!-- SUMMERNOTE -->
+<script src="<?= SERVER_NAME ?>assets/management/js/plugins/summernote/summernote-bs4.js"></script>
+
 
 <?php include_once(ROOT_PATH . "#ajax/chart/type-tender.php"); ?>
 <?php include_once(ROOT_PATH . "#ajax/chart/tender-status.php"); ?>
@@ -50,6 +53,24 @@
         $('.dataTables-example').DataTable({
             pageLength: 10,
             responsive: true,
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            placeholder: "Write description here",
+            height: 200,
+        });
+
+        $('.input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
         });
 
     });

@@ -75,6 +75,14 @@ foreach ($menuMasterItems as $path => $label) {
                     <li class="<?= $current_menu == 'budget review' ? 'active' : ''; ?>"><a href="<?= SERVER_NAME ?>management/budget">Budget Review</a></li>
                 </ul>
             </li>
+
+            <li class="<?= $current_menu == 'request' ? 'active' : ''; ?>">
+                <a href=""><i class="fa fa-copy"></i> <span class="nav-label">Request</span>
+                    <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level <?= $current_menu == 'request' ? '' : 'collapse'; ?>">
+                    <li class="<?= $current_menu == 'request' ? 'active' : ''; ?>"><a href="<?= SERVER_NAME ?>management/request">Request</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
