@@ -30,12 +30,12 @@
                                             <td>Budget 1</td>
                                             <td>Rp. 10.000.000</td>
                                             <td class="center">
-                                                <span class="label label-primary">Publish</span>
+                                                <span class="label label-success"><i class="fa fa-check mr-2"></i>Approved</span>
                                             </td>
                                             <td>Yudha</td>
                                             <td class="center">
                                                 <a href="<?= SERVER_NAME ?>management/budget/budget-detail.php">
-                                                    <button class="btn btn-warning">Draft</button>
+                                                    <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>
                                         </tr>
@@ -43,12 +43,12 @@
                                             <td>Budget 2</td>
                                             <td>Rp. 20.000.000</td>
                                             <td class="center">
-                                                <span class="label label-info">Waiting Approval Manager</span>
+                                                <span class="label label-info"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>Waiting Approval Manager</span>
                                             </td>
                                             <td>Ilham</td>
                                             <td class="center">
                                                 <a href="<?= SERVER_NAME ?>management/budget/budget-detail.php">
-                                                    <button class="btn btn-warning">Draft</button>
+                                                    <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>
                                         </tr>
@@ -56,12 +56,12 @@
                                             <td>Budget 3</td>
                                             <td>Rp. 30.000.000</td>
                                             <td class="center">
-                                                <span class="label label-danger">Rejected By Manager</span>
+                                                <span class="label label-danger"><i class="fa fa-times mr-2" aria-hidden="true"></i>Rejected By Manager</span>
                                             </td>
                                             <td>Andi</td>
                                             <td class="center">
                                                 <a href="<?= SERVER_NAME ?>management/budget/budget-detail.php">
-                                                    <button class="btn btn-warning">Draft</button>
+                                                    <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>
                                         </tr>
@@ -69,12 +69,12 @@
                                             <td>Budget 4</td>
                                             <td>Rp. 40.000.000</td>
                                             <td class="center">
-                                                <span class="label label-primary">Publish</span>
+                                                <span class="label label-success"><i class="fa fa-check mr-2"></i>Approved</span>
                                             </td>
                                             <td>Indra</td>
                                             <td class="center">
                                                 <a href="<?= SERVER_NAME ?>management/budget/budget-detail.php">
-                                                    <button class="btn btn-warning">Draft</button>
+                                                    <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>
                                         </tr>

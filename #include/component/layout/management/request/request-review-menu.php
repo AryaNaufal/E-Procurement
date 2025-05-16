@@ -7,18 +7,12 @@
         </div>
 
         <div class="wrapper wrapper-content animated fadeInRight">
-            <h1 class="mt-0 mb-4 font-bold">Manage Request</h1>
+            <h1 class="mt-0 mb-4 font-bold">Request Review</h1>
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-content">
-                            <a href="<?= SERVER_NAME ?>management/request/add-request.php">
-                                <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#myModal5">
-                                    <i class="fa fa-plus mr-2" aria-hidden="true"></i>Create Request
-                                </button>
-                            </a>
-
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover dataTables-example">
                                     <thead>
@@ -39,7 +33,7 @@
                                             </td>
                                             <td>6/05/2025 15:30:00</td>
                                             <td class="center">
-                                                <a href="">
+                                                <a href="<?= SERVER_NAME ?>management/request/request-detail">
                                                     <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>
@@ -52,7 +46,7 @@
                                             </td>
                                             <td>6/05/2025 15:30:00</td>
                                             <td class="center">
-                                                <a href="">
+                                                <a href="<?= SERVER_NAME ?>management/request/request-detail">
                                                     <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>
@@ -65,7 +59,7 @@
                                             </td>
                                             <td>6/05/2025 15:30:00</td>
                                             <td class="center">
-                                                <a href="">
+                                                <a href="<?= SERVER_NAME ?>management/request/request-detail">
                                                     <button class="btn btn-warning"><i class="fa fa-file mr-2"></i>Detail</button>
                                                 </a>
                                             </td>

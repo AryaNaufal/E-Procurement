@@ -10,8 +10,8 @@ $env = new LoadEnv(ROOT_PATH . '.env');
 
 $current_menu = "budget review";
 $current_sub_menu = NULL;
-$title = "Budget Detail";
+$title = "Budget Review";
 
 require_once ROOT_PATH . '#include/component/layout/management/header.php';
-require_once ROOT_PATH . '#include/component/layout/management/budget/budget-detail-menu.php';
+require_once ROOT_PATH . '#include/component/layout/management/budget/budget-review-menu.php';
 require_once ROOT_PATH . '#include/component/layout/management/footer.php';

@@ -12,11 +12,38 @@ $menuMasterItems = [
     'blacklist-reason/' => 'Blacklist Reason'
 ];
 
+$menuBudgetItems = [
+    'budget/' => 'Budget',
+    'budget-review/' => 'Budget Review',
+];
+
+$menuRequestItems = [
+    'request/' => 'Request',
+    'request-review/' => 'Request Review',
+];
+
 $currentUri = $_SERVER['REQUEST_URI'];
-$activeMenu = false;
+$activeMasterMenu = false;
+$activeBudgetMenu = false;
+$activeRequestMenu = false;
+
+foreach ($menuBudgetItems as $path => $label) {
+    if (strcasecmp($current_menu, $label) === 0) {
+        $activeBudgetMenu = true;
+        break;
+    }
+}
+
+foreach ($menuRequestItems as $path => $label) {
+    if (strcasecmp($current_menu, $label) === 0) {
+        $activeRequestMenu = true;
+        break;
+    }
+}
+
 foreach ($menuMasterItems as $path => $label) {
     if (strcasecmp($current_menu, $label) === 0) {
-        $activeMenu = true;
+        $activeMasterMenu = true;
         break;
     }
 }
@@ -54,10 +81,10 @@ foreach ($menuMasterItems as $path => $label) {
                 </ul>
             </li>
 
-            <li class="<?= $activeMenu ? 'active' : ''; ?>">
+            <li class="<?= $activeMasterMenu ? 'active' : ''; ?>">
                 <a href=""><i class="fa fa-book"></i> <span class="nav-label">Master</span>
                     <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level <?= $activeMenu ? '' : 'collapse'; ?>">
+                <ul class="nav nav-second-level <?= $activeMasterMenu ? '' : 'collapse'; ?>">
                     <?php foreach ($menuMasterItems as $path => $label): ?>
                         <li class="<?= strcasecmp($current_menu, $label) === 0 ? 'active' : ''; ?>" style="width: 100%;">
                             <a href="<?= SERVER_NAME . 'management/' . trim($path, '/') ?>">
@@ -68,19 +95,31 @@ foreach ($menuMasterItems as $path => $label) {
                 </ul>
             </li>
 
-            <li class="<?= $current_menu == 'budget review' ? 'active' : ''; ?>">
+            <li class="<?= $activeBudgetMenu ? 'active' : ''; ?>">
                 <a href=""><i class="fa fa-money"></i> <span class="nav-label">Budget</span>
                     <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level <?= $current_menu == 'budget review' ? '' : 'collapse'; ?>">
-                    <li class="<?= $current_menu == 'budget review' ? 'active' : ''; ?>"><a href="<?= SERVER_NAME ?>management/budget">Budget Review</a></li>
+                <ul class="nav nav-second-level <?= $activeBudgetMenu ? '' : 'collapse'; ?>">
+                    <?php foreach ($menuBudgetItems as $path => $label): ?>
+                        <li class="<?= strcasecmp($current_menu, $label) === 0 ? 'active' : ''; ?>" style="width: 100%;">
+                            <a href="<?= SERVER_NAME . 'management/' . trim($path, '/') ?>">
+                                <?= $label ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
 
-            <li class="<?= $current_menu == 'request' ? 'active' : ''; ?>">
+            <li class="<?= $activeRequestMenu ? 'active' : ''; ?>">
                 <a href=""><i class="fa fa-copy"></i> <span class="nav-label">Request</span>
                     <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level <?= $current_menu == 'request' ? '' : 'collapse'; ?>">
-                    <li class="<?= $current_menu == 'request' ? 'active' : ''; ?>"><a href="<?= SERVER_NAME ?>management/request">Request</a></li>
+                <ul class="nav nav-second-level <?= $activeRequestMenu ? '' : 'collapse'; ?>">
+                    <?php foreach ($menuRequestItems as $path => $label): ?>
+                        <li class="<?= strcasecmp($current_menu, $label) === 0 ? 'active' : ''; ?>" style="width: 100%;">
+                            <a href="<?= SERVER_NAME . 'management/' . trim($path, '/') ?>">
+                                <?= $label ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
         </ul>

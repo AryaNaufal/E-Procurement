@@ -17,7 +17,7 @@
                                 <i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Back
                             </button>
 
-                            <form method="POST" action="<?= SERVER_NAME ?>handler/add-user.php" id="form_add_user">
+                            <form method="POST" action="" id="form_add_user">
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">

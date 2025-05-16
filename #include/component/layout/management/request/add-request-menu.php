@@ -17,7 +17,7 @@
                                 <i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Back
                             </button>
 
-                            <form method="POST" action="<?= SERVER_NAME ?>handler/add-user.php" id="form_add_user">
+                            <form method="POST" action="" id="form_add_request">
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -31,14 +31,14 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="form-label font-bold" for="createdBy">Pengadaan</label>
-                                            <input type="text" name="createdBy" placeholder="Pengadaan" class="form-control" required>
+                                            <input type="text" name="createdBy" id="createdBy" placeholder="Pengadaan" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="form-label font-bold" for="publish">Publish Date</label>
-                                            <input type="text" name="publish" placeholder="Publish Date" class="form-control" required>
+                                            <input type="text" name="publish" id="publish" placeholder="Publish Date" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label class="form-label font-bold" for="deliveryDate">Delivery Date</label>
-                                            <input type="text" name="deliveryDate" placeholder="Delivery Date" class="form-control" required>
+                                            <input type="text" name="deliveryDate" id="deliveryDate" placeholder="Delivery Date" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -65,12 +65,19 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label font-bold" for="description">Description</label>
-                                            <textarea class="summernote" name="description" class="form-control" autocomplete="off" rows="30"></textarea>
+                                            <textarea class="summernote" name="description" id="description" class="form-control" autocomplete="off" rows="30"></textarea>
+                                        </div>
+
+                                        <div class="custom-file">
+                                            <button type="button" class="btn btn-primary" onclick="$('input[name=attachment]').click()"><i class="fa fa-file mr-2"></i> Add File To Upload</button>
+                                            <input type="file" name="attachment" id="attachment" class="form-control d-none">
                                         </div>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <div style="text-align: right;">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </div>
